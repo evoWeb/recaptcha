@@ -1,0 +1,17 @@
+plugin.tx_recaptcha {
+	public_key = {$plugin.tx_recaptcha.public_key}
+	public_key.wrap = <div class="g-recaptcha" data-sitekey="|"></div>
+
+	private_key = {$plugin.tx_recaptcha.private_key}
+
+	api_server = {$plugin.tx_recaptcha.api_server}
+	verify_server = {$plugin.tx_recaptcha.verify_server}
+
+	tabindex = {$plugin.tx_recaptcha.tabindex}
+	lang = {$plugin.tx_recaptcha.lang}
+
+}
+
+
+// register recaptcha as captcha for sf_register
+plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Services\Captcha\RecaptchaAdapter
