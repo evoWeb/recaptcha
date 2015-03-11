@@ -1,7 +1,9 @@
 plugin.tx_recaptcha {
+	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	public_key = {$plugin.tx_recaptcha.public_key}
 	public_key.wrap = <div class="g-recaptcha" data-sitekey="|"></div>
 
+	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	private_key = {$plugin.tx_recaptcha.private_key}
 
 	api_server = {$plugin.tx_recaptcha.api_server}
@@ -9,9 +11,10 @@ plugin.tx_recaptcha {
 
 	tabindex = {$plugin.tx_recaptcha.tabindex}
 	lang = {$plugin.tx_recaptcha.lang}
-
 }
 
+page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
+page.includeJSFooterlibs.recaptcha.external = 1
 
 // register recaptcha as captcha for sf_register
-plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Services\Captcha\RecaptchaAdapter
+plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
