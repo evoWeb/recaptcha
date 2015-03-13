@@ -23,6 +23,9 @@ namespace Evoweb\Recaptcha\Adapter;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+
 /**
  * Class RecaptchaAdapter
  */
@@ -35,10 +38,10 @@ class TypoScriptAdapter {
 	protected $captcha = NULL;
 
 	/**
-	 * Constructor
+	 * @return self
 	 */
 	public function __construct() {
-		$this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
+		$this->captcha = GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
 	}
 
 	/**
@@ -49,6 +52,17 @@ class TypoScriptAdapter {
 	public function render() {
 		if ($this->captcha !== NULL) {
 			$output = $this->captcha->getReCaptcha();
+
+			/** @var \TYPO3\CMS\Form\Validation\RecaptchaValidator $recaptchaValidator */
+			$recaptchaValidator = GeneralUtility::makeInstance('TYPO3\\CMS\\Form\\Validation\\RecaptchaValidator');
+			$validationError = $recaptchaValidator->getError();
+			if (count($validationError)) {
+				/** @var ContentObjectRenderer $content */
+				$content = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
+
+				$output .= '<strong class="error">' . $content->cObjGetSingle($validationError['cObj'], $validationError['cObj.']) .
+					'</strong>';
+			}
 		} else {
 			$output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
 				'error_captcha.notinstalled', 'Recaptcha', array('recaptcha')
@@ -56,63 +70,5 @@ class TypoScriptAdapter {
 		}
 
 		return $output;
-	}
-
-	/**
-	 * Validate the captcha value from the request and output an error if not valid
-	 *
-	 * @return bool
-	 */
-	public function validate() {
-		$validCaptcha = TRUE;
-
-		if ($this->captcha !== NULL) {
-			$status = $this->captcha->validateReCaptcha();
-
-			if ($status == FALSE || $status['error'] !== '') {
-				$validCaptcha = FALSE;
-				$this->renderFlashMessage(
-					\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha'),
-					1307421960
-				);
-			}
-		}
-
-		return $validCaptcha;
-	}
-
-	/**
-	 * @param string $message
-	 * @param int $type
-	 * @throws \TYPO3\CMS\Core\Exception
-	 */
-	protected function renderFlashMessage($message, $type = \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING) {
-		$code  = '
-		.typo3-message .message-header{padding: 10px 10px 0 30px;font-size:0.9em;}
-		.typo3-message .message-body{padding: 10px;font-size:0.9em;}
-		';
-
-		/**
-		 * @var \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $frontend
-		 */
-		$frontend = $GLOBALS['TSFE'];
-		$frontend->getPageRenderer()->addCssFile(
-			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('t3skin') . 'stylesheets/standalone/errorpage-message.css'
-		);
-		$frontend->getPageRenderer()->addCssInlineBlock('flashmessage', $code);
-
-		/** @var \TYPO3\CMS\Core\Messaging\FlashMessage $flashMessage */
-		$flashMessage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-			$message,
-			'',
-			$type
-		);
-
-		/** @var \TYPO3\CMS\Core\Messaging\FlashMessageQueue $flashMessageQueue */
-		$flashMessageQueue = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Core\\Messaging\\FlashMessageQueue'
-		);
-		$flashMessageQueue->enqueue($flashMessage);
 	}
 }
