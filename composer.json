@@ -19,6 +19,7 @@
     "autoload": {
         "psr-4": {
             "Evoweb\\Recaptcha\\": "Classes/"
-        }
+        },
+        "files": ["Classes/Validation/RecaptchaValidator.php"]
     }
 }

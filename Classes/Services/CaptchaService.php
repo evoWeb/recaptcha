@@ -1,6 +1,4 @@
 <?php
-namespace Evoweb\Recaptcha\Services;
-
 /***************************************************************
  *  Copyright notice
  *
@@ -23,8 +21,11 @@ namespace Evoweb\Recaptcha\Services;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+namespace Evoweb\Recaptcha\Services;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class RecaptchaService
@@ -38,7 +39,7 @@ class CaptchaService
     protected $configuration = [];
 
     /**
-     * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
+     * @var ContentObjectRenderer
      */
     protected $contentObject;
 
@@ -49,7 +50,7 @@ class CaptchaService
     public function __construct()
     {
         /**
-         * @var \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $frontend
+         * @var TypoScriptFrontendController $frontend
          */
         $frontend = $GLOBALS['TSFE'];
         $this->configuration = $frontend->tmpl->setup['plugin.']['tx_recaptcha.'];
@@ -58,7 +59,7 @@ class CaptchaService
             throw new \Exception('Please configure plugin.tx_recaptcha. before rendering the recaptcha', 1417680291);
         }
 
-        $this->contentObject = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
+        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
     /**
@@ -118,8 +119,9 @@ class CaptchaService
         }
 
         $request = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = GeneralUtility::getURL($this->configuration['verify_server'] . '?' . $request);
+        $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
 
         return json_decode($response);
     }
+
 }

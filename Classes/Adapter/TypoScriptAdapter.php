@@ -1,6 +1,4 @@
 <?php
-namespace Evoweb\Recaptcha\Adapter;
-
 /***************************************************************
  *  Copyright notice
  *
@@ -23,8 +21,11 @@ namespace Evoweb\Recaptcha\Adapter;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+namespace Evoweb\Recaptcha\Adapter;
 
+use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -32,10 +33,11 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class TypoScriptAdapter
 {
+
     /**
      * Captcha object
      *
-     * @var \Evoweb\Recaptcha\Services\CaptchaService
+     * @var CaptchaService
      */
     protected $captcha = null;
 
@@ -44,7 +46,7 @@ class TypoScriptAdapter
      */
     public function __construct()
     {
-        $this->captcha = GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
+        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
     }
 
     /**
@@ -69,11 +71,12 @@ class TypoScriptAdapter
                     '</strong>';
             }
         } else {
-            $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            $output = LocalizationUtility::translate(
                 'error_captcha.notinstalled', 'Recaptcha', ['recaptcha']
             );
         }
 
         return $output;
     }
+
 }
