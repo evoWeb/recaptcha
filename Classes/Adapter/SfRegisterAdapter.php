@@ -1,5 +1,6 @@
 <?php
 namespace Evoweb\Recaptcha\Adapter;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -26,73 +27,78 @@ namespace Evoweb\Recaptcha\Adapter;
 /**
  * Class RecaptchaAdapter
  */
-class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdapter {
-	/**
-	 * Object manager
-	 *
-	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-	 * @inject
-	 */
-	protected $objectManager;
+class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdapter
+{
+    /**
+     * Object manager
+     *
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+     * @inject
+     */
+    protected $objectManager;
 
-	/**
-	 * Captcha object
-	 *
-	 * @var \Evoweb\Recaptcha\Services\CaptchaService
-	 */
-	protected $captcha = NULL;
+    /**
+     * Captcha object
+     *
+     * @var \Evoweb\Recaptcha\Services\CaptchaService
+     */
+    protected $captcha = null;
 
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		$this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
-	}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
+    }
 
-	/**
-	 * Rendering the output of the captcha
-	 *
-	 * @return string
-	 */
-	public function render() {
-		$this->objectManager->get('Evoweb\\SfRegister\\Services\\Session')->remove('captchaWasValidPreviously');
+    /**
+     * Rendering the output of the captcha
+     *
+     * @return string
+     */
+    public function render()
+    {
+        $this->objectManager->get('Evoweb\\SfRegister\\Services\\Session')->remove('captchaWasValidPreviously');
 
-		if ($this->captcha !== NULL) {
-			$output = $this->captcha->getReCaptcha();
-		} else {
-			$output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-				'error_captcha.notinstalled', 'Recaptcha', array('recaptcha')
-			);
-		}
+        if ($this->captcha !== null) {
+            $output = $this->captcha->getReCaptcha();
+        } else {
+            $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                'error_captcha.notinstalled', 'Recaptcha', ['recaptcha']
+            );
+        }
 
-		return $output;
-	}
+        return $output;
+    }
 
-	/**
-	 * Validate the captcha value from the request and output an error if not valid
-	 *
-	 * @param string $value
-	 * @return bool
-	 */
-	public function isValid($value) {
-		$validCaptcha = TRUE;
+    /**
+     * Validate the captcha value from the request and output an error if not valid
+     *
+     * @param string $value
+     * @return bool
+     */
+    public function isValid($value)
+    {
+        $validCaptcha = true;
 
-		$session = $this->objectManager->get('Evoweb\\SfRegister\\Services\\Session');
-		$captchaWasValidPreviously = $session->get('captchaWasValidPreviously');
-		if ($this->captcha !== NULL && $captchaWasValidPreviously !== TRUE) {
-			$status = $this->captcha->validateReCaptcha();
+        $session = $this->objectManager->get('Evoweb\\SfRegister\\Services\\Session');
+        $captchaWasValidPreviously = $session->get('captchaWasValidPreviously');
+        if ($this->captcha !== null && $captchaWasValidPreviously !== true) {
+            $status = $this->captcha->validateReCaptcha();
 
-			if ($status == FALSE || $status['error'] !== '') {
-				$validCaptcha = FALSE;
-				$this->addError(
-					\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha'),
-					1307421960
-				);
-			}
-		}
+            if ($status == false || $status['error'] !== '') {
+                $validCaptcha = false;
+                $this->addError(
+                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('error_recaptcha_' . $status['error'],
+                        'Recaptcha'),
+                    1307421960
+                );
+            }
+        }
 
-		$session->set('captchaWasValidPreviously', $validCaptcha);
+        $session->set('captchaWasValidPreviously', $validCaptcha);
 
-		return $validCaptcha;
-	}
+        return $validCaptcha;
+    }
 }

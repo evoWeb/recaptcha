@@ -4,41 +4,44 @@ namespace TYPO3\CMS\Form\Validation;
 /**
  * Class RecaptchaValidator
  */
-class RecaptchaValidator extends AbstractValidator implements \TYPO3\CMS\Core\SingletonInterface {
-	/**
-	 * Captcha object
-	 *
-	 * @var \Evoweb\Recaptcha\Services\CaptchaService
-	 */
-	protected $captcha = NULL;
+class RecaptchaValidator extends AbstractValidator implements \TYPO3\CMS\Core\SingletonInterface
+{
+    /**
+     * Captcha object
+     *
+     * @var \Evoweb\Recaptcha\Services\CaptchaService
+     */
+    protected $captcha = null;
 
-	/**
-	 * @param array $arguments
-	 * @return self
-	 */
-	public function __construct($arguments) {
-		parent::__construct($arguments);
+    /**
+     * @param array $arguments
+     * @return self
+     */
+    public function __construct($arguments)
+    {
+        parent::__construct($arguments);
 
-		$this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
-	}
+        $this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
+    }
 
-	/**
-	 * Validate the captcha value from the request and output an error if not valid
-	 *
-	 * @return bool
-	 */
-	public function isValid() {
-		$validCaptcha = TRUE;
+    /**
+     * Validate the captcha value from the request and output an error if not valid
+     *
+     * @return bool
+     */
+    public function isValid()
+    {
+        $validCaptcha = true;
 
-		if ($this->captcha !== NULL) {
-			$status = $this->captcha->validateReCaptcha();
+        if ($this->captcha !== null) {
+            $status = $this->captcha->validateReCaptcha();
 
-			if ($status == FALSE || $status['error'] !== '') {
-				$validCaptcha = FALSE;
-				$this->setError($status['error']);
-			}
-		}
+            if ($status == false || $status['error'] !== '') {
+                $validCaptcha = false;
+                $this->setError($status['error']);
+            }
+        }
 
-		return $validCaptcha;
-	}
+        return $validCaptcha;
+    }
 }
