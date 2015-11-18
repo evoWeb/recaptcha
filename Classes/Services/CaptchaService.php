@@ -100,7 +100,7 @@ class CaptchaService
         ];
 
         $result = ['verified' => false, 'error' => ''];
-        if (empty($data['response'])) {
+        if (empty($request['response'])) {
             $result['error'] = 'Recaptcha response missing';
         } else {
             $response = $this->queryVerificationServer($request);
@@ -108,10 +108,10 @@ class CaptchaService
                 $result['error'] = 'Verification server did not responde';
             }
 
-            if ($result['success']) {
+            if ($response['success']) {
                 $result['verified'] = true;
             } else {
-                $result['error'] = $result['error-codes'];
+                $result['error'] = $response['error-codes'];
             }
         }
 
@@ -135,7 +135,7 @@ class CaptchaService
         $request = GeneralUtility::implodeArrayForUrl('', $data);
         $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
 
-        return json_decode($response);
+        return json_decode($response, true);
     }
 
 }
