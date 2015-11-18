@@ -1,6 +1,6 @@
 {
     "name": "evoweb/recaptcha",
-    "type": "typo3-cms-framework",
+    "type": "typo3-cms-extension",
     "description": "Easy on Humans, Hard on Bots",
     "license": "proprietary",
     "authors": [
