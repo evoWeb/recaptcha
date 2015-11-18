@@ -23,6 +23,7 @@
  ***************************************************************/
 namespace Evoweb\Recaptcha\Services;
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -49,16 +50,29 @@ class CaptchaService
      */
     public function __construct()
     {
-        /**
-         * @var TypoScriptFrontendController $frontend
-         */
-        $frontend = $GLOBALS['TSFE'];
-        $this->configuration = $frontend->tmpl->setup['plugin.']['tx_recaptcha.'];
+        $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
 
-        if (!is_array($this->configuration) || empty($this->configuration)) {
+        if (!is_array($configuration)) {
+            $configuration = [];
+        }
+
+        if (
+            isset($GLOBALS['TSFE'])
+            && $GLOBALS['TSFE'] instanceof TypoScriptFrontendController
+            && isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+            && is_array($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+        ) {
+            ArrayUtility::mergeRecursiveWithOverrule(
+                $configuration,
+                $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.']
+            );
+        }
+
+        if (!is_array($configuration) || empty($configuration)) {
             throw new \Exception('Please configure plugin.tx_recaptcha. before rendering the recaptcha', 1417680291);
         }
 
+        $this->configuration = $configuration;
         $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
