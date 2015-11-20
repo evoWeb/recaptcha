@@ -1,5 +1,4 @@
 <?php
-namespace Evoweb\Recaptcha\Adapter;
 /***************************************************************
  *  Copyright notice
  *
@@ -22,53 +21,62 @@ namespace Evoweb\Recaptcha\Adapter;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+namespace Evoweb\Recaptcha\Adapter;
 
+use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Class RecaptchaAdapter
  */
-class TypoScriptAdapter {
-	/**
-	 * Captcha object
-	 *
-	 * @var \Evoweb\Recaptcha\Services\CaptchaService
-	 */
-	protected $captcha = NULL;
+class TypoScriptAdapter
+{
 
-	/**
-	 * @return self
-	 */
-	public function __construct() {
-		$this->captcha = GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
-	}
+    /**
+     * Captcha object
+     *
+     * @var CaptchaService
+     */
+    protected $captcha = null;
 
-	/**
-	 * Rendering the output of the captcha
-	 *
-	 * @return string
-	 */
-	public function render() {
-		if ($this->captcha !== NULL) {
-			$output = $this->captcha->getReCaptcha();
+    /**
+     * @return self
+     */
+    public function __construct()
+    {
+        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
+    }
 
-			/** @var \TYPO3\CMS\Form\Validation\RecaptchaValidator $recaptchaValidator */
-			$recaptchaValidator = GeneralUtility::makeInstance('TYPO3\\CMS\\Form\\Validation\\RecaptchaValidator');
-			$validationError = $recaptchaValidator->getError();
-			if (count($validationError)) {
-				/** @var ContentObjectRenderer $content */
-				$content = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
+    /**
+     * Rendering the output of the captcha
+     *
+     * @return string
+     */
+    public function render()
+    {
+        if ($this->captcha !== null) {
+            $output = $this->captcha->getReCaptcha();
 
-				$output .= '<strong class="error">' . $content->cObjGetSingle($validationError['cObj'], $validationError['cObj.']) .
-					'</strong>';
-			}
-		} else {
-			$output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-				'error_captcha.notinstalled', 'Recaptcha', array('recaptcha')
-			);
-		}
+            /** @var \TYPO3\CMS\Form\Validation\RecaptchaValidator $recaptchaValidator */
+            $recaptchaValidator = GeneralUtility::makeInstance('TYPO3\\CMS\\Form\\Validation\\RecaptchaValidator');
+            $validationError = $recaptchaValidator->getError();
+            if (count($validationError)) {
+                /** @var ContentObjectRenderer $content */
+                $content = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
 
-		return $output;
-	}
+                $output .= '<strong class="error">' . $content->cObjGetSingle($validationError['cObj'],
+                        $validationError['cObj.']) .
+                    '</strong>';
+            }
+        } else {
+            $output = LocalizationUtility::translate(
+                'error_captcha.notinstalled', 'Recaptcha', ['recaptcha']
+            );
+        }
+
+        return $output;
+    }
+
 }

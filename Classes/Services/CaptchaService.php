@@ -1,5 +1,4 @@
 <?php
-namespace Evoweb\Recaptcha\Services;
 /***************************************************************
  *  Copyright notice
  *
@@ -22,98 +21,121 @@ namespace Evoweb\Recaptcha\Services;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+namespace Evoweb\Recaptcha\Services;
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class RecaptchaService
  */
-class CaptchaService {
+class CaptchaService
+{
 
-	/**
-	 * @var array
-	 */
-	protected $configuration = array();
+    /**
+     * @var array
+     */
+    protected $configuration = [];
 
-	/**
-	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
-	 */
-	protected $contentObject;
+    /**
+     * @var ContentObjectRenderer
+     */
+    protected $contentObject;
 
-	/**
-	 * @return self
-	 * @throws \Exception
-	 */
-	public function __construct() {
-		/**
-		 * @var \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $frontend
-		 */
-		$frontend = $GLOBALS['TSFE'];
-		$this->configuration = $frontend->tmpl->setup['plugin.']['tx_recaptcha.'];
+    /**
+     * @return self
+     * @throws \Exception
+     */
+    public function __construct()
+    {
+        $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
 
-		if (!is_array($this->configuration) || empty($this->configuration)) {
-			throw new \Exception('Please configure plugin.tx_recaptcha. before rendering the recaptcha', 1417680291);
-		}
+        if (!is_array($configuration)) {
+            $configuration = [];
+        }
 
-		$this->contentObject = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
-	}
+        if (
+            isset($GLOBALS['TSFE'])
+            && $GLOBALS['TSFE'] instanceof TypoScriptFrontendController
+            && isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+            && is_array($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+        ) {
+            ArrayUtility::mergeRecursiveWithOverrule(
+                $configuration,
+                $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.']
+            );
+        }
 
-	/**
-	 * Build reCAPTCHA Frontend HTML-Code
-	 *
-	 * @return string reCAPTCHA HTML-Code
-	 */
-	public function getReCaptcha() {
-		return $this->contentObject->stdWrap($this->configuration['public_key'], $this->configuration['public_key.']);
-	}
+        if (!is_array($configuration) || empty($configuration)) {
+            throw new \Exception('Please configure plugin.tx_recaptcha. before rendering the recaptcha', 1417680291);
+        }
 
-	/**
-	 * Validate reCAPTCHA challenge/response
-	 *
-	 * @return array Array with verified- (boolean) and error-code (string)
-	 */
-	public function validateReCaptcha() {
-		$request = array(
-			'secret' => $this->configuration['private_key'],
-			'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
-			'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
-		);
+        $this->configuration = $configuration;
+        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+    }
 
-		$result = array('verified' => FALSE, 'error' => '');
-		if (empty($data['response'])) {
-			$result['error'] = 'Recaptcha response missing';
-		} else {
-			$response = $this->queryVerificationServer($request);
-			if (!$response) {
-				$result['error'] = 'Verification server did not responde';
-			}
+    /**
+     * Build reCAPTCHA Frontend HTML-Code
+     *
+     * @return string reCAPTCHA HTML-Code
+     */
+    public function getReCaptcha()
+    {
+        return $this->contentObject->stdWrap($this->configuration['public_key'], $this->configuration['public_key.']);
+    }
 
-			if ($result['success']) {
-				$result['verified'] = TRUE;
-			} else {
-				$result['error'] = $result['error-codes'];
-			}
-		}
+    /**
+     * Validate reCAPTCHA challenge/response
+     *
+     * @return array Array with verified- (boolean) and error-code (string)
+     */
+    public function validateReCaptcha()
+    {
+        $request = [
+            'secret' => $this->configuration['private_key'],
+            'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
+            'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
+        ];
 
-		return $result;
-	}
+        $result = ['verified' => false, 'error' => ''];
+        if (empty($request['response'])) {
+            $result['error'] = 'Recaptcha response missing';
+        } else {
+            $response = $this->queryVerificationServer($request);
+            if (!$response) {
+                $result['error'] = 'Verification server did not responde';
+            }
 
-	/**
-	 * Query reCAPTCHA server for captcha-verification
-	 *
-	 * @param array $data
-	 * @return array Array with verified- (boolean) and error-code (string)
-	 */
-	protected function queryVerificationServer($data) {
-		$verifyServerInfo = @parse_url($this->configuration['verify_server']);
+            if ($response['success']) {
+                $result['verified'] = true;
+            } else {
+                $result['error'] = $response['error-codes'];
+            }
+        }
 
-		if (empty($verifyServerInfo)) {
-			return array(FALSE, 'recaptcha-not-reachable');
-		}
+        return $result;
+    }
 
-		$request = GeneralUtility::implodeArrayForUrl('', $data);
-		$response = GeneralUtility::getURL($this->configuration['verify_server'] . '?' . $request);
+    /**
+     * Query reCAPTCHA server for captcha-verification
+     *
+     * @param array $data
+     * @return array Array with verified- (boolean) and error-code (string)
+     */
+    protected function queryVerificationServer($data)
+    {
+        $verifyServerInfo = @parse_url($this->configuration['verify_server']);
 
-		return json_decode($response);
-	}
+        if (empty($verifyServerInfo)) {
+            return [false, 'recaptcha-not-reachable'];
+        }
+
+        $request = GeneralUtility::implodeArrayForUrl('', $data);
+        $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
+
+        return json_decode($response, true);
+    }
+
 }

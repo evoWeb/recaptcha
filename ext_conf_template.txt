@@ -1,0 +1,14 @@
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA API-server address
+api_server = https://www.google.com/recaptcha/api.js
+
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA VERIFY-server address
+verify_server = https://www.google.com/recaptcha/api/siteverify
+
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA public key
+public_key =
+
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA private key
+private_key =
+
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA language
+lang =
