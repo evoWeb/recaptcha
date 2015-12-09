@@ -101,11 +101,11 @@ class CaptchaService
 
         $result = ['verified' => false, 'error' => ''];
         if (empty($request['response'])) {
-            $result['error'] = 'Recaptcha response missing';
+            $result['error'] = 'missing-input-response';
         } else {
             $response = $this->queryVerificationServer($request);
             if (!$response) {
-                $result['error'] = 'Verification server did not responde';
+                $result['error'] = 'validation-server-not-responding';
             }
 
             if ($response['success']) {
