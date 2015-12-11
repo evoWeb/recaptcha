@@ -45,11 +45,23 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
     protected $captcha = null;
 
     /**
+     * Captcha object
+     *
+     * @var \Evoweb\SfRegister\Services\Session
+     */
+    protected $session = null;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
+        $this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            'Evoweb\\Recaptcha\\Services\\CaptchaService'
+        );
+        $this->session = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            'Evoweb\\SfRegister\\Services\\Session'
+        );
     }
 
     /**
@@ -59,13 +71,15 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
      */
     public function render()
     {
-        $this->objectManager->get('Evoweb\\SfRegister\\Services\\Session')->remove('captchaWasValidPreviously');
+        $this->session->remove('captchaWasValidPreviously');
 
         if ($this->captcha !== null) {
             $output = $this->captcha->getReCaptcha();
         } else {
             $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                'error_captcha.notinstalled', 'Recaptcha', ['recaptcha']
+                'error_captcha.notinstalled',
+                'Recaptcha',
+                array('recaptcha')
             );
         }
 
@@ -82,22 +96,22 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
     {
         $validCaptcha = true;
 
-        $session = $this->objectManager->get('Evoweb\\SfRegister\\Services\\Session');
-        $captchaWasValidPreviously = $session->get('captchaWasValidPreviously');
-        if ($this->captcha !== null && $captchaWasValidPreviously !== true) {
+        if ($this->captcha !== null && !$this->session->get('captchaWasValidPreviously')) {
             $status = $this->captcha->validateReCaptcha();
 
             if ($status == false || $status['error'] !== '') {
                 $validCaptcha = false;
                 $this->addError(
-                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('error_recaptcha_' . $status['error'],
-                        'Recaptcha'),
+                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        'error_recaptcha_' . $status['error'],
+                        'Recaptcha'
+                    ),
                     1307421960
                 );
             }
         }
 
-        $session->set('captchaWasValidPreviously', $validCaptcha);
+        $this->session->set('captchaWasValidPreviously', $validCaptcha);
 
         return $validCaptcha;
     }

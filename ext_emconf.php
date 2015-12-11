@@ -1,7 +1,7 @@
 <?php
 /** @var string $_EXTKEY */
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF[$_EXTKEY] = array(
     'title' => 'reCAPTCHA',
     'description' => 'Easy on Humans, Hard on Bots',
     'category' => 'fe',
@@ -14,13 +14,13 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => 'evoweb',
     'version' => '1.0.0',
     '_md5_values_when_last_written' => '',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '7.6.0-7.6.99',
-        ],
-        'conflicts' => [
-        ],
-        'suggests' => [
-        ],
-    ],
-];
+    'constraints' => array(
+        'depends' => array(
+            'typo3' => '6.2.0-7.6.99',
+        ),
+        'conflicts' => array(
+        ),
+        'suggests' => array(
+        ),
+    ),
+);

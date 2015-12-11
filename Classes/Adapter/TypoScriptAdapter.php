@@ -33,7 +33,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class TypoScriptAdapter
 {
-
     /**
      * Captcha object
      *
@@ -46,7 +45,7 @@ class TypoScriptAdapter
      */
     public function __construct()
     {
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $this->captcha = GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
     }
 
     /**
@@ -61,22 +60,24 @@ class TypoScriptAdapter
 
             /** @var \TYPO3\CMS\Form\Validation\RecaptchaValidator $recaptchaValidator */
             $recaptchaValidator = GeneralUtility::makeInstance('TYPO3\\CMS\\Form\\Validation\\RecaptchaValidator');
+            $recaptchaValidator->isValid();
             $validationError = $recaptchaValidator->getError();
-            if (count($validationError)) {
+            $errorText = '';
+            if (GeneralUtility::_POST('tx_form') !== null && count($validationError)) {
                 /** @var ContentObjectRenderer $content */
                 $content = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
 
-                $output .= '<strong class="error">' . $content->cObjGetSingle($validationError['cObj'],
-                        $validationError['cObj.']) .
-                    '</strong>';
+                $errorText = $content->cObjGetSingle(
+                    $validationError['cObj'],
+                    $validationError['cObj.']
+                );
             }
+
+            $output = str_replace('###ERROR###', $errorText, $output);
         } else {
-            $output = LocalizationUtility::translate(
-                'error_captcha.notinstalled', 'Recaptcha', ['recaptcha']
-            );
+            $output = LocalizationUtility::translate('error_captcha.notinstalled', 'Recaptcha', array('recaptcha'));
         }
 
         return $output;
     }
-
 }

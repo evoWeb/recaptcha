@@ -1,4 +1,6 @@
 <?php
+namespace TYPO3\CMS\Form\Validation;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -21,19 +23,16 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-namespace TYPO3\CMS\Form\Validation;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Class RecaptchaValidator
  */
-class RecaptchaValidator extends AbstractValidator implements SingletonInterface
+class RecaptchaValidator extends \TYPO3\CMS\Form\Validation\AbstractValidator implements SingletonInterface
 {
-
     /**
      * Captcha object
      *
@@ -49,16 +48,15 @@ class RecaptchaValidator extends AbstractValidator implements SingletonInterface
     {
         parent::__construct($arguments);
 
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $this->captcha = GeneralUtility::makeInstance('Evoweb\\Recaptcha\\Services\\CaptchaService');
     }
 
     /**
      * Validate the captcha value from the request and output an error if not valid
      *
-     * @param mixed $value
      * @return bool
      */
-    public function isValid($value)
+    public function isValid()
     {
         $validCaptcha = true;
 
@@ -67,11 +65,9 @@ class RecaptchaValidator extends AbstractValidator implements SingletonInterface
 
             if ($status == false || $status['error'] !== '') {
                 $validCaptcha = false;
-                $this->addError($status['error'], 1447258047591);
             }
         }
 
         return $validCaptcha;
     }
-
 }

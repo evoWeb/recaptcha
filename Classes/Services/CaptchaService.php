@@ -1,4 +1,6 @@
 <?php
+namespace Evoweb\Recaptcha\Services;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -21,7 +23,6 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-namespace Evoweb\Recaptcha\Services;
 
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -33,11 +34,10 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class CaptchaService
 {
-
     /**
      * @var array
      */
-    protected $configuration = [];
+    protected $configuration = array();
 
     /**
      * @var ContentObjectRenderer
@@ -53,14 +53,13 @@ class CaptchaService
         $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
 
         if (!is_array($configuration)) {
-            $configuration = [];
+            $configuration = array();
         }
 
-        if (
-            isset($GLOBALS['TSFE'])
-            && $GLOBALS['TSFE'] instanceof TypoScriptFrontendController
-            && isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
-            && is_array($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+        $frontend = $this->getTypoScriptController();
+        if (!empty($frontend)
+            && isset($frontend->tmpl->setup['plugin.']['tx_recaptcha.'])
+            && is_array($frontend->tmpl->setup['plugin.']['tx_recaptcha.'])
         ) {
             ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
@@ -73,7 +72,7 @@ class CaptchaService
         }
 
         $this->configuration = $configuration;
-        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $this->contentObject = GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
     }
 
     /**
@@ -93,13 +92,13 @@ class CaptchaService
      */
     public function validateReCaptcha()
     {
-        $request = [
+        $request = array(
             'secret' => $this->configuration['private_key'],
             'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
-        ];
+        );
 
-        $result = ['verified' => false, 'error' => ''];
+        $result = array('verified' => false, 'error' => '');
         if (empty($request['response'])) {
             $result['error'] = 'missing-input-response';
         } else {
@@ -129,13 +128,33 @@ class CaptchaService
         $verifyServerInfo = @parse_url($this->configuration['verify_server']);
 
         if (empty($verifyServerInfo)) {
-            return [false, 'recaptcha-not-reachable'];
+            return array(false, 'recaptcha-not-reachable');
         }
 
         $request = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
+        $url = $this->configuration['verify_server'] . '?' . $request;
+
+        /**
+         $curlHandler = curl_init();
+         curl_setopt($curlHandler, CURLOPT_URL, $url);
+         curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, TRUE);
+         curl_setopt($curlHandler, CURLOPT_TIMEOUT, 15);
+         curl_setopt($curlHandler, CURLOPT_SSL_VERIFYPEER, FALSE);
+         curl_setopt($curlHandler, CURLOPT_SSL_VERIFYHOST, FALSE);
+         $response = curl_exec($curlHandler);
+         curl_close($curlHandler);
+         */
+
+        $response = GeneralUtility::getUrl($url);
 
         return json_decode($response, true);
     }
 
+    /**
+     * @return TypoScriptFrontendController
+     */
+    protected function getTypoScriptController()
+    {
+        return $GLOBALS['TSFE'];
+    }
 }
