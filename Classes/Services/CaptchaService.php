@@ -33,7 +33,6 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class CaptchaService
 {
-
     /**
      * @var array
      */
@@ -45,16 +44,25 @@ class CaptchaService
     protected $contentObject;
 
     /**
+     * Development mode. Based on this the captcher does not get rendered or validated
+     *
      * @var bool
      */
-    protected $developMode = true;
+    protected $developMode = false;
 
     /**
      * CaptchaService constructor.
-     *
-     * @throws \Exception
      */
     public function __construct()
+    {
+        $this->getConfiguration();
+        $this->getDevelopmentMode();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    protected function getConfiguration()
     {
         $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
 
@@ -81,6 +89,16 @@ class CaptchaService
 
         $this->configuration = $configuration;
         $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+    }
+
+    /**
+     * Get development mode based on TYPO3_CONTEXT
+     */
+    protected function getDevelopmentMode()
+    {
+        if (GeneralUtility::getApplicationContext()->isDevelopment()) {
+            $this->developMode = true;
+        }
     }
 
     /**
