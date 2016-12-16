@@ -108,12 +108,15 @@ class CaptchaService
      */
     public function getReCaptcha()
     {
-        $captcha = '';
         if (!$this->developMode) {
             $captcha = $this->contentObject->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
             );
+        } else {
+            $captcha = '<div class="recaptcha-development-mode">
+                Development mode active. Do not expect the captcha to appear
+                </div>';
         }
 
         return $captcha;
