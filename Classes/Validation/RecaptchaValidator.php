@@ -1,4 +1,6 @@
 <?php
+namespace TYPO3\CMS\Form\Validation;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -21,7 +23,6 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-namespace TYPO3\CMS\Form\Validation;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;

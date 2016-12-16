@@ -1,4 +1,6 @@
 <?php
+namespace Evoweb\Recaptcha\Adapter;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -21,7 +23,6 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-namespace Evoweb\Recaptcha\Adapter;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
