@@ -1,0 +1,22 @@
+plugin.tx_recaptcha {
+	# cat=plugin.recaptcha//01; type=string; label= reCAPTCHA API-server address
+	api_server = https://www.google.com/recaptcha/api.js
+
+	# cat=plugin.recaptcha//02; type=string; label= reCAPTCHA VERIFY-server address
+	verify_server = https://www.google.com/recaptcha/api/siteverify
+
+	# look at https://www.google.com/recaptcha/admin to register a key for your server
+	# cat=plugin.recaptcha//03; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
+	public_key = 6LfWWQMTAAAAAAtyIhXtt0E2t5F77l0wXCkRFv2O
+
+	# look at https://www.google.com/recaptcha/admin to register a key for your server
+	# cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
+	private_key = 6LfWWQMTAAAAAAR_UGDnQ4ZqanjGJU64mjGcf_Jq
+
+
+	# cat=plugin.recaptcha//05; type=int+; label= reCAPTCHA TabIndex: TabIndex of reCAPTCHA field
+	tabindex = 0
+
+	# cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
+	lang =
+}
