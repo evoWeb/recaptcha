@@ -11,6 +11,8 @@ plugin.tx_recaptcha {
 
 	tabindex = {$plugin.tx_recaptcha.tabindex}
 	lang = {$plugin.tx_recaptcha.lang}
+
+	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
 }
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}

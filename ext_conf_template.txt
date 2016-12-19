@@ -12,3 +12,6 @@ private_key =
 
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA language
 lang =
+
+# cat=plugin.recaptcha; type=boolean; label= enforcing captcha even in development mode
+enforceCaptcha =

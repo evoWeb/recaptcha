@@ -51,12 +51,18 @@ class CaptchaService
     protected $developMode = false;
 
     /**
+     * @var bool
+     */
+    protected $enforceCaptcha = false;
+
+    /**
      * CaptchaService constructor.
      */
     public function __construct()
     {
         $this->getConfiguration();
         $this->getDevelopmentMode();
+        $this->getEnforceCaptcha();
     }
 
     /**
@@ -102,13 +108,21 @@ class CaptchaService
     }
 
     /**
+     * Get enforcing captcha rendering even if development mode is true
+     */
+    protected function getEnforceCaptcha()
+    {
+        $this->enforceCaptcha = (bool) $this->configuration['enforceCaptcha'];
+    }
+
+    /**
      * Build reCAPTCHA Frontend HTML-Code
      *
      * @return string reCAPTCHA HTML-Code
      */
     public function getReCaptcha()
     {
-        if (!$this->developMode) {
+        if (!$this->developMode || $this->enforceCaptcha) {
             $captcha = $this->contentObject->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
@@ -129,7 +143,7 @@ class CaptchaService
      */
     public function validateReCaptcha()
     {
-        if ($this->developMode) {
+        if ($this->developMode && !$this->enforceCaptcha) {
             return ['verified' => true, 'error' => ''];
         }
 
