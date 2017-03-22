@@ -1,0 +1,12 @@
+{namespace r=Evoweb\Recaptcha\ViewHelpers}
+<f:if condition="{model.showElement}">
+	<div class="m_formfield csc-form-{model.elementCounter} csc-form-element csc-form-element-{model.elementTypeLowerCase}">
+		<f:if condition="{model.validationErrorMessages}">
+			<div class="m_errorWrap">
+				<f:for each="{model.validationErrorMessages}" as="errorValidationMessage" iteration="iterator"><p class="m_error">{errorValidationMessage}</p></f:for>
+			</div>
+		</f:if>
+
+		<r:form.recaptcha/>
+	</div>
+</f:if>

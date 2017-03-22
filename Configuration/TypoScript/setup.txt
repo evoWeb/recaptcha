@@ -13,6 +13,21 @@ plugin.tx_recaptcha {
 	lang = {$plugin.tx_recaptcha.lang}
 
 	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
+
+	_LOCAL_LANG {
+		default {
+			missing-input-secret = The secret parameter is missing.
+			invalid-input-secret = The secret parameter is invalid or malformed.
+			missing-input-response = The response parameter is missing.
+			invalid-input-response = The response parameter is invalid or malformed.
+		}
+		de {
+			missing-input-secret = Der geheime Parameter fehlt.
+			invalid-input-secret = Der geheime Parameter ist unültig oder fehlerhaft.
+			missing-input-response = Der Antwort Parameter fehlt.
+			invalid-input-response = Der Antwort Parameter ist ungültig oder fehlerhaft.
+		}
+	}
 }
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
@@ -20,3 +35,56 @@ page.includeJSFooterlibs.recaptcha.external = 1
 
 // register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+
+plugin.tx_form {
+	view {
+		partialRootPaths.50 = EXT:recaptcha/Resources/Private/Partials/tx_form/
+
+		elementPartials {
+			CAPTCHA {
+				10 {
+					displayName = Default
+					partialPath = FlatElements/Captcha
+				}
+			}
+		}
+	}
+	settings {
+		registeredValidators {
+			recaptcha {
+				displayName = Recaptcha
+				className = Evoweb\Recaptcha\Validation\Form\RecaptchaValidator
+			}
+		}
+
+		registeredElements {
+			CAPTCHA =< .INPUTTYPEBUTTON
+			CAPTCHA {
+				partialPath =< plugin.tx_form.view.elementPartials.CAPTCHA.10.partialPath
+
+				visibleInShowAction = 1
+				visibleInConfirmationAction = 0
+				visibleInMail = 0
+			}
+		}
+	}
+}
+
+/*
+lib.contactForm = FORM_INT
+lib.contactForm {
+	60 = CAPTCHA
+	60.name = captcha
+
+	rules {
+		7 = recaptcha
+		7 {
+			breakOnError = 0
+			showMessage = 0
+			message = Bitte markieren Sie die Checkbox im Captcha
+			error = Dies ist ein Pflichtfeld
+			element = captcha
+		}
+	}
+}
+*/
