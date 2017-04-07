@@ -3,7 +3,7 @@
 $EM_CONF['recaptcha'] = [
     'title' => 'reCAPTCHA',
     'description' => 'Easy on Humans, Hard on Bots',
-    'version' => '7.2.0',
+    'version' => '7.2.2',
     'author' => 'Sebastian Fischer',
     'author_email' => 'typo3@evoweb.de',
     'author_company' => 'evoWeb',
