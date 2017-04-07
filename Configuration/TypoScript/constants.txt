@@ -22,4 +22,7 @@ plugin.tx_recaptcha {
 
 	# cat=plugin.recaptcha//07; type=boolean; label= enforcing captcha even in development mode
 	enforceCaptcha =
+
+	# cat=plugin.recaptcha//08; type=boolean; label= inserted inline javascript needed for the invisible reCAPTCHA
+	include_invisible_recaptcha_callback = 0
 }
