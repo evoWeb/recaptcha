@@ -1,4 +1,8 @@
-# recaptcha
+recaptcha
+=========
+
+[![Build Status](https://travis-ci.org/evoWeb/recaptcha.svg?branch=master)](https://travis-ci.org/evoWeb/recaptcha)
+
 TYPO3 Extension to make use of googles nocaptcha.
 Now supports googles invisible reCAPTCHA.
 
