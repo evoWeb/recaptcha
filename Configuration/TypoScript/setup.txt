@@ -36,85 +36,8 @@ page.includeJSFooterlibs.recaptcha.external = 1
 // register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
-
-[compatVersion = 7.6.0]
-plugin.tx_form {
-	view {
-		partialRootPaths.50 = EXT:recaptcha/Resources/Private/Partials/tx_form/
-
-		elementPartials {
-			CAPTCHA {
-				10 {
-					displayName = Default
-					partialPath = FlatElements/Captcha
-				}
-			}
-		}
-	}
-	settings {
-		registeredValidators {
-			recaptcha {
-				displayName = Recaptcha
-				className = Evoweb\Recaptcha\Validation\Form\RecaptchaValidator
-			}
-		}
-
-		registeredElements {
-			CAPTCHA =< .INPUTTYPEBUTTON
-			CAPTCHA {
-				partialPath =< plugin.tx_form.view.elementPartials.CAPTCHA.10.partialPath
-
-				visibleInShowAction = 1
-				visibleInConfirmationAction = 0
-				visibleInMail = 0
-			}
-
-			BUTTON.partialPath =< plugin.tx_form.view.elementPartials.BUTTON.10.partialPath
-		}
-	}
-}
-
-	# Example for a captcha integration in forms
-	lib.recaptchaIntegration = FORM
-	lib.recaptchaIntegration {
-		10 = CAPTCHA
-		10.name = captcha
-
-		rules {
-			1 = recaptcha
-			1 {
-				breakOnError = 1
-				showMessage = 1
-				message = Bitte bestätigen Sie das Sie kein Robot sind
-				error = Es konnte nicht bestätigt werden, dass sie kein Robot sind
-				element = captcha
-			}
-		}
-	}
-
-	# Example for an invisible captcha integration in forms
-	lib.invisibleRecaptchaIntegration = FORM
-	lib.invisibleRecaptchaIntegration {
-		10 = BUTTON
-		10 {
-			class = m_btn g-recaptcha
-			value = absenden
-			data-sitekey = {$plugin.tx_recaptcha.public_key}
-			data-callback = onContactformCaptchaSubmit
-		}
-
-		rules {
-			1 = recaptcha
-			1 {
-				breakOnError = 1
-				showMessage = 1
-				message = Bitte bestätigen Sie das Sie kein Robot sind
-				error = Es konnte nicht bestätigt werden, dass sie kein Robot sind
-				element = captcha
-			}
-		}
-	}
-[end]
+// add settings for EXT:form
+plugin.tx_form.settings.yamlConfigurations.40 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
 
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
 page.jsInline.recaptcha = TEXT

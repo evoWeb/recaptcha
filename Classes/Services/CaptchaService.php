@@ -26,7 +26,6 @@ namespace Evoweb\Recaptcha\Services;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class RecaptchaService
@@ -39,36 +38,17 @@ class CaptchaService
     protected $configuration = [];
 
     /**
-     * @var ContentObjectRenderer
-     */
-    protected $contentObject;
-
-    /**
-     * Development mode. Based on this the captcher does not get rendered or validated
-     *
-     * @var bool
-     */
-    protected $developMode = false;
-
-    /**
-     * @var bool
-     */
-    protected $enforceCaptcha = false;
-
-    /**
      * CaptchaService constructor.
      */
     public function __construct()
     {
-        $this->getConfiguration();
-        $this->getDevelopmentMode();
-        $this->getEnforceCaptcha();
+        $this->initialize();
     }
 
     /**
      * @throws \Exception
      */
-    protected function getConfiguration()
+    protected function initialize()
     {
         $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
 
@@ -76,14 +56,15 @@ class CaptchaService
             $configuration = [];
         }
 
-        if (isset($GLOBALS['TSFE'])
-            && $GLOBALS['TSFE'] instanceof TypoScriptFrontendController
-            && isset($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
-            && is_array($GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'])
+        $frontendController = $this->getTypoScriptFrontendController();
+        if (isset($frontendController)
+            && $frontendController instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+            && isset($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
+            && is_array($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
         ) {
             \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
-                $GLOBALS['TSFE']->tmpl->setup['plugin.']['tx_recaptcha.'],
+                $frontendController->tmpl->setup['plugin.']['tx_recaptcha.'],
                 true,
                 false
             );
@@ -94,25 +75,35 @@ class CaptchaService
         }
 
         $this->configuration = $configuration;
-        $this->contentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
     }
 
     /**
-     * Get development mode based on TYPO3_CONTEXT
+     * @return ContentObjectRenderer
      */
-    protected function getDevelopmentMode()
+    protected function getContentObject()
     {
-        if (GeneralUtility::getApplicationContext()->isDevelopment()) {
-            $this->developMode = true;
-        }
+        return GeneralUtility::makeInstance(ContentObjectRenderer::class);
+    }
+
+    /**
+     * Get development mode by TYPO3_CONTEXT
+     * Based on this the captcher does not get rendered or validated
+     *
+     * @return bool
+     */
+    protected function isDevelopmentMode()
+    {
+        return (bool) GeneralUtility::getApplicationContext()->isDevelopment();
     }
 
     /**
      * Get enforcing captcha rendering even if development mode is true
+     *
+     * @return bool
      */
-    protected function getEnforceCaptcha()
+    protected function isEnforceCaptcha()
     {
-        $this->enforceCaptcha = (bool) $this->configuration['enforceCaptcha'];
+        return (bool) $this->configuration['enforceCaptcha'];
     }
 
     /**
@@ -122,8 +113,8 @@ class CaptchaService
      */
     public function getReCaptcha()
     {
-        if (!$this->developMode || $this->enforceCaptcha) {
-            $captcha = $this->contentObject->stdWrap(
+        if (!$this->isDevelopmentMode() || $this->isEnforceCaptcha()) {
+            $captcha = $this->getContentObject()->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
             );
@@ -143,8 +134,11 @@ class CaptchaService
      */
     public function validateReCaptcha()
     {
-        if ($this->developMode && !$this->enforceCaptcha) {
-            return ['verified' => true, 'error' => ''];
+        if ($this->isDevelopmentMode() && !$this->isEnforceCaptcha()) {
+            return [
+                'verified' => true,
+                'error' => ''
+            ];
         }
 
         $request = [
@@ -183,12 +177,23 @@ class CaptchaService
         $verifyServerInfo = @parse_url($this->configuration['verify_server']);
 
         if (empty($verifyServerInfo)) {
-            return [false, 'recaptcha-not-reachable'];
+            return [
+                'success' => false,
+                'error-codes' => 'recaptcha-not-reachable'
+            ];
         }
 
         $request = GeneralUtility::implodeArrayForUrl('', $data);
         $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
 
         return json_decode($response, true);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+     */
+    protected function getTypoScriptFrontendController()
+    {
+        return $GLOBALS['TSFE'];
     }
 }

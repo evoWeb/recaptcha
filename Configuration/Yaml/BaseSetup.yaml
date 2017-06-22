@@ -1,0 +1,14 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          ### VALIDATORS ###
+          validatorsDefinition:
+            Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Validation\Form\RecaptchaValidator'
+
+          formElementsDefinition:
+            Recaptcha:
+              __inheritances:
+                10: 'TYPO3.CMS.Form.mixins.formElementMixins.TextMixin'

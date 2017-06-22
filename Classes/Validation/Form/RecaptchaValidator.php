@@ -24,22 +24,18 @@ namespace Evoweb\Recaptcha\Validation\Form;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Evoweb\Recaptcha\Services\CaptchaService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-
 /**
  * Class RecaptchaValidator
  */
-class RecaptchaValidator extends \TYPO3\CMS\Form\Domain\Validator\AbstractValidator
+class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
     /**
      * @var array
      */
-    protected $supportedOptions = array(
-        'element' => array('', 'The name of the element', 'string', true),
-        'errorMessage' => array('', 'The error message', 'array', false),
-    );
+    protected $supportedOptions = [
+        'element' => ['', 'The name of the element', 'string', true],
+        'errorMessage' => ['', 'The error message', 'array', false],
+    ];
 
     /**
      * Validate the captcha value from the request and output an error if not valid
@@ -51,12 +47,20 @@ class RecaptchaValidator extends \TYPO3\CMS\Form\Domain\Validator\AbstractValida
     {
         $validCaptcha = true;
 
-        $captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            \Evoweb\Recaptcha\Services\CaptchaService::class
+        );
         $status = $captcha->validateReCaptcha();
 
         if ($status == false || $status['error'] !== '') {
             $validCaptcha = false;
-            $this->addError(LocalizationUtility::translate($status['error'], 'recaptcha'), 1447258047591);
+            $this->addError(
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                    $status['error'],
+                    'recaptcha'
+                ),
+                1447258047591
+            );
         }
 
         return $validCaptcha;
