@@ -37,7 +37,15 @@ page.includeJSFooterlibs.recaptcha.external = 1
 plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
 // add settings for EXT:form
-plugin.tx_form.settings.yamlConfigurations.40 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+plugin.tx_form {
+	settings {
+		yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+	}
+
+	view {
+		partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
+	}
+}
 
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
 page.jsInline.recaptcha = TEXT
