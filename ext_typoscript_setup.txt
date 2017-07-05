@@ -6,8 +6,6 @@ module.tx_form {
         }
     }
     view {
-        #templateRootPaths.10 = EXT:form/Resources/Private/Backend/Templates/
         partialRootPaths.40 = EXT:recaptcha/Resources/Private/Backend/Partials/
-        #layoutRootPaths.10 = EXT:form/Resources/Private/Backend/Layouts/
     }
 }
