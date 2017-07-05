@@ -10,6 +10,11 @@ TYPO3:
                 iconIdentifier: 't3-form-icon-recaptcha'
                 label : 'formEditor.elements.FormElement.editor.recaptchaValidator.label'
 
+          formEditor:
+            dynamicRequireJsModules:
+              additionalViewModelModules:
+                - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
+
           formEditorPartials:
             FormElement-Recaptcha: 'Stage/SimpleTemplate'
 
@@ -28,7 +33,10 @@ TYPO3:
 
       mixins:
         formElementMixins:
-          TextMixin:
+          RecaptchaMixin:
+            __inheritances:
+              10: 'TYPO3.CMS.Form.mixins.formElementMixins.FormElementMixin'
+
             formEditor:
               editors:
                 900:
