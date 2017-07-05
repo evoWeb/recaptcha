@@ -1,11 +1,11 @@
 module.tx_form {
     settings {
         yamlConfigurations {
-            40 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
-            50 = EXT:recaptcha/Configuration/Yaml/FormEditorSetup.yaml
+            1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+            1975 = EXT:recaptcha/Configuration/Yaml/FormEditorSetup.yaml
         }
     }
     view {
-        partialRootPaths.40 = EXT:recaptcha/Resources/Private/Backend/Partials/
+        partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Backend/Partials/
     }
 }
