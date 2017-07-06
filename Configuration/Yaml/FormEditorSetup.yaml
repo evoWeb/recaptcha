@@ -3,54 +3,23 @@ TYPO3:
     Form:
       prototypes:
         standard:
-          ### VALIDATORS ###
-          validatorsDefinition:
-            Recaptcha:
-              formEditor:
-                iconIdentifier: 't3-form-icon-recaptcha'
-                label : 'formEditor.elements.FormElement.editor.recaptchaValidator.label'
-
           formEditor:
             dynamicRequireJsModules:
               additionalViewModelModules:
                 - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
 
-          formEditorPartials:
-            FormElement-Recaptcha: 'Stage/SimpleTemplate'
+            formEditorPartials:
+              FormElement-Recaptcha: 'Stage/SimpleTemplate'
 
           formElementsDefinition:
             Recaptcha:
               formEditor:
                 label: 'formEditor.elements.Recaptcha.label'
-                group: input
-                groupSorting: 600
+                group: custom
+                groupSorting: 1000
                 iconIdentifier: 't3-form-icon-recaptcha'
-
-                editors:
-                  400: null
-                  500: null
-                  800: null
-
       mixins:
         formElementMixins:
           RecaptchaMixin:
             __inheritances:
               10: 'TYPO3.CMS.Form.mixins.formElementMixins.FormElementMixin'
-
-            formEditor:
-              editors:
-                900:
-                  selectOptions:
-                    100:
-                      value: 'Recaptcha'
-                      label: 'formEditor.elements.TextMixin.editor.validators.Recaptcha.label'
-
-              propertyCollections:
-                validators:
-                  90:
-                    identifier: 'Recaptcha'
-                    editors:
-                      __inheritances:
-                        10: 'TYPO3.CMS.Form.mixins.formElementMixins.BaseCollectionEditorsMixin'
-                      100:
-                        label: 'formEditor.elements.TextMixin.validators.Recaptcha.editor.header.label'

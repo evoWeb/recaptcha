@@ -1,13 +1,9 @@
+
 TYPO3:
   CMS:
     Form:
       prototypes:
         standard:
-          ### VALIDATORS ###
-          validatorsDefinition:
-            Recaptcha:
-              implementationClassName: 'Evoweb\Recaptcha\Validation\Form\RecaptchaValidator'
-
           formEditor:
             formEditorPartials:
               FormElement-Recaptcha: 'Stage/SimpleTemplate'
@@ -16,16 +12,15 @@ TYPO3:
             Form:
               renderingOptions:
                 templateRootPaths:
-                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Templates/'
+                  100: 'EXT:your_custom_extension/Resources/Private/Frontend/Templates/'
                 partialRootPaths:
-                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
+                  100: 'EXT: your_custom_extension/Resources/Private/Frontend/Partials/'
                 layoutRootPaths:
-                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Layouts/'
+                  100: 'EXT: your_custom_extension/Resources/Private/Frontend/Layouts/'
 
             Recaptcha:
               __inheritances:
                 10: 'TYPO3.CMS.Form.mixins.formElementMixins.RecaptchaMixin'
-
       mixins:
         formElementMixins:
           RecaptchaMixin:
