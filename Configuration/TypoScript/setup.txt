@@ -33,20 +33,17 @@ plugin.tx_recaptcha {
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
 page.includeJSFooterlibs.recaptcha.external = 1
 
-// register recaptcha as captcha for sf_register
+# register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
-// add settings for EXT:form
+# add settings for EXT:form
 plugin.tx_form {
 	settings {
 		yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
 	}
-
-	view {
-		partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
-	}
 }
 
+# only included if invisible captch should be rendered
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
 page.jsInline.recaptcha = TEXT
 page.jsInline.recaptcha.value (

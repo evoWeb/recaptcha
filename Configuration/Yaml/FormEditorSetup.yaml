@@ -18,6 +18,7 @@ TYPO3:
                 group: custom
                 groupSorting: 1000
                 iconIdentifier: 't3-form-icon-recaptcha'
+              implementationClassName: Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement
       mixins:
         formElementMixins:
           RecaptchaMixin:
