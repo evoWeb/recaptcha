@@ -26,6 +26,7 @@ namespace Evoweb\Recaptcha\Services;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class RecaptchaService
@@ -58,7 +59,7 @@ class CaptchaService
 
         $frontendController = $this->getTypoScriptFrontendController();
         if (isset($frontendController)
-            && $frontendController instanceof \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+            && $frontendController instanceof TypoScriptFrontendController
             && isset($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
             && is_array($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
         ) {
@@ -78,11 +79,21 @@ class CaptchaService
     }
 
     /**
+     * @return array
+     */
+    public function getConfiguration():array
+    {
+        return $this->configuration;
+    }
+
+    /**
      * @return ContentObjectRenderer
      */
     protected function getContentObject()
     {
-        return GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        /** @var ContentObjectRenderer $contentRenderer */
+        $contentRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        return $contentRenderer;
     }
 
     /**
@@ -91,7 +102,7 @@ class CaptchaService
      *
      * @return bool
      */
-    protected function isDevelopmentMode()
+    protected function isDevelopmentMode():bool
     {
         return (bool) GeneralUtility::getApplicationContext()->isDevelopment();
     }
@@ -101,9 +112,17 @@ class CaptchaService
      *
      * @return bool
      */
-    protected function isEnforceCaptcha()
+    protected function isEnforceCaptcha():bool
     {
         return (bool) $this->configuration['enforceCaptcha'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getShowCaptcha():bool
+    {
+        return !$this->isDevelopmentMode() || $this->isEnforceCaptcha();
     }
 
     /**
@@ -111,9 +130,9 @@ class CaptchaService
      *
      * @return string reCAPTCHA HTML-Code
      */
-    public function getReCaptcha()
+    public function getReCaptcha():string
     {
-        if (!$this->isDevelopmentMode() || $this->isEnforceCaptcha()) {
+        if ($this->getShowCaptcha()) {
             $captcha = $this->getContentObject()->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
@@ -132,7 +151,7 @@ class CaptchaService
      *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    public function validateReCaptcha()
+    public function validateReCaptcha():array
     {
         if ($this->isDevelopmentMode() && !$this->isEnforceCaptcha()) {
             return [
@@ -170,9 +189,10 @@ class CaptchaService
      * Query reCAPTCHA server for captcha-verification
      *
      * @param array $data
+     *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    protected function queryVerificationServer($data)
+    protected function queryVerificationServer($data):array
     {
         $verifyServerInfo = @parse_url($this->configuration['verify_server']);
 
@@ -190,7 +210,7 @@ class CaptchaService
     }
 
     /**
-     * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+     * @return TypoScriptFrontendController
      */
     protected function getTypoScriptFrontendController()
     {

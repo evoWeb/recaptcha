@@ -52,7 +52,17 @@ class RecaptchaViewHelper extends AbstractFormFieldViewHelper
 
         /** @var CaptchaService $captchaService */
         $captchaService = GeneralUtility::makeInstance(CaptchaService::class);
-        $captcha = $captchaService->getReCaptcha();
-        return $captcha . '<input type="hidden" name="' . $name . '" value="1"/>';
+
+        $this->templateVariableContainer->add('configuration', $captchaService->getConfiguration());
+        $this->templateVariableContainer->add('showCaptcha', $captchaService->getShowCaptcha());
+        $this->templateVariableContainer->add('name', $name);
+
+        $content = $this->renderChildren();
+
+        $this->templateVariableContainer->remove('configuration');
+        $this->templateVariableContainer->remove('showCaptcha');
+        $this->templateVariableContainer->remove('name');
+
+        return $content;
     }
 }

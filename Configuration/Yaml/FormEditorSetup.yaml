@@ -18,7 +18,20 @@ TYPO3:
                 group: custom
                 groupSorting: 1000
                 iconIdentifier: 't3-form-icon-recaptcha'
+                predefinedDefaults:
+                  validators:
+                    -
+                      identifier: Recaptcha
+                  renderingOptions:
+                    submitButtonLabel: 'true'
+                editors:
+                  300:
+                    identifier: 'showLabel'
+                    templateName: 'Inspector-CheckboxEditor'
+                    label: 'formEditor.elements.Recaptcha.editor.showLabel.label'
+                    propertyPath: 'renderingOptions.submitButtonLabel'
               implementationClassName: Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement
+
       mixins:
         formElementMixins:
           RecaptchaMixin:

@@ -13,35 +13,17 @@ plugin.tx_recaptcha {
 	lang = {$plugin.tx_recaptcha.lang}
 
 	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
-
-	_LOCAL_LANG {
-		default {
-			missing-input-secret = The secret parameter is missing.
-			invalid-input-secret = The secret parameter is invalid or malformed.
-			missing-input-response = The response parameter is missing.
-			invalid-input-response = The response parameter is invalid or malformed.
-		}
-		de {
-			missing-input-secret = Der geheime Parameter fehlt.
-			invalid-input-secret = Der geheime Parameter ist unültig oder fehlerhaft.
-			missing-input-response = Der Antwort Parameter fehlt.
-			invalid-input-response = Der Antwort Parameter ist ungültig oder fehlerhaft.
-		}
-	}
 }
-
-page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
-page.includeJSFooterlibs.recaptcha.external = 1
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
 # add settings for EXT:form
-plugin.tx_form {
-	settings {
-		yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
-	}
-}
+plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+
+
+page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
+page.includeJSFooterlibs.recaptcha.external = 1
 
 # only included if invisible captch should be rendered
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]

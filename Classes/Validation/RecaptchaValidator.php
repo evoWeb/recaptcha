@@ -1,5 +1,5 @@
 <?php
-namespace TYPO3\CMS\Form\Validation;
+namespace Evoweb\Recaptcha\Validation;
 
 /***************************************************************
  *  Copyright notice
@@ -25,15 +25,14 @@ namespace TYPO3\CMS\Form\Validation;
  ***************************************************************/
 
 use Evoweb\Recaptcha\Services\CaptchaService;
-use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Class RecaptchaValidator
  */
-class RecaptchaValidator extends AbstractValidator implements \TYPO3\CMS\Core\SingletonInterface
+class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
     /**
-     * Captcha object
+     * Captcha service
      *
      * @var CaptchaService
      */
@@ -52,25 +51,26 @@ class RecaptchaValidator extends AbstractValidator implements \TYPO3\CMS\Core\Si
     }
 
     /**
-     * Validate the captcha value from the request and output an error if not valid
+     * Validate the captcha value from the request and add an error if not valid
      *
      * @param mixed $value
      *
-     * @return bool
+     * @return void
      */
     public function isValid($value)
     {
-        $validCaptcha = true;
-
         if ($this->captcha !== null) {
             $status = $this->captcha->validateReCaptcha();
 
             if ($status == false || $status['error'] !== '') {
-                $validCaptcha = false;
-                $this->addError($status['error'], 1447258047591);
+                $this->addError(
+                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        $status['error'],
+                        'recaptcha'
+                    ),
+                    1447258047591
+                );
             }
         }
-
-        return $validCaptcha;
     }
 }

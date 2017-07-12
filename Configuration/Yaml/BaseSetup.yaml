@@ -17,10 +17,16 @@ TYPO3:
                   1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
                 layoutRootPaths:
                   1974: 'EXT:recaptcha/Resources/Private/Frontend/Layouts/'
+
             Recaptcha:
               __inheritances:
                 10: 'TYPO3.CMS.Form.mixins.formElementMixins.RecaptchaMixin'
-              implementationClassName: Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement
+              implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'
+
+          validatorsDefinition:
+            Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Validation\RecaptchaValidator'
+
       mixins:
         formElementMixins:
           RecaptchaMixin:

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+	<file t3:id="1496830966366" source-language="en" datatype="plaintext" original="messages" date="Tue Jul 12 08:43:45 UTC 2017" product-name="recaptcha">
+		<header/>
+		<body>
+			<trans-unit id="missing-input-secret" xml:space="preserve">
+				<source>The secret parameter is missing.</source>
+			</trans-unit>
+			<trans-unit id="invalid-input-secret" xml:space="preserve">
+				<source>The secret parameter is invalid or malformed.</source>
+			</trans-unit>
+			<trans-unit id="missing-input-response" xml:space="preserve">
+				<source>The response parameter is missing.</source>
+			</trans-unit>
+			<trans-unit id="invalid-input-response" xml:space="preserve">
+				<source>The response parameter is invalid or malformed.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

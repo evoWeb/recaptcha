@@ -12,6 +12,9 @@
 			<trans-unit id="formEditor.elements.TextMixin.validators.Recaptcha.editor.header.label" xml:space="preserve">
 				<source>reCAPTCHA validation</source>
 			</trans-unit>
+			<trans-unit id="formEditor.elements.Recaptcha.editor.showLabel.label" xml:space="preserve">
+				<source>Show label in frontend</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

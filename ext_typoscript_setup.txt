@@ -5,7 +5,4 @@ module.tx_form {
             1975 = EXT:recaptcha/Configuration/Yaml/FormEditorSetup.yaml
         }
     }
-    view {
-        partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Backend/Partials/
-    }
 }
