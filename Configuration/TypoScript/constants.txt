@@ -7,11 +7,11 @@ plugin.tx_recaptcha {
 
 	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	# cat=plugin.recaptcha//03; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
-	public_key = 6LfWWQMTAAAAAAtyIhXtt0E2t5F77l0wXCkRFv2O
+	public_key = 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 
 	# look at https://www.google.com/recaptcha/admin to register a key for your server
 	# cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
-	private_key = 6LfWWQMTAAAAAAR_UGDnQ4ZqanjGJU64mjGcf_Jq
+	private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
 
 	# cat=plugin.recaptcha//05; type=int+; label= reCAPTCHA TabIndex: TabIndex of reCAPTCHA field

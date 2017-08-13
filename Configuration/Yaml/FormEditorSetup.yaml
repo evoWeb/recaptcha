@@ -1,0 +1,41 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formEditor:
+            dynamicRequireJsModules:
+              additionalViewModelModules:
+                - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
+
+            formEditorPartials:
+              FormElement-Recaptcha: 'Stage/SimpleTemplate'
+
+          formElementsDefinition:
+            Recaptcha:
+              __inheritances:
+                10: 'TYPO3.CMS.Form.mixins.formElementMixins.RecaptchaMixin'
+              formEditor:
+                label: 'formEditor.elements.Recaptcha.label'
+                group: custom
+                groupSorting: 700
+                iconIdentifier: 't3-form-icon-recaptcha'
+                predefinedDefaults:
+                  validators:
+                    -
+                      identifier: 'Recaptcha'
+                  renderingOptions:
+                    submitButtonLabel: 'true'
+                editors:
+                  300:
+                    identifier: 'showLabel'
+                    templateName: 'Inspector-CheckboxEditor'
+                    label: 'formEditor.elements.Recaptcha.editor.showLabel.label'
+                    propertyPath: 'renderingOptions.submitButtonLabel'
+                  800: null
+
+      mixins:
+        formElementMixins:
+          RecaptchaMixin:
+            __inheritances:
+              10: 'TYPO3.CMS.Form.mixins.formElementMixins.FormElementMixin'

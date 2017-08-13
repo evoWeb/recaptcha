@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+	<file t3:id="1496830966365" source-language="en" datatype="plaintext" original="messages" date="2017-06-07T12:22:32Z" product-name="recaptcha">
+		<header/>
+		<body>
+			<trans-unit id="formEditor.elements.Recaptcha.label" xml:space="preserve">
+				<source>reCAPTCHA</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.recaptchaValidator.label" xml:space="preserve">
+				<source>reCAPTCHA</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.Recaptcha.editor.header.label" xml:space="preserve">
+				<source>reCAPTCHA validation</source>
+			</trans-unit>
+			<trans-unit id="formEditor.elements.Recaptcha.editor.showLabel.label" xml:space="preserve">
+				<source>Show label in frontend</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

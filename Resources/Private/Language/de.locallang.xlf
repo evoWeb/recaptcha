@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+	<file t3:id="1496830966367" source-language="en" target-language="de" datatype="plaintext" original="messages" date="Tue Jul 12 08:43:45 UTC 2017" product-name="recaptcha">
+		<header/>
+		<body>
+			<trans-unit id="error_recaptcha_missing-input-secret" xml:space="preserve">
+				<source>The captcha secret parameter is missing.</source>
+				<target>Der Captcha geheime Parameter fehlt.</target>
+			</trans-unit>
+			<trans-unit id="error_recaptcha_invalid-input-secret" xml:space="preserve">
+				<source>The captcha secret parameter is invalid or malformed.</source>
+				<target>Der Captcha geheime Parameter ist unültig oder fehlerhaft.</target>
+			</trans-unit>
+			<trans-unit id="error_recaptcha_missing-input-response" xml:space="preserve">
+				<source>The captcha response parameter is missing.</source>
+				<target>Der Captcha Antwort Parameter fehlt.</target>
+			</trans-unit>
+			<trans-unit id="error_recaptcha_invalid-input-response" xml:space="preserve">
+				<source>The captcha response parameter is invalid or malformed.</source>
+				<target>Der Captcha Antwort Parameter ist ungültig oder fehlerhaft.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

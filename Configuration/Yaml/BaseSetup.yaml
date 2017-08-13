@@ -1,0 +1,18 @@
+
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                partialRootPaths:
+                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
+
+            Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'
+
+          validatorsDefinition:
+            Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Validation\RecaptchaValidator'

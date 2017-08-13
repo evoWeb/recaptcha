@@ -13,109 +13,19 @@ plugin.tx_recaptcha {
 	lang = {$plugin.tx_recaptcha.lang}
 
 	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
-
-	_LOCAL_LANG {
-		default {
-			missing-input-secret = The secret parameter is missing.
-			invalid-input-secret = The secret parameter is invalid or malformed.
-			missing-input-response = The response parameter is missing.
-			invalid-input-response = The response parameter is invalid or malformed.
-		}
-		de {
-			missing-input-secret = Der geheime Parameter fehlt.
-			invalid-input-secret = Der geheime Parameter ist unültig oder fehlerhaft.
-			missing-input-response = Der Antwort Parameter fehlt.
-			invalid-input-response = Der Antwort Parameter ist ungültig oder fehlerhaft.
-		}
-	}
 }
+
+# register recaptcha as captcha for sf_register
+plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+
+# add settings for EXT:form
+plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
 page.includeJSFooterlibs.recaptcha.external = 1
 
-// register recaptcha as captcha for sf_register
-plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
-
-
-[compatVersion = 7.6.0]
-plugin.tx_form {
-	view {
-		partialRootPaths.50 = EXT:recaptcha/Resources/Private/Partials/tx_form/
-
-		elementPartials {
-			CAPTCHA {
-				10 {
-					displayName = Default
-					partialPath = FlatElements/Captcha
-				}
-			}
-		}
-	}
-	settings {
-		registeredValidators {
-			recaptcha {
-				displayName = Recaptcha
-				className = Evoweb\Recaptcha\Validation\Form\RecaptchaValidator
-			}
-		}
-
-		registeredElements {
-			CAPTCHA =< .INPUTTYPEBUTTON
-			CAPTCHA {
-				partialPath =< plugin.tx_form.view.elementPartials.CAPTCHA.10.partialPath
-
-				visibleInShowAction = 1
-				visibleInConfirmationAction = 0
-				visibleInMail = 0
-			}
-
-			BUTTON.partialPath =< plugin.tx_form.view.elementPartials.BUTTON.10.partialPath
-		}
-	}
-}
-
-	# Example for a captcha integration in forms
-	lib.recaptchaIntegration = FORM
-	lib.recaptchaIntegration {
-		10 = CAPTCHA
-		10.name = captcha
-
-		rules {
-			1 = recaptcha
-			1 {
-				breakOnError = 1
-				showMessage = 1
-				message = Bitte bestätigen Sie das Sie kein Robot sind
-				error = Es konnte nicht bestätigt werden, dass sie kein Robot sind
-				element = captcha
-			}
-		}
-	}
-
-	# Example for an invisible captcha integration in forms
-	lib.invisibleRecaptchaIntegration = FORM
-	lib.invisibleRecaptchaIntegration {
-		10 = BUTTON
-		10 {
-			class = m_btn g-recaptcha
-			value = absenden
-			data-sitekey = {$plugin.tx_recaptcha.public_key}
-			data-callback = onContactformCaptchaSubmit
-		}
-
-		rules {
-			1 = recaptcha
-			1 {
-				breakOnError = 1
-				showMessage = 1
-				message = Bitte bestätigen Sie das Sie kein Robot sind
-				error = Es konnte nicht bestätigt werden, dass sie kein Robot sind
-				element = captcha
-			}
-		}
-	}
-[end]
-
+# only included if invisible captch should be rendered
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
 page.jsInline.recaptcha = TEXT
 page.jsInline.recaptcha.value (
