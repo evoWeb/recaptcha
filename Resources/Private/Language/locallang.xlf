@@ -3,17 +3,17 @@
 	<file t3:id="1496830966366" source-language="en" datatype="plaintext" original="messages" date="Tue Jul 12 08:43:45 UTC 2017" product-name="recaptcha">
 		<header/>
 		<body>
-			<trans-unit id="missing-input-secret" xml:space="preserve">
-				<source>The secret parameter is missing.</source>
+			<trans-unit id="error_recaptcha_missing-input-secret" xml:space="preserve">
+				<source>The captcha secret parameter is missing.</source>
 			</trans-unit>
-			<trans-unit id="invalid-input-secret" xml:space="preserve">
-				<source>The secret parameter is invalid or malformed.</source>
+			<trans-unit id="error_recaptcha_invalid-input-secret" xml:space="preserve">
+				<source>The captcha secret parameter is invalid or malformed.</source>
 			</trans-unit>
-			<trans-unit id="missing-input-response" xml:space="preserve">
-				<source>The response parameter is missing.</source>
+			<trans-unit id="error_recaptcha_missing-input-response" xml:space="preserve">
+				<source>The captcha response parameter is missing.</source>
 			</trans-unit>
-			<trans-unit id="invalid-input-response" xml:space="preserve">
-				<source>The response parameter is invalid or malformed.</source>
+			<trans-unit id="error_recaptcha_invalid-input-response" xml:space="preserve">
+				<source>The captcha response parameter is invalid or malformed.</source>
 			</trans-unit>
 		</body>
 	</file>
