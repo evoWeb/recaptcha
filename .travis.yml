@@ -3,65 +3,51 @@ language: php
 branches:
   only:
     - master
-    - /^testing_.*$/
+    - develop
     - /^[0-9]+\.[0-9]+\.[0-9]+$/
 
 php:
-  - 5.6
+  - 7.0
+  - 7.1
 
 env:
-  - TYPO3_VERSION=^7.6.0
-  - TYPO3_VERSION=dev-master
+  - TYPO3_VERSION=^8.7.0
+  - TYPO3_VERSION="dev-master as 8.7.0"
 
 matrix:
+  fast_finish: true
   allow_failures:
-    - env: TYPO3_VERSION=^7.6.0
-    - env: TYPO3_VERSION=dev-master
-    - php: 5.6
-  include:
-    - php: 7.0
-      env: TYPO3_VERSION=^7.6.0
-    - php: 7.0
-      env: TYPO3_VERSION=dev-master
-    #- php: 7.1
-    #  env: TYPO3_VERSION=^7.6.0
-    - php: 7.1
-      env: TYPO3_VERSION=dev-master
-  exclude:
-    - php: 5.6
-      env: TYPO3_VERSION=dev-master
+    - env: TYPO3_VERSION="dev-master as 8.7.0"
 
 sudo: false
-cache:
-  directories:
-    - $HOME/.composer/cache
 
 addons:
   apt:
     packages:
       - parallel
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 notifications:
   email:
     - typo3@evoweb.de
 
 before_install:
-  - echo $TRAVIS_PHP_VERSION
-  - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
   - composer self-update
   - composer --version
 
 before_script:
-  - git clean -dffx
-  - composer require --prefer-dist typo3/cms="$TYPO3_VERSION"
-  - export TYPO3_PATH_WEB="$PWD/.Build/Web"
-  - ln -s Scripts/typo3cms typo3cms
+  - composer require typo3/cms="$TYPO3_VERSION"
+  - git checkout composer.json
+  - export TYPO3_PATH_WEB=$PWD/.Build/Web
 
 script:
   - >
     echo;
     echo "Running php lint";
-    find . -name \*.php ! -path "./.Build/*" ! -path "./vendor/composer/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
 after_script:
   - >
@@ -69,6 +55,7 @@ after_script:
       echo -e "Preparing upload of release ${TRAVIS_TAG} to TER\n"
       curl -sSL https://raw.githubusercontent.com/alrra/travis-after-all/1.4.4/lib/travis-after-all.js | node
       if [ $? -eq 0 ]; then
+        composer require --dev namelesscoder/typo3-repository-client:^2.0.0
         git reset --hard HEAD && git clean -fx
 
         TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`

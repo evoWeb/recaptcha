@@ -16,7 +16,33 @@ plugin.tx_recaptcha {
 }
 
 # register recaptcha as captcha for sf_register
-plugin.tx_sfregister.settings.captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+plugin.tx_sfregister.settings {
+	captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+
+	recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
+
+	captcha {
+		# Needs EXT:recaptcha to be installed
+		recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+	}
+
+	fields {
+		createDefaultSelected {
+			370 >
+			380 >
+
+			400 = submit_captcha
+		}
+		configuration {
+			captcha {
+				partial = Captcha
+				type = Recaptcha
+			}
+
+			submit_captcha.partial = SubmitWithInvisibleCaptcha
+		}
+	}
+}
 
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
