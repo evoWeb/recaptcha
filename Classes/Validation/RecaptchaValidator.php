@@ -64,8 +64,8 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
 
             if ($status == false || $status['error'] !== '') {
                 $this->addError(
-                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                        $status['error'],
+                    $this->translateErrorMessage(
+                        'error_recaptcha_' . $status['error'],
                         'recaptcha'
                     ),
                     1447258047591

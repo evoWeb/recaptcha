@@ -17,30 +17,36 @@ plugin.tx_recaptcha {
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings {
-	captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
-
 	recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
 
-	captcha {
-		# Needs EXT:recaptcha to be installed
-		recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
-	}
+	# register recaptcha as captcha possibility
+	captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
 	fields {
 		createDefaultSelected {
+			# remove captcha output as separate element
 			370 >
 			380 >
 
+			# change submit button in default form to button with invisible captcha settings
 			400 = submit_captcha
 		}
 		configuration {
-			captcha {
-				partial = Captcha
-				type = Recaptcha
-			}
+			# change captcha field type to recaptcha
+			captcha.type = Recaptcha
 
+			# register new field type
 			submit_captcha.partial = SubmitWithInvisibleCaptcha
 		}
+	}
+
+	validation.create {
+		# tell validation to use recaptcha adapter
+		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+	}
+	validation.invite {
+		# tell validation to use recaptcha adapter
+		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
 	}
 }
 
