@@ -28,6 +28,11 @@ use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
+/**
+ * Class RecaptchaViewHelper
+ *
+ * @package Evoweb\Recaptcha\ViewHelpers\Form
+ */
 class RecaptchaViewHelper extends AbstractFormFieldViewHelper
 {
     /**

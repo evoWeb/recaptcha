@@ -44,6 +44,10 @@ plugin.tx_sfregister.settings {
 		# tell validation to use recaptcha adapter
 		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
 	}
+	validation.invite {
+		# tell validation to use recaptcha adapter
+		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+	}
 }
 
 # add settings for EXT:form
