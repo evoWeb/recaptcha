@@ -13,6 +13,10 @@ plugin.tx_recaptcha {
 	lang = {$plugin.tx_recaptcha.lang}
 
 	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
+
+	invisibleCallback = onRecaptchaSubmit
+
+	captchaCssClass = g-recaptcha
 }
 
 # register recaptcha as captcha for sf_register
@@ -53,11 +57,6 @@ plugin.tx_sfregister.settings {
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
 plugin.tx_form.view.partialRootPaths.10 = EXT:recaptcha/Resources/Private/Frontend/Partials/
-
-plugin.tx_form.settings.formDefinitionOverrides.generalOverride.renderingOptions.recaptcha {
-	sitekey = {$plugin.tx_recaptcha.public_key}
-	callback = onRecaptchaSubmit
-}
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
 page.includeJSFooterlibs.recaptcha.external = 1

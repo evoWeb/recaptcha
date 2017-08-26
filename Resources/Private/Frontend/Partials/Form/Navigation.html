@@ -24,10 +24,10 @@
 									<f:if condition="{showCaptcha}">
 										<f:then>
 											<f:form.button property="__currentPage" value="{form.pages -> f:count()}"
-												class="btn btn-primary g-recaptcha {form.formDefinition.renderingOptions.recaptcha.cssClass}"
+												class="btn btn-primary {configuration.captchaCssClass}"
 												data="{
-													sitekey: form.formDefinition.renderingOptions.recaptcha.sitekey,
-													callback: form.formDefinition.renderingOptions.recaptcha.callback
+													sitekey: configuration.public_key,
+													callback: configuration.invisibleCallback
 												}">
 												{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
 											</f:form.button>
