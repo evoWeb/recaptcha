@@ -9,7 +9,6 @@ plugin.tx_recaptcha {
 	api_server = {$plugin.tx_recaptcha.api_server}
 	verify_server = {$plugin.tx_recaptcha.verify_server}
 
-	tabindex = {$plugin.tx_recaptcha.tabindex}
 	lang = {$plugin.tx_recaptcha.lang}
 
 	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}

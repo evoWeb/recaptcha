@@ -1,0 +1,17 @@
+.. |add|      image:: ../Images/add_recaptcha.png
+.. :align: LEFT
+.. :border: 0
+.. :name: Add captcha field
+.. :width: 100%
+
+.. |added|      image:: ../Images/added_recaptcha.png
+.. :align: LEFT
+.. :border: 0
+.. :name: Captcha field was added
+.. :width: 100%
+
+.. |invisible|      image:: ../Images/invisible_recaptcha.png
+.. :align: LEFT
+.. :border: 0
+.. :name: Invisible reCAPTCHA
+.. :width: 100%

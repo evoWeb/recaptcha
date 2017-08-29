@@ -5,13 +5,13 @@ api_server = https://www.google.com/recaptcha/api.js
 verify_server = https://www.google.com/recaptcha/api/siteverify
 
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA public key
-public_key =
+public_key = 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA private key
-private_key =
+private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA language
 lang =
 
 # cat=plugin.recaptcha; type=boolean; label= enforcing captcha even in development mode
-enforceCaptcha =
+enforceCaptcha = 0
