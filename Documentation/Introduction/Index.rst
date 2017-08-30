@@ -11,12 +11,8 @@ Introduction
 This Documentation was written for version 8.2.0 of the extension.
 
 
-What does it do?
-----------------
-
-
-Provide reCAPTCHA functionality:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Functionality:
+--------------
 
 Only purpose is to render the reCAPTCHA and validate the response.
 But provide this to other extensions which consumes the service. To
@@ -24,8 +20,9 @@ do so there are limited integrations into other extensions implemented.
 These act more as an living example and integrate only in extensions
 used by the author self.
 
+
 Features:
-~~~~~~~~~
+---------
 
 As a very focused extension only the following features are integrated
 

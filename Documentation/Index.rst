@@ -1,10 +1,4 @@
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
-
 .. include:: Includes.txt
-.. include:: Images.txt
 
 
 .. _start:
@@ -50,9 +44,7 @@ a GNU/GPL CMS/Framework available from `www.typo3.org
 <https://typo3.org/>`_
 
 .. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
+   :hidden:
 
    Introduction/Index
    UsersManual/Index
@@ -60,5 +52,4 @@ a GNU/GPL CMS/Framework available from `www.typo3.org
    Configuration/Index
    Integration/Index
    Templating/Index
-   Tutorial/Index
    Targets

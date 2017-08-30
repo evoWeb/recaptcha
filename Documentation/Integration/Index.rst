@@ -31,6 +31,7 @@ To render you are able to let the service take care of the output
 by calling getReCaptcha.
 
 .. code-block:: php
+   :caption: Get rendered captcha from service
 
    $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
    $output = $captchaService->getReCaptcha();
@@ -47,6 +48,7 @@ If you prefer to render on your own its possible to let the service
 prepare the settings for you.
 
 .. code-block:: php
+   :caption: Get settings to render individually
 
    $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
    $configuration = $captchaService->getConfiguration();
@@ -62,6 +64,7 @@ To validate just call the validateReCaptcha method and you get the
 result of the validation to check against.
 
 .. code-block:: php
+   :caption: Validate captcha in extension
 
    $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
    $status = $captchaService->validateReCaptcha();
@@ -78,6 +81,7 @@ For rendering the captcha in a fluid template there is a ViewHelper
 that prepares the configuration and then renders the captcha.
 
 .. code-block:: html
+   :caption: ViewHelper example integration
 
    <r:form.recaptcha>
       <f:if condition="{showCaptcha}">
@@ -101,6 +105,7 @@ After the form was submitted the validation of the form model is quite
 easy. Just annotate as usual.
 
 .. code-block:: php
+   :caption: Add captcha validator to model property
 
     /**
      * virtual not stored in database

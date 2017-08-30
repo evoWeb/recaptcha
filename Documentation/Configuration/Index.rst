@@ -178,6 +178,7 @@ plugin.tx\_recaptcha:
 
    Example
          .. code-block:: typoscript
+            :caption: Add callback for invisible reCAPTCHA as inline JavaScript
 
             page.jsInline.recaptcha = TEXT
             page.jsInline.recaptcha.value (
