@@ -4,6 +4,7 @@
 .. -*- coding: utf-8 -*- with BOM.
 
 .. include:: ../Includes.txt
+.. include:: Images.txt
 
 Introduction
 ============
@@ -15,11 +16,13 @@ Functionality:
 --------------
 
 Only purpose is to render the reCAPTCHA and validate the response.
-But provide this to other extensions which consumes the service. To
-do so there are limited integrations into other extensions implemented.
+But provide these to other extensions which consumes the service.
+
+Also there are limited integrations into other extensions implemented.
 These act more as an living example and integrate only in extensions
 used by the author self.
 
+|recaptcha|
 
 Features:
 ---------
