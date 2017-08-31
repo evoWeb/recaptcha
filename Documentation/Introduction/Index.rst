@@ -12,8 +12,8 @@ Introduction
 This Documentation was written for version 8.2.0 of the extension.
 
 
-Functionality:
---------------
+Functionality
+-------------
 
 Only purpose is to render the reCAPTCHA and validate the response.
 But provide these to other extensions which consumes the service.
@@ -24,8 +24,8 @@ used by the author self.
 
 |recaptcha|
 
-Features:
----------
+Features
+--------
 
 As a very focused extension only the following features are integrated
 

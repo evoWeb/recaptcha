@@ -14,16 +14,16 @@ Installation for both TYPO3 CMS installation types (manual/composer)
 are supported. For both a compatible installation is provided.
 
 
-Manual installations:
----------------------
+Manual installations
+--------------------
 
 Download the extension recaptcha either with the browser from typo3.org_
 or github_ and upload it into the installation in the admin tools extensions,
 or directly in the admin tools extensions with the integrated search.
 
 
-Composer installations:
------------------------
+Composer installations
+----------------------
 
 On the console in the folder where the project composer.json resides
 just type:
@@ -35,8 +35,8 @@ just type:
    composer update
 
 
-Activation:
------------
+Activation
+----------
 
 After the extension is installed by either way you always need to activate
 it. Normally this is done in the admin tools extensions. But its also possible
@@ -48,8 +48,8 @@ to activate it via console:
    $ ./bin/typo3 extensionmanager:extension:install recaptcha
 
 
-Configuration:
---------------
+Configuration
+-------------
 
 If, the captcha should be usable in backend context or you like to have
 a default configuration without touching TypoScript, the extensions
