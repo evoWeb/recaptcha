@@ -28,8 +28,11 @@ Composer installations:
 On the console in the folder where the project composer.json resides
 just type:
 
-composer require evoweb/recaptcha ^8.2
-composer update
+.. code-block:: bash
+   :caption: Installation via composer
+
+   composer require evoweb/recaptcha ^8.2
+   composer update
 
 
 Activation:

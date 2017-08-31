@@ -20,7 +20,7 @@ Integration of reCAPTCHA: Easy on Humans, Hard on Bots
       Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
 
 :Keywords:
-      reCAPTCHA, form, registration
+      reCAPTCHA, rendering, validator, domain model validation, EXT:form integration
 
 :Copyright:
       2015-2017
