@@ -4,7 +4,7 @@ namespace Evoweb\Recaptcha\Validation;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Fischer <typo3@evoweb.de>
+ *  (c) 2015-2017 Sebastian Fischer <typo3@evoweb.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,32 +24,11 @@ namespace Evoweb\Recaptcha\Validation;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Evoweb\Recaptcha\Services\CaptchaService;
-
 /**
  * Class RecaptchaValidator
  */
 class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
-    /**
-     * Captcha service
-     *
-     * @var CaptchaService
-     */
-    protected $captcha;
-
-    /**
-     * RecaptchaValidator constructor.
-     *
-     * @param array $options
-     */
-    public function __construct(array $options = [])
-    {
-        parent::__construct($options);
-
-        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
-    }
-
     /**
      * Validate the captcha value from the request and add an error if not valid
      *
@@ -59,8 +38,10 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
      */
     public function isValid($value)
     {
-        if ($this->captcha !== null) {
-            $status = $this->captcha->validateReCaptcha();
+        $captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
+
+        if ($captcha !== null) {
+            $status = $captcha->validateReCaptcha();
 
             if ($status == false || $status['error'] !== '') {
                 $this->addError(

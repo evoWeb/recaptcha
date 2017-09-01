@@ -4,7 +4,7 @@ namespace Evoweb\Recaptcha\Services;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Fischer <typo3@evoweb.de>
+ *  (c) 2015-2017 Sebastian Fischer <typo3@evoweb.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,9 +24,10 @@ namespace Evoweb\Recaptcha\Services;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Class RecaptchaService
@@ -34,15 +35,21 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class CaptchaService
 {
     /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     */
+    protected $objectManager;
+
+    /**
      * @var array
      */
     protected $configuration = [];
 
     /**
-     * CaptchaService constructor.
+     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
      */
-    public function __construct()
+    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
     {
+        $this->objectManager = $objectManager;
         $this->initialize();
     }
 
@@ -51,8 +58,13 @@ class CaptchaService
      */
     public static function getInstance()
     {
+        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+        $objectManager = GeneralUtility::makeInstance(
+            \TYPO3\CMS\Extbase\Object\ObjectManager::class
+        );
         /** @var self $instance */
-        $instance = GeneralUtility::makeInstance(self::class);
+        $instance = $objectManager->get(self::class);
+        $instance->injectObjectManager($objectManager);
         return $instance;
     }
 
@@ -67,15 +79,19 @@ class CaptchaService
             $configuration = [];
         }
 
-        $frontendController = $this->getTypoScriptFrontendController();
-        if (isset($frontendController)
-            && $frontendController instanceof TypoScriptFrontendController
-            && isset($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
-            && is_array($frontendController->tmpl->setup['plugin.']['tx_recaptcha.'])
-        ) {
+        /** @var ConfigurationManagerInterface $configurationManager */
+        $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
+        $typoScriptConfiguration = $configurationManager->getConfiguration(
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
+            'recaptcha'
+        );
+
+        if (!empty($typoScriptConfiguration) && is_array($typoScriptConfiguration)) {
+            /** @var TypoScriptService $typoScriptService */
+            $typoScriptService = $this->objectManager->get(TypoScriptService::class);
             \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
-                $frontendController->tmpl->setup['plugin.']['tx_recaptcha.'],
+                $typoScriptService->convertPlainArrayToTypoScriptArray($typoScriptConfiguration),
                 true,
                 false
             );
@@ -102,7 +118,7 @@ class CaptchaService
     protected function getContentObject()
     {
         /** @var ContentObjectRenderer $contentRenderer */
-        $contentRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $contentRenderer = $this->objectManager->get(ContentObjectRenderer::class);
         return $contentRenderer;
     }
 
@@ -217,13 +233,5 @@ class CaptchaService
         $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
 
         return json_decode($response, true);
-    }
-
-    /**
-     * @return TypoScriptFrontendController
-     */
-    protected function getTypoScriptFrontendController()
-    {
-        return $GLOBALS['TSFE'];
     }
 }
