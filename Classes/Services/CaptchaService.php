@@ -179,7 +179,7 @@ class CaptchaService
      */
     public function validateReCaptcha():array
     {
-        if ($this->isDevelopmentMode() && !$this->isEnforceCaptcha()) {
+        if (!$this->getShowCaptcha()) {
             return [
                 'verified' => true,
                 'error' => ''
