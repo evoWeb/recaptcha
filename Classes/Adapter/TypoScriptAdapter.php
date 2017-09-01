@@ -44,7 +44,7 @@ class TypoScriptAdapter
      */
     public function __construct()
     {
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
     }
 
     /**

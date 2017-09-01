@@ -33,8 +33,7 @@ by calling getReCaptcha.
 .. code-block:: php
    :caption: Get rendered captcha from service
 
-   $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
-   $output = $captchaService->getReCaptcha();
+   $output = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->getReCaptcha();
 
 Please keep in mind that it only renders the captcha. If you need
 something to trigger the validation in your controller it's up to
@@ -50,7 +49,7 @@ prepare the settings for you.
 .. code-block:: php
    :caption: Get settings to render individually
 
-   $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+   $captchaService = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
    $configuration = $captchaService->getConfiguration();
    $showCaptcha = $captchaService->getShowCaptcha();
 
@@ -66,8 +65,7 @@ result of the validation to check against.
 .. code-block:: php
    :caption: Validate captcha in extension
 
-   $captchaService = GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
-   $status = $captchaService->validateReCaptcha();
+   $status = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->validateReCaptcha();
    $valid = $status['error'] !== '';
 
 

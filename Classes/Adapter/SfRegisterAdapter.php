@@ -50,7 +50,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
      */
     public function __construct()
     {
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
         $this->session = GeneralUtility::makeInstance(Session::class);
     }
 

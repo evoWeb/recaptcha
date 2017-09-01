@@ -47,7 +47,7 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
     {
         parent::__construct($options);
 
-        $this->captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(CaptchaService::class);
+        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
     }
 
     /**

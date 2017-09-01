@@ -47,6 +47,16 @@ class CaptchaService
     }
 
     /**
+     * @return self
+     */
+    public static function getInstance()
+    {
+        /** @var self $instance */
+        $instance = GeneralUtility::makeInstance(self::class);
+        return $instance;
+    }
+
+    /**
      * @throws \Exception
      */
     protected function initialize()
