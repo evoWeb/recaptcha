@@ -1,0 +1,58 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
+	xmlns:r="http://typo3.org/ns/Evoweb/Recaptcha/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+<nav class="form-navigation">
+	<div class="btn-toolbar" role="toolbar">
+		<div class="btn-group" role="group">
+			<f:if condition="{form.previousPage}">
+				<span class="previous">
+					<f:form.button property="__currentPage" value="{form.previousPage.index}" class="btn btn-cancel" formnovalidate="formnovalidate">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'previousButtonLabel')}</f:form.button>
+				</span>
+			</f:if>
+			<f:if condition="{form.nextPage}">
+				<f:then>
+					<span class="next">
+						<f:form.button property="__currentPage" value="{form.nextPage.index}" class="btn btn-primary">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</f:form.button>
+					</span>
+				</f:then>
+				<f:else>
+					<span class="next submit">
+						<f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
+							<f:then>
+								<r:form.recaptcha>
+									<f:if condition="{showCaptcha}">
+										<f:then>
+											<f:form.button property="__currentPage" value="{form.pages -> f:count()}"
+												class="btn btn-primary {configuration.captchaCssClass}"
+												data="{
+													sitekey: configuration.public_key,
+													callback: configuration.invisibleCallback
+												}">
+												{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
+											</f:form.button>
+										</f:then>
+										<f:else>
+											<f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="btn btn-primary">
+												{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
+											</f:form.button>
+											<div class="recaptcha-development-mode">
+												Development mode active. Do not expect the captcha to appear
+											</div>
+										</f:else>
+									</f:if>
+								</r:form.recaptcha>
+							</f:then>
+							<f:else>
+								<f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="btn btn-primary">
+									{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
+								</f:form.button>
+							</f:else>
+						</f:if>
+					</span>
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+</nav>
+</html>

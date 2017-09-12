@@ -9,6 +9,13 @@ TYPO3:
               renderingOptions:
                 partialRootPaths:
                   1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
+              formEditor:
+                editors:
+                  400:
+                    identifier: 'useInvisibleRecaptcha'
+                    templateName: 'Inspector-CheckboxEditor'
+                    label: 'formEditor.elements.Form.editor.useInvisibleRecaptcha.label'
+                    propertyPath: 'renderingOptions.useInvisibleRecaptcha'
 
             Recaptcha:
               implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'

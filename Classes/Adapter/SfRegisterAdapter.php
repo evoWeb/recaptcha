@@ -4,7 +4,7 @@ namespace Evoweb\Recaptcha\Adapter;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Fischer <typo3@evoweb.de>
+ *  (c) 2015-2017 Sebastian Fischer <typo3@evoweb.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,10 +24,6 @@ namespace Evoweb\Recaptcha\Adapter;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Evoweb\Recaptcha\Services\CaptchaService;
-use Evoweb\SfRegister\Services\Session;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
  * Class RecaptchaAdapter
  */
@@ -36,12 +32,12 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
     /**
      * Captcha object
      *
-     * @var CaptchaService
+     * @var \Evoweb\Recaptcha\Services\CaptchaService
      */
     protected $captcha;
 
     /**
-     * @var Session
+     * @var \Evoweb\SfRegister\Services\Session
      */
     protected $session;
 
@@ -50,8 +46,10 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
      */
     public function __construct()
     {
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
-        $this->session = GeneralUtility::makeInstance(Session::class);
+        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
+        $this->session = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            \Evoweb\SfRegister\Services\Session::class
+        );
     }
 
     /**

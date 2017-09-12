@@ -1,0 +1,5 @@
+.. |recaptcha|      image:: ../Images/recaptcha.png
+.. :align: LEFT
+.. :border: 0
+.. :name: reCAPTCHA
+.. :width: 100%

@@ -4,7 +4,7 @@ namespace Evoweb\Recaptcha\Adapter;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Fischer <typo3@evoweb.de>
+ *  (c) 2015-2017 Sebastian Fischer <typo3@evoweb.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,29 +24,11 @@ namespace Evoweb\Recaptcha\Adapter;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Evoweb\Recaptcha\Services\CaptchaService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
  * Class RecaptchaAdapter
  */
 class TypoScriptAdapter
 {
-    /**
-     * Captcha object
-     *
-     * @var CaptchaService
-     */
-    protected $captcha;
-
-    /**
-     * TypoScriptAdapter constructor.
-     */
-    public function __construct()
-    {
-        $this->captcha = GeneralUtility::makeInstance(CaptchaService::class);
-    }
-
     /**
      * Rendering the output of the captcha
      *
@@ -54,10 +36,12 @@ class TypoScriptAdapter
      */
     public function render()
     {
-        if ($this->captcha !== null) {
-            $output = $this->captcha->getReCaptcha();
+        $captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
 
-            $status = $this->captcha->validateReCaptcha();
+        if ($captcha !== null) {
+            $output = $captcha->getReCaptcha();
+
+            $status = $captcha->validateReCaptcha();
             if ($status == false || $status['error'] !== '') {
                 $output .= '<strong class="error">' .
                     \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(

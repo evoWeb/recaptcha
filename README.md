@@ -8,7 +8,7 @@ Now supports googles invisible reCAPTCHA.
 
 To install the extension add "evoweb/recaptcha" to your project composer.json or download it from the TER https://typo3.org/extensions/repository/view/recaptcha and activate the extension in the extension manager.
 
-## Integrate invisible recaptcha in tx_form typoscript forms
+## Integrate invisible reCAPTCHA in tx_form typoscript forms
 
 To be able to use the captcha add the static include of this extension to your template.
 
@@ -25,7 +25,7 @@ lib.contactForm {
 }
 ```
 
-## Integrate invisible recaptcha in own forms
+## Integrate invisible reCAPTCHA in own forms
 
 To be able to use the captcha add the static include of this extension to your template.
 
@@ -47,10 +47,7 @@ After that your are ready on the frontend but still need to call the validation 
 ```
 $validCaptcha = true;
 
-$captcha = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-	\Evoweb\Recaptcha\Services\CaptchaService::class
-);
-$status = $captcha->validateReCaptcha();
+$status = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->validateReCaptcha();
 
 if ($status == false || $status['error'] !== '') {
 	$validCaptcha = false;

@@ -2,10 +2,9 @@
 		xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
 		xmlns:r="http://typo3.org/ns/Evoweb/Recaptcha/ViewHelpers"
 		data-namespace-typo3-fluid="true">
-
 <formvh:renderRenderable renderable="{element}">
-	<f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
-		<f:format.raw>
+	<f:if condition="{element.parentRenderable.parentRenderable.renderingOptions.useInvisibleRecaptcha}">
+		<f:then>
 			<r:form.recaptcha>
 				<f:if condition="{showCaptcha}">
 					<f:then>
@@ -15,17 +14,35 @@
 							value="1"
 							additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
 						/>
-						<div class="g-recaptcha" data-sitekey="{configuration.public_key}"></div>
 					</f:then>
-					<f:else>
-						<div class="recaptcha-development-mode">
-							Development mode active. Do not expect the captcha to appear
-						</div>
-					</f:else>
 				</f:if>
 			</r:form.recaptcha>
+		</f:then>
+		<f:else>
+	<f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+		<f:format.raw>
+					<r:form.recaptcha>
+						<f:if condition="{showCaptcha}">
+							<f:then>
+								<f:form.hidden
+									property="{element.identifier}"
+									id="{element.uniqueIdentifier}"
+									value="1"
+									additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+								/>
+								<div class="g-recaptcha" data-sitekey="{configuration.public_key}"></div>
+							</f:then>
+							<f:else>
+								<div class="recaptcha-development-mode">
+									Development mode active. Do not expect the captcha to appear
+								</div>
+							</f:else>
+						</f:if>
+					</r:form.recaptcha>
 		</f:format.raw>
 	</f:render>
+		</f:else>
+	</f:if>
 </formvh:renderRenderable>
 
 </html>

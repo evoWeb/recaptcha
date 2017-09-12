@@ -4,7 +4,7 @@ namespace Evoweb\Recaptcha\ViewHelpers\Form;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2016 Sebastian Fischer <typo3@evoweb.de>
+ *  (c) 2016-2017 Sebastian Fischer <typo3@evoweb.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,29 +24,11 @@ namespace Evoweb\Recaptcha\ViewHelpers\Form;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Evoweb\Recaptcha\Services\CaptchaService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
-
 /**
  * Class RecaptchaViewHelper
- *
- * @package Evoweb\Recaptcha\ViewHelpers\Form
  */
-class RecaptchaViewHelper extends AbstractFormFieldViewHelper
+class RecaptchaViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper
 {
-    /**
-     * Initialize arguments.
-     *
-     * @return void
-     * @api
-     */
-    public function initializeArguments()
-    {
-        parent::initializeArguments();
-        $this->registerUniversalTagAttributes();
-    }
-
     /**
      * @return string
      */
@@ -55,8 +37,7 @@ class RecaptchaViewHelper extends AbstractFormFieldViewHelper
         $name = $this->getName();
         $this->registerFieldNameForFormTokenGeneration($name);
 
-        /** @var CaptchaService $captchaService */
-        $captchaService = GeneralUtility::makeInstance(CaptchaService::class);
+        $captchaService = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
 
         $this->templateVariableContainer->add('configuration', $captchaService->getConfiguration());
         $this->templateVariableContainer->add('showCaptcha', $captchaService->getShowCaptcha());
