@@ -1,19 +1,29 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-	xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
-	xmlns:r="http://typo3.org/ns/Evoweb/Recaptcha/ViewHelpers"
-	data-namespace-typo3-fluid="true">
+	  xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"
+	  xmlns:r="http://typo3.org/ns/Evoweb/Recaptcha/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
 <nav class="form-navigation">
 	<div class="btn-toolbar" role="toolbar">
 		<div class="btn-group" role="group">
+			<f:form.hidden property="__currentPage" id="currentPage" value=""/>
 			<f:if condition="{form.previousPage}">
 				<span class="previous">
-					<f:form.button property="__currentPage" value="{form.previousPage.index}" class="btn btn-cancel" formnovalidate="formnovalidate">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'previousButtonLabel')}</f:form.button>
+					<f:form.button
+							value="{form.previousPage.index}"
+							class="btn btn-cancel"
+							formnovalidate="formnovalidate"
+							onclick="document.getElementById('currentPage').value='{form.previousPage.index}'"
+					><formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="previousButtonLabel"/></f:form.button>
 				</span>
 			</f:if>
 			<f:if condition="{form.nextPage}">
 				<f:then>
 					<span class="next">
-						<f:form.button property="__currentPage" value="{form.nextPage.index}" class="btn btn-primary">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</f:form.button>
+						<f:form.button
+								value="{form.nextPage.index}"
+								class="btn btn-primary"
+								onclick="document.getElementById('currentPage').value='{form.nextPage.index}'"
+						>{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</f:form.button>
 					</span>
 				</f:then>
 				<f:else>
@@ -23,19 +33,22 @@
 								<r:form.recaptcha>
 									<f:if condition="{showCaptcha}">
 										<f:then>
-											<f:form.button property="__currentPage" value="{form.pages -> f:count()}"
-												class="btn btn-primary {configuration.captchaCssClass}"
-												data="{
-													sitekey: configuration.public_key,
-													callback: configuration.invisibleCallback
-												}">
-												{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
-											</f:form.button>
+											<f:form.button
+													value="{form.pages -> f:count()}"
+													class="btn btn-primary {configuration.captchaCssClass}"
+													data="{
+														sitekey: configuration.public_key,
+														callback: configuration.invisibleCallback
+													}"
+													onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+											>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 										</f:then>
 										<f:else>
-											<f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="btn btn-primary">
-												{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
-											</f:form.button>
+											<f:form.button
+													value="{form.pages -> f:count()}"
+													class="btn btn-primary"
+													onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+											>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 											<div class="recaptcha-development-mode">
 												Development mode active. Do not expect the captcha to appear
 											</div>
@@ -44,9 +57,11 @@
 								</r:form.recaptcha>
 							</f:then>
 							<f:else>
-								<f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="btn btn-primary">
-									{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
-								</f:form.button>
+								<f:form.button
+										value="{form.pages -> f:count()}"
+										class="btn btn-primary"
+										onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+								>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 							</f:else>
 						</f:if>
 					</span>

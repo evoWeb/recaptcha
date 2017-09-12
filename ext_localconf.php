@@ -13,13 +13,9 @@ call_user_func(function () {
 
     if (TYPO3_MODE == 'BE') {
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('
-module.tx_form {
-    settings {
-        yamlConfigurations {
-            1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
-            1975 = EXT:recaptcha/Configuration/Yaml/FormEditorSetup.yaml
-        }
-    }
+module.tx_form.settings.yamlConfigurations {
+    1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+    1975 = EXT:recaptcha/Configuration/Yaml/FormEditorSetup.yaml
 }
         ');
     }
