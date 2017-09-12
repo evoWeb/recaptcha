@@ -23,3 +23,8 @@ TYPO3:
           validatorsDefinition:
             Recaptcha:
               implementationClassName: 'Evoweb\Recaptcha\Validation\RecaptchaValidator'
+      mixins:
+        finishersEmailMixin:
+          options:
+            templateRootPaths:
+              1974: 'EXT:recaptcha/Resources/Private/Frontend/Templates/Finishers/Email/'
