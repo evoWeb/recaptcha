@@ -19,6 +19,8 @@ TYPO3:
 
             Recaptcha:
               implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'
+              properties:
+                containerClassAttribute: 'recaptcha'
 
           validatorsDefinition:
             Recaptcha:
