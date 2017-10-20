@@ -60,10 +60,10 @@ plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Fron
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
 page.includeJSFooterlibs.recaptcha.external = 1
 
-# only included if invisible captch should be rendered
+# only included if invisible captcha should be rendered
 [globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
-page.jsInline.recaptcha = TEXT
-page.jsInline.recaptcha.value (
+page.jsInline.1508480348393 = TEXT
+page.jsInline.1508480348393.value (
 
 	function onRecaptchaSubmit() {
 		document.getElementById('contactform').submit();
