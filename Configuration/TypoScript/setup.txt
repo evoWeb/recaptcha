@@ -1,56 +1,58 @@
 plugin.tx_recaptcha {
-	# look at https://www.google.com/recaptcha/admin to register a key for your server
-	public_key = {$plugin.tx_recaptcha.public_key}
-	public_key.wrap = <div class="g-recaptcha" data-sitekey="|"></div>
+    # look at https://www.google.com/recaptcha/admin to register a key for your server
+    public_key = {$plugin.tx_recaptcha.public_key}
+    public_key.wrap = <div class="g-recaptcha" data-sitekey="|"></div>
 
-	# look at https://www.google.com/recaptcha/admin to register a key for your server
-	private_key = {$plugin.tx_recaptcha.private_key}
+    # look at https://www.google.com/recaptcha/admin to register a key for your server
+    private_key = {$plugin.tx_recaptcha.private_key}
 
-	api_server = {$plugin.tx_recaptcha.api_server}
-	verify_server = {$plugin.tx_recaptcha.verify_server}
+    api_server = {$plugin.tx_recaptcha.api_server}
+    verify_server = {$plugin.tx_recaptcha.verify_server}
 
-	lang = {$plugin.tx_recaptcha.lang}
+    lang = {$plugin.tx_recaptcha.lang}
 
-	enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
+    enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
 
-	invisibleCallback = onRecaptchaSubmit
+    invisibleCallback = onRecaptchaSubmit
 
-	captchaCssClass = g-recaptcha
+    captchaCssClass = g-recaptcha
 }
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings {
-	recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
+    recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
 
-	# register recaptcha as captcha possibility
-	captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+    # register recaptcha as captcha possibility
+    captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
-	fields {
-		createDefaultSelected {
-			# remove captcha output as separate element
-			370 >
-			380 >
+    fields {
+        createDefaultSelected {
+            # remove captcha output as separate element
+            370 >
+            380 >
 
-			# change submit button in default form to button with invisible captcha settings
-			400 = submit_captcha
-		}
-		configuration {
-			# change captcha field type to recaptcha
-			captcha.type = Recaptcha
+            # change submit button in default form to button with invisible captcha settings
+            400 = submit_captcha
+        }
 
-			# register new field type
-			submit_captcha.partial = SubmitWithInvisibleCaptcha
-		}
-	}
+        configuration {
+            # change captcha field type to recaptcha
+            captcha.type = Recaptcha
 
-	validation.create {
-		# tell validation to use recaptcha adapter
-		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
-	}
-	validation.invite {
-		# tell validation to use recaptcha adapter
-		captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
-	}
+            # register new field type
+            submit_captcha.partial = SubmitWithInvisibleCaptcha
+        }
+    }
+
+    validation.create {
+        # tell validation to use recaptcha adapter
+        captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+    }
+
+    validation.invite {
+        # tell validation to use recaptcha adapter
+        captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+    }
 }
 
 # add settings for EXT:form
@@ -61,14 +63,8 @@ page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
 page.includeJSFooterlibs.recaptcha.external = 1
 
 # only included if invisible captcha should be rendered
-[globalString LIT:1={$plugin.tx_recaptcha.include_invisible_recaptcha_callback}]
 page.jsInline.1508480348393 = TEXT
-page.jsInline.1508480348393.value (
-
-	function onRecaptchaSubmit() {
-		document.getElementById('contactform').submit();
-		return false;
-	}
-
-)
-[end]
+page.jsInline.1508480348393 {
+    value = function onRecaptchaSubmit() { document.getElementById('{$plugin.tx_recaptcha.invisible_recaptcha_formname}').submit(); return false; }
+    if.isTrue = {$plugin.tx_recaptcha.include_invisible_recaptcha_callback}
+}
