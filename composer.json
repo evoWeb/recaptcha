@@ -5,7 +5,7 @@
 	"homepage": "http://www.evoweb.de",
 
 	"license": [
-		"GPL-2.0+"
+		"GPL-2.0-or-later"
 	],
 
 	"support": {
