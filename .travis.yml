@@ -27,7 +27,9 @@ install:
       typo3/minimal="$TYPO3_VERSION" \
       $PREFER_LOWEST
   - git checkout composer.json
-  - ls -la .Build/bin/
+
+script:
+  - echo "no phpunit testing for now"
 
 jobs:
   fast_finish: true
