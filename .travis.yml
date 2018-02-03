@@ -16,8 +16,8 @@ notifications:
   email:
     - typo3@evoweb.de
 
-before_install:
-  - if php -i | grep -q xdebug; then phpenv config-rm xdebug.ini; fi
+before_script:
+  - phpenv config-rm xdebug.ini
 
 install:
   - export TYPO3_PATH_WEB=$PWD/.Build/Web
@@ -27,12 +27,13 @@ install:
       typo3/minimal="$TYPO3_VERSION" \
       $PREFER_LOWEST
   - git checkout composer.json
+  - ls -la .Build/bin/
 
 jobs:
   fast_finish: true
   allow_failures:
     - env: TYPO3_VERSION="^9.1.0"
-    - env: TYPO3_VERSION="dev-master as 9.6.0"
+    - env: TYPO3_VERSION="dev-master as 9.2.0"
 
   include:
     - &lint
@@ -63,7 +64,7 @@ jobs:
       env: TYPO3_VERSION="^9.1.0"
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION="dev-master as 9.6.0"
+      env: TYPO3_VERSION="dev-master as 9.2.0"
 
     - stage: publish in ter
       if: tag IS present
