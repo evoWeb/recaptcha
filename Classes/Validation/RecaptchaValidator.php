@@ -49,7 +49,7 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
                         'error_recaptcha_' . $status['error'],
                         'recaptcha'
                     ),
-                    1447258047591
+                    1519982125
                 );
             }
         }
