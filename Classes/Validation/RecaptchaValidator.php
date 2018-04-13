@@ -42,15 +42,15 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
 
         if ($captcha !== null) {
             $status = $captcha->validateReCaptcha();
-
+            
             if ($status == false || $status['error'] !== '') {
-                $this->addError(
-                    $this->translateErrorMessage(
-                        'error_recaptcha_' . $status['error'],
-                        'recaptcha'
-                    ),
-                    1447258047591
-                );
+                $errorText = $this->translateErrorMessage('error_recaptcha_' . $status['error'], 'recaptcha');
+                
+                if (empty($errorText)) {
+                    $errorText = htmlspecialchars($status['error']);
+                }
+                
+                $this->addError($errorText, 1519982125);
             }
         }
     }

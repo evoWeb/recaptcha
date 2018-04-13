@@ -204,7 +204,9 @@ class CaptchaService
             if ($response['success']) {
                 $result['verified'] = true;
             } else {
-                $result['error'] = $response['error-codes'];
+                $result['error'] = is_array($response['error-codes']) ?
+                    reset($response['error-codes']) :
+                    $response['error-codes'];
             }
         }
 
