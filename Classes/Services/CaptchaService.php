@@ -148,7 +148,7 @@ class CaptchaService
      */
     public function getShowCaptcha():bool
     {
-        return !$this->isDevelopmentMode() || $this->isEnforceCaptcha();
+        return TYPO3_MODE == 'BE' || !$this->isDevelopmentMode() || $this->isEnforceCaptcha();
     }
 
     /**
@@ -186,6 +186,15 @@ class CaptchaService
             ];
         }
 
+        if (!isset($this->configuration) || empty($this->configuration)) {
+            if (! $this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager) {
+                $objectManager = GeneralUtility::makeInstance(
+                    \TYPO3\CMS\Extbase\Object\ObjectManager::class
+                );
+                $this->injectObjectManager($objectManager);
+            }
+        }
+        
         $request = [
             'secret' => $this->configuration['private_key'],
             'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
