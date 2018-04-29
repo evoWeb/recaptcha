@@ -4,7 +4,7 @@ $EM_CONF['recaptcha'] = [
     'title' => 'reCAPTCHA',
     'description' => 'Integrated googles reCAPTCHA and invisible reCAPTCHA.
 Easy on Humans, Hard on Bots',
-    'version' => '8.2.3',
+    'version' => '8.2.5',
     'author' => 'Sebastian Fischer',
     'author_email' => 'typo3@evoweb.de',
     'author_company' => 'evoWeb',
