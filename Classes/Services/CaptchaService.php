@@ -1,37 +1,22 @@
 <?php
 namespace Evoweb\Recaptcha\Services;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is developed by evoweb.
  *
- *  (c) 2015-2017 Sebastian Fischer <typo3@evoweb.de>
- *  All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ */
 
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
-/**
- * Class RecaptchaService
- */
 class CaptchaService
 {
     /**
@@ -44,9 +29,6 @@ class CaptchaService
      */
     protected $configuration = [];
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
-     */
     public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
     {
         $this->objectManager = $objectManager;
@@ -54,17 +36,16 @@ class CaptchaService
     }
 
     /**
-     * @return self
+     * @return CaptchaService
      */
-    public static function getInstance()
+    public static function getInstance(): CaptchaService
     {
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(
             \TYPO3\CMS\Extbase\Object\ObjectManager::class
         );
-        /** @var self $instance */
-        $instance = $objectManager->get(self::class);
-        $instance->injectObjectManager($objectManager);
+        /** @var CaptchaService $instance */
+        $instance = $objectManager->get(CaptchaService::class);
         return $instance;
     }
 
@@ -73,7 +54,13 @@ class CaptchaService
      */
     protected function initialize()
     {
-        $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
+        if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
+            $configuration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
+            )->get('recaptcha');
+        } else {
+            $configuration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['recaptcha']);
+        }
 
         if (!is_array($configuration)) {
             $configuration = [];
@@ -104,18 +91,12 @@ class CaptchaService
         $this->configuration = $configuration;
     }
 
-    /**
-     * @return array
-     */
-    public function getConfiguration():array
+    public function getConfiguration(): array
     {
         return $this->configuration;
     }
 
-    /**
-     * @return ContentObjectRenderer
-     */
-    protected function getContentObject()
+    protected function getContentObjectRenderer(): ContentObjectRenderer
     {
         /** @var ContentObjectRenderer $contentRenderer */
         $contentRenderer = $this->objectManager->get(ContentObjectRenderer::class);
@@ -124,29 +105,22 @@ class CaptchaService
 
     /**
      * Get development mode by TYPO3_CONTEXT
-     * Based on this the captcher does not get rendered or validated
-     *
-     * @return bool
+     * Based on this the captcha does not get rendered or validated
      */
-    protected function isDevelopmentMode():bool
+    protected function isDevelopmentMode(): bool
     {
         return (bool) GeneralUtility::getApplicationContext()->isDevelopment();
     }
 
     /**
      * Get enforcing captcha rendering even if development mode is true
-     *
-     * @return bool
      */
-    protected function isEnforceCaptcha():bool
+    protected function isEnforceCaptcha(): bool
     {
         return (bool) $this->configuration['enforceCaptcha'];
     }
 
-    /**
-     * @return bool
-     */
-    public function getShowCaptcha():bool
+    public function getShowCaptcha(): bool
     {
         return TYPO3_MODE == 'BE' || !$this->isDevelopmentMode() || $this->isEnforceCaptcha();
     }
@@ -156,10 +130,10 @@ class CaptchaService
      *
      * @return string reCAPTCHA HTML-Code
      */
-    public function getReCaptcha():string
+    public function getReCaptcha(): string
     {
         if ($this->getShowCaptcha()) {
-            $captcha = $this->getContentObject()->stdWrap(
+            $captcha = $this->getContentObjectRenderer()->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
             );
@@ -177,7 +151,7 @@ class CaptchaService
      *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    public function validateReCaptcha():array
+    public function validateReCaptcha(): array
     {
         if (!$this->getShowCaptcha()) {
             return [
@@ -194,7 +168,7 @@ class CaptchaService
                 $this->injectObjectManager($objectManager);
             }
         }
-        
+
         $request = [
             'secret' => $this->configuration['private_key'],
             'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
@@ -229,7 +203,7 @@ class CaptchaService
      *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    protected function queryVerificationServer($data):array
+    protected function queryVerificationServer(array $data): array
     {
         $verifyServerInfo = @parse_url($this->configuration['verify_server']);
 
