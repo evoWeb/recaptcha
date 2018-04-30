@@ -6,7 +6,20 @@ recaptcha
 TYPO3 Extension to make use of googles nocaptcha.
 Now supports googles invisible reCAPTCHA.
 
-To install the extension add "evoweb/recaptcha" to your project composer.json or download it from the TER https://typo3.org/extensions/repository/view/recaptcha and activate the extension in the extension manager.
+## Installation
+
+### via Composer
+
+Its recommended to install the extension via composer. Either add it to your composer.json
+in the TYPO3 project root or in the project root just enter 
+
+composer require evoweb/recaptcha
+
+### via TYPO3 Extension Repository
+
+Download and install the extension with the extension manger module or directly from the
+[TER](https://extensions.typo3.org/extension/recaptcha/).
+
 
 ## Integrate invisible reCAPTCHA in tx_form typoscript forms
 
