@@ -55,7 +55,7 @@ class CaptchaService
     protected function initialize()
     {
         if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
-            $configuration = (bool)\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
                 \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
             )->get('recaptcha');
         } else {
