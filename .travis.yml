@@ -12,7 +12,7 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-notifications:
+  notifications:
   email:
     - typo3@evoweb.de
 
@@ -30,7 +30,7 @@ script:
 jobs:
   fast_finish: true
   allow_failures:
-    - env: TYPO3_VERSION="dev-master as 9.3.0"
+    - env: TYPO3_VERSION="^9.3"
 
   include:
     - &lint
@@ -61,7 +61,7 @@ jobs:
       env: TYPO3_VERSION="^9.2.0"
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION="dev-master as 9.3.0"
+      env: TYPO3_VERSION="^9.3"
 
     - stage: publish in ter
       if: tag IS present
