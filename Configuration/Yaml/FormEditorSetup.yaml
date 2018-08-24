@@ -39,3 +39,13 @@ TYPO3:
           RecaptchaMixin:
             __inheritances:
               10: 'TYPO3.CMS.Form.mixins.formElementMixins.FormElementMixin'
+            formEditor:
+              editors:
+                900:
+                  identifier: 'validators'
+                  templateName: 'Inspector-ValidatorsEditor'
+                  label: 'formEditor.elements.FormElement.editor.recaptchaValidator.label'
+                  selectOptions:
+                    180:
+                      value: 'Recaptcha'
+                      label: 'formEditor.elements.TextMixin.validators.Recaptcha.editor.header.label'
