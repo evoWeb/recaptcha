@@ -12,8 +12,12 @@
 		"issues": "https://github.com/evoWeb/recaptcha/issues"
 	},
 
-	"require": {
+	"suggest": {
 		"typo3/cms-form": "^8.7.0 || ^9.3.0"
+	},
+	
+	"require": {
+		"typo3/cms-core": "^8.7.0 || ^9.3.0"
 	},
 
 	"autoload": {
