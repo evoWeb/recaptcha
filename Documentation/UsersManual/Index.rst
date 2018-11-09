@@ -42,3 +42,40 @@ button on top of the form editor. There the checkbox for
 "Use invisible recaptcha" needs to be checked.
 
 |invisible|
+
+
+
+Usage in ext:formhandler
+------------------------
+
+The invisible mode is only supported at the moment.
+
+Marker for the hidden field:
+
+.. code-block:: html
+    :linenos:
+
+    ###recaptcha_invisible###
+
+
+Marker for the submit button:
+
+.. code-block:: html
+    :linenos:
+
+    ###recaptcha_button_invisible###
+
+
+Error check:
+
+.. code-block:: typoscript
+    :linenos:
+
+    [...]
+    validators.1.config.fieldConf {
+        recaptcha.errorCheck {
+            1 = required
+            2 = \Evoweb\Recaptcha\Validation\ErrorCheck\Recaptcha
+       }
+    }
+    [...]

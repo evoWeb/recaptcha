@@ -55,6 +55,16 @@ plugin.tx_sfregister.settings {
     }
 }
 
+# add settings for EXT:formhandler
+plugin.Tx_Formhandler.settings {
+  markers {
+    recaptcha_invisible = FLUIDTEMPLATE
+    recaptcha_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/Invisible.html
+    recaptcha_button_invisible = FLUIDTEMPLATE
+    recaptcha_button_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/ButtonInvisible.html
+  }
+}
+
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
