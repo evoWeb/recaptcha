@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+		xmlns:r="http://typo3.org/ns/Evoweb/Recaptcha/ViewHelpers"
+		data-namespace-typo3-fluid="true">
+
+	<r:form.recaptcha>
+		<f:if condition="{showCaptcha}">
+			<f:then>
+				<f:form.hidden
+					name="###formValuesPrefix###[recaptcha]"
+					id="{f:if(condition: '{data.uid}', then: '###formValuesPrefix###-recaptcha-{data.uid}', else: '###formValuesPrefix###-recaptcha')}"
+					value="1"
+				/>
+			</f:then>
+		</f:if>
+	</r:form.recaptcha>
+
+</html>
