@@ -12,12 +12,18 @@
 		"issues": "https://github.com/evoWeb/recaptcha/issues"
 	},
 
+	"keywords": [
+		"recaptcha",
+		"nocaptcha 2",
+		"invisible captcha"
+	],
+
 	"suggest": {
-		"typo3/cms-form": "^8.7.0 || ^9.3.0"
+		"typo3/cms-form": "^8.7 || ^9.5"
 	},
 	
 	"require": {
-		"typo3/cms-core": "^8.7.0 || ^9.3.0"
+		"typo3/cms-core": "^8.7 || ^9.5"
 	},
 
 	"autoload": {
@@ -27,7 +33,7 @@
 	},
 
 	"config": {
-		"vendor-dir": ".Build/vendor",
+		"vendor-dir": ".Build/Web/vendor",
 		"bin-dir": ".Build/bin"
 	},
 	"extra": {

@@ -2,6 +2,11 @@ language: php
 
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - libxml2-utils
+
 branches:
   only:
     - master
@@ -12,17 +17,18 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-  notifications:
+notifications:
   email:
     - typo3@evoweb.de
 
+install:
+  - >
+    export TYPO3_PATH_WEB=$PWD/.Build/Web;
+    composer require typo3/minimal="$TYPO3_VERSION" $PREFER_LOWEST;
+    git checkout composer.json;
+
 before_script:
   - phpenv config-rm xdebug.ini
-
-install:
-  - export TYPO3_PATH_WEB=$PWD/.Build/Web
-  - composer require typo3/minimal="$TYPO3_VERSION" $PREFER_LOWEST
-  - git checkout composer.json
 
 script:
   - echo "no phpunit testing for now"
@@ -30,18 +36,20 @@ script:
 jobs:
   fast_finish: true
   allow_failures:
-    - env: TYPO3_VERSION="^9.3"
+    - env:
+        - TYPO3_VERSION="dev-master as 10.0.0"
 
   include:
     - &lint
       stage: test
       php: 7.2
-      env: PHP Lint
+      env: TASK="PHP Lint"
       before_install: skip
       install: skip
       before_script: skip
       script:
-        - errors=$(find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} 2>&1 >/dev/null \;) && echo "$errors" && test -z "$errors"
+        - echo "Running php lint";
+          errors=$(find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l {} 2>&1 >/dev/null \;) && echo "$errors" && test -z "$errors"
     - <<: *lint
       php: 7.1
     - <<: *lint
@@ -49,23 +57,28 @@ jobs:
 
     - stage: test
       php: 7.0
-      env: TYPO3_VERSION=^8.7
+      env:
+        - TYPO3_VERSION="^8.7"
     - stage: test
       php: 7.1
-      env: TYPO3_VERSION=^8.7
+      env:
+        - TYPO3_VERSION="^8.7"
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION=^8.7
+      env:
+        - TYPO3_VERSION="^8.7"
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION="^9.2.0"
+      env:
+        - TYPO3_VERSION="^9.5"
     - stage: test
       php: 7.2
-      env: TYPO3_VERSION="^9.3"
+      env:
+        - TYPO3_VERSION="dev-master as 10.0.0"
 
     - stage: publish in ter
       if: tag IS present
-      php: 7.0
+      php: 7.1
       before_install: skip
       install: skip
       before_script: skip
