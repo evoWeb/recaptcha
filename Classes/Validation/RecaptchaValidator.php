@@ -17,7 +17,7 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
     /**
      * Validate the captcha value from the request and add an error if not valid
      *
-     * @param mixed $value
+     * @param mixed $value The value
      */
     public function isValid($value)
     {

@@ -58,24 +58,25 @@ plugin.tx_sfregister.settings {
     }
 
     validation.create {
-        # tell validation to use recaptcha adapter
-        captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+        # tell captcha validation to use recaptcha adapter
+        captcha = "Evoweb.SfRegister:Captcha", options={"type": "recaptcha"}
     }
 
     validation.invite {
-        # tell validation to use recaptcha adapter
-        captcha = Evoweb\SfRegister\Validation\Validator\CaptchaValidator(type = recaptcha)
+        # tell captcha validation to use recaptcha adapter
+        captcha = "Evoweb.SfRegister:Captcha", options={"type": "recaptcha"}
     }
 }
 
 # add settings for EXT:formhandler
 plugin.Tx_Formhandler.settings {
-  markers {
-    recaptcha_invisible = FLUIDTEMPLATE
-    recaptcha_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/Invisible.html
-    recaptcha_button_invisible = FLUIDTEMPLATE
-    recaptcha_button_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/ButtonInvisible.html
-  }
+    markers {
+        recaptcha_invisible = FLUIDTEMPLATE
+        recaptcha_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/Invisible.html
+
+        recaptcha_button_invisible = FLUIDTEMPLATE
+        recaptcha_button_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/ButtonInvisible.html
+    }
 }
 
 # add settings for EXT:form

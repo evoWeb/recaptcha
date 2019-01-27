@@ -13,11 +13,9 @@ class Recaptcha extends \Typoheads\Formhandler\Validator\ErrorCheck\AbstractErro
      */
     public function check()
     {
-
         $captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
 
         $checkFailed = '';
-
         if ($captcha !== null) {
             $status = $captcha->validateReCaptcha();
             if ($status == false || $status['error'] !== '') {

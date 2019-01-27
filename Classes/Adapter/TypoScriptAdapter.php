@@ -14,9 +14,6 @@ namespace Evoweb\Recaptcha\Adapter;
 
 class TypoScriptAdapter
 {
-    /**
-     * Rendering the output of the captcha
-     */
     public function render(): string
     {
         $captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
@@ -26,12 +23,12 @@ class TypoScriptAdapter
 
             $status = $captcha->validateReCaptcha();
             if ($status == false || $status['error'] !== '') {
-                $output .= '<strong class="error">' .
+                $output .= '<span class="error">' .
                     \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                         'error_recaptcha_' . $status['error'],
                         'Recaptcha'
                     ) .
-                    '</strong>';
+                    '</span>';
             }
         } else {
             $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
