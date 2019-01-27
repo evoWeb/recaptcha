@@ -26,23 +26,24 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
      */
     protected $session;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function injectCaptcha(\Evoweb\Recaptcha\Services\CaptchaService $captcha)
     {
-        $this->captcha = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
-        $this->session = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            \Evoweb\SfRegister\Services\Session::class
-        );
+        $this->captcha = $captcha;
+    }
+
+    public function injectSession(\Evoweb\SfRegister\Services\Session $session)
+    {
+        $this->session = $session;
     }
 
     /**
      * Rendering the output of the captcha
+     *
+     * @return string|array
      */
-    public function render(): string
+    public function render()
     {
-        $this->session->remove('captchaWasValidPreviously');
+        $this->session->remove('captchaWasValid');
 
         if ($this->captcha !== null) {
             $output = $this->captcha->getReCaptcha();
@@ -67,8 +68,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
     {
         $validCaptcha = true;
 
-        $captchaWasValidPreviously = $this->session->get('captchaWasValidPreviously');
-        if ($this->captcha !== null && $captchaWasValidPreviously !== true) {
+        if ($this->captcha !== null && $this->session->get('captchaWasValid') !== true) {
             $status = $this->captcha->validateReCaptcha();
 
             if ($status == false || $status['error'] !== '') {
@@ -83,7 +83,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
             }
         }
 
-        $this->session->set('captchaWasValidPreviously', $validCaptcha);
+        $this->session->set('captchaWasValid', $validCaptcha);
 
         return $validCaptcha;
     }

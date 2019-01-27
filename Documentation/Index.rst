@@ -23,7 +23,7 @@ Integration of reCAPTCHA: Easy on Humans, Hard on Bots
       reCAPTCHA, rendering, validator, domain model validation, EXT:form integration
 
 :Copyright:
-      2015-2017
+      2015-2019
 
 :Author:
       Sebastian Fischer
@@ -52,4 +52,5 @@ a GNU/GPL CMS/Framework available from `www.typo3.org
    Configuration/Index
    Integration/Index
    Templating/Index
+   Tutorial/Index
    Targets

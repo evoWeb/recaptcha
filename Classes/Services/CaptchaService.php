@@ -35,22 +35,19 @@ class CaptchaService
         $this->initialize();
     }
 
-    /**
-     * @return CaptchaService
-     */
     public static function getInstance(): CaptchaService
     {
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
         $objectManager = GeneralUtility::makeInstance(
             \TYPO3\CMS\Extbase\Object\ObjectManager::class
         );
-        /** @var CaptchaService $instance */
-        $instance = $objectManager->get(CaptchaService::class);
+        /** @var self $instance */
+        $instance = $objectManager->get(self::class);
         return $instance;
     }
 
     /**
-     * @throws \Exception
+     * @throws \Evoweb\Recaptcha\Exception\MissingException
      */
     protected function initialize()
     {
@@ -85,7 +82,10 @@ class CaptchaService
         }
 
         if (!is_array($configuration) || empty($configuration)) {
-            throw new \Exception('Please configure plugin.tx_recaptcha. before rendering the recaptcha', 1417680291);
+            throw new \Evoweb\Recaptcha\Exception\MissingException(
+                'Please configure plugin.tx_recaptcha. before rendering the recaptcha',
+                1417680291
+            );
         }
 
         $this->configuration = $configuration;
@@ -162,6 +162,7 @@ class CaptchaService
 
         if (!isset($this->configuration) || empty($this->configuration)) {
             if (! $this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager) {
+                /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
                 $objectManager = GeneralUtility::makeInstance(
                     \TYPO3\CMS\Extbase\Object\ObjectManager::class
                 );

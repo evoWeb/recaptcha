@@ -79,7 +79,7 @@ discovery with fallback. Inside the ViewHelper three variables are set.
       <f:if condition="{showCaptcha}">
          <f:then>
             <f:form.hidden property="{name}" value="1" />
-            <div class="{configuration.captchaCssClass}" data-sitekey="{configuration.public_key}"></div>
+            <div class="{configuration.captchaCssClass}" data-sitekey="{configuration.public_key}{f:if(condition: configuration.lang, then: '?hl=de')}"></div>
          </f:then>
          <f:else>
             <div class="recaptcha-development-mode">

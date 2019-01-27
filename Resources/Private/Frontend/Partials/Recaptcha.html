@@ -20,26 +20,24 @@
 		</f:then>
 		<f:else>
 	<f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
-		<f:format.raw>
-					<r:form.recaptcha>
-						<f:if condition="{showCaptcha}">
-							<f:then>
-								<f:form.hidden
-									property="{element.identifier}"
-									id="{element.uniqueIdentifier}"
-									value="1"
-									additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
-								/>
-								<div class="g-recaptcha" data-sitekey="{configuration.public_key}"></div>
-							</f:then>
-							<f:else>
-								<div class="recaptcha-development-mode">
-									Development mode active. Do not expect the captcha to appear
-								</div>
-							</f:else>
-						</f:if>
-					</r:form.recaptcha>
-		</f:format.raw>
+		<f:format.raw><r:form.recaptcha>
+			<f:if condition="{showCaptcha}">
+				<f:then>
+					<f:form.hidden
+						property="{element.identifier}"
+						id="{element.uniqueIdentifier}"
+						value="1"
+						additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+					/>
+					<div class="g-recaptcha" data-sitekey="{configuration.public_key}{f:if(condition: configuration.lang, then: '?hl=de')}"></div>
+				</f:then>
+				<f:else>
+					<div class="recaptcha-development-mode">
+						Development mode active. Do not expect the captcha to appear
+					</div>
+				</f:else>
+			</f:if>
+		</r:form.recaptcha></f:format.raw>
 	</f:render>
 		</f:else>
 	</f:if>

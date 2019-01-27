@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
-	<file source-language="en" target-language="it" datatype="plaintext" original="messages" date="Mon Jul 16 10:28:45 UTC 2018" product-name="recaptcha">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="it" datatype="plaintext" original="messages" date="2018-07-16T10:28:45" product-name="recaptcha">
 		<header/>
 		<body>
 			<trans-unit id="error_recaptcha_missing-input-secret" xml:space="preserve">
