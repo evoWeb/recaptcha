@@ -8,7 +8,7 @@
 				<f:form.button
 					class="btn btn-primary {configuration.captchaCssClass}"
 					data="{
-						sitekey: configuration.public_key,
+						sitekey: '{configuration.public_key}{f:if(condition: configuration.lang, then: \'?hl=de\')}',
 						callback: configuration.invisibleCallback
 					}"
 				>###LLL:submit###</f:form.button>
