@@ -23,6 +23,8 @@ plugin.tx_recaptcha {
     lang = {$plugin.tx_recaptcha.lang}
 
     enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
+    
+    robotMode = {$plugin.tx_recaptcha.robotMode}
 
     invisibleCallback = onRecaptchaSubmit
 
