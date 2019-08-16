@@ -27,6 +27,8 @@ plugin.tx_recaptcha {
     invisibleCallback = onRecaptchaSubmit
 
     captchaCssClass = g-recaptcha
+    
+    theme = {$plugin.tx_recaptcha.theme}
 }
 
 # register recaptcha as captcha for sf_register
