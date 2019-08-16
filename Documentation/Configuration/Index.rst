@@ -231,6 +231,39 @@ plugin.tx\_recaptcha:
          But its possible to have additional css classes attached
          to the captcha container for styling purposes.
 
+.. container:: table-row
+
+   Property
+         theme
+
+   Data type
+         string
+
+   Default
+         light
+
+   Description
+         [Only TypoScript]
+         For change the theme for recaptcha (light or dark).
+   
+
+
+.. container:: table-row
+
+   Property
+         robotMode
+
+   Data type
+         bool
+
+   Default
+         0
+
+   Description
+         [Only TypoScript]
+         Add the possibility to set the recaptcha into robot mode in production environment.
+         The recaptcha will not be displayed like in development mode.
+
 
 .. ###### END~OF~TABLE ######
 
