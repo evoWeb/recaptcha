@@ -24,4 +24,7 @@ plugin.tx_recaptcha {
 
     # cat=plugin.recaptcha//09; type=string; label= form name: to use the invisible reCAPTCHA in
     invisible_recaptcha_formname = contactform
+
+    # cat=plugin.recaptcha//10; type=string; label= reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)
+    theme = light
 }
