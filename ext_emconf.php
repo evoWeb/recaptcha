@@ -9,10 +9,10 @@ $EM_CONF['recaptcha'] = [
     'author_email' => 'typo3@evoweb.de',
     'author_company' => 'evoWeb',
     'state' => 'stable',
-    'version' => '9.0.0',
+    'version' => '9.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-9.5.99',
+            'typo3' => '9.5.0-10.4.99',
         ],
     ],
 ];

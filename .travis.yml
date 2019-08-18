@@ -74,6 +74,10 @@ jobs:
     - stage: test
       php: 7.2
       env:
+        - TYPO3_VERSION="^10.0"
+    - stage: test
+      php: 7.2
+      env:
         - TYPO3_VERSION="dev-master as 10.0.0"
 
     - stage: publish in ter
