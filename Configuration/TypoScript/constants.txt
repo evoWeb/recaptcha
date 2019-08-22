@@ -27,4 +27,7 @@ plugin.tx_recaptcha {
 
     # cat=plugin.recaptcha//10; type=string; label= reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)
     theme = light
+    
+    # cat=plugin.recaptcha//11; type=boolean; label= reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha
+    robotMode = 0
 }
