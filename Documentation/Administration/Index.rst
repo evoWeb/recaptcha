@@ -56,7 +56,8 @@ a default configuration without touching TypoScript, the extensions
 need to be configured in the admin tools extensions. Via the cog as shown
 on the screenshot.
 
-|configure|
+.. figure:: Images/configure.png
+   :alt: Configure extension settings
 
 .. _typo3.org: http://extenions.typo3.org/
 .. _github: https://github.com/evoweb/recaptcha

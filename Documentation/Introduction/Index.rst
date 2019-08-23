@@ -22,7 +22,8 @@ Also there are limited integrations into other extensions implemented.
 These act more as an living example and integrate only in extensions
 used by the author self.
 
-|recaptcha|
+.. figure:: Images/recaptcha.png
+   :alt: Show example of captcha output
 
 Features
 --------
