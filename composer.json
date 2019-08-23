@@ -4,9 +4,7 @@
 	"description": "Easy on Humans, Hard on Bots",
 	"homepage": "http://www.evoweb.de",
 
-	"license": [
-		"GPL-2.0-or-later"
-	],
+	"license": "GPL-2.0-or-later",
 
 	"support": {
 		"issues": "https://github.com/evoWeb/recaptcha/issues"
@@ -19,7 +17,7 @@
 	],
 
 	"suggest": {
-		"typo3/cms-form": "^9.5"
+		"typo3/cms-form": "^9.5 || ^10.0"
 	},
 
 	"require": {
