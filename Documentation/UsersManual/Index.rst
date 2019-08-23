@@ -23,7 +23,8 @@ Add captcha to form
 In the form manager it's possible to add the captcha to a form by
 choosing it in the new field wizard.
 
-|add|
+.. figure:: Images/add_recaptcha.png
+   :alt: Recaptcha on the form element wizard
 
 Configure label
 ~~~~~~~~~~~~~~~
@@ -31,7 +32,8 @@ Configure label
 After the selection the user is able to choose if the label should be
 rendered in frontend and if so what label text should be used.
 
-|added|
+.. figure:: Images/added_recaptcha.png
+   :alt: Add recaptcha element in form
 
 Use invisible captcha
 ~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +43,8 @@ Once this is done the form needs to be configured via the settings
 button on top of the form editor. There the checkbox for
 "Use invisible recaptcha" needs to be checked.
 
-|invisible|
+.. figure:: Images/invisible_recaptcha.png
+   :alt: Configuration of invisible recaptcha
 
 
 

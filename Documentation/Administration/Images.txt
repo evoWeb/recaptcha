@@ -1,5 +1,0 @@
-.. |configure|      image:: ../Images/configure.png
-.. :align: LEFT
-.. :border: 0
-.. :name: Configure
-.. :width: 100%
