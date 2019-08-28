@@ -14,6 +14,25 @@ namespace Evoweb\Recaptcha\Validation;
 
 class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
+    protected $acceptsEmptyValues = false;
+
+    /**
+     * Checks if the given value is valid according to the validator, and returns
+     * the error messages object which occurred.
+     *
+     * @param mixed $value The value that should be validated
+     * @return \TYPO3\CMS\Extbase\Error\Result
+     */
+    public function validate($value)
+    {
+        $value = trim(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('g-recaptcha-response'));
+        $this->result = new \TYPO3\CMS\Extbase\Error\Result();
+        if ($this->acceptsEmptyValues === false || $this->isEmpty($value) === false) {
+            $this->isValid($value);
+        }
+        return $this->result;
+    }
+
     /**
      * Validate the captcha value from the request and add an error if not valid
      *

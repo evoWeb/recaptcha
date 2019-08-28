@@ -4,14 +4,7 @@ plugin.tx_recaptcha {
     public_key.wrap.cObject = COA
     public_key.wrap.cObject {
         10 = TEXT
-        10.value = <div class="g-recaptcha" data-sitekey="|
-
-        20 = TEXT
-        20.value = ?hl={$plugin.tx_recaptcha.lang}
-        20.if.isTrue.value = {$plugin.tx_recaptcha.lang}
-
-        30 = TEXT
-        30.value = "></div>
+        10.value = <div class="g-recaptcha" data-sitekey="|"></div>
     }
 
     # look at https://www.google.com/recaptcha/admin to register a key for your server
@@ -23,7 +16,7 @@ plugin.tx_recaptcha {
     lang = {$plugin.tx_recaptcha.lang}
 
     enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
-    
+
     robotMode = {$plugin.tx_recaptcha.robotMode}
 
     invisibleCallback = onRecaptchaSubmit
@@ -85,8 +78,7 @@ plugin.Tx_Formhandler.settings {
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
 
-page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
-page.includeJSFooterlibs.recaptcha.external = 1
+page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}{$plugin.tx_recaptcha.lang}
 
 # only included if invisible captcha should be rendered
 page.jsInline.1508480348393 = TEXT

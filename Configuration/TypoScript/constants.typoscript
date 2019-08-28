@@ -14,7 +14,7 @@ plugin.tx_recaptcha {
     private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
     # cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
-    lang =
+    lang = ?hl=
 
     # cat=plugin.recaptcha//07; type=boolean; label= enforcing captcha even in development mode
     enforceCaptcha = 0
