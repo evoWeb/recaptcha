@@ -12,6 +12,7 @@ namespace Evoweb\Recaptcha\Services;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -114,7 +115,7 @@ class CaptchaService
      */
     protected function isDevelopmentMode(): bool
     {
-        return (bool) GeneralUtility::getApplicationContext()->isDevelopment();
+        return (bool) Environment::getContext()->isDevelopment();
     }
 
     /**
