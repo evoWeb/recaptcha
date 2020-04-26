@@ -1,4 +1,4 @@
-#recaptcha
+# recaptcha
 
 [![Build Status](https://travis-ci.org/evoWeb/recaptcha.svg?branch=master)](https://travis-ci.org/evoWeb/recaptcha)
 [![Latest Stable Version](https://poser.pugx.org/evoweb/recaptcha/v/stable)](https://packagist.org/packages/evoweb/recaptcha)
