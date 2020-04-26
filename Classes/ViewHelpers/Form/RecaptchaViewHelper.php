@@ -1,8 +1,9 @@
 <?php
+
 namespace Evoweb\Recaptcha\ViewHelpers\Form;
 
-/**
- * This file is developed by evoweb.
+/*
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -12,24 +13,36 @@ namespace Evoweb\Recaptcha\ViewHelpers\Form;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Evoweb\Recaptcha\Services\CaptchaService;
+
 class RecaptchaViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper
 {
+    /**
+     * @var CaptchaService
+     */
+    protected $captchaService;
+
+    public function __construct(CaptchaService $captchaService)
+    {
+        $this->captchaService = $captchaService;
+        parent::__construct();
+    }
+
     public function render(): string
     {
         $name = $this->getName();
         $this->registerFieldNameForFormTokenGeneration($name);
 
-        $captchaService = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
-
-        $this->templateVariableContainer->add('configuration', $captchaService->getConfiguration());
-        $this->templateVariableContainer->add('showCaptcha', $captchaService->getShowCaptcha());
-        $this->templateVariableContainer->add('name', $name);
+        $container = $this->templateVariableContainer;
+        $container->add('configuration', $this->captchaService->getConfiguration());
+        $container->add('showCaptcha', $this->captchaService->getShowCaptcha());
+        $container->add('name', $name);
 
         $content = $this->renderChildren();
 
-        $this->templateVariableContainer->remove('name');
-        $this->templateVariableContainer->remove('showCaptcha');
-        $this->templateVariableContainer->remove('configuration');
+        $container->remove('name');
+        $container->remove('showCaptcha');
+        $container->remove('configuration');
 
         return $content;
     }

@@ -1,8 +1,9 @@
 <?php
+
 namespace Evoweb\Recaptcha\Services;
 
-/**
- * This file is developed by evoweb.
+/*
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -12,6 +13,7 @@ namespace Evoweb\Recaptcha\Services;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -21,30 +23,42 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 class CaptchaService
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var ExtensionConfiguration
      */
-    protected $objectManager;
+    protected $extensionConfiguration;
+
+    /**
+     * @var ConfigurationManagerInterface
+     */
+    protected $configurationManager;
+
+    /**
+     * @var TypoScriptService
+     */
+    protected $typoScriptService;
+
+    /**
+     * @var ContentObjectRenderer
+     */
+    protected $contentRenderer;
 
     /**
      * @var array
      */
     protected $configuration = [];
 
-    public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
-    {
-        $this->objectManager = $objectManager;
-        $this->initialize();
-    }
+    public function __construct(
+        ExtensionConfiguration $extensionConfiguration,
+        ConfigurationManagerInterface $configurationManager,
+        TypoScriptService $typoScriptService,
+        ContentObjectRenderer $contentRenderer
+    ) {
+        $this->extensionConfiguration = $extensionConfiguration;
+        $this->configurationManager = $configurationManager;
+        $this->typoScriptService = $typoScriptService;
+        $this->contentRenderer = $contentRenderer;
 
-    public static function getInstance(): CaptchaService
-    {
-        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
-        $objectManager = GeneralUtility::makeInstance(
-            \TYPO3\CMS\Extbase\Object\ObjectManager::class
-        );
-        /** @var self $instance */
-        $instance = $objectManager->get(self::class);
-        return $instance;
+        $this->initialize();
     }
 
     /**
@@ -52,27 +66,21 @@ class CaptchaService
      */
     protected function initialize()
     {
-        $configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-            \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
-        )->get('recaptcha');
+        $configuration = $this->extensionConfiguration->get('recaptcha');
 
         if (!is_array($configuration)) {
             $configuration = [];
         }
 
-        /** @var ConfigurationManagerInterface $configurationManager */
-        $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
-        $typoScriptConfiguration = $configurationManager->getConfiguration(
+        $typoScriptConfiguration = $this->configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
             'recaptcha'
         );
 
         if (!empty($typoScriptConfiguration) && is_array($typoScriptConfiguration)) {
-            /** @var TypoScriptService $typoScriptService */
-            $typoScriptService = $this->objectManager->get(TypoScriptService::class);
             \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
-                $typoScriptService->convertPlainArrayToTypoScriptArray($typoScriptConfiguration),
+                $this->typoScriptService->convertPlainArrayToTypoScriptArray($typoScriptConfiguration),
                 true,
                 false
             );
@@ -91,13 +99,6 @@ class CaptchaService
     public function getConfiguration(): array
     {
         return $this->configuration;
-    }
-
-    protected function getContentObjectRenderer(): ContentObjectRenderer
-    {
-        /** @var ContentObjectRenderer $contentRenderer */
-        $contentRenderer = $this->objectManager->get(ContentObjectRenderer::class);
-        return $contentRenderer;
     }
 
     /**
@@ -140,7 +141,7 @@ class CaptchaService
     public function getReCaptcha(): string
     {
         if ($this->getShowCaptcha()) {
-            $captcha = $this->getContentObjectRenderer()->stdWrap(
+            $captcha = $this->contentRenderer->stdWrap(
                 $this->configuration['public_key'],
                 $this->configuration['public_key.']
             );
@@ -165,16 +166,6 @@ class CaptchaService
                 'verified' => true,
                 'error' => ''
             ];
-        }
-
-        if (!isset($this->configuration) || empty($this->configuration)) {
-            if (! $this->objectManager instanceof \TYPO3\CMS\Extbase\Object\ObjectManager) {
-                /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
-                $objectManager = GeneralUtility::makeInstance(
-                    \TYPO3\CMS\Extbase\Object\ObjectManager::class
-                );
-                $this->injectObjectManager($objectManager);
-            }
         }
 
         $request = [

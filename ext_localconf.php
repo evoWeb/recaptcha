@@ -1,5 +1,7 @@
 <?php
 
+defined('TYPO3_MODE') || die();
+
 call_user_func(function () {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['EXT:form/Resources/Private/Language/Database.xlf'][] =
         'EXT:recaptcha/Resources/Private/Language/Backend.xlf';
