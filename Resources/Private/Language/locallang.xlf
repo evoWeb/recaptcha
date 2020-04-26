@@ -15,6 +15,9 @@
 			<trans-unit id="error_recaptcha_invalid-input-response" xml:space="preserve">
 				<source>The captcha response parameter is invalid or malformed.</source>
 			</trans-unit>
+			<trans-unit id="error_recaptcha_timeout-or-duplicate" xml:space="preserve">
+				<source>Please revalidate</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

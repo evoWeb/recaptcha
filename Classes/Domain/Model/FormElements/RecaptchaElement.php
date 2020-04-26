@@ -1,8 +1,9 @@
 <?php
+
 namespace Evoweb\Recaptcha\Domain\Model\FormElements;
 
-/**
- * This file is developed by evoweb.
+/*
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2

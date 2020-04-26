@@ -1,8 +1,9 @@
 <?php
+
 namespace Evoweb\Recaptcha\Adapter;
 
-/**
- * This file is developed by evoweb.
+/*
+ * This file is developed by evoWeb.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -12,36 +13,33 @@ namespace Evoweb\Recaptcha\Adapter;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Evoweb\Recaptcha\Services\CaptchaService;
+use Evoweb\SfRegister\Services\Session;
+
 class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdapter
 {
     /**
-     * Captcha object
-     *
-     * @var \Evoweb\Recaptcha\Services\CaptchaService
+     * @var CaptchaService
      */
     protected $captcha;
 
     /**
-     * @var \Evoweb\SfRegister\Services\Session
+     * @var Session
      */
     protected $session;
 
-    public function injectCaptcha(\Evoweb\Recaptcha\Services\CaptchaService $captcha)
+    public function __construct(CaptchaService $captcha, Session $session)
     {
         $this->captcha = $captcha;
-    }
-
-    public function injectSession(\Evoweb\SfRegister\Services\Session $session)
-    {
         $this->session = $session;
     }
 
     /**
      * Rendering the output of the captcha
      *
-     * @return string|array
+     * @return string
      */
-    public function render()
+    public function render(): string
     {
         $this->session->remove('captchaWasValid');
 
@@ -64,7 +62,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
      *
      * @return bool
      */
-    public function isValid($value): bool
+    public function isValid(string $value): bool
     {
         $validCaptcha = true;
 

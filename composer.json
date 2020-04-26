@@ -7,6 +7,7 @@
 	"license": "GPL-2.0-or-later",
 
 	"support": {
+		"docs": "https://docs.typo3.org/p/evoweb/recaptcha/master/en-us/",
 		"issues": "https://github.com/evoWeb/recaptcha/issues"
 	},
 
@@ -17,11 +18,12 @@
 	],
 
 	"suggest": {
-		"typo3/cms-form": "^9.5 || ^10.0"
+		"typo3/cms-form": "^10.4"
 	},
 
 	"require": {
-		"typo3/cms-core": "^9.5 || ^10.0"
+		"typo3/cms-core": "^10.4",
+		"typo3/cms-frontend": "^10.4"
 	},
 
 	"autoload": {
@@ -31,11 +33,11 @@
 	},
 
 	"config": {
-		"vendor-dir": ".Build/Web/vendor",
-		"bin-dir": ".Build/bin"
+		"vendor-dir": ".Build/Web/vendor"
 	},
 	"extra": {
 		"typo3/cms": {
+			"extension-key": "recaptcha",
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"web-dir": ".Build/Web"
 		}
