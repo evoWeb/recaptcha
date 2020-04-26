@@ -46,7 +46,7 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
     public function isValid($value)
     {
         /** @var CaptchaService $captcha */
-        $captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $captcha = GeneralUtility::getContainer()->get(CaptchaService::class);
 
         if ($captcha !== null) {
             $status = $captcha->validateReCaptcha();
