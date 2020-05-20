@@ -82,8 +82,8 @@ page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}{$plugin.t
 page.includeJSFooterlibs.recaptcha.external = 1
 
 # only included if invisible captcha should be rendered
-page.jsInline.1508480348393 = TEXT
-page.jsInline.1508480348393 {
+page.jsInline.1508480348 = TEXT
+page.jsInline.1508480348 {
     value = function onRecaptchaSubmit() { document.querySelectorAll('[data-callback="onRecaptchaSubmit"]')[0].form.submit(); return false; }
     if.isTrue = {$plugin.tx_recaptcha.include_invisible_recaptcha_callback}
 }
