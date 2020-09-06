@@ -1,0 +1,9 @@
+.idea
+.Build/bin/
+.Build/vendor/
+.Build/Web/
+.Build/node_modules/
+.Build/package-lock.json
+var/
+composer.*
+!composer.json

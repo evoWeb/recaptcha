@@ -1,6 +1,6 @@
-# recaptcha
+# TYPO3 Extension ``recaptcha``
 
-[![Build Status](https://travis-ci.org/evoWeb/recaptcha.svg?branch=master)](https://travis-ci.org/evoWeb/recaptcha)
+![build](https://github.com/evoWeb/recaptcha/workflows/build/badge.svg?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/evoweb/recaptcha/v/stable)](https://packagist.org/packages/evoweb/recaptcha)
 [![Monthly Downloads](https://poser.pugx.org/evoweb/recaptcha/d/monthly)](https://packagist.org/packages/evoweb/recaptcha)
 [![Total Downloads](https://poser.pugx.org/evoweb/recaptcha/downloads)](https://packagist.org/packages/evoweb/recaptcha)
@@ -46,7 +46,7 @@ To be able to use the captcha add the static include of this extension to your t
 Afterwards modify your form output by replacing the submit button with something like this:
 
 ```
-<button 
+<button
 	data-sitekey="6LfmFxQUAAAAAGiMRvzLHGYQ8KiQiqgBuY5NswDz"
 	data-callback="onContactformCaptchaSubmit"
 	class="g-recaptcha"
