@@ -23,6 +23,8 @@ TYPO3:
                 predefinedDefaults:
                   validators:
                     -
+                      identifier: NotEmpty
+                    -
                       identifier: 'Recaptcha'
                   renderingOptions:
                     submitButtonLabel: 'true'

@@ -9,5 +9,12 @@ services:
     resource: '../Classes/*'
 
   Evoweb\Recaptcha\Services\CaptchaService:
-    arguments: ['@TYPO3\CMS\Core\Configuration\ExtensionConfiguration', '@TYPO3\CMS\Extbase\Configuration\ConfigurationManager', '@TYPO3\CMS\Core\TypoScript\TypoScriptService', '@TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer']
+    arguments:
+      - '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
+      - '@TYPO3\CMS\Extbase\Configuration\ConfigurationManager'
+      - '@TYPO3\CMS\Core\TypoScript\TypoScriptService'
+      - '@TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer'
+    public: true
+
+  Evoweb\Recaptcha\Adapter\SfRegisterAdapter:
     public: true

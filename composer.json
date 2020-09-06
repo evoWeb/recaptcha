@@ -17,13 +17,12 @@
 		"invisible captcha"
 	],
 
-	"suggest": {
-		"typo3/cms-form": "^10.4"
-	},
-
 	"require": {
 		"typo3/cms-core": "^10.4",
 		"typo3/cms-frontend": "^10.4"
+	},
+	"suggest": {
+		"typo3/cms-form": "^10.4"
 	},
 
 	"autoload": {
@@ -41,5 +40,9 @@
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"web-dir": ".Build/Web"
 		}
+	},
+
+	"scripts": {
+		"post-autoload-dump": "mkdir -p .Build/Web/typo3conf/ext/ && ln -snf ../../../.. .Build/Web/typo3conf/ext/recaptcha"
 	}
 }

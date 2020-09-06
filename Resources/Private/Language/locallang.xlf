@@ -18,6 +18,9 @@
 			<trans-unit id="error_recaptcha_timeout-or-duplicate" xml:space="preserve">
 				<source>Please revalidate</source>
 			</trans-unit>
+			<trans-unit id="error_recaptcha_invalid-keys" xml:space="preserve">
+				<source>The private key is invalid or missing</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

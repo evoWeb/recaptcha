@@ -29,7 +29,7 @@ class Recaptcha extends \Typoheads\Formhandler\Validator\ErrorCheck\AbstractErro
     public function check(): string
     {
         /** @var CaptchaService $captcha */
-        $captcha = GeneralUtility::makeInstance(CaptchaService::class);
+        $captcha = GeneralUtility::getContainer()->get(CaptchaService::class);
 
         $checkFailed = '';
         if ($captcha !== null) {
