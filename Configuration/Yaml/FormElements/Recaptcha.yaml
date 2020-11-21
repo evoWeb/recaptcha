@@ -3,16 +3,24 @@ TYPO3:
     Form:
       prototypes:
         standard:
-          formEditor:
-            dynamicRequireJsModules:
-              additionalViewModelModules:
-                - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
-
-            formEditorPartials:
-              FormElement-Recaptcha: 'Stage/SimpleTemplate'
-
           formElementsDefinition:
+            Form:
+              renderingOptions:
+                partialRootPaths:
+                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
+              formEditor:
+                editors:
+                  400:
+                    identifier: 'useInvisibleRecaptcha'
+                    templateName: 'Inspector-CheckboxEditor'
+                    label: 'formEditor.elements.Form.editor.useInvisibleRecaptcha.label'
+                    propertyPath: 'renderingOptions.useInvisibleRecaptcha'
+
             Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'
+              properties:
+                containerClassAttribute: 'recaptcha'
+
               __inheritances:
                 10: 'TYPO3.CMS.Form.mixins.formElementMixins.RecaptchaMixin'
               formEditor:
@@ -22,9 +30,7 @@ TYPO3:
                 iconIdentifier: 't3-form-icon-recaptcha'
                 predefinedDefaults:
                   validators:
-                    -
-                      identifier: NotEmpty
-                    -
+                    10:
                       identifier: 'Recaptcha'
                   renderingOptions:
                     submitButtonLabel: 'true'
@@ -36,7 +42,24 @@ TYPO3:
                     propertyPath: 'renderingOptions.submitButtonLabel'
                   800: null
 
+          validatorsDefinition:
+            Recaptcha:
+              implementationClassName: 'Evoweb\Recaptcha\Validation\RecaptchaValidator'
+
+          formEditor:
+            dynamicRequireJsModules:
+              additionalViewModelModules:
+                - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
+
+            formEditorPartials:
+              FormElement-Recaptcha: 'Stage/SimpleTemplate'
+
+
       mixins:
+        finishersEmailMixin:
+          options:
+            templateRootPaths:
+              1974: 'EXT:recaptcha/Resources/Private/Frontend/Templates/Finishers/Email/'
         formElementMixins:
           RecaptchaMixin:
             __inheritances:

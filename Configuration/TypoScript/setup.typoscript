@@ -75,7 +75,7 @@ plugin.Tx_Formhandler.settings {
 }
 
 # add settings for EXT:form
-plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/BaseSetup.yaml
+plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/FormSetup.yaml
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}{$plugin.tx_recaptcha.lang}
