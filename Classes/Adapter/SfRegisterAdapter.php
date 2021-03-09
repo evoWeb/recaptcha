@@ -23,7 +23,7 @@ class SfRegisterAdapter extends AbstractAdapter
     /**
      * @var CaptchaService
      */
-    protected ?object $captcha;
+    protected ?object $captcha = null;
 
     protected Session $session;
 
