@@ -15,8 +15,10 @@ namespace Evoweb\Recaptcha\Validation;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Error\Result;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
-class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+class RecaptchaValidator extends AbstractValidator
 {
     protected $acceptsEmptyValues = false;
 
@@ -30,8 +32,8 @@ class RecaptchaValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
      */
     public function validate($value)
     {
-        $value = trim(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('g-recaptcha-response'));
-        $this->result = new \TYPO3\CMS\Extbase\Error\Result();
+        $value = trim(GeneralUtility::_GP('g-recaptcha-response'));
+        $this->result = new Result();
         if ($this->acceptsEmptyValues === false || $this->isEmpty($value) === false) {
             $this->isValid($value);
         }

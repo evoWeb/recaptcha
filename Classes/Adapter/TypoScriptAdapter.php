@@ -14,13 +14,11 @@ namespace Evoweb\Recaptcha\Adapter;
  */
 
 use Evoweb\Recaptcha\Services\CaptchaService;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class TypoScriptAdapter
 {
-    /**
-     * @var CaptchaService
-     */
-    protected $captchaService;
+    protected CaptchaService $captchaService;
 
     public function __construct(CaptchaService $captchaService)
     {
@@ -35,14 +33,14 @@ class TypoScriptAdapter
             $status = $this->captchaService->validateReCaptcha();
             if ($status == false || $status['error'] !== '') {
                 $output .= '<span class="error">' .
-                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                    LocalizationUtility::translate(
                         'error_recaptcha_' . $status['error'],
                         'Recaptcha'
                     ) .
                     '</span>';
             }
         } else {
-            $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            $output = LocalizationUtility::translate(
                 'error_captcha.notinstalled',
                 'Recaptcha'
             );

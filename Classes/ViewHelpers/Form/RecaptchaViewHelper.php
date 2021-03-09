@@ -14,13 +14,11 @@ namespace Evoweb\Recaptcha\ViewHelpers\Form;
  */
 
 use Evoweb\Recaptcha\Services\CaptchaService;
+use TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper;
 
-class RecaptchaViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper
+class RecaptchaViewHelper extends AbstractFormFieldViewHelper
 {
-    /**
-     * @var CaptchaService
-     */
-    protected $captchaService;
+    protected CaptchaService $captchaService;
 
     public function __construct(CaptchaService $captchaService)
     {

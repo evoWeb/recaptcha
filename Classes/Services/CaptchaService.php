@@ -13,39 +13,27 @@ namespace Evoweb\Recaptcha\Services;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+use Evoweb\Recaptcha\Exception\MissingException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class CaptchaService
 {
-    /**
-     * @var ExtensionConfiguration
-     */
-    protected $extensionConfiguration;
+    protected ExtensionConfiguration $extensionConfiguration;
 
-    /**
-     * @var ConfigurationManagerInterface
-     */
-    protected $configurationManager;
+    protected ConfigurationManagerInterface $configurationManager;
 
-    /**
-     * @var TypoScriptService
-     */
-    protected $typoScriptService;
+    protected TypoScriptService $typoScriptService;
 
-    /**
-     * @var ContentObjectRenderer
-     */
-    protected $contentRenderer;
+    protected ContentObjectRenderer $contentRenderer;
 
-    /**
-     * @var array
-     */
-    protected $configuration = [];
+    protected array $configuration = [];
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
@@ -62,7 +50,7 @@ class CaptchaService
     }
 
     /**
-     * @throws \Evoweb\Recaptcha\Exception\MissingException
+     * @throws MissingException
      */
     protected function initialize()
     {
@@ -78,7 +66,7 @@ class CaptchaService
         );
 
         if (!empty($typoScriptConfiguration) && is_array($typoScriptConfiguration)) {
-            \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
+            ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
                 $this->typoScriptService->convertPlainArrayToTypoScriptArray($typoScriptConfiguration),
                 true,
@@ -87,7 +75,7 @@ class CaptchaService
         }
 
         if (!is_array($configuration) || empty($configuration)) {
-            throw new \Evoweb\Recaptcha\Exception\MissingException(
+            throw new MissingException(
                 'Please configure plugin.tx_recaptcha. before rendering the recaptcha',
                 1417680291
             );
@@ -107,7 +95,7 @@ class CaptchaService
      */
     protected function isInRobotMode(): bool
     {
-        return (bool) $this->configuration['robotMode'];
+        return (bool)$this->configuration['robotMode'];
     }
 
     /**
@@ -116,7 +104,7 @@ class CaptchaService
      */
     protected function isDevelopmentMode(): bool
     {
-        return (bool) Environment::getContext()->isDevelopment();
+        return (bool)Environment::getContext()->isDevelopment();
     }
 
     /**
@@ -124,13 +112,17 @@ class CaptchaService
      */
     protected function isEnforceCaptcha(): bool
     {
-        return (bool) $this->configuration['enforceCaptcha'];
+        return (bool)$this->configuration['enforceCaptcha'];
     }
 
     public function getShowCaptcha(): bool
     {
         return !$this->isInRobotMode()
-            && (TYPO3_MODE == 'BE' || !$this->isDevelopmentMode() || $this->isEnforceCaptcha());
+            && (
+                ApplicationType::fromRequest($GLOBALS['REQUEST_TYPE'])->isBackend()
+                || !$this->isDevelopmentMode()
+                || $this->isEnforceCaptcha()
+            );
     }
 
     /**
@@ -214,7 +206,7 @@ class CaptchaService
         }
 
         $request = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = GeneralUtility::getUrl($this->configuration['verify_server'] . '?' . $request);
+        $response = @file_get_contents($this->configuration['verify_server'] . '?' . $request);
 
         return $response ? json_decode($response, true) : [];
     }
