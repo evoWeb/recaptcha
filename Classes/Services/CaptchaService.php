@@ -119,7 +119,7 @@ class CaptchaService
     {
         return !$this->isInRobotMode()
             && (
-                ApplicationType::fromRequest($GLOBALS['REQUEST_TYPE'])->isBackend()
+                ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()
                 || !$this->isDevelopmentMode()
                 || $this->isEnforceCaptcha()
             );
