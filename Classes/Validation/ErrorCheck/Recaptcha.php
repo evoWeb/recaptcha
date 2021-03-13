@@ -15,11 +15,14 @@ namespace Evoweb\Recaptcha\Validation\ErrorCheck;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck;
 
 /**
  * EXT:formhandler ErrorCheck for Recaptcha.
+ *
+ * @deprecated with 11.x
  */
-class Recaptcha extends \Typoheads\Formhandler\Validator\ErrorCheck\AbstractErrorCheck
+class Recaptcha extends AbstractErrorCheck
 {
     /**
      * Checks the ReCaptcha.

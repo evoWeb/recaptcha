@@ -13,6 +13,8 @@ namespace Evoweb\Recaptcha\Exception;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-class MissingException extends \TYPO3\CMS\Core\Exception
+use TYPO3\CMS\Core\Exception;
+
+class MissingException extends Exception
 {
 }

@@ -18,11 +18,13 @@
 	],
 
 	"require": {
-		"typo3/cms-core": "^10.4",
-		"typo3/cms-frontend": "^10.4"
+		"typo3/cms-core": "^11.0",
+		"typo3/cms-extbase": "*",
+		"typo3/cms-fluid": "*",
+		"typo3/cms-frontend": "*"
 	},
 	"suggest": {
-		"typo3/cms-form": "^10.4"
+		"typo3/cms-form": "*"
 	},
 
 	"autoload": {
@@ -43,6 +45,12 @@
 	},
 
 	"scripts": {
-		"post-autoload-dump": "mkdir -p .Build/Web/typo3conf/ext/ && ln -snf ../../../.. .Build/Web/typo3conf/ext/recaptcha"
+		"post-autoload-dump": "mkdir -p .Build/Web/typo3conf/ext/ && ln -snf ../../../.. .Build/Web/typo3conf/ext/recaptcha",
+		"prepare-release": [
+			"rm -rf .Build",
+			"rm -rf .github",
+			"rm .gitignore",
+			"sed -i \"s/version' => '.*'/version' => '$(echo ${GITHUB_REF} | cut -d / -f 3)'/\" ext_emconf.php\n"
+		]
 	}
 }

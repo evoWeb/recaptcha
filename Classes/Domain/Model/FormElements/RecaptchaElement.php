@@ -13,6 +13,8 @@ namespace Evoweb\Recaptcha\Domain\Model\FormElements;
  * LICENSE.txt file that was distributed with this source code.
  */
 
-class RecaptchaElement extends \TYPO3\CMS\Form\Domain\Model\FormElements\AbstractFormElement
+use TYPO3\CMS\Form\Domain\Model\FormElements\AbstractFormElement;
+
+class RecaptchaElement extends AbstractFormElement
 {
 }

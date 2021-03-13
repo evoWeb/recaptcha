@@ -14,19 +14,18 @@ namespace Evoweb\Recaptcha\Adapter;
  */
 
 use Evoweb\Recaptcha\Services\CaptchaService;
+use Evoweb\SfRegister\Services\Captcha\AbstractAdapter;
 use Evoweb\SfRegister\Services\Session;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdapter
+class SfRegisterAdapter extends AbstractAdapter
 {
     /**
      * @var CaptchaService
      */
-    protected $captcha;
+    protected ?object $captcha = null;
 
-    /**
-     * @var Session
-     */
-    protected $session;
+    protected Session $session;
 
     public function __construct(CaptchaService $captcha, Session $session)
     {
@@ -46,7 +45,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
         if ($this->captcha !== null) {
             $output = $this->captcha->getReCaptcha();
         } else {
-            $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            $output = LocalizationUtility::translate(
                 'error_captcha.notinstalled',
                 'Recaptcha'
             );
@@ -72,7 +71,7 @@ class SfRegisterAdapter extends \Evoweb\SfRegister\Services\Captcha\AbstractAdap
             if ($status == false || $status['error'] !== '') {
                 $validCaptcha = false;
                 $this->addError(
-                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                    LocalizationUtility::translate(
                         'error_recaptcha_' . $status['error'],
                         'Recaptcha'
                     ),
