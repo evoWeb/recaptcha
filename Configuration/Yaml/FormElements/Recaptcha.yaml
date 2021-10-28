@@ -4,73 +4,46 @@ TYPO3:
       prototypes:
         standard:
           formElementsDefinition:
-            Form:
-              renderingOptions:
-                partialRootPaths:
-                  1974: 'EXT:recaptcha/Resources/Private/Frontend/Partials/'
+            Recaptcha:
               formEditor:
                 editors:
-                  400:
-                    identifier: 'useInvisibleRecaptcha'
-                    templateName: 'Inspector-CheckboxEditor'
-                    label: 'formEditor.elements.Form.editor.useInvisibleRecaptcha.label'
-                    propertyPath: 'renderingOptions.useInvisibleRecaptcha'
+                  100:
+                    identifier: header
+                    templateName: Inspector-FormElementHeaderEditor
+                  200:
+                    identifier: label
+                    templateName: Inspector-TextEditor
+                    label: formEditor.elements.FormElement.editor.label.label
+                    propertyPath: label
+                  300:
+                    identifier: showLabel
+                    templateName: Inspector-CheckboxEditor
+                    label: formEditor.elements.Recaptcha.editor.showLabel.label
+                    propertyPath: renderingOptions.submitButtonLabel
+                  900:
+                    identifier: validators
+                    templateName: Inspector-ValidatorsEditor
+                    label: formEditor.elements.FormElement.editor.recaptchaValidator.label
+                    selectOptions:
+                      180:
+                        value: Recaptcha
+                        label: formEditor.elements.RecaptchaMixin.validators.Recaptcha.editor.header.label'
+                  9999:
+                    identifier: removeButton
+                    templateName: Inspector-RemoveElementEditor
 
-            Recaptcha:
-              implementationClassName: 'Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement'
-              properties:
-                containerClassAttribute: 'recaptcha'
-
-              __inheritances:
-                10: 'TYPO3.CMS.Form.mixins.formElementMixins.RecaptchaMixin'
-              formEditor:
-                label: 'formEditor.elements.Recaptcha.label'
-                group: custom
-                groupSorting: 700
-                iconIdentifier: 't3-form-icon-recaptcha'
                 predefinedDefaults:
                   validators:
                     10:
-                      identifier: 'Recaptcha'
+                      identifier: Recaptcha
                   renderingOptions:
-                    submitButtonLabel: 'true'
-                editors:
-                  300:
-                    identifier: 'showLabel'
-                    templateName: 'Inspector-CheckboxEditor'
-                    label: 'formEditor.elements.Recaptcha.editor.showLabel.label'
-                    propertyPath: 'renderingOptions.submitButtonLabel'
-                  800: null
+                    submitButtonLabel: true
+                label: formEditor.elements.Recaptcha.label
+                group: custom
+                groupSorting: 700
+                iconIdentifier: t3-form-icon-recaptcha
 
-          validatorsDefinition:
-            Recaptcha:
-              implementationClassName: 'Evoweb\Recaptcha\Validation\RecaptchaValidator'
+              implementationClassName: Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement
 
-          formEditor:
-            dynamicRequireJsModules:
-              additionalViewModelModules:
-                - 'TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel'
-
-            formEditorPartials:
-              FormElement-Recaptcha: 'Stage/SimpleTemplate'
-
-
-      mixins:
-        finishersEmailMixin:
-          options:
-            templateRootPaths:
-              1974: 'EXT:recaptcha/Resources/Private/Frontend/Templates/Finishers/Email/'
-        formElementMixins:
-          RecaptchaMixin:
-            __inheritances:
-              10: 'TYPO3.CMS.Form.mixins.formElementMixins.FormElementMixin'
-            formEditor:
-              editors:
-                900:
-                  identifier: 'validators'
-                  templateName: 'Inspector-ValidatorsEditor'
-                  label: 'formEditor.elements.FormElement.editor.recaptchaValidator.label'
-                  selectOptions:
-                    180:
-                      value: 'Recaptcha'
-                      label: 'formEditor.elements.TextMixin.validators.Recaptcha.editor.header.label'
+              properties:
+                containerClassAttribute: recaptcha

@@ -1,0 +1,10 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          finishersDefinition:
+            EmailToReceiver:
+              options:
+                templateRootPaths:
+                  1974: EXT:recaptcha/Resources/Private/Frontend/Templates/Finishers/Email/
