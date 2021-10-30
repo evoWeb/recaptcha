@@ -1,0 +1,18 @@
+# Adding use invisible recaptcha checkbox to form settings
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                partialRootPaths:
+                  1974: EXT:recaptcha/Resources/Private/Frontend/Partials/
+              formEditor:
+                editors:
+                  400:
+                    identifier: useInvisibleRecaptcha
+                    templateName: Inspector-CheckboxEditor
+                    label: formEditor.elements.Form.editor.useInvisibleRecaptcha.label
+                    propertyPath: renderingOptions.useInvisibleRecaptcha
