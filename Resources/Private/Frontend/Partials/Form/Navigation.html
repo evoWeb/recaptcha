@@ -12,7 +12,7 @@
 							value="{form.previousPage.index}"
 							class="btn btn-cancel"
 							formnovalidate="formnovalidate"
-							onclick="document.getElementById('currentPage').value='{form.previousPage.index}'"
+							onclick="document.forms['{form.formDefinition.identifier}'].querySelector('#currentPage').value='{form.previousPage.index}'"
 					><formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="previousButtonLabel"/></f:form.button>
 				</span>
 			</f:if>
@@ -22,7 +22,7 @@
 						<f:form.button
 								value="{form.nextPage.index}"
 								class="btn btn-primary"
-								onclick="document.getElementById('currentPage').value='{form.nextPage.index}'"
+								onclick="document.forms['{form.formDefinition.identifier}'].querySelector('#currentPage').value='{form.nextPage.index}'"
 						>{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</f:form.button>
 					</span>
 				</f:then>
@@ -40,14 +40,14 @@
 														sitekey: '{configuration.public_key}',
 														callback: configuration.invisibleCallback
 													}"
-													onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+													onclick="document.forms['{form.formDefinition.identifier}'].querySelector('#currentPage').value='{form.pages -> f:count()}'"
 											>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 										</f:then>
 										<f:else>
 											<f:form.button
 													value="{form.pages -> f:count()}"
 													class="btn btn-primary"
-													onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+													onclick="document.forms['{form.formDefinition.identifier}'].querySelector('#currentPage').value='{form.pages -> f:count()}'"
 											>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 											<div class="recaptcha-development-mode">
 												Development mode active. Do not expect the captcha to appear
@@ -60,7 +60,7 @@
 								<f:form.button
 										value="{form.pages -> f:count()}"
 										class="btn btn-primary"
-										onclick="document.getElementById('currentPage').value='{form.pages -> f:count()}'"
+										onclick="document.forms['{form.formDefinition.identifier}'].querySelector('#currentPage').value='{form.pages -> f:count()}'"
 								>{formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}</f:form.button>
 							</f:else>
 						</f:if>
