@@ -34,8 +34,7 @@ class CaptchaService
 
     protected ContentObjectRenderer $contentRenderer;
 
-    /** @var RequestFactoryInterface */
-    protected $requestFactory;
+    protected RequestFactoryInterface $requestFactory;
 
     protected array $configuration = [];
 
