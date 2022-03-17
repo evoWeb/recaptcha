@@ -22,6 +22,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use Psr\Http\Message\RequestFactoryInterface;
 
 class CaptchaService
 {
@@ -33,18 +34,23 @@ class CaptchaService
 
     protected ContentObjectRenderer $contentRenderer;
 
+    /** @var RequestFactoryInterface */
+    private $requestFactory;
+
     protected array $configuration = [];
 
     public function __construct(
         ExtensionConfiguration $extensionConfiguration,
         ConfigurationManagerInterface $configurationManager,
         TypoScriptService $typoScriptService,
-        ContentObjectRenderer $contentRenderer
+        ContentObjectRenderer $contentRenderer,
+        RequestFactoryInterface $requestFactory
     ) {
         $this->extensionConfiguration = $extensionConfiguration;
         $this->configurationManager = $configurationManager;
         $this->typoScriptService = $typoScriptService;
         $this->contentRenderer = $contentRenderer;
+        $this->requestFactory = $requestFactory;
 
         $this->initialize();
     }
@@ -205,9 +211,10 @@ class CaptchaService
             ];
         }
 
-        $request = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = @file_get_contents($this->configuration['verify_server'] . '?' . $request);
+        $params = GeneralUtility::implodeArrayForUrl('', $data);
+        $response = $this->requestFactory->request($this->configuration['verify_server']. '?' . $params, 'POST');
 
-        return $response ? json_decode($response, true) : [];
+
+        return $response ? json_decode($response->getBody()->getContents(), true) : [];
     }
 }
