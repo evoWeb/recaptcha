@@ -95,7 +95,7 @@ class CaptchaService
      */
     protected function isInRobotMode(): bool
     {
-        return (bool)$this->configuration['robotMode'];
+        return (bool)($this->configuration['robotMode'] ?? false);
     }
 
     /**
