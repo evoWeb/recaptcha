@@ -23,6 +23,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use Psr\Http\Message\RequestFactoryInterface;
+use TYPO3\CMS\Core\Http\RequestFactory;
 
 class CaptchaService
 {
@@ -57,7 +58,7 @@ class CaptchaService
     /**
      * @throws MissingException
      */
-    protected function initialize()
+    protected function initialize(): void
     {
         $configuration = $this->extensionConfiguration->get('recaptcha');
 
@@ -70,7 +71,7 @@ class CaptchaService
             'recaptcha'
         );
 
-        if (!empty($typoScriptConfiguration) && is_array($typoScriptConfiguration)) {
+        if (!empty($typoScriptConfiguration)) {
             ArrayUtility::mergeRecursiveWithOverrule(
                 $configuration,
                 $this->typoScriptService->convertPlainArrayToTypoScriptArray($typoScriptConfiguration),
@@ -117,7 +118,7 @@ class CaptchaService
      */
     protected function isEnforceCaptcha(): bool
     {
-        return (bool)$this->configuration['enforceCaptcha'];
+        return (bool)($this->configuration['enforceCaptcha'] ?? false);
     }
 
     public function getShowCaptcha(): bool
@@ -139,8 +140,8 @@ class CaptchaService
     {
         if ($this->getShowCaptcha()) {
             $captcha = $this->contentRenderer->stdWrap(
-                $this->configuration['public_key'],
-                $this->configuration['public_key.']
+                $this->configuration['public_key'] ?? '',
+                $this->configuration['public_key.'] ?? ''
             );
         } else {
             $captcha = '<div class="recaptcha-development-mode">
@@ -166,7 +167,7 @@ class CaptchaService
         }
 
         $request = [
-            'secret' => $this->configuration['private_key'],
+            'secret' => $this->configuration['private_key'] ?? '',
             'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
         ];
@@ -201,7 +202,7 @@ class CaptchaService
      */
     protected function queryVerificationServer(array $data): array
     {
-        $verifyServerInfo = @parse_url($this->configuration['verify_server']);
+        $verifyServerInfo = @parse_url($this->configuration['verify_server'] ?? '');
 
         if (empty($verifyServerInfo)) {
             return [
@@ -211,9 +212,8 @@ class CaptchaService
         }
 
         $params = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = $this->requestFactory->request($this->configuration['verify_server']. '?' . $params, 'POST');
+        $response = $this->requestFactory->request($this->configuration['verify_server'] . '?' . $params, 'POST');
 
-
-        return $response ? json_decode($response->getBody()->getContents(), true) : [];
+        return $response->getBody()->getContents() ? json_decode($response->getBody()->getContents(), true) : [];
     }
 }
