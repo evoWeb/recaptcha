@@ -23,7 +23,7 @@ Integration of reCAPTCHA: Easy on Humans, Hard on Bots
       reCAPTCHA, rendering, validator, domain model validation, EXT:form integration
 
 :Copyright:
-      2015-2020
+      2015-2022
 
 :Author:
       Sebastian Fischer
