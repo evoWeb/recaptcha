@@ -15,3 +15,6 @@ lang =
 
 # cat=plugin.recaptcha; type=boolean; label= enforcing captcha even in development mode
 enforceCaptcha = 0
+
+# cat=plugin.recaptcha//11; type=boolean; label= reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha
+robotMode = 0
