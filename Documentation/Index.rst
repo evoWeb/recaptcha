@@ -1,29 +1,20 @@
-.. include:: Includes.txt
+.. include:: /Includes.rst.txt
 
-
-.. _start:
-
-======================================================
-Integration of reCAPTCHA: Easy on Humans, Hard on Bots
-======================================================
+=======================================
+reCAPTCHA: Easy on Humans, Hard on Bots
+=======================================
 
 :Extension Key:
       recaptcha
+
+:Package name:
+   evoweb/recaptcha
 
 :Version:
       |release|
 
 :Language:
       en
-
-:Description:
-      Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
-
-:Keywords:
-      reCAPTCHA, rendering, validator, domain model validation, EXT:form integration
-
-:Copyright:
-      2015-2022
 
 :Author:
       Sebastian Fischer
@@ -38,6 +29,10 @@ Integration of reCAPTCHA: Easy on Humans, Hard on Bots
 :Rendered:
       |today|
 
+-----
+
+Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
+
 The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from http://typo3.org
 
@@ -46,9 +41,8 @@ a GNU/GPL CMS/Framework available from http://typo3.org
 **Table of Contents:**
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :titlesonly:
-   :glob:
 
    Introduction/Index
    UsersManual/Index
@@ -57,9 +51,11 @@ a GNU/GPL CMS/Framework available from http://typo3.org
    Integration/Index
    Templating/Index
    Tutorial/Index
-   Targets
+
+.. Meta Menu
 
 .. toctree::
    :hidden:
 
    Sitemap
+   genindex

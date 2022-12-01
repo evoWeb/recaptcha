@@ -1,12 +1,8 @@
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+.. include:: /Includes.rst.txt
 
-.. include:: ./Images.txt
-.. include:: ../Includes.txt
+.. _administration:
 
-
+==============
 Administration
 ==============
 

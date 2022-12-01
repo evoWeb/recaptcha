@@ -1,9 +1,7 @@
 .idea
-.Build/bin/
-.Build/vendor/
-.Build/Web/
-.Build/node_modules/
-.Build/package-lock.json
+.Build/
+!.Build/docker-compose.yml
+!.Build/xliff-core-1.2-strict.xsd
 var/
 composer.*
 !composer.json
