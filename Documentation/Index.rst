@@ -41,13 +41,9 @@ Integration of reCAPTCHA: Easy on Humans, Hard on Bots
 The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from http://typo3.org
 
-.. only:: html
+----
 
-   .. tip::
-
-      :ref:`Sitemap`
-
-**Table of Contents**
+**Table of Contents:**
 
 .. toctree::
    :maxdepth: 5
@@ -62,3 +58,8 @@ a GNU/GPL CMS/Framework available from http://typo3.org
    Templating/Index
    Tutorial/Index
    Targets
+
+.. toctree::
+   :hidden:
+
+   Sitemap
