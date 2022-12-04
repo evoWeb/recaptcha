@@ -59,11 +59,13 @@ Afterwards modify your form output by replacing the submit button with something
 After that your are ready on the frontend but still need to call the validation in your php code.
 
 ```
-$validCaptcha = true;
+$validCaptcha = false;
 
-$status = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->validateReCaptcha();
-
-if ($status == false || $status['error'] !== '') {
-	$validCaptcha = false;
+$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+$captchaServiceValidation = $captchaService->validateReCaptcha();
+if (isset($captchaServiceValidation['verified'])) {
+	if ($captchaServiceValidation['verified'] === true) {
+		$validCaptcha = true;
+	}
 }
 ```
