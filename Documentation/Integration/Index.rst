@@ -31,7 +31,8 @@ by calling getReCaptcha.
 .. code-block:: php
    :caption: Get rendered captcha from service
 
-   $output = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->getReCaptcha();
+   $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+   $output = $captchaService->getReCaptcha();
 
 Please keep in mind that it only renders the captcha. If you need
 something to trigger the validation in your controller it's up to
@@ -47,7 +48,7 @@ prepare the settings for you.
 .. code-block:: php
    :caption: Get settings to render individually
 
-   $captchaService = \Evoweb\Recaptcha\Services\CaptchaService::getInstance();
+   $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
    $configuration = $captchaService->getConfiguration();
    $showCaptcha = $captchaService->getShowCaptcha();
 
@@ -63,8 +64,15 @@ result of the validation to check against.
 .. code-block:: php
    :caption: Validate captcha in extension
 
-   $status = \Evoweb\Recaptcha\Services\CaptchaService::getInstance()->validateReCaptcha();
-   $valid = $status['error'] !== '';
+   $validCaptcha = false;
+
+   $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+   $captchaServiceValidation = $captchaService->validateReCaptcha();
+   if (isset($captchaServiceValidation['verified'])) {
+   	if ($captchaServiceValidation['verified'] === true) {
+   		$validCaptcha = true;
+   	}
+   }
 
 
 Integration in extbase extension
