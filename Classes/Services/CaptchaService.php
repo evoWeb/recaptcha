@@ -214,6 +214,6 @@ class CaptchaService
         $params = GeneralUtility::implodeArrayForUrl('', $data);
         $response = $this->requestFactory->request($this->configuration['verify_server'] . '?' . $params, 'POST');
 
-        return $response->getBody()->getContents() ? json_decode($response->getBody()->getContents(), true) : [];
+        return $response->getBody()->__toString() ? json_decode($response->getBody()->__toString(), true) : [];
     }
 }
