@@ -11,16 +11,13 @@ jobs:
   xliff:
     runs-on: ubuntu-20.04
 
-    name: XML Lint (Xliff)
+    name: Xliff Lint
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install libxml2-utils
-        run: sudo apt install libxml2-utils
-
-      - name: Running xmllint (Xliff)
-        run: find Resources/Private/Language/ -name '*.xlf' -type f | xargs xmllint --noout --schema .Build/xliff-core-1.2-strict.xsd
+      - name: Run the xliff lint
+        uses: TYPO3-Continuous-Integration/TYPO3-CI-Xliff-Lint@v1
 
   lint:
     runs-on: ubuntu-20.04
@@ -32,7 +29,7 @@ jobs:
     name: Lint PHP ${{ matrix.php-versions }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -54,14 +51,14 @@ jobs:
         env:
           - { php: 7.4, TYPO3_VERSION: ^11.0, TESTING_FRAMEWORK: ^6.6.2 }
           - { php: 7.4, TYPO3_VERSION: ^11.0, TESTING_FRAMEWORK: ^6.6.2, PREFER_LOWEST: "--prefer-lowest" }
-          - { php: 7.4, TYPO3_VERSION: "dev-master", TESTING_FRAMEWORK: ^6.6.2, experimental: true }
+          - { php: 8.1, TYPO3_VERSION: "dev-main", TESTING_FRAMEWORK: "dev-main", experimental: true }
 
     env: ${{ matrix.env }}
 
     name: Run unit and/or functional tests on TYPO3 ${{ matrix.env.TYPO3_VERSION }} with PHP${{ matrix.env.php }} and testing framework ${{ matrix.env.TESTING_FRAMEWORK }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -74,13 +71,13 @@ jobs:
         run: composer validate
 
       - name: Cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.composer/cache
           key: dependencies-composer-${{ hashFiles('composer.json') }}
 
       - name: Ensure stability dev
-        if: ${{ matrix.env.TYPO3_VERSION == 'dev-master' }}
+        if: ${{ matrix.env.TYPO3_VERSION == 'dev-main' }}
         run: |
           composer config minimum-stability dev
           composer config prefer-stable true
@@ -107,7 +104,7 @@ jobs:
     name: TYPO3 TER release
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Publish to TER
         uses: tomasnorre/typo3-upload-ter@v2
