@@ -68,7 +68,7 @@ class SfRegisterAdapter extends AbstractAdapter
         if ($this->captcha !== null && $this->session->get('captchaWasValid') !== true) {
             $status = $this->captcha->validateReCaptcha();
 
-            if ($status == false || (string)$status['error'] !== '') {
+            if (!$status || (string)$status['error'] !== '') {
                 $validCaptcha = false;
                 $this->addError(
                     LocalizationUtility::translate(

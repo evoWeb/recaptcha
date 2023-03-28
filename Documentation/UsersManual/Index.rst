@@ -64,18 +64,3 @@ Marker for the submit button:
     :linenos:
 
     ###recaptcha_button_invisible###
-
-
-Error check:
-
-.. code-block:: typoscript
-    :linenos:
-
-    [...]
-    validators.1.config.fieldConf {
-        recaptcha.errorCheck {
-            1 = required
-            2 = \Evoweb\Recaptcha\Validation\ErrorCheck\Recaptcha
-       }
-    }
-    [...]

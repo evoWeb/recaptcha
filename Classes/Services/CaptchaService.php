@@ -14,44 +14,28 @@ namespace Evoweb\Recaptcha\Services;
  */
 
 use Evoweb\Recaptcha\Exception\MissingException;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ApplicationType;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use Psr\Http\Message\RequestFactoryInterface;
-use TYPO3\CMS\Core\Http\RequestFactory;
 
 class CaptchaService
 {
-    protected ExtensionConfiguration $extensionConfiguration;
-
-    protected ConfigurationManagerInterface $configurationManager;
-
-    protected TypoScriptService $typoScriptService;
-
-    protected ContentObjectRenderer $contentRenderer;
-
-    protected RequestFactoryInterface $requestFactory;
-
     protected array $configuration = [];
 
     public function __construct(
-        ExtensionConfiguration $extensionConfiguration,
-        ConfigurationManagerInterface $configurationManager,
-        TypoScriptService $typoScriptService,
-        ContentObjectRenderer $contentRenderer,
-        RequestFactoryInterface $requestFactory
+        protected ExtensionConfiguration $extensionConfiguration,
+        protected ConfigurationManagerInterface $configurationManager,
+        protected TypoScriptService $typoScriptService,
+        protected ContentObjectRenderer $contentRenderer,
+        protected RequestFactory $requestFactory
     ) {
-        $this->extensionConfiguration = $extensionConfiguration;
-        $this->configurationManager = $configurationManager;
-        $this->typoScriptService = $typoScriptService;
-        $this->contentRenderer = $contentRenderer;
-        $this->requestFactory = $requestFactory;
-
         $this->initialize();
     }
 
@@ -110,7 +94,7 @@ class CaptchaService
      */
     protected function isDevelopmentMode(): bool
     {
-        return (bool)Environment::getContext()->isDevelopment();
+        return Environment::getContext()->isDevelopment();
     }
 
     /**
@@ -125,7 +109,7 @@ class CaptchaService
     {
         return !$this->isInRobotMode()
             && (
-                ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()
+                ApplicationType::fromRequest($this->getRequest())->isBackend()
                 || !$this->isDevelopmentMode()
                 || $this->isEnforceCaptcha()
             );
@@ -168,7 +152,7 @@ class CaptchaService
 
         $request = [
             'secret' => $this->configuration['private_key'] ?? '',
-            'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
+            'response' => trim($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? ''),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
         ];
 
@@ -212,8 +196,13 @@ class CaptchaService
         }
 
         $params = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = $this->requestFactory->request($this->configuration['verify_server'] . '?' . $params, 'POST');
+        $response = $this->requestFactory->createRequest($this->configuration['verify_server'] . '?' . $params, 'POST');
 
         return (string)$response->getBody() ? json_decode((string)$response->getBody(), true) : [];
+    }
+
+    protected function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
