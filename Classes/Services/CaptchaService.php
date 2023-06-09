@@ -196,7 +196,11 @@ class CaptchaService
         }
 
         $params = GeneralUtility::implodeArrayForUrl('', $data);
-        $response = $this->requestFactory->createRequest($this->configuration['verify_server'] . '?' . $params, 'POST');
+        if ((GeneralUtility::makeInstance(Typo3Version::class))->getMajorVersion() > 11) {
+            $response = $this->requestFactory->createRequest('POST', $this->configuration['verify_server'] . '?' . $params);
+        } else {
+            $response = $this->requestFactory->createRequest($this->configuration['verify_server'] . '?' . $params, 'POST');
+        }
 
         return (string)$response->getBody() ? json_decode((string)$response->getBody(), true) : [];
     }
