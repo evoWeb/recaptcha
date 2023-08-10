@@ -23,13 +23,13 @@ plugin.tx_recaptcha {
     lang = {$plugin.tx_recaptcha.lang}
 
     enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
-    
+
     robotMode = {$plugin.tx_recaptcha.robotMode}
 
     invisibleCallback = onRecaptchaSubmit
 
     captchaCssClass = g-recaptcha
-    
+
     theme = {$plugin.tx_recaptcha.theme}
 }
 
@@ -87,7 +87,11 @@ plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Ya
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}
-page.includeJSFooterlibs.recaptcha.external = 1
+page.includeJSFooterlibs.recaptcha {
+    external = 1
+    disableCompression = 1
+    excludeFromConcatenation = 1
+}
 
 # only included if invisible captcha should be rendered
 page.jsInline.1508480348393 = TEXT
