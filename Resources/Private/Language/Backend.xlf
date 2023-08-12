@@ -6,17 +6,17 @@
 			<trans-unit id="formEditor.elements.Recaptcha.label" xml:space="preserve">
 				<source>reCAPTCHA</source>
 			</trans-unit>
-			<trans-unit id="formEditor.elements.FormElement.editor.recaptchaValidator.label" xml:space="preserve">
+			<trans-unit id="formEditor.elements.Recaptcha.editor.validators.label" xml:space="preserve">
 				<source>reCAPTCHA validation is active</source>
 			</trans-unit>
-			<trans-unit id="formEditor.elements.RecaptchaMixin.validators.Recaptcha.editor.header.label" xml:space="preserve">
+			<trans-unit id="formEditor.elements.Recaptcha.validators.Recaptcha.editor.header.label" xml:space="preserve">
 				<source>reCAPTCHA validation</source>
 			</trans-unit>
-			<trans-unit id="formEditor.elements.RecaptchaMixin.editor.validators.Recaptcha.label" xml:space="preserve">
+			<trans-unit id="formEditor.elements.Recaptcha.editor.validators.Recaptcha.label" xml:space="preserve">
 				<source>reCAPTCHA validation</source>
 			</trans-unit>
-			<trans-unit id="formEditor.elements.Recaptcha.editor.showLabel.label" xml:space="preserve">
-				<source>Show label in frontend</source>
+			<trans-unit id="formEditor.elements.Recaptcha.editor.doNotShowLabel.label" xml:space="preserve">
+				<source>Hide label in frontend</source>
 			</trans-unit>
 			<trans-unit id="formEditor.elements.Form.editor.useInvisibleRecaptcha.label" xml:space="preserve">
 				<source>Use invisible recaptcha</source>

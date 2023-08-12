@@ -1,21 +1,17 @@
 imports:
-  - { resource: "./Validators/Recaptcha.yaml" }
+  - { resource: './Validators/Recaptcha.yaml' }
 
-  - { resource: "./FormElements/Form.yaml" }
-  - { resource: "./FormElements/Recaptcha.yaml" }
+  - { resource: './FormElements/Form.yaml' }
+  - { resource: './FormElements/Recaptcha.yaml' }
 
-  - { resource: "./Finishers/EmailToReceiver.yaml" }
-  - { resource: "./Finishers/EmailToSender.yaml" }
+  - { resource: './Finishers/EmailToReceiver.yaml' }
+  - { resource: './Finishers/EmailToSender.yaml' }
 
-TYPO3:
-  CMS:
-    Form:
-      prototypes:
-        standard:
-          formEditor:
-            dynamicRequireJsModules:
-              additionalViewModelModules:
-                1660555330: TYPO3/CMS/Recaptcha/Backend/FormEditor/RecaptchaViewModel
-
-            formEditorPartials:
-              FormElement-Recaptcha: Stage/SimpleTemplate
+prototypes:
+  standard:
+    formEditor:
+      translationFiles:
+        1974: 'EXT:recaptcha/Resources/Private/Language/Backend.xlf'
+      dynamicJavaScriptModules:
+        additionalViewModelModules:
+          1660555330: '@evoweb/recaptcha/backend/form-editor/view-model.js'

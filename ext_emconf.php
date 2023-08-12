@@ -12,7 +12,7 @@ $EM_CONF['recaptcha'] = [
     'version' => '12.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.0.0-12.9.99',
+            'typo3' => '12.0.0-12.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],

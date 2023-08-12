@@ -2,104 +2,79 @@ name: build
 
 on:
   push:
-    branches: [ develop, master ]
+    branches: [ develop, main ]
     tags: [ '*' ]
   pull_request:
     branches: [ develop ]
 
 jobs:
-  xliff:
-    runs-on: ubuntu-20.04
 
-    name: Xliff Lint
+  resources:
+    name: Resources tests
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Run the xliff lint
-        uses: TYPO3-Continuous-Integration/TYPO3-CI-Xliff-Lint@v1
+        run: Build/Scripts/additionalTests.sh -s lintXliff
 
-  lint:
-    runs-on: ubuntu-20.04
+      - name: Test documentation build
+        run: Build/Scripts/additionalTests.sh -s buildDocumentation
 
-    strategy:
-      matrix:
-        php-versions: ['7.4']
-
-    name: Lint PHP ${{ matrix.php-versions }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-
-      - name: Running php lint with ${{ matrix.php-versions }}
-        run: errors=$(find . -name \*.php ! -path "./.Build/*" -exec php -d display_errors=stderr -l "{}" 2>&1 >/dev/null \;) && echo "${errors}" && test -z "${errors}"
-
-  phpunit:
-    needs: lint
-
-    runs-on: ubuntu-20.04
-
-    continue-on-error: ${{ matrix.env.experimental == true }}
-    strategy:
-      fail-fast: false
-      matrix:
-        env:
-          - { php: 7.4, TYPO3_VERSION: ^11.0, TESTING_FRAMEWORK: ^6.6.2 }
-          - { php: 7.4, TYPO3_VERSION: ^11.0, TESTING_FRAMEWORK: ^6.6.2, PREFER_LOWEST: "--prefer-lowest" }
-          - { php: 8.1, TYPO3_VERSION: "dev-main", TESTING_FRAMEWORK: "dev-main", experimental: true }
-
-    env: ${{ matrix.env }}
-
-    name: Run unit and/or functional tests on TYPO3 ${{ matrix.env.TYPO3_VERSION }} with PHP${{ matrix.env.php }} and testing framework ${{ matrix.env.TESTING_FRAMEWORK }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.env.php }}
-          tools: composer
-          extensions: pdo, sqlite3
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: dependencies-composer-${{ hashFiles('composer.json') }}
-
-      - name: Ensure stability dev
-        if: ${{ matrix.env.TYPO3_VERSION == 'dev-main' }}
+      - name: Cleanup
         run: |
-          composer config minimum-stability dev
-          composer config prefer-stable true
+          Build/Scripts/runTests.sh -s clean ; \
+          Build/Scripts/additionalTests.sh -s clean ; \
+          git checkout composer.json
 
-      - name: Install TYPO3 core
-        run: composer require typo3/cms-core="${TYPO3_VERSION}" ${PREFER_LOWEST};
+  testsuite:
+    name: All php tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        packages:
+          - php: '8.1'
+            core: '^12.4'
+            prefer: ''
+          - php: '8.1'
+            core: '^12.4'
+            prefer: '--prefer-lowest'
+          - php: '8.2'
+            core: '^12.4'
+            prefer: ''
+          - php: '8.2'
+            core: '^12.4'
+            prefer: '--prefer-lowest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Install testing framework ${{ matrix.env.TESTING_FRAMEWORK }}
-        if: ${{ matrix.env.TESTING_FRAMEWORK }}
-        run: composer require --dev typo3/testing-framework="${TESTING_FRAMEWORK}";
+      - name: Composer
+        run: Build/Scripts/additionalTests.sh -p ${{ matrix.packages.php }} -s lintPhp
 
-      - name: Reset composer.json
-        run: git checkout composer.json;
+      - name: Composer install
+        run: Build/Scripts/runTests.sh -p ${{ matrix.packages.php }} -s composerInstall
+
+      - name: Composer install core
+        run: |
+          Build/Scripts/additionalTests.sh -p ${{ matrix.packages.php }} \
+            -s composerInstallPackage \
+            -q "typo3/cms-core:${{ matrix.packages.core }}"
+
+      - name: Composer validate
+        run: Build/Scripts/runTests.sh -s composerValidate
+
+      - name: Cleanup
+        run: |
+          Build/Scripts/runTests.sh -s clean
+          Build/Scripts/additionalTests.sh -s clean
 
   TERUpload:
-    needs: [ xliff, lint, phpunit ]
+    needs: [ resources, testsuite ]
     if: startsWith(github.ref, 'refs/tags/')
 
-    runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
+    runs-on: ubuntu-22.04
 
     name: TYPO3 TER release
     steps:

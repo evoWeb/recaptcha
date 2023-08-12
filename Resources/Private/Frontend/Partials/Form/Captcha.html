@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:register="http://typo3.org/ns/Evoweb/SfRegister/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:asset.script identifier="recaptcha_form" src="EXT:recaptcha/Resources/Public/JavaScript/Frontend/form.js"/>
+<f:variable name="hasCapchaError"><f:form.validationResults
+	for="user.{fieldName}">{validationResults.flattenedErrors -> f:count()}</f:form.validationResults></f:variable>
+<f:if condition="!{settings.hasOriginalRequest}||{hasCapchaError}">
+<div class="col-md-6 mb-3 {fieldName} {options.cssClass}">
+	<f:form.hidden
+        property="{fieldName}"
+        id="{fieldName}"
+        value=""
+        data="{recaptcha-form-field: ''}"
+        respectSubmittedDataValue="false"
+    />
+    <div><register:form.captcha type="recaptcha" /></div>
+</div>
+</f:if>
+</html>

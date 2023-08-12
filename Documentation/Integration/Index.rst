@@ -91,7 +91,7 @@ that prepares the configuration and then renders the captcha.
       <f:if condition="{showCaptcha}">
          <f:then>
             <f:form.hidden property="{name}" value="1" />
-            <div class="{configuration.captchaCssClass}" data-sitekey="{configuration.public_key}"></div>
+            <div class="g-recaptcha" data-sitekey="{configuration.public_key}"></div>
          </f:then>
          <f:else>
             <div class="recaptcha-development-mode">

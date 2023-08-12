@@ -1,6 +1,6 @@
 <?php
 
-namespace Evoweb\Recaptcha\Adapter;
+declare(strict_types=1);
 
 /*
  * This file is developed by evoWeb.
@@ -13,6 +13,8 @@ namespace Evoweb\Recaptcha\Adapter;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace Evoweb\Recaptcha\Adapter;
+
 use Evoweb\Recaptcha\Services\CaptchaService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -24,17 +26,13 @@ class TypoScriptAdapter
 
     public function render(): string
     {
-        if ($this->captchaService !== null) {
-            $output = $this->captchaService->getReCaptcha();
+        $output = $this->captchaService->getReCaptcha();
 
-            $status = $this->captchaService->validateReCaptcha();
-            if (!$status || $status['error'] !== '') {
-                $output .= '<span class="error">'
-                    . LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha')
-                    . '</span>';
-            }
-        } else {
-            $output = LocalizationUtility::translate( 'error_captcha.notinstalled', 'Recaptcha');
+        $status = $this->captchaService->validateReCaptcha();
+        if ($status['error'] !== '') {
+            $output .= '<span class="error">'
+                . LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha')
+                . '</span>';
         }
 
         return $output;

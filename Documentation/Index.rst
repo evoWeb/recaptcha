@@ -5,33 +5,29 @@ reCAPTCHA: Easy on Humans, Hard on Bots
 =======================================
 
 :Extension Key:
-      recaptcha
+    recaptcha
 
 :Package name:
    evoweb/recaptcha
 
 :Version:
-      |release|
+    |release|
 
 :Language:
-      en
+    en
+
+:Description:
+    Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
 
 :Author:
-      Sebastian Fischer
-
-:Email:
-      typo3@evoweb.de
+    Sebastian Fischer
 
 :License:
-      Open Publication License available from `www.opencontent.org/openpub/
-      <http://www.opencontent.org/openpub/>`_
+   This document is published under the
+   `Open Publication License <https://www.opencontent.org/openpub/>`__.
 
 :Rendered:
-      |today|
-
------
-
-Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
+    |today|
 
 The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from http://typo3.org
@@ -47,7 +43,9 @@ a GNU/GPL CMS/Framework available from http://typo3.org
    Introduction/Index
    UsersManual/Index
    Administration/Index
+   BreakingChanges/Index
    Configuration/Index
+   ContentSecurityPolicy/Index
    Integration/Index
    Templating/Index
    Tutorial/Index
