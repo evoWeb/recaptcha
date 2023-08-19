@@ -25,9 +25,8 @@ export {
 };
 
 function factory($, Helper) {
-  'use strict';
-
   return (function ($, Helper) {
+
     /**
      * @private
      *
@@ -35,8 +34,27 @@ function factory($, Helper) {
      */
     var _formEditorApp = null;
 
+    /* *************************************************************
+     * Private Methods
+     * ************************************************************/
+
     /**
      * @private
+     *
+     * @return void
+     * @throws 1478268638
+     */
+    function _helperSetup() {
+      assert('function' === $.type(Helper.bootstrap),
+        'The view model helper does not implement the method "bootstrap"',
+        1478268638
+      );
+
+      Helper.bootstrap(getFormEditorApp());
+    }
+
+    /**
+     * @public
      *
      * @return object
      */
@@ -47,20 +65,10 @@ function factory($, Helper) {
     /**
      * @private
      *
-     * @return object
-     */
-    function getPublisherSubscriber() {
-      return getFormEditorApp().getPublisherSubscriber();
-    }
-
-    /**
-     * @private
-     *
      * @param {boolean} test
      * @param {string} message
      * @param {int} messageCode
-     *
-     * @return void
+     * @return object
      */
     function assert(test, message, messageCode) {
       return getFormEditorApp().assert(test, message, messageCode);
@@ -69,17 +77,10 @@ function factory($, Helper) {
     /**
      * @private
      *
-     * @return void
-     *
-     * @throws 1491643380
+     * @return object
      */
-    function _helperSetup() {
-      assert(
-        'function' === $.type(Helper.bootstrap),
-        'The view model helper does not implement the method "bootstrap"',
-        1491643380
-      );
-      Helper.bootstrap(getFormEditorApp());
+    function getPublisherSubscriber() {
+      return getFormEditorApp().getPublisherSubscriber();
     }
 
     /**
@@ -105,24 +106,30 @@ function factory($, Helper) {
       });
     }
 
+    /* *************************************************************
+     * Public Methods
+     * ************************************************************/
+
     /**
      * @public
      *
      * @param {object} formEditorApp
-     *
      * @return void
      */
     function bootstrap(formEditorApp) {
       _formEditorApp = formEditorApp;
+
       _helperSetup();
       _subscribeEvents();
     }
 
     /**
-     * Publish the public methods.
      * Implements the "Revealing Module Pattern".
      */
     return {
+      /**
+       * Publish the public methods.
+       */
       bootstrap: bootstrap
     };
   })($, Helper);
