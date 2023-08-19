@@ -1,6 +1,6 @@
 <?php
 
-namespace Evoweb\Recaptcha\Domain\Model\FormElements;
+declare(strict_types=1);
 
 /*
  * This file is developed by evoWeb.
@@ -12,6 +12,8 @@ namespace Evoweb\Recaptcha\Domain\Model\FormElements;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  */
+
+namespace Evoweb\Recaptcha\Domain\Model\FormElements;
 
 use TYPO3\CMS\Form\Domain\Model\FormElements\AbstractFormElement;
 

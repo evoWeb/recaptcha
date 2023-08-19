@@ -1,6 +1,6 @@
 <?php
 
-namespace Evoweb\Recaptcha\Services;
+declare(strict_types=1);
 
 /*
  * This file is developed by evoWeb.
@@ -13,50 +13,40 @@ namespace Evoweb\Recaptcha\Services;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace Evoweb\Recaptcha\Services;
+
 use Evoweb\Recaptcha\Exception\MissingException;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
+use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ApplicationType;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
-use Psr\Http\Message\RequestFactoryInterface;
-use TYPO3\CMS\Core\Http\RequestFactory;
 
 class CaptchaService
 {
-    protected ExtensionConfiguration $extensionConfiguration;
-
-    protected ConfigurationManagerInterface $configurationManager;
-
-    protected TypoScriptService $typoScriptService;
-
-    protected ContentObjectRenderer $contentRenderer;
-
-    protected RequestFactoryInterface $requestFactory;
-
     protected array $configuration = [];
 
     public function __construct(
-        ExtensionConfiguration $extensionConfiguration,
-        ConfigurationManagerInterface $configurationManager,
-        TypoScriptService $typoScriptService,
-        ContentObjectRenderer $contentRenderer,
-        RequestFactoryInterface $requestFactory
+        protected ExtensionConfiguration $extensionConfiguration,
+        protected ConfigurationManagerInterface $configurationManager,
+        protected TypoScriptService $typoScriptService,
+        protected ContentObjectRenderer $contentRenderer,
+        protected RequestFactory $requestFactory
     ) {
-        $this->extensionConfiguration = $extensionConfiguration;
-        $this->configurationManager = $configurationManager;
-        $this->typoScriptService = $typoScriptService;
-        $this->contentRenderer = $contentRenderer;
-        $this->requestFactory = $requestFactory;
-
         $this->initialize();
     }
 
     /**
      * @throws MissingException
+     * @throws ExtensionConfigurationExtensionNotConfiguredException
+     * @throws ExtensionConfigurationPathDoesNotExistException
      */
     protected function initialize(): void
     {
@@ -110,7 +100,7 @@ class CaptchaService
      */
     protected function isDevelopmentMode(): bool
     {
-        return (bool)Environment::getContext()->isDevelopment();
+        return Environment::getContext()->isDevelopment();
     }
 
     /**
@@ -125,7 +115,7 @@ class CaptchaService
     {
         return !$this->isInRobotMode()
             && (
-                ApplicationType::fromRequest($GLOBALS['TYPO3_REQUEST'])->isBackend()
+                ApplicationType::fromRequest($this->getRequest())->isBackend()
                 || !$this->isDevelopmentMode()
                 || $this->isEnforceCaptcha()
             );
@@ -146,7 +136,7 @@ class CaptchaService
         } else {
             $captcha = '<div class="recaptcha-development-mode">
                 Development mode active. Do not expect the captcha to appear
-                </div>';
+            </div>';
         }
 
         return $captcha;
@@ -157,7 +147,7 @@ class CaptchaService
      *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    public function validateReCaptcha(): array
+    public function validateReCaptcha(string $value = ''): array
     {
         if (!$this->getShowCaptcha()) {
             return [
@@ -168,11 +158,14 @@ class CaptchaService
 
         $request = [
             'secret' => $this->configuration['private_key'] ?? '',
-            'response' => trim(GeneralUtility::_GP('g-recaptcha-response')),
+            'response' => trim($value ?? $this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? ''),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
         ];
 
-        $result = ['verified' => false, 'error' => ''];
+        $result = [
+            'verified' => false,
+            'error' => ''
+        ];
         if (empty($request['response'])) {
             $result['error'] = 'missing-input-response';
         } else {
@@ -184,9 +177,11 @@ class CaptchaService
             if ($response['success']) {
                 $result['verified'] = true;
             } else {
-                $result['error'] = is_array($response['error-codes']) ?
+                $result['error'] = (string)(
+                    is_array($response['error-codes']) ?
                     reset($response['error-codes']) :
-                    $response['error-codes'];
+                    $response['error-codes']
+                );
             }
         }
 
@@ -214,6 +209,12 @@ class CaptchaService
         $params = GeneralUtility::implodeArrayForUrl('', $data);
         $response = $this->requestFactory->request($this->configuration['verify_server'] . '?' . $params, 'POST');
 
-        return (string)$response->getBody() ? json_decode((string)$response->getBody(), true) : [];
+        $body = (string)$response->getBody();
+        return $body ? json_decode($body, true) : [];
+    }
+
+    protected function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

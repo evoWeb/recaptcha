@@ -1,33 +1,29 @@
 plugin.tx_recaptcha {
-    # cat=plugin.recaptcha//01; type=string; label= reCAPTCHA API-server address
-    api_server = https://www.google.com/recaptcha/api.js
+  # cat=plugin.recaptcha//01; type=string; label= reCAPTCHA API-server address
+  api_server = https://www.google.com/recaptcha/api.js
 
-    # cat=plugin.recaptcha//02; type=string; label= reCAPTCHA VERIFY-server address
-    verify_server = https://www.google.com/recaptcha/api/siteverify
+  # cat=plugin.recaptcha//02; type=string; label= reCAPTCHA VERIFY-server address
+  verify_server = https://www.google.com/recaptcha/api/siteverify
 
-    # look at https://www.google.com/recaptcha/admin to register a key for your server
-    # cat=plugin.recaptcha//03; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
-    public_key = 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+  # look at https://www.google.com/recaptcha/admin to register a key for your server
+  # cat=plugin.recaptcha//03; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
+  public_key = 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 
-    # look at https://www.google.com/recaptcha/admin to register a key for your server
-    # cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
-    private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+  # look at https://www.google.com/recaptcha/admin to register a key for your server
+  # cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
+  private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
-    # cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
-    lang = ?hl=
+  # cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
+  lang = ?hl=
 
-    # cat=plugin.recaptcha//07; type=boolean; label= enforcing captcha even in development mode
-    enforceCaptcha = 0
+  # cat=plugin.recaptcha//07; type=boolean; label= enforcing captcha even in development mode
+  enforceCaptcha = 0
 
-    # cat=plugin.recaptcha//08; type=boolean; label= inserted inline javascript needed for the invisible reCAPTCHA
-    include_invisible_recaptcha_callback = 0
+  # cat=plugin.recaptcha//10; type=string; label= reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)
+  theme = light
 
-    # cat=plugin.recaptcha//09; type=string; label= form name: to use the invisible reCAPTCHA in
-    invisible_recaptcha_formname = contactform
-
-    # cat=plugin.recaptcha//10; type=string; label= reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)
-    theme = light
-
-    # cat=plugin.recaptcha//11; type=boolean; label= reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha
-    robotMode = 0
+  # cat=plugin.recaptcha//11; type=boolean; label= reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha
+  robotMode = 0
 }
+
+plugin.tx_sfregister.settings.captchaId = recaptcha

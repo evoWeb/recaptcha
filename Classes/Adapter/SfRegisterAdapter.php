@@ -1,6 +1,6 @@
 <?php
 
-namespace Evoweb\Recaptcha\Adapter;
+declare(strict_types=1);
 
 /*
  * This file is developed by evoWeb.
@@ -13,6 +13,8 @@ namespace Evoweb\Recaptcha\Adapter;
  * LICENSE.txt file that was distributed with this source code.
  */
 
+namespace Evoweb\Recaptcha\Adapter;
+
 use Evoweb\Recaptcha\Services\CaptchaService;
 use Evoweb\SfRegister\Services\Captcha\AbstractAdapter;
 use Evoweb\SfRegister\Services\Session;
@@ -20,38 +22,17 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class SfRegisterAdapter extends AbstractAdapter
 {
-    /**
-     * @var CaptchaService
-     */
-    protected ?object $captcha = null;
-
-    protected Session $session;
-
-    public function __construct(CaptchaService $captcha, Session $session)
+    public function __construct(protected CaptchaService $captchaService, protected Session $session)
     {
-        $this->captcha = $captcha;
-        $this->session = $session;
     }
 
     /**
      * Rendering the output of the captcha
-     *
-     * @return string
      */
-    public function render(): string
+    public function render(): array|string
     {
         $this->session->remove('captchaWasValid');
-
-        if ($this->captcha !== null) {
-            $output = $this->captcha->getReCaptcha();
-        } else {
-            $output = LocalizationUtility::translate(
-                'error_captcha.notinstalled',
-                'Recaptcha'
-            );
-        }
-
-        return $output;
+        return $this->captchaService->getReCaptcha();
     }
 
     /**
@@ -65,10 +46,10 @@ class SfRegisterAdapter extends AbstractAdapter
     {
         $validCaptcha = true;
 
-        if ($this->captcha !== null && $this->session->get('captchaWasValid') !== true) {
-            $status = $this->captcha->validateReCaptcha();
+        if ($this->session->get('captchaWasValid') !== true) {
+            $status = $this->captchaService->validateReCaptcha($value);
 
-            if ($status == false || (string)$status['error'] !== '') {
+            if ($status['error'] !== '') {
                 $validCaptcha = false;
                 $this->addError(
                     LocalizationUtility::translate(
@@ -78,9 +59,9 @@ class SfRegisterAdapter extends AbstractAdapter
                     1307421960
                 );
             }
-        }
 
-        $this->session->set('captchaWasValid', $validCaptcha);
+            $this->session->set('captchaWasValid', $validCaptcha);
+        }
 
         return $validCaptcha;
     }

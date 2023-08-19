@@ -43,7 +43,7 @@ lib.contactForm {
 
 To be able to use the captcha add the static include of this extension to your template.
 
-Afterwards modify your form output by replacing the submit button with something like this:
+After modify your form output by replacing the submit button with something like this:
 
 ```
 <button
@@ -56,7 +56,7 @@ Afterwards modify your form output by replacing the submit button with something
 </button>
 ```
 
-After that your are ready on the frontend but still need to call the validation in your php code.
+After that you're ready on the frontend but still need to call the validation in your php code.
 
 ```
 $validCaptcha = false;

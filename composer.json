@@ -2,59 +2,57 @@
 	"name": "evoweb/recaptcha",
 	"type": "typo3-cms-extension",
 	"description": "Easy on Humans, Hard on Bots",
-	"homepage": "http://www.evoweb.de",
-
-	"license": "GPL-2.0-or-later",
-
-	"support": {
-		"docs": "https://docs.typo3.org/p/evoweb/recaptcha/main/en-us/",
-		"issues": "https://github.com/evoWeb/recaptcha/issues"
-	},
-
+	"homepage": "https://www.evoweb.de",
+	"license": [
+		"GPL-2.0-or-later"
+	],
 	"keywords": [
 		"recaptcha",
 		"nocaptcha 2",
 		"invisible captcha"
 	],
-
+	"support": {
+		"source" : "https://github.com/evoWeb/recaptcha",
+		"issues": "https://github.com/evoWeb/recaptcha/issues",
+		"docs": "https://docs.typo3.org/p/evoweb/recaptcha/main/en-us/"
+	},
+	"config": {
+		"bin-dir": "bin",
+		"platform": {
+			"php": "8.1.1"
+		},
+		"sort-packages": true,
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		}
+	},
 	"require": {
-		"typo3/cms-core": "^11.0",
-		"typo3/cms-extbase": "*",
-		"typo3/cms-fluid": "*",
-		"typo3/cms-frontend": "*"
+		"typo3/cms-core": "^12.4 || dev-main",
+		"typo3/cms-extbase": "^12.4 || dev-main",
+		"typo3/cms-fluid": "^12.4 || dev-main",
+		"typo3/cms-frontend": "^12.4 || dev-main"
 	},
 	"suggest": {
 		"typo3/cms-form": "*"
 	},
-
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "recaptcha"
+		}
+	},
+	"scripts": {
+		"prepare-release": [
+			"rm -rf .github",
+			"rm -rf Build",
+			"rm .gitattributes",
+			"rm .gitignore",
+			"sed -i \"s/version' => '.*'/version' => '$(echo ${GITHUB_REF} | cut -d / -f 3)'/\" ext_emconf.php\n"
+		]
+	},
 	"autoload": {
 		"psr-4": {
 			"Evoweb\\Recaptcha\\": "Classes/"
 		}
-	},
-
-	"config": {
-		"vendor-dir": ".Build/Web/vendor",
-		"allow-plugins": {
-			"typo3/cms-composer-installers": true,
-			"typo3/class-alias-loader": true
-		}
-	},
-	"extra": {
-		"typo3/cms": {
-			"extension-key": "recaptcha",
-			"cms-package-dir": "{$vendor-dir}/typo3/cms",
-			"web-dir": ".Build/Web"
-		}
-	},
-
-	"scripts": {
-		"post-autoload-dump": "mkdir -p .Build/Web/typo3conf/ext/ && ln -snf ../../../.. .Build/Web/typo3conf/ext/recaptcha",
-		"prepare-release": [
-			"rm -rf .Build",
-			"rm -rf .github",
-			"rm .gitignore",
-			"sed -i \"s/version' => '.*'/version' => '$(echo ${GITHUB_REF} | cut -d / -f 3)'/\" ext_emconf.php\n"
-		]
 	}
 }

@@ -1,11 +1,8 @@
-TYPO3:
-  CMS:
-    Form:
-      prototypes:
-        standard:
-          validatorsDefinition:
-            Recaptcha:
-              implementationClassName: Evoweb\Recaptcha\Validation\RecaptchaValidator
-              formEditor:
-                iconIdentifier: form-validator
-                label: formEditor.elements.RecaptchaMixin.editor.validators.Recaptcha.label
+prototypes:
+  standard:
+    validatorsDefinition:
+      Recaptcha:
+        implementationClassName: Evoweb\Recaptcha\Validation\RecaptchaValidator
+        formEditor:
+          iconIdentifier: form-validator
+          label: formEditor.elements.Recaptcha.editor.validators.Recaptcha.label

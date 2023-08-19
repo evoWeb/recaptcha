@@ -1,89 +1,62 @@
 plugin.tx_recaptcha {
-    # look at https://www.google.com/recaptcha/admin to register a key for your server
-    public_key = {$plugin.tx_recaptcha.public_key}
-    public_key.wrap.cObject = COA
-    public_key.wrap.cObject {
-        10 = TEXT
-        10.value = <div class="g-recaptcha" data-sitekey="|"></div>
-    }
+  # look at https://www.google.com/recaptcha/admin to register a key for your server
+  public_key = {$plugin.tx_recaptcha.public_key}
+  public_key.wrap.cObject = COA
+  public_key.wrap.cObject {
+    10 = TEXT
+    10.value = <div class="g-recaptcha" data-sitekey="|" data-callback="onRecaptchaCallback" data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError"></div>
+  }
 
-    # look at https://www.google.com/recaptcha/admin to register a key for your server
-    private_key = {$plugin.tx_recaptcha.private_key}
+  # look at https://www.google.com/recaptcha/admin to register a key for your server
+  private_key = {$plugin.tx_recaptcha.private_key}
 
-    api_server = {$plugin.tx_recaptcha.api_server}
-    verify_server = {$plugin.tx_recaptcha.verify_server}
+  api_server = {$plugin.tx_recaptcha.api_server}
+  verify_server = {$plugin.tx_recaptcha.verify_server}
 
-    lang = {$plugin.tx_recaptcha.lang}
+  lang = {$plugin.tx_recaptcha.lang}
 
-    enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
+  enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha}
 
-    robotMode = {$plugin.tx_recaptcha.robotMode}
-
-    invisibleCallback = onRecaptchaSubmit
-
-    captchaCssClass = g-recaptcha
+  robotMode = {$plugin.tx_recaptcha.robotMode}
 }
+
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings {
-    recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
+  recaptcha.public_key = {$plugin.tx_recaptcha.public_key}
 
-    recaptcha.lang = {$plugin.tx_recaptcha.lang}
+  recaptcha.lang = {$plugin.tx_recaptcha.lang}
 
-    # register recaptcha as captcha possibility
-    captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
+  # register recaptcha as captcha possibility
+  captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
-    fields {
-        createDefaultSelected {
-            # remove captcha output as separate element
-            370 >
-            380 >
+  fields {
+    createDefaultSelected {
+      # remove captcha output as separate element
+      370 >
+      380 >
 
-            # change submit button in default form to button with invisible captcha settings
-            400 = submit_captcha
-        }
-
-        configuration {
-            # change captcha field type to recaptcha
-            captcha.type = Recaptcha
-
-            # register new field type
-            submit_captcha.partial = SubmitWithInvisibleCaptcha
-        }
+      # change submit button in default form to button with invisible captcha settings
+      400 = submit_captcha
     }
 
-    validation.create {
-        # tell captcha validation to use recaptcha adapter
-        captcha = "Evoweb.SfRegister:Captcha", options={"type": "recaptcha"}
+    configuration {
+      # register new field type
+      submit_captcha.partial = SubmitWithInvisibleCaptcha
     }
-
-    validation.invite {
-        # tell captcha validation to use recaptcha adapter
-        captcha = "Evoweb.SfRegister:Captcha", options={"type": "recaptcha"}
-    }
+  }
 }
+plugin.tx_sfregister.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
 
-# add settings for EXT:formhandler
-plugin.Tx_Formhandler.settings {
-    markers {
-        recaptcha_invisible = FLUIDTEMPLATE
-        recaptcha_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/Invisible.html
-
-        recaptcha_button_invisible = FLUIDTEMPLATE
-        recaptcha_button_invisible.file = EXT:recaptcha/Resources/Private/Frontend/Partials/Formhandler/ButtonInvisible.html
-    }
-}
 
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/FormSetup.yaml
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
 
-page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}{$plugin.tx_recaptcha.lang}
-page.includeJSFooterlibs.recaptcha.external = 1
 
-# only included if invisible captcha should be rendered
-page.jsInline.1508480348 = TEXT
-page.jsInline.1508480348 {
-    value = function onRecaptchaSubmit() { document.querySelectorAll('[data-callback="onRecaptchaSubmit"]')[0].form.submit(); return false; }
-    if.isTrue = {$plugin.tx_recaptcha.include_invisible_recaptcha_callback}
+page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server}{$plugin.tx_recaptcha.lang}
+page.includeJSFooterlibs.recaptcha {
+  external = 1
+  disableCompression = 1
+  excludeFromConcatenation = 1
 }

@@ -77,7 +77,7 @@ discovery with fallback. Inside the ViewHelper three variables are set.
       <f:if condition="{showCaptcha}">
          <f:then>
             <f:form.hidden property="{name}" value="1" />
-            <div class="{configuration.captchaCssClass}" data-sitekey="{configuration.public_key}"></div>
+            <div class="g-recaptcha" data-sitekey="{configuration.public_key}"></div>
          </f:then>
          <f:else>
             <div class="recaptcha-development-mode">
@@ -94,11 +94,3 @@ Integration in extension
 Here the extension delivers only limited settings. In TypoScript there
 is the **public_key** defined which can be rendered as stdWrap to resolve
 an div container with all needed information to output the captcha.
-
-By setting **include_invisible_recaptcha_callback** in constants and
-modifying the submit button of a form its possible to handle invisible
-captcha.
-
-Please keep in mind, that in both cases one need to integrate the php
-sided validation. This is normally done by adding an hidden input to
-the form and act on it if present.

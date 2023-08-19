@@ -7,14 +7,14 @@ Configuration
 =============
 
 Backend related
----------------
+===============
 
 If you like to use the recaptcha service in backend context, you have
 to make sure that the settings are set in the admin tools extensions.
 
 
 Frontend related
-----------------
+================
 
 For all frontend usage of the recaptcha service the backend settings
 are taken and then overridden with TypoScript. But setting the backend
@@ -23,7 +23,7 @@ mandatory.
 
 
 Reference
----------
+=========
 
 Following parameter are available as constants. And with the same
 name also as setup parameter.
@@ -157,42 +157,6 @@ plugin.tx\_recaptcha:
 .. container:: table-row
 
    Property
-         include_invisible_recaptcha_callback
-
-   Data type
-         bool
-
-   Default
-         0
-
-   Description
-         [Only TypoScript][Only as constant]
-         The latest iteration of EXT:recaptcha is capable of integrating
-         the invisible mode of reCAPTCHA. To be able to submit forms
-         after the captcha was solved a JavaScript callback function is
-         needed. To get this included either activate this parameter or
-         have a look at the extensions setup.txt and copy the javascript
-         part to a place of your liking.
-
-   Example
-         .. code-block:: typoscript
-            :caption: Add callback for invisible reCAPTCHA as inline JavaScript
-
-            page.jsInline.recaptcha = TEXT
-            page.jsInline.recaptcha.value (
-               function onRecaptchaSubmit() {
-                  document.getElementById('contactform').submit();
-                  return false;
-               }
-            )
-
-
-         By this the method onRecaptchaSubmit gets inserted as inline JavaScript.
-
-
-.. container:: table-row
-
-   Property
          invisibleCallback
 
    Data type
@@ -213,25 +177,6 @@ plugin.tx\_recaptcha:
 .. container:: table-row
 
    Property
-         captchaCssClass
-
-   Data type
-         string
-
-   Default
-         g-recaptcha
-
-   Description
-         [Only TypoScript]
-         By default google detects with this css class the contianer
-         to initialize the inclusion of the captcha. So removing
-         the value would break it.
-         But its possible to have additional css classes attached
-         to the captcha container for styling purposes.
-
-.. container:: table-row
-
-   Property
          theme
 
    Data type
@@ -243,7 +188,7 @@ plugin.tx\_recaptcha:
    Description
          [Only TypoScript]
          For change the theme for recaptcha (light or dark).
-   
+
 
 
 .. container:: table-row
