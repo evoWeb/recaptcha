@@ -1,7 +1,10 @@
-.idea
-.Build/
-!.Build/docker-compose.yml
-!.Build/xliff-core-1.2-strict.xsd
+.cache/
+.idea/
+Build/
+bin/
+Documentation-GENERATED-temp/
+typo3temp/
 var/
-composer.*
-!composer.json
+public/
+vendor/
+composer.lock
