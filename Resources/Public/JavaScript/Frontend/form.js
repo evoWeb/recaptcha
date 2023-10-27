@@ -19,8 +19,11 @@ class Recaptcha {
   }
 
   visibleRecaptchaButtonClicked(event) {
-    event.preventDefault();
-    event.target.closest('form').submit();
+    let form = event.target.closest('form');
+    if (form.checkValidity()) {
+      event.preventDefault();
+      form.submit();
+    }
   }
 
   invisibleRecaptchaButtonClicked(event) {
@@ -37,9 +40,11 @@ class Recaptcha {
   }
 
   submitCurrentForm(recaptchaResponse) {
-    this.currentForm.querySelector('[data-recaptcha-form-field]').value = recaptchaResponse;
-    this.currentForm.submit();
-    this.currentForm = null;
+    if (this.currentForm.checkValidity()) {
+      this.currentForm.querySelector('[data-recaptcha-form-field]').value = recaptchaResponse;
+      this.currentForm.submit();
+      this.currentForm = null;
+    }
   }
 
   recaptchaConfirmed(recaptchaResponse) {
