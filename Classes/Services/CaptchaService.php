@@ -147,7 +147,7 @@ class CaptchaService
      *
      * @return array Array with verified- (boolean) and error-code (string)
      */
-    public function validateReCaptcha(string $value = ''): array
+    public function validateReCaptcha(?string $value = ''): array
     {
         if (!$this->getShowCaptcha()) {
             return [
