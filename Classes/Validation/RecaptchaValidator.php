@@ -31,7 +31,7 @@ class RecaptchaValidator extends AbstractValidator
      */
     public function isValid(mixed $value): void
     {
-        $status = $this->captchaService->validateReCaptcha($value);
+        $status = $this->captchaService->validateReCaptcha((string)$value);
         if ($status['error'] !== '') {
             $errorText = $this->translateErrorMessage('error_recaptcha_' . $status['error'], 'recaptcha');
 
