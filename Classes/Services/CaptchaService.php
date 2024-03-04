@@ -158,7 +158,9 @@ class CaptchaService
 
         $request = [
             'secret' => $this->configuration['private_key'] ?? '',
-            'response' => trim($value ?? $this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? ''),
+            'response' => trim(
+                !empty($value) ? $value : (string)($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? '')
+            ),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
         ];
 
