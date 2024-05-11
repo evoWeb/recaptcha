@@ -19,15 +19,21 @@ reCAPTCHA: Easy on Humans, Hard on Bots
 :Description:
     Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
 
+:Copyright:
+    2015-2024
+
 :Author:
     Sebastian Fischer
 
 :License:
    This document is published under the
-   `Open Publication License <https://www.opencontent.org/openpub/>`__.
+   `Open Publication <https://www.opencontent.org/openpub/>`__.
+   license.
 
 :Rendered:
     |today|
+
+----
 
 The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from http://typo3.org
@@ -56,4 +62,3 @@ a GNU/GPL CMS/Framework available from http://typo3.org
    :hidden:
 
    Sitemap
-   genindex

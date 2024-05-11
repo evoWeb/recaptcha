@@ -13,6 +13,7 @@
                edit-on-github="evoWeb/recaptcha"
                edit-on-github-directory="Documentation/"
                typo3-core-preferred="stable"
+               interlink-shortcode="evoweb/recaptcha"
     />
     <project title="recaptcha"
              release="12.0.1"
