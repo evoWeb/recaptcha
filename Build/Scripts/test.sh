@@ -68,10 +68,10 @@ runFunctionalTests () {
         -s lintPhp || exit 1 ; \
         EXIT_CODE_LINT=$?
 
-    ./runTests.sh \
-        -p ${PHP_VERSION} \
-        -s composerInstall || exit 1 ; \
-        EXIT_CODE_LINT=$?
+#    ./runTests.sh \
+#        -p ${PHP_VERSION} \
+#        -s composerInstall || exit 1 ; \
+#        EXIT_CODE_LINT=$?
 
     ./additionalTests.sh \
         -p ${PHP_VERSION} \
@@ -117,13 +117,24 @@ cleanup () {
     git checkout ../../composer.json
 }
 
-checkResources
+DEBUG_TESTS=false
+if [[ $DEBUG_TESTS != true ]]; then
+    checkResources
 
-runFunctionalTests "8.1" "^12.4" || exit 1
-cleanup
-runFunctionalTests "8.1" "^12.4" "--prefer-lowest" || exit 1
-cleanup
-runFunctionalTests "8.2" "^12.4" || exit 1
-cleanup
-runFunctionalTests "8.2" "^12.4" "--prefer-lowest" || exit 1
-cleanup
+    runFunctionalTests "8.1" "^12.4" || exit 1
+    runFunctionalTests "8.1" "^12.4" "--prefer-lowest" || exit 1
+    runFunctionalTests "8.2" "^12.4" || exit 1
+    runFunctionalTests "8.2" "^12.4" "--prefer-lowest" || exit 1
+    cleanup
+    runFunctionalTests "8.2" "^13.0" || exit 1
+    runFunctionalTests "8.2" "^13.0" "--prefer-lowest" || exit 1
+    runFunctionalTests "8.3" "^13.0" || exit 1
+    runFunctionalTests "8.3" "^13.0" "--prefer-lowest" || exit 1
+    cleanup
+else
+    cleanup
+    runFunctionalTests "8.2" "^13.0" "dev-main" "Tests/Functional" || exit 1
+    cleanup
+    # ./runTests.sh -x -p 8.2 -d sqlite -s functional -e "--group selected" Tests/Functional
+    # ./runTests.sh -x -p 8.2 -d sqlite -s functional Tests/Functional
+fi
