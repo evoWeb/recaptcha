@@ -102,7 +102,7 @@ plugin.tx\_recaptcha:
          6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
    Description
-         The public key is needed for the validation of submits.
+         The private key is needed for the validation of submits.
 
          Google provides a key for automatic testing purpose and this
          is used as default.
