@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <title>Integration documentation</title>
+
+    
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="phpdocumentor/guides" name="generator">
+<meta content="" name="docsearch:name">
+<meta content="" name="docsearch:package_type">
+<meta content="" name="docsearch:release">
+<meta content="" name="docsearch:version">
+<meta content="2024-05-19T17:39:08+00:00" name="docsearch:modified">
+<meta content="2024-05-19T17:39:08+00:00" name="dc.modified">
+<meta content="2024-05-19T17:39:08+00:00" property="article:modified_time">
+    <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
+<link href="../_resources/css/theme.css" rel="stylesheet">
+<link href="https://docs.typo3.org/search/" rel="search" title="Search">
+<script src="https://typo3.azureedge.net/typo3infrastructure/universe/dist/webcomponents-loader.js"></script>
+<script src="https://typo3.azureedge.net/typo3infrastructure/universe/dist/typo3-universe.js" type="module"></script>
+                        <link href="../ContentSecurityPolicy/Index.html" rel="prev" title="Content Security Policy"/>
+            <link href="../Templating/Index.html" rel="next" title="Templating"/>
+            <link href="../Index.html" rel="top" title="reCAPTCHA: Easy on Humans, Hard on Bots"/>
+    </head>
+<body>
+<div class="page">
+    
+<header>
+    <div class="page-topbar">
+        <div class="page-topbar-inner">
+            <typo3-universe active="documentation">
+                <div style="display: block; height: 44px; background-color: #313131;"></div>
+            </typo3-universe>
+        </div>
+    </div>
+    <div class="page-header">
+        <div class="page-header-inner">
+            <div class="row">
+                <div class="col-sm-3 col-md-4 col-lg-6">
+                    <a class="logo" href="https://docs.typo3.org/" title="TYPO3 Documentation">
+                        <img alt="TYPO3 Logo" class="logo-image" src="../_resources/img/typo3-logo.svg" width="484" height="130">
+                    </a>
+                </div>
+                <div class="col-sm-9 col-md-8 col-lg-6">
+                    <search role="search">
+                        <form action="https://docs.typo3.org/search/search" id="global-search-form" method="get">
+			                <div class="sr-only"><label for="globalsearchinput">TYPO3 documentation...</label></div>
+                            <div class="input-group mb-3 mt-sm-3">
+                                <select class="form-select search__scope" id="searchscope" name="scope">
+                                    <option value="">Search all</option>
+                                </select>
+                                <input autocomplete="off" class="form-control shadow-none" id="globalsearchinput" name="q" placeholder="TYPO3 documentation..." type="text" value="">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
+                            </div>
+                        </form>
+                    </search>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>    <main class="page-main">
+        <div class="page-main-inner">
+            <div class="page-main-navigation">
+                <nav>
+                    <input class="toc-checkbox" id="toggleToc" type="checkbox">
+
+                    
+<div class="toc-header">
+    <div class="toc-title">
+        <a class="toc-title-project" href="../Index.html"></a>
+            </div>
+    <div class="toc-actions">
+        <label class="toc-toggle" for="toggleToc">
+            Menu
+        </label>
+    </div>
+</div>                    <div class="toc-collapse">
+                                                <div aria-label="main navigation" class="toc" role="navigation">
+                                <div aria-label="Main navigation" class="main_menu" role="navigation">
+        
+    <ul class="menu-level-1">
+    <li class="">
+    <a href="../Introduction/Index.html">
+        Introduction
+    </a></li>    <li class="">
+    <a href="../UsersManual/Index.html">
+        Users manual
+    </a></li>    <li class="">
+    <a href="../Administration/Index.html">
+        Administration
+    </a></li>    <li class="">
+    <a href="../BreakingChanges/Index.html">
+        Breaking Changes
+    </a></li>    <li class="">
+    <a href="../Configuration/Index.html">
+        Configuration
+    </a></li>    <li class="">
+    <a href="../ContentSecurityPolicy/Index.html">
+        Content Security Policy
+    </a></li>    <li class=" current active">
+    <a href="#" aria-current="page">
+        Integration
+    </a></li>    <li class="">
+    <a href="../Templating/Index.html">
+        Templating
+    </a></li>    <li class="">
+    <a href="../Tutorial/Index.html">
+        Tutorial
+    </a></li>    </ul>
+    <ul class="menu-level-1">
+    <li class="">
+    <a href="../Sitemap.html">
+        Sitemap
+    </a></li>    </ul>
+    </div>
+    <div aria-label="Meta navigation" class="main_menu  d-block d-lg-none" role="navigation">
+    <hr/>
+    <p class="caption">Contributors Corner</p>
+    <ul class="menu-level-1">            <li><a href="../_sources/Integration/Index.rst.txt" rel="nofollow noopener" target="_blank">
+                    View source of current document
+            </a></li>
+                    <li><a href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" rel="nofollow noopener" target="_blank">
+                    How to edit
+            </a></li>
+        </ul>
+</div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-main-content">
+                <div class="rst-content">                        <nav aria-label="breadcrumbs navigation" class="breadcrumb-bar" role="navigation">
+        
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="../Index.html">reCAPTCHA: Easy on Humans, Hard on Bots</a></li>
+                    <li aria-current="page"  class="breadcrumb-item  active">Integration</li>
+        </ol>
+        <div class="breadcrumb-additions">    <a class="btn btn-sm btn-light" href="../_sources/Integration/Index.rst.txt" rel="nofollow noopener" target="_blank">
+        <span class="btn-icon"><span class="fas fa-code"></span></span>
+        <span class="btn-text">View source</span>
+    </a>
+        <a class="btn btn-sm btn-light" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
+        <span class="btn-icon"><span class="fas fa-info-circle"></span></span>
+        <span class="btn-text">How to edit</span>
+    </a>
+    </div>    </nav>
+                    
+<article class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+    <div itemprop="articleBody">
+        <!-- content start -->
+                
+<section class="section" id="integration-1" data-rst-anchor="integration">
+            <a id="integration"></a>
+            <h1>Integration<a class="headerlink" href="#integration-1" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h1>
+            <section class="section" id="use-in-your-extension">
+            <h2>Use in your extension<a class="headerlink" href="#use-in-your-extension" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
+            
+    <p>To make use of this extension is quite easy as there is only one
+service needed. By instantiating the
+EvowebRecaptchaServicesCaptchaService it&#039;s possible to render
+and validate the captcha.
+Beside the service there are a ViewHelper and a Validator for use in
+extbase extensions.</p>
+
+    </section>
+            <section class="section" id="integration-in-your-own-code">
+            <h2>Integration in your own code<a class="headerlink" href="#integration-in-your-own-code" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
+            <section class="section" id="rendering-hole-captcha">
+            <h3>Rendering hole captcha<a class="headerlink" href="#rendering-hole-captcha" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
+            
+    <p>To render you are able to let the service take care of the output
+by calling getReCaptcha.</p>
+
+                    <div class="code-block-caption">
+            <span class="caption-text">Get rendered captcha from service</span>
+        </div><div class="code-block-wrapper" translate="no">
+                        
+        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+$output = $captchaService-&gt;getReCaptcha();</code></pre>
+        <div>
+            <button class="code-block-copy" title="Copy to clipboard">
+                <i class="fa-regular fa-copy code-block-copy-icon"></i>
+                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+            </button>
+            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
+        </div>
+    </div>
+            
+    <p>Please keep in mind that it only renders the captcha. If you need
+something to trigger the validation in your controller it&#039;s up to
+you to add the code.</p>
+
+    </section>
+            <section class="section" id="render-on-your-own">
+            <h3>Render on your own<a class="headerlink" href="#render-on-your-own" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
+            
+    <p>If you prefer to render on your own its possible to let the service
+prepare the settings for you.</p>
+
+                    <div class="code-block-caption">
+            <span class="caption-text">Get settings to render individually</span>
+        </div><div class="code-block-wrapper" translate="no">
+                        
+        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+$configuration = $captchaService-&gt;getConfiguration();
+$showCaptcha = $captchaService-&gt;getShowCaptcha();</code></pre>
+        <div>
+            <button class="code-block-copy" title="Copy to clipboard">
+                <i class="fa-regular fa-copy code-block-copy-icon"></i>
+                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+            </button>
+            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
+        </div>
+    </div>
+            
+    <p>By using this you need to render the html completely on your own.</p>
+
+    </section>
+            <section class="section" id="validate-submitted-form">
+            <h3>Validate submitted form<a class="headerlink" href="#validate-submitted-form" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
+            
+    <p>To validate just call the validateReCaptcha method and you get the
+result of the validation to check against.</p>
+
+                    <div class="code-block-caption">
+            <span class="caption-text">Validate captcha in extension</span>
+        </div><div class="code-block-wrapper" translate="no">
+                        
+        <pre class="code-block"><code class="hljs php">$validCaptcha = <span class="hljs-keyword">false</span>;
+
+$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+$captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($captchaServiceValidation[<span class="hljs-string">'verified'</span>])) {
+	<span class="hljs-keyword">if</span> ($captchaServiceValidation[<span class="hljs-string">'verified'</span>] === <span class="hljs-keyword">true</span>) {
+		$validCaptcha = <span class="hljs-keyword">true</span>;
+	}
+}</code></pre>
+        <div>
+            <button class="code-block-copy" title="Copy to clipboard">
+                <i class="fa-regular fa-copy code-block-copy-icon"></i>
+                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+            </button>
+            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
+        </div>
+    </div>
+    </section>
+    </section>
+            <section class="section" id="integration-in-extbase-extension">
+            <h2>Integration in extbase extension<a class="headerlink" href="#integration-in-extbase-extension" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
+            <section class="section" id="rendering-the-captcha">
+            <h3>Rendering the captcha<a class="headerlink" href="#rendering-the-captcha" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
+            
+    <p>For rendering the captcha in a fluid template there is a ViewHelper
+that prepares the configuration and then renders the captcha.</p>
+
+                    <div class="code-block-caption">
+            <span class="caption-text">ViewHelper example integration</span>
+        </div><div class="code-block-wrapper" translate="no">
+                        
+        <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-recaptcha"</span> <span class="hljs-attr">data-sitekey</span>=<span class="hljs-string">"{configuration.public_key}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">f:then</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">f:else</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"recaptcha-development-mode"</span>&gt;</span>
+            Development mode active. Do not expect the captcha to appear.
+         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">r:form.recaptcha</span>&gt;</span></code></pre>
+        <div>
+            <button class="code-block-copy" title="Copy to clipboard">
+                <i class="fa-regular fa-copy code-block-copy-icon"></i>
+                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+            </button>
+            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
+        </div>
+    </div>
+    </section>
+            <section class="section" id="validation-in-model">
+            <h3>Validation in model<a class="headerlink" href="#validation-in-model" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
+            
+    <p>After the form was submitted the validation of the form model is quite
+easy. Just annotate as usual.</p>
+
+                    <div class="code-block-caption">
+            <span class="caption-text">Add captcha validator to model property</span>
+        </div><div class="code-block-wrapper" translate="no">
+                        
+        <pre class="code-block"><code class="hljs php"><span class="hljs-comment">/**
+ * virtual not stored in database
+ *
+ * <span class="hljs-doctag">@var</span> string
+ * <span class="hljs-doctag">@validate</span> \Evoweb\Recaptcha\Validation\RecaptchaValidator
+ */</span>
+<span class="hljs-keyword">protected</span> $captcha;</code></pre>
+        <div>
+            <button class="code-block-copy" title="Copy to clipboard">
+                <i class="fa-regular fa-copy code-block-copy-icon"></i>
+                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+            </button>
+            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
+        </div>
+    </div>
+    </section>
+    </section>
+    </section>
+        <!-- content end -->
+    </div>
+</article>
+                        
+            <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center"><li class="page-item">
+                            <a class="page-link" href="../ContentSecurityPolicy/Index.html"
+                               title="Accesskey Alt(+Shift)+p">
+                                Previous
+                            </a>
+                        </li>
+                    <li class="page-item">
+                            <a class="page-link" href="../Templating/Index.html"
+                               title="Accesskey Alt(+Shift)+n">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+        </nav>
+                    </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="linkReferenceModal" tabindex="-1" aria-labelledby="linkReferenceModalLabel"
+    aria-hidden="true" data-current-filename="Integration/Index">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="linkReferenceModalLabel">Reference to the headline</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success d-none" id="permalink-alert-success" role="alert"></div>
+                <div class="mb-3">
+                    <label for="permalink-uri" class="col-form-label">Permalink</label>
+                    <div class="input-group">
+                        <input class="form-control code" id="permalink-uri" readonly>
+                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-uri"><i class="far fa-clone"></i></button>
+                    </div>
+                    <p>Copy and freely share the link</p>
+                </div>
+                <div class="mb-3">
+                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.The link below can be used, but is prone to change if the page gets moved.
+                    </div>
+                    <label for="permalink-rst" class="col-form-label">reStructuredText (reST):</label>
+                    <div class="input-group">
+                        <textarea class="form-control code" id="permalink-rst" readonly></textarea>
+                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-rst"><i class="far fa-clone"></i></button>
+                    </div>
+                    <p>Copy this link into your TYPO3 manual. </p>
+                </div>
+                <div class="mb-3">
+                    <label for="permalink-html" class="col-form-label">HTML:</label>
+                    <div class="input-group">
+                        <textarea class="form-control code" id="permalink-html" readonly></textarea>
+                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-html"><i class="far fa-clone"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+
+<footer class="page-footer">
+    <div class="frame frame-ruler-before frame-background-dark">
+        <div class="frame-container">
+            <div class="frame-inner">
+                                <div class="footer-additional">
+                    <p class="text-center">Last rendered: May 19, 2024 17:39</p>
+                </div>
+                <div class="footer-meta">
+                    <ul class="footer-meta-navigation">
+                        <li><a href="https://typo3.org/legal-notice" rel="nofollow" target="_blank" title="Legal Notice">Legal Notice</a></li>
+                        <li><a href="https://typo3.org/privacy-policy" rel="nofollow" target="_blank" title="Privacy Policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="../_resources/js/popper.min.js"></script>
+<script src="../_resources/js/bootstrap.min.js"></script>
+<script src="../_resources/js/theme.min.js"></script>
+
+<!--
+ Locally rendered. No tracking embedded.
+-->
+</body>
+</html>

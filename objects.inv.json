@@ -1,0 +1,380 @@
+{
+    "std:doc": {
+        "Administration\/Index": [
+            "-",
+            "-",
+            "Administration\/Index.html",
+            "Administration"
+        ],
+        "BreakingChanges\/Index": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html",
+            "Breaking Changes"
+        ],
+        "Configuration\/Index": [
+            "-",
+            "-",
+            "Configuration\/Index.html",
+            "Configuration"
+        ],
+        "ContentSecurityPolicy\/Index": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html",
+            "Content Security Policy"
+        ],
+        "Index": [
+            "-",
+            "-",
+            "Index.html",
+            "reCAPTCHA: Easy on Humans, Hard on Bots"
+        ],
+        "Integration\/Index": [
+            "-",
+            "-",
+            "Integration\/Index.html",
+            "Integration"
+        ],
+        "Introduction\/Index": [
+            "-",
+            "-",
+            "Introduction\/Index.html",
+            "Introduction"
+        ],
+        "Sitemap": [
+            "-",
+            "-",
+            "Sitemap.html",
+            "Sitemap"
+        ],
+        "Templating\/Index": [
+            "-",
+            "-",
+            "Templating\/Index.html",
+            "Templating"
+        ],
+        "Tutorial\/Index": [
+            "-",
+            "-",
+            "Tutorial\/Index.html",
+            "Tutorial"
+        ],
+        "UsersManual\/Index": [
+            "-",
+            "-",
+            "UsersManual\/Index.html",
+            "Users manual"
+        ]
+    },
+    "std:label": {
+        "administration": [
+            "-",
+            "-",
+            "Administration\/Index.html#administration",
+            "Administration"
+        ],
+        "breaking-changes": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html#breaking-changes",
+            "Breaking Changes"
+        ],
+        "configuration": [
+            "-",
+            "-",
+            "Configuration\/Index.html#configuration",
+            "Configuration"
+        ],
+        "csp": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html#csp",
+            "Content Security Policy"
+        ],
+        "integration": [
+            "-",
+            "-",
+            "Integration\/Index.html#integration",
+            "Integration"
+        ],
+        "introduction": [
+            "-",
+            "-",
+            "Introduction\/Index.html#introduction",
+            "Introduction"
+        ],
+        "templating": [
+            "-",
+            "-",
+            "Templating\/Index.html#templating",
+            "Templating"
+        ],
+        "tutorial": [
+            "-",
+            "-",
+            "Tutorial\/Index.html#tutorial",
+            "Tutorial"
+        ],
+        "user-manual": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#user-manual",
+            "Users manual"
+        ]
+    },
+    "std:title": {
+        "administration-1": [
+            "-",
+            "-",
+            "Administration\/Index.html#administration-1",
+            "Administration"
+        ],
+        "manual-installations": [
+            "-",
+            "-",
+            "Administration\/Index.html#manual-installations",
+            "Manual installations"
+        ],
+        "composer-installations": [
+            "-",
+            "-",
+            "Administration\/Index.html#composer-installations",
+            "Composer installations"
+        ],
+        "activation": [
+            "-",
+            "-",
+            "Administration\/Index.html#activation",
+            "Activation"
+        ],
+        "configuration": [
+            "-",
+            "-",
+            "Administration\/Index.html#configuration",
+            "Configuration"
+        ],
+        "breaking-changes-1": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html#breaking-changes-1",
+            "Breaking Changes"
+        ],
+        "13-august-2023": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html#13-august-2023",
+            "13. August 2023"
+        ],
+        "partials": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html#partials",
+            "Partials"
+        ],
+        "configuration-removed": [
+            "-",
+            "-",
+            "BreakingChanges\/Index.html#configuration-removed",
+            "Configuration removed"
+        ],
+        "configuration-1": [
+            "-",
+            "-",
+            "Configuration\/Index.html#configuration-1",
+            "Configuration"
+        ],
+        "backend-related": [
+            "-",
+            "-",
+            "Configuration\/Index.html#backend-related",
+            "Backend related"
+        ],
+        "frontend-related": [
+            "-",
+            "-",
+            "Configuration\/Index.html#frontend-related",
+            "Frontend related"
+        ],
+        "reference": [
+            "-",
+            "-",
+            "Configuration\/Index.html#reference",
+            "Reference"
+        ],
+        "content-security-policy": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html#content-security-policy",
+            "Content Security Policy"
+        ],
+        "reason": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html#reason",
+            "Reason"
+        ],
+        "csp-configuration": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html#csp-configuration",
+            "CSP Configuration"
+        ],
+        "template-modifications": [
+            "-",
+            "-",
+            "ContentSecurityPolicy\/Index.html#template-modifications",
+            "Template modifications"
+        ],
+        "recaptcha-easy-on-humans-hard-on-bots": [
+            "-",
+            "-",
+            "Index.html#recaptcha-easy-on-humans-hard-on-bots",
+            "reCAPTCHA: Easy on Humans, Hard on Bots"
+        ],
+        "integration-1": [
+            "-",
+            "-",
+            "Integration\/Index.html#integration-1",
+            "Integration"
+        ],
+        "use-in-your-extension": [
+            "-",
+            "-",
+            "Integration\/Index.html#use-in-your-extension",
+            "Use in your extension"
+        ],
+        "integration-in-your-own-code": [
+            "-",
+            "-",
+            "Integration\/Index.html#integration-in-your-own-code",
+            "Integration in your own code"
+        ],
+        "rendering-hole-captcha": [
+            "-",
+            "-",
+            "Integration\/Index.html#rendering-hole-captcha",
+            "Rendering hole captcha"
+        ],
+        "render-on-your-own": [
+            "-",
+            "-",
+            "Integration\/Index.html#render-on-your-own",
+            "Render on your own"
+        ],
+        "validate-submitted-form": [
+            "-",
+            "-",
+            "Integration\/Index.html#validate-submitted-form",
+            "Validate submitted form"
+        ],
+        "integration-in-extbase-extension": [
+            "-",
+            "-",
+            "Integration\/Index.html#integration-in-extbase-extension",
+            "Integration in extbase extension"
+        ],
+        "rendering-the-captcha": [
+            "-",
+            "-",
+            "Integration\/Index.html#rendering-the-captcha",
+            "Rendering the captcha"
+        ],
+        "validation-in-model": [
+            "-",
+            "-",
+            "Integration\/Index.html#validation-in-model",
+            "Validation in model"
+        ],
+        "introduction-1": [
+            "-",
+            "-",
+            "Introduction\/Index.html#introduction-1",
+            "Introduction"
+        ],
+        "functionality": [
+            "-",
+            "-",
+            "Introduction\/Index.html#functionality",
+            "Functionality"
+        ],
+        "features": [
+            "-",
+            "-",
+            "Introduction\/Index.html#features",
+            "Features"
+        ],
+        "sitemap": [
+            "-",
+            "-",
+            "Sitemap.html#sitemap",
+            "Sitemap"
+        ],
+        "templating-1": [
+            "-",
+            "-",
+            "Templating\/Index.html#templating-1",
+            "Templating"
+        ],
+        "viewhelper-integration": [
+            "-",
+            "-",
+            "Templating\/Index.html#viewhelper-integration",
+            "ViewHelper integration"
+        ],
+        "integration-in-extension": [
+            "-",
+            "-",
+            "Templating\/Index.html#integration-in-extension",
+            "Integration in extension"
+        ],
+        "tutorial-1": [
+            "-",
+            "-",
+            "Tutorial\/Index.html#tutorial-1",
+            "Tutorial"
+        ],
+        "use-invisible-recaptcha-in-ext-form-forms": [
+            "-",
+            "-",
+            "Tutorial\/Index.html#use-invisible-recaptcha-in-ext-form-forms",
+            "Use invisible recaptcha in EXT:form forms"
+        ],
+        "users-manual": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#users-manual",
+            "Users manual"
+        ],
+        "usage-in-ext-form-manager": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#usage-in-ext-form-manager",
+            "Usage in ext:form manager"
+        ],
+        "add-captcha-to-form": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#add-captcha-to-form",
+            "Add captcha to form"
+        ],
+        "configure-label": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#configure-label",
+            "Configure label"
+        ],
+        "use-invisible-captcha": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#use-invisible-captcha",
+            "Use invisible captcha"
+        ],
+        "usage-in-ext-formhandler": [
+            "-",
+            "-",
+            "UsersManual\/Index.html#usage-in-ext-formhandler",
+            "Usage in ext:formhandler"
+        ]
+    }
+}
