@@ -22,9 +22,7 @@ class RecaptchaValidator extends AbstractValidator
 {
     protected $acceptsEmptyValues = false;
 
-    public function __construct(protected CaptchaService $captchaService)
-    {
-    }
+    public function __construct(protected CaptchaService $captchaService) {}
 
     /**
      * Validate the captcha value from the request and add an error if not valid

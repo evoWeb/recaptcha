@@ -152,7 +152,7 @@ class CaptchaService
         if (!$this->getShowCaptcha()) {
             return [
                 'verified' => true,
-                'error' => ''
+                'error' => '',
             ];
         }
 
@@ -166,7 +166,7 @@ class CaptchaService
 
         $result = [
             'verified' => false,
-            'error' => ''
+            'error' => '',
         ];
         if (empty($request['response'])) {
             $result['error'] = 'missing-input-response';
@@ -204,7 +204,7 @@ class CaptchaService
         if (empty($verifyServerInfo)) {
             return [
                 'success' => false,
-                'error-codes' => 'recaptcha-not-reachable'
+                'error-codes' => 'recaptcha-not-reachable',
             ];
         }
 

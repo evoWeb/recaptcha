@@ -22,9 +22,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class SfRegisterAdapter extends AbstractAdapter
 {
-    public function __construct(protected CaptchaService $captchaService, protected Session $session)
-    {
-    }
+    public function __construct(protected CaptchaService $captchaService, protected Session $session) {}
 
     /**
      * Rendering the output of the captcha
