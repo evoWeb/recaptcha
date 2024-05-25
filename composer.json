@@ -28,11 +28,11 @@
 		}
 	},
 	"require": {
-		"psr/http-message": "^1.1 || ^2.0",
-		"typo3/cms-core": "^13.0",
+		"typo3/cms-core": "^12.4 || 12.4.x-dev || ^13.0 || 13.0.x-dev || dev-main",
 		"typo3/cms-extbase": "^12.4 || 12.4.x-dev || ^13.0 || 13.0.x-dev ||  dev-main",
 		"typo3/cms-fluid": "^12.4 || 12.4.x-dev || ^13.0 || 13.0.x-dev ||  dev-main",
-		"typo3/cms-frontend": "^12.4 || 12.4.x-dev || ^13.0 || 13.0.x-dev ||  dev-main"
+		"typo3/cms-frontend": "^12.4 || 12.4.x-dev || ^13.0 || 13.0.x-dev ||  dev-main",
+		"psr/http-message": "^1.1 || ^2.0"
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3.57.1"
