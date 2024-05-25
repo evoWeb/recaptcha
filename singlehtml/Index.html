@@ -11,9 +11,9 @@
 <meta content="" name="docsearch:package_type">
 <meta content="" name="docsearch:release">
 <meta content="" name="docsearch:version">
-<meta content="2024-05-19T17:39:08+00:00" name="docsearch:modified">
-<meta content="2024-05-19T17:39:08+00:00" name="dc.modified">
-<meta content="2024-05-19T17:39:08+00:00" property="article:modified_time">
+<meta content="2024-05-25T16:45:42+00:00" name="docsearch:modified">
+<meta content="2024-05-25T16:45:42+00:00" name="dc.modified">
+<meta content="2024-05-25T16:45:42+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -138,7 +138,7 @@ license.</p>
 
         <dd class="field-odd">
             
-    <p>Sun, 19 May 2024 17:39:08 +0000</p>
+    <p>Sat, 25 May 2024 16:45:42 +0000</p>
         </dd>
     </dl>
             <hr />
@@ -261,7 +261,7 @@ license.</p>
 
         <dd class="field-odd">
             
-    <p>Sun, 19 May 2024 17:39:08 +0000</p>
+    <p>Sat, 25 May 2024 16:45:42 +0000</p>
         </dd>
     </dl>
             <hr />
@@ -445,30 +445,28 @@ button on top of the form editor. There the checkbox for
     <p>Marker for the hidden field:</p>
 
             <div class="code-block-wrapper" translate="no">
-                                                        
-        <pre class="code-block"><code class="hljs xml"><span data-line-number="1">###recaptcha_invisible###</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+                                
+    <pre class="code-block"><code class="hljs xml"><span data-line-number="1">###recaptcha_invisible###</span></code></pre>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
             
     <p>Marker for the submit button:</p>
 
             <div class="code-block-wrapper" translate="no">
-                                                        
-        <pre class="code-block"><code class="hljs xml"><span data-line-number="1">###recaptcha_button_invisible###</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+                                
+    <pre class="code-block"><code class="hljs xml"><span data-line-number="1">###recaptcha_button_invisible###</span></code></pre>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
 
@@ -496,20 +494,19 @@ or directly in the admin tools extensions with the integrated search.</p>
     <p>On the console in the folder where the project composer.json resides
 just type:</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Installation via composer</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs bash">composer require evoweb/recaptcha ^8.2
+                <div class="code-block-caption">
+        <span class="caption-text">Installation via composer</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs bash">composer require evoweb/recaptcha ^8.2
 composer update</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="activation">
             <h2>Activation<a class="headerlink" href="#activation" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
@@ -518,19 +515,18 @@ composer update</code></pre>
 it. Normally this is done in the admin tools extensions. But its also possible
 to activate it via console:</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Activate extension on shell</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs bash">$ ./bin/typo3 extensionmanager:extension:install recaptcha</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+                <div class="code-block-caption">
+        <span class="caption-text">Activate extension on shell</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs bash">$ ./bin/typo3 extensionmanager:extension:install recaptcha</code></pre>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="configuration">
             <h2>Configuration<a class="headerlink" href="#configuration" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
@@ -845,11 +841,11 @@ configuration.</p>
     <p>To get the recaptcha working with csp feature active, it&#039;s necessary to add an
 extending mutation to the site configuration in a csp.yaml named file.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">project_root/config/sites/main/csp.yaml</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs yaml"><span class="hljs-attr">inheritDefault:</span> <span class="hljs-literal">true</span>
+                <div class="code-block-caption">
+        <span class="caption-text">project_root/config/sites/main/csp.yaml</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs yaml"><span class="hljs-attr">inheritDefault:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">mutations:</span>
   <span class="hljs-bullet">-</span> <span class="hljs-attr">mode:</span> <span class="hljs-string">extend</span>
     <span class="hljs-attr">directive:</span> <span class="hljs-string">'frame-src'</span>
@@ -862,14 +858,13 @@ extending mutation to the site configuration in a csp.yaml named file.</p>
     <span class="hljs-attr">sources:</span>
       <span class="hljs-bullet">-</span> <span class="hljs-string">'https://www.google.com/recaptcha/'</span>
       <span class="hljs-bullet">-</span> <span class="hljs-string">'https://www.gstatic.com/recaptcha/'</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="template-modifications">
             <h2>Template modifications<a class="headerlink" href="#template-modifications" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
@@ -910,20 +905,19 @@ extbase extensions.</p>
     <p>To render you are able to let the service take care of the output
 by calling getReCaptcha.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Get rendered captcha from service</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+                <div class="code-block-caption">
+        <span class="caption-text">Get rendered captcha from service</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $output = $captchaService-&gt;getReCaptcha();</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
             
     <p>Please keep in mind that it only renders the captcha. If you need
 something to trigger the validation in your controller it&#039;s up to
@@ -936,21 +930,20 @@ you to add the code.</p>
     <p>If you prefer to render on your own its possible to let the service
 prepare the settings for you.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Get settings to render individually</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+                <div class="code-block-caption">
+        <span class="caption-text">Get settings to render individually</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $configuration = $captchaService-&gt;getConfiguration();
 $showCaptcha = $captchaService-&gt;getShowCaptcha();</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
             
     <p>By using this you need to render the html completely on your own.</p>
 
@@ -961,11 +954,11 @@ $showCaptcha = $captchaService-&gt;getShowCaptcha();</code></pre>
     <p>To validate just call the validateReCaptcha method and you get the
 result of the validation to check against.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Validate captcha in extension</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$validCaptcha = <span class="hljs-keyword">false</span>;
+                <div class="code-block-caption">
+        <span class="caption-text">Validate captcha in extension</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$validCaptcha = <span class="hljs-keyword">false</span>;
 
 $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
@@ -974,14 +967,13 @@ $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
 		$validCaptcha = <span class="hljs-keyword">true</span>;
 	}
 }</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
             <section class="section" id="integration-in-extbase-extension">
@@ -992,11 +984,11 @@ $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
     <p>For rendering the captcha in a fluid template there is a ViewHelper
 that prepares the configuration and then renders the captcha.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">ViewHelper example integration</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
+                <div class="code-block-caption">
+        <span class="caption-text">ViewHelper example integration</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
          <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
@@ -1009,14 +1001,13 @@ that prepares the configuration and then renders the captcha.</p>
       <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
    <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">r:form.recaptcha</span>&gt;</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="validation-in-model">
             <h3>Validation in model<a class="headerlink" href="#validation-in-model" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
@@ -1024,25 +1015,24 @@ that prepares the configuration and then renders the captcha.</p>
     <p>After the form was submitted the validation of the form model is quite
 easy. Just annotate as usual.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Add captcha validator to model property</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php"><span class="hljs-comment">/**
+                <div class="code-block-caption">
+        <span class="caption-text">Add captcha validator to model property</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php"><span class="hljs-comment">/**
  * virtual not stored in database
  *
  * <span class="hljs-doctag">@var</span> string
  * <span class="hljs-doctag">@validate</span> \Evoweb\Recaptcha\Validation\RecaptchaValidator
  */</span>
 <span class="hljs-keyword">protected</span> $captcha;</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
     </section>
@@ -1118,11 +1108,11 @@ to extension configuration set in admin tools extensions.</dd>
             </dl>
 </div>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">ViewHelper example integration</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
+                <div class="code-block-caption">
+        <span class="caption-text">ViewHelper example integration</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
          <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
@@ -1135,14 +1125,13 @@ to extension configuration set in admin tools extensions.</dd>
       <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
    <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">r:form.recaptcha</span>&gt;</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="integration-in-extension">
             <h2>Integration in extension<a class="headerlink" href="#integration-in-extension" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h2>
@@ -1174,19 +1163,18 @@ the inclusion of the invisible recaptcha callback and the other is to
 tell the callback which id the form to handle has.</p>
 
             <div class="code-block-wrapper" translate="no">
-                                                        
-        <pre class="code-block"><code class="hljs typoscript"><span data-line-number="1">plugin.tx\_recaptcha {</span>
+                                
+    <pre class="code-block"><code class="hljs typoscript"><span data-line-number="1">plugin.tx\_recaptcha {</span>
 <span data-line-number="2">    include\_invisible\_recaptcha\_callback = 1</span>
 <span data-line-number="3">    invisible\_recaptcha\_formname = captchaForm-4</span>
 <span data-line-number="4">}</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
 
@@ -1253,7 +1241,7 @@ tell the callback which id the form to handle has.</p>
         <div class="frame-container">
             <div class="frame-inner">
                                 <div class="footer-additional">
-                    <p class="text-center">Last rendered: May 19, 2024 17:39</p>
+                    <p class="text-center">Last rendered: May 25, 2024 16:45</p>
                 </div>
                 <div class="footer-meta">
                     <ul class="footer-meta-navigation">

@@ -11,9 +11,9 @@
 <meta content="" name="docsearch:package_type">
 <meta content="" name="docsearch:release">
 <meta content="" name="docsearch:version">
-<meta content="2024-05-19T17:39:08+00:00" name="docsearch:modified">
-<meta content="2024-05-19T17:39:08+00:00" name="dc.modified">
-<meta content="2024-05-19T17:39:08+00:00" property="article:modified_time">
+<meta content="2024-05-25T16:45:42+00:00" name="docsearch:modified">
+<meta content="2024-05-25T16:45:42+00:00" name="dc.modified">
+<meta content="2024-05-25T16:45:42+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -172,20 +172,19 @@ extbase extensions.</p>
     <p>To render you are able to let the service take care of the output
 by calling getReCaptcha.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Get rendered captcha from service</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+                <div class="code-block-caption">
+        <span class="caption-text">Get rendered captcha from service</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $output = $captchaService-&gt;getReCaptcha();</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
             
     <p>Please keep in mind that it only renders the captcha. If you need
 something to trigger the validation in your controller it&#039;s up to
@@ -198,21 +197,20 @@ you to add the code.</p>
     <p>If you prefer to render on your own its possible to let the service
 prepare the settings for you.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Get settings to render individually</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
+                <div class="code-block-caption">
+        <span class="caption-text">Get settings to render individually</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $configuration = $captchaService-&gt;getConfiguration();
 $showCaptcha = $captchaService-&gt;getShowCaptcha();</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
             
     <p>By using this you need to render the html completely on your own.</p>
 
@@ -223,11 +221,11 @@ $showCaptcha = $captchaService-&gt;getShowCaptcha();</code></pre>
     <p>To validate just call the validateReCaptcha method and you get the
 result of the validation to check against.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Validate captcha in extension</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php">$validCaptcha = <span class="hljs-keyword">false</span>;
+                <div class="code-block-caption">
+        <span class="caption-text">Validate captcha in extension</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php">$validCaptcha = <span class="hljs-keyword">false</span>;
 
 $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
@@ -236,14 +234,13 @@ $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
 		$validCaptcha = <span class="hljs-keyword">true</span>;
 	}
 }</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
             <section class="section" id="integration-in-extbase-extension">
@@ -254,11 +251,11 @@ $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
     <p>For rendering the captcha in a fluid template there is a ViewHelper
 that prepares the configuration and then renders the captcha.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">ViewHelper example integration</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
+                <div class="code-block-caption">
+        <span class="caption-text">ViewHelper example integration</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
    <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
          <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
@@ -271,14 +268,13 @@ that prepares the configuration and then renders the captcha.</p>
       <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
    <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">r:form.recaptcha</span>&gt;</span></code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
             <section class="section" id="validation-in-model">
             <h3>Validation in model<a class="headerlink" href="#validation-in-model" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h3>
@@ -286,25 +282,24 @@ that prepares the configuration and then renders the captcha.</p>
     <p>After the form was submitted the validation of the form model is quite
 easy. Just annotate as usual.</p>
 
-                    <div class="code-block-caption">
-            <span class="caption-text">Add captcha validator to model property</span>
-        </div><div class="code-block-wrapper" translate="no">
-                        
-        <pre class="code-block"><code class="hljs php"><span class="hljs-comment">/**
+                <div class="code-block-caption">
+        <span class="caption-text">Add captcha validator to model property</span>
+    </div><div class="code-block-wrapper" translate="no">
+            
+    <pre class="code-block"><code class="hljs php"><span class="hljs-comment">/**
  * virtual not stored in database
  *
  * <span class="hljs-doctag">@var</span> string
  * <span class="hljs-doctag">@validate</span> \Evoweb\Recaptcha\Validation\RecaptchaValidator
  */</span>
 <span class="hljs-keyword">protected</span> $captcha;</code></pre>
-        <div>
-            <button class="code-block-copy" title="Copy to clipboard">
-                <i class="fa-regular fa-copy code-block-copy-icon"></i>
-                <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-            </button>
-            <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-        </div>
+    <div>        <button class="code-block-copy" title="Copy to clipboard">
+            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
+            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
+        </button>
+        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
     </div>
+</div>
     </section>
     </section>
     </section>
@@ -381,7 +376,7 @@ easy. Just annotate as usual.</p>
         <div class="frame-container">
             <div class="frame-inner">
                                 <div class="footer-additional">
-                    <p class="text-center">Last rendered: May 19, 2024 17:39</p>
+                    <p class="text-center">Last rendered: May 25, 2024 16:45</p>
                 </div>
                 <div class="footer-meta">
                     <ul class="footer-meta-navigation">
