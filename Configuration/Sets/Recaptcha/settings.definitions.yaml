@@ -1,0 +1,45 @@
+settings:
+  recaptcha.apiServer:
+    default: 'https://www.google.com/recaptcha/api.js'
+    label: 'reCAPTCHA API-server address'
+    type: string
+    description: 'api url'
+  recaptcha.verifyServer:
+    default: 'https://www.google.com/recaptcha/api/siteverify'
+    label: 'reCAPTCHA VERIFY-server address'
+    type: string
+    description: 'verify url'
+  recaptcha.publicKey:
+    default: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+    label:  'reCAPTCHA public key: Public key of your reCAPTCHA-account'
+    type: string
+  recaptcha.privateKey:
+    default: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+    label: 'reCAPTCHA private key: Private key of your reCAPTCHA-account'
+    type: string
+    description: ''
+  recaptcha.lang:
+    default: '?hl='
+    label: 'reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)'
+    type: string
+    description: ''
+  recaptcha.enforceCaptcha:
+    default: 0
+    label: 'enforcing captcha even in development mode'
+    type: bool
+    description: ''
+  recaptcha.theme:
+    default: 'light'
+    label: 'reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)'
+    type: string
+    description: ''
+  recaptcha.robotMode:
+    default: 0
+    label: 'reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha'
+    type: bool
+    description: ''
+  sf_register.captchaId:
+    default: 'recaptcha'
+    label: 'Frontend user registration what captcha to use'
+    type: string
+    description: ''
