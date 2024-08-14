@@ -1,6 +1,10 @@
 class Recaptcha {
   currentForm = null;
 
+  recaptchaFieldSelector = '[data-recaptcha-form-field]';
+
+  recaptchaField = null;
+
   constructor() {
     this.initializeEvents();
     this.registerCallback();
@@ -8,14 +12,12 @@ class Recaptcha {
 
   initializeEvents() {
     // used with visible recaptcha
-    [...document.querySelectorAll('[data-recaptcha-form-submit]')].map(button => {
-      button.addEventListener('click', event => this.visibleRecaptchaButtonClicked(event));
-    });
+    [...document.querySelectorAll('[data-recaptcha-form-submit]')]
+      .map(button => button.addEventListener('click', event => this.visibleRecaptchaButtonClicked(event)));
 
     // used with invisible recaptcha
-    [...document.querySelectorAll('[data-callback="onRecaptchaSubmit"]')].map(button => {
-      button.addEventListener('click', event => this.invisibleRecaptchaButtonClicked(event));
-    });
+    [...document.querySelectorAll('[data-callback="onRecaptchaSubmit"]')]
+      .map(button => button.addEventListener('click', event => this.invisibleRecaptchaButtonClicked(event)));
   }
 
   visibleRecaptchaButtonClicked(event) {
@@ -29,34 +31,35 @@ class Recaptcha {
   invisibleRecaptchaButtonClicked(event) {
     if (this.currentForm === null) {
       this.currentForm = event.target.closest('form');
+      this.recaptchaField = this.currentForm.querySelector(this.recaptchaFieldSelector);
     }
   }
 
   registerCallback() {
-    window.onRecaptchaSubmit = this.submitCurrentForm.bind(this);
-    window.onRecaptchaCallback = this.recaptchaConfirmed.bind(this);
-    window.onRecaptchaExpired = this.recaptchaExpired.bind(this);
-    window.onRecaptchaError = this.recaptchaError.bind(this);
+    window.onRecaptchaSubmit = (response) => this.submitCurrentForm(response);
+    window.onRecaptchaCallback = (response) => this.recaptchaConfirmed(response);
+    window.onRecaptchaExpired = () => this.recaptchaExpired();
+    window.onRecaptchaError = () => this.recaptchaError();
   }
 
-  submitCurrentForm(recaptchaResponse) {
+  submitCurrentForm(response) {
     if (this.currentForm.checkValidity()) {
-      this.currentForm.querySelector('[data-recaptcha-form-field]').value = recaptchaResponse;
+      this.recaptchaField.value = response;
       this.currentForm.submit();
       this.currentForm = null;
     }
   }
 
-  recaptchaConfirmed(recaptchaResponse) {
-    document.querySelector('[data-recaptcha-form-field]').value = recaptchaResponse;
+  recaptchaConfirmed(response) {
+    [...document.querySelectorAll(this.recaptchaFieldSelector)].map(field => field.value = response);
   }
 
   recaptchaExpired() {
-    document.querySelector('[data-recaptcha-form-field]').value = '';
+    [...document.querySelectorAll(this.recaptchaFieldSelector)].map(field => field.value = '');
   }
 
   recaptchaError() {
-    document.querySelector('[data-recaptcha-form-field]').value = '';
+    [...document.querySelectorAll(this.recaptchaFieldSelector)].map(field => field.value = '');
   }
 }
 new Recaptcha();
