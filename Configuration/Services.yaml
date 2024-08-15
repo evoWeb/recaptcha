@@ -1,14 +1,37 @@
 services:
   _defaults:
-    autowire: true
-    autoconfigure: true
+    autowire: false
+    autoconfigure: false
     public: false
 
   Evoweb\Recaptcha\:
     resource: '../Classes/*'
-
-  Evoweb\Recaptcha\Services\CaptchaService:
-    public: true
+    exclude: '../Classes/{Domain/Model}'
 
   Evoweb\Recaptcha\Adapter\SfRegisterAdapter:
     public: true
+    arguments:
+      $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
+      $session: '@Evoweb\SfRegister\Services\Session'
+
+  Evoweb\Recaptcha\Adapter\TypoScriptAdapter:
+    public: true
+    arguments:
+      $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
+
+  Evoweb\Recaptcha\Services\CaptchaService:
+    public: true
+    arguments:
+      $extensionConfiguration: '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
+      $configurationManager: '@TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface'
+      $typoScriptService: '@TYPO3\CMS\Core\TypoScript\TypoScriptService'
+      $contentRenderer: '@TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer'
+      $requestFactory: '@TYPO3\CMS\Core\Http\RequestFactory'
+
+  Evoweb\Recaptcha\Validation\RecaptchaValidator:
+    arguments:
+      $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
+
+  Evoweb\Recaptcha\ViewHelpers\Form\RecaptchaViewHelper:
+    arguments:
+      $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
