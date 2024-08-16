@@ -40,7 +40,7 @@ prototypes:
           groupSorting: 700
           iconIdentifier: t3-form-icon-recaptcha
 
-        implementationClassName: Evoweb\Recaptcha\Domain\Model\FormElements\RecaptchaElement
+        implementationClassName: TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement
 
         properties:
           containerClassAttribute: recaptcha

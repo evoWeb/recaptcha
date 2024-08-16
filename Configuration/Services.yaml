@@ -20,7 +20,6 @@ services:
       $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
 
   Evoweb\Recaptcha\Services\CaptchaService:
-    public: true
     arguments:
       $extensionConfiguration: '@TYPO3\CMS\Core\Configuration\ExtensionConfiguration'
       $configurationManager: '@TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface'
@@ -29,9 +28,11 @@ services:
       $requestFactory: '@TYPO3\CMS\Core\Http\RequestFactory'
 
   Evoweb\Recaptcha\Validation\RecaptchaValidator:
+    public: true
     arguments:
       $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
 
   Evoweb\Recaptcha\ViewHelpers\Form\RecaptchaViewHelper:
+    public: true
     arguments:
       $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'

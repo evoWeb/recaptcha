@@ -35,10 +35,6 @@ class SfRegisterAdapter extends AbstractAdapter
 
     /**
      * Validate the captcha value from the request and output an error if not valid
-     *
-     * @param string $value
-     *
-     * @return bool
      */
     public function isValid(string $value): bool
     {

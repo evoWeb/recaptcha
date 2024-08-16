@@ -193,8 +193,6 @@ class CaptchaService
     /**
      * Query reCAPTCHA server for captcha-verification
      *
-     * @param array $data
-     *
      * @return array Array with verified- (boolean) and error-code (string)
      */
     protected function queryVerificationServer(array $data): array
