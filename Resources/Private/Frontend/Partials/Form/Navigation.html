@@ -5,43 +5,29 @@
 <nav class="form-navigation">
     <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
+            <f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
+                <f:form.hidden property="__currentPage" value="{form.pages -> f:count()}" respectSubmittedDataValue="false"/>
+            </f:if>
             <f:if condition="{form.previousPage}">
                 <span class="btn-group previous">
-                    <f:form.hidden property="__currentPage" value="{form.previousPage.index}" respectSubmittedDataValue="false"/>
-                    <f:form.button
-                        id="{form.formDefinition.identifier}-prev"
-                        type="button"
-                        class="btn btn-cancel"
-                        formnovalidate="formnovalidate"
-                        data="{recaptcha-form-submit: ''}"
-                    ><formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="previousButtonLabel"/></f:form.button>
+                    <f:form.button property="__currentPage" value="{form.previousPage.index}" formnovalidate="formnovalidate" class="btn btn-cancel">
+                        <formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="previousButtonLabel"/>
+                    </f:form.button>
                 </span>
             </f:if>
             <f:if condition="{form.nextPage}">
                 <f:then>
                     <span class="btn-group next">
-                        <f:form.button
-                            id="{form.formDefinition.identifier}-next"
-                            property="__currentPage"
-                            value="{form.nextPage.index}"
-                            class="btn btn-primary"
-                        ><formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="nextButtonLabel"/></f:form.button>
+                        <f:form.button property="__currentPage" value="{form.nextPage.index}" class="btn btn-primary">
+                            <formvh:translateElementProperty element="{form.currentPage}" renderingOptionProperty="nextButtonLabel"/>
+                        </f:form.button>
                     </span>
                 </f:then>
+
                 <f:else>
-                    <f:form.hidden property="__currentPage" value="{form.pages -> f:count()}" respectSubmittedDataValue="false"/>
-                    <f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
-                        <f:else>
-                            <span class="btn-group next submit">
-                                <f:form.button
-                                    id="{form.formDefinition.identifier}-submit"
-                                    class="btn btn-primary"
-                                    data="{recaptcha-form-submit: ''}"
-                                ><formvh:translateElementProperty element="{form}" renderingOptionProperty="submitButtonLabel"/></f:form.button>
-                            </span>
-                        </f:else>
-                        <f:then>
-                            <span class="btn-group next">
+                    <span class="btn-group next submit">
+                        <f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
+                            <f:then>
                                 <r:form.recaptcha>
                                     <f:if condition="{showCaptcha}">
                                         <f:then>
@@ -64,9 +50,15 @@
                                         </f:else>
                                     </f:if>
                                 </r:form.recaptcha>
-                            </span>
-                        </f:then>
-                    </f:if>
+                            </f:then>
+
+                            <f:else>
+                                <f:form.button property="__currentPage" value="{form.pages -> f:count()}" class="btn btn-primary" data="{recaptcha-form-submit: ''}">
+                                    <formvh:translateElementProperty element="{form}" renderingOptionProperty="submitButtonLabel"/>
+                                </f:form.button>
+                            </f:else>
+                        </f:if>
+                    </span>
                 </f:else>
             </f:if>
         </div>
