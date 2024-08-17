@@ -5,6 +5,9 @@
 <nav class="form-navigation">
     <div class="btn-toolbar" role="toolbar">
         <div class="btn-group" role="group">
+            <f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
+                <f:form.hidden property="__currentPage" value="{form.pages -> f:count()}" respectSubmittedDataValue="false"/>
+            </f:if>
             <f:if condition="{form.previousPage}">
                 <span class="btn-group previous">
                     <f:form.button property="__currentPage" value="{form.previousPage.index}" formnovalidate="formnovalidate" class="btn btn-cancel">
@@ -25,7 +28,6 @@
                     <span class="btn-group next submit">
                         <f:if condition="{form.formDefinition.renderingOptions.useInvisibleRecaptcha}">
                             <f:then>
-                                <f:form.hidden property="__currentPage" value="{form.pages -> f:count()}" respectSubmittedDataValue="false"/>
                                 <r:form.recaptcha>
                                     <f:if condition="{showCaptcha}">
                                         <f:then>
