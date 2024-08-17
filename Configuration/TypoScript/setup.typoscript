@@ -46,12 +46,12 @@ plugin.tx_sfregister.settings {
     }
   }
 }
-plugin.tx_sfregister.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
+plugin.tx_sfregister.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Partials/
 
 
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/FormSetup.yaml
-plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Frontend/Partials/
+plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Partials/
 
 
 page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server ?? $recaptcha.apiServer}{$plugin.tx_recaptcha.lang ?? $recaptcha.lang}
