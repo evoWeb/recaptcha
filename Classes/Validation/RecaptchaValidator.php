@@ -22,18 +22,18 @@ class RecaptchaValidator extends AbstractValidator
 {
     protected $acceptsEmptyValues = false;
 
-    public function __construct(protected CaptchaService $captchaService)
-    {
-    }
+    public function __construct(protected CaptchaService $captchaService) {}
 
     /**
      * Validate the captcha value from the request and add an error if not valid
      */
     public function isValid(mixed $value): void
     {
-        $status = $this->captchaService->validateReCaptcha($value);
+        $status = $this->captchaService->validateReCaptcha((string)$value);
         if ($status['error'] !== '') {
-            $errorText = $this->translateErrorMessage('error_recaptcha_' . $status['error'], 'recaptcha');
+            $errorText = $this->translateErrorMessage(
+                'LLL:EXT:recaptcha/Resources/Private/Language/locallang.xlf:error_recaptcha_' . $status['error']
+            );
 
             if (empty($errorText)) {
                 $errorText = htmlspecialchars($status['error']);

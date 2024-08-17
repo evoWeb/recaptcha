@@ -152,19 +152,21 @@ class CaptchaService
         if (!$this->getShowCaptcha()) {
             return [
                 'verified' => true,
-                'error' => ''
+                'error' => '',
             ];
         }
 
         $request = [
             'secret' => $this->configuration['private_key'] ?? '',
-            'response' => trim($value ?? $this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? ''),
+            'response' => trim(
+                !empty($value) ? $value : (string)($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? '')
+            ),
             'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
         ];
 
         $result = [
             'verified' => false,
-            'error' => ''
+            'error' => '',
         ];
         if (empty($request['response'])) {
             $result['error'] = 'missing-input-response';
@@ -191,8 +193,6 @@ class CaptchaService
     /**
      * Query reCAPTCHA server for captcha-verification
      *
-     * @param array $data
-     *
      * @return array Array with verified- (boolean) and error-code (string)
      */
     protected function queryVerificationServer(array $data): array
@@ -202,7 +202,7 @@ class CaptchaService
         if (empty($verifyServerInfo)) {
             return [
                 'success' => false,
-                'error-codes' => 'recaptcha-not-reachable'
+                'error-codes' => 'recaptcha-not-reachable',
             ];
         }
 

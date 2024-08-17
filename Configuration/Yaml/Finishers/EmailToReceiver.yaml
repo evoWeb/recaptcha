@@ -4,4 +4,4 @@ prototypes:
       EmailToReceiver:
         options:
           templateRootPaths:
-            1974: 'EXT:recaptcha/Resources/Private/Frontend/Templates/Finishers/Email/'
+            1974: 'EXT:recaptcha/Resources/Private/Templates/Finishers/Email/'

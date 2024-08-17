@@ -5,7 +5,7 @@ prototypes:
       Form:
         renderingOptions:
           partialRootPaths:
-            1974: EXT:recaptcha/Resources/Private/Frontend/Partials/
+            1974: EXT:recaptcha/Resources/Private/Partials/
         formEditor:
           editors:
             400:
