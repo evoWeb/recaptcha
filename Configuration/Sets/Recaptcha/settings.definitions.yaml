@@ -1,44 +1,44 @@
 settings:
-  recaptcha.apiServer:
+  evoweb.recaptcha.apiServer:
     default: 'https://www.google.com/recaptcha/api.js'
     label: 'reCAPTCHA API-server address'
     type: string
     description: 'api url'
-  recaptcha.verifyServer:
+  evoweb.recaptcha.verifyServer:
     default: 'https://www.google.com/recaptcha/api/siteverify'
     label: 'reCAPTCHA VERIFY-server address'
     type: string
     description: 'verify url'
-  recaptcha.publicKey:
+  evoweb.recaptcha.publicKey:
     default: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
     label:  'reCAPTCHA public key: Public key of your reCAPTCHA-account'
     type: string
-  recaptcha.privateKey:
+  evoweb.recaptcha.privateKey:
     default: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
     label: 'reCAPTCHA private key: Private key of your reCAPTCHA-account'
     type: string
     description: ''
-  recaptcha.lang:
+  evoweb.recaptcha.lang:
     default: '?hl='
     label: 'reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)'
     type: string
     description: ''
-  recaptcha.enforceCaptcha:
+  evoweb.recaptcha.enforceCaptcha:
     default: 0
     label: 'enforcing captcha even in development mode'
     type: bool
     description: ''
-  recaptcha.theme:
+  evoweb.recaptcha.theme:
     default: 'light'
     label: 'reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)'
     type: string
     description: ''
-  recaptcha.robotMode:
+  evoweb.recaptcha.robotMode:
     default: 0
     label: 'reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha'
     type: bool
     description: ''
-  sf_register.captchaId:
+  evoweb.sf_register.captchaId:
     default: 'recaptcha'
     label: 'Frontend user registration what captcha to use'
     type: string

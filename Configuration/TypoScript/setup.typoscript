@@ -1,6 +1,6 @@
 plugin.tx_recaptcha {
   # look at https://www.google.com/recaptcha/admin to register a key for your server
-  public_key = {$plugin.tx_recaptcha.public_key ?? $recaptcha.publicKey}
+  public_key = {$plugin.tx_recaptcha.public_key ?? $evoweb.recaptcha.publicKey}
   public_key.wrap.cObject = COA
   public_key.wrap.cObject {
     10 = TEXT
@@ -8,24 +8,24 @@ plugin.tx_recaptcha {
   }
 
   # look at https://www.google.com/recaptcha/admin to register a key for your server
-  private_key = {$plugin.tx_recaptcha.private_key ?? $recaptcha.privateKey}
+  private_key = {$plugin.tx_recaptcha.private_key ?? $evoweb.recaptcha.privateKey}
 
-  api_server = {$plugin.tx_recaptcha.api_server ?? $recaptcha.apiServer}
-  verify_server = {$plugin.tx_recaptcha.verify_server ?? $recaptcha.verifyServer}
+  api_server = {$plugin.tx_recaptcha.api_server ?? $evoweb.recaptcha.apiServer}
+  verify_server = {$plugin.tx_recaptcha.verify_server ?? $evoweb.recaptcha.verifyServer}
 
-  lang = {$plugin.tx_recaptcha.lang ?? $recaptcha.lang}
+  lang = {$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
 
-  enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha ?? $recaptcha.enforceCaptcha}
+  enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha ?? $evoweb.recaptcha.enforceCaptcha}
 
-  robotMode = {$plugin.tx_recaptcha.robotMode ?? $recaptcha.robotMode}
+  robotMode = {$plugin.tx_recaptcha.robotMode ?? $evoweb.recaptcha.robotMode}
 }
 
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings {
-  recaptcha.public_key = {$plugin.tx_recaptcha.public_key ?? $recaptcha.publicKey}
+  recaptcha.public_key = {$plugin.tx_recaptcha.public_key ?? $evoweb.recaptcha.publicKey}
 
-  recaptcha.lang = {$plugin.tx_recaptcha.lang ?? $recaptcha.lang}
+  recaptcha.lang = {$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
 
   # register recaptcha as captcha possibility
   captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
@@ -54,7 +54,7 @@ plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Ya
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Partials/
 
 
-page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server ?? $recaptcha.apiServer}{$plugin.tx_recaptcha.lang ?? $recaptcha.lang}
+page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server ?? $evoweb.recaptcha.apiServer}{$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
 page.includeJSFooterlibs.recaptcha {
   external = 1
   disableCompression = 1
