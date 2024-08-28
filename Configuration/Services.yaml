@@ -1,6 +1,6 @@
 services:
   _defaults:
-    autowire: false
+    autowire: true
     autoconfigure: false
     public: false
 
@@ -10,9 +10,6 @@ services:
 
   Evoweb\Recaptcha\Adapter\SfRegisterAdapter:
     public: true
-    arguments:
-      $captchaService: '@Evoweb\Recaptcha\Services\CaptchaService'
-      $session: '@Evoweb\SfRegister\Services\Session'
 
   Evoweb\Recaptcha\Adapter\TypoScriptAdapter:
     public: true
