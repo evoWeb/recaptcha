@@ -32,7 +32,7 @@ class RecaptchaValidator extends AbstractValidator
      */
     public function validate($value)
     {
-        $value = trim(GeneralUtility::_GP('g-recaptcha-response'));
+        $value = trim(GeneralUtility::_GP('g-recaptcha-response') ?? '');
         $this->result = new Result();
         if ($this->acceptsEmptyValues === false || $this->isEmpty($value) === false) {
             $this->isValid($value);
