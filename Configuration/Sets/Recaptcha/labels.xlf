@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:fluid_styled_content/Configuration/Sets/FluidStyledContent/labels.xlf" date="2024-09-05T08:00:00Z" product-name="fluid_styled_content">
+		<header/>
+		<body>
+			<trans-unit id="label" resname="label">
+				<source>reCAPTCHA</source>
+			</trans-unit>
+
+			<trans-unit id="categories.recaptcha" resname="categories.recaptcha">
+				<source>reCAPTCHA</source>
+			</trans-unit>
+
+			<trans-unit id="settings.evoweb.recaptcha.apiServer" resname="settings.evoweb.recaptcha.apiServer">
+				<source>API-server address</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.apiServer" resname="settings.description.evoweb.recaptcha.apiServer">
+				<source>api url</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.verifyServer" resname="settings.evoweb.recaptcha.verifyServer">
+				<source>VERIFY-server address</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.verifyServer" resname="settings.description.evoweb.recaptcha.verifyServer">
+				<source>verify url</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.publicKey" resname="settings.evoweb.recaptcha.publicKey">
+				<source>public key</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.publicKey" resname="settings.description.evoweb.recaptcha.publicKey">
+				<source>Public key of your reCAPTCHA-account</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.privateKey" resname="settings.evoweb.recaptcha.privateKey">
+				<source>private key</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.privateKey" resname="settings.description.evoweb.recaptcha.privateKey">
+				<source>Private key of your reCAPTCHA-account</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.lang" resname="settings.evoweb.recaptcha.lang">
+				<source>language</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.lang" resname="settings.description.evoweb.recaptcha.lang">
+				<source>Language of frontend (autodetected if empty)</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.enforceCaptcha" resname="settings.evoweb.recaptcha.enforceCaptcha">
+				<source>enforcing captcha even in development mode</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.theme" resname="settings.evoweb.recaptcha.theme">
+				<source>theme</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.theme" resname="settings.description.evoweb.recaptcha.theme">
+				<source>Theme of frontend (light or dark)</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.robotMode" resname="settings.evoweb.recaptcha.robotMode">
+				<source>robotMode</source>
+			</trans-unit>
+			<trans-unit id="settings.description.evoweb.recaptcha.robotMode" resname="settings.description.evoweb.recaptcha.robotMode">
+				<source>If you use a frontend testing tool, which cannot solve the recaptcha</source>
+			</trans-unit>
+			<trans-unit id="settings.evoweb.sf-register.captchaId" resname="settings.evoweb.sf-register.captchaId">
+				<source>Frontend user registration what captcha to use</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
