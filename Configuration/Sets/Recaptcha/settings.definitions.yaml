@@ -5,28 +5,31 @@ categories:
 
 settings:
   evoweb.recaptcha.apiServer:
-    default: 'https://www.google.com/recaptcha/api.js'
+    default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.verifyServer:
-    default: 'https://www.google.com/recaptcha/api/siteverify'
+    default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.publicKey:
-    default: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+    default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.privateKey:
-    default: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+    default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.lang:
-    default: '?hl='
+    default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.theme:
-    default: 'light'
+    default: ''
     type: string
+    enum:
+      light: 'light'
+      dark: 'dark'
     category: recaptcha
   evoweb.recaptcha.robotMode:
     default: 0
@@ -37,6 +40,6 @@ settings:
     type: bool
     category: recaptcha
   evoweb.sf-register.captchaId:
-    default: 'recaptcha'
+    default: ''
     type: string
     category: sf-register

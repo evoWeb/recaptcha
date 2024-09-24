@@ -39,7 +39,7 @@
 				<source>language</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.lang" resname="settings.description.evoweb.recaptcha.lang">
-				<source>Language of frontend (autodetected if empty)</source>
+				<source>Language of frontend (autodetected if empty). Valid language codes can be found at https://developers.google.com/recaptcha/docs/language?hl=de</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.enforceCaptcha" resname="settings.evoweb.recaptcha.enforceCaptcha">
 				<source>enforcing captcha even in development mode</source>
@@ -48,7 +48,7 @@
 				<source>theme</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.theme" resname="settings.description.evoweb.recaptcha.theme">
-				<source>Theme of frontend (light or dark)</source>
+				<source>Theme of frontend can be light or dark</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.robotMode" resname="settings.evoweb.recaptcha.robotMode">
 				<source>robotMode</source>

@@ -25,7 +25,7 @@ plugin.tx_recaptcha {
 plugin.tx_sfregister.settings {
   recaptcha.public_key = {$plugin.tx_recaptcha.public_key ?? $evoweb.recaptcha.publicKey}
 
-  recaptcha.lang = {$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
+  recaptcha.lang = ?hl={$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
 
   # register recaptcha as captcha possibility
   captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
