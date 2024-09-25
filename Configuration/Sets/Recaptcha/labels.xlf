@@ -15,43 +15,43 @@
 				<source>API-server address</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.apiServer" resname="settings.description.evoweb.recaptcha.apiServer">
-				<source>api url</source>
+				<source>API Url</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.verifyServer" resname="settings.evoweb.recaptcha.verifyServer">
 				<source>VERIFY-server address</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.verifyServer" resname="settings.description.evoweb.recaptcha.verifyServer">
-				<source>verify url</source>
+				<source>Verify Url</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.publicKey" resname="settings.evoweb.recaptcha.publicKey">
-				<source>public key</source>
+				<source>Public Key</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.publicKey" resname="settings.description.evoweb.recaptcha.publicKey">
 				<source>Public key of your reCAPTCHA-account</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.privateKey" resname="settings.evoweb.recaptcha.privateKey">
-				<source>private key</source>
+				<source>Private Key</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.privateKey" resname="settings.description.evoweb.recaptcha.privateKey">
 				<source>Private key of your reCAPTCHA-account</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.lang" resname="settings.evoweb.recaptcha.lang">
-				<source>language</source>
+				<source>Language</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.lang" resname="settings.description.evoweb.recaptcha.lang">
 				<source>Language of frontend (autodetected if empty). Valid language codes can be found at https://developers.google.com/recaptcha/docs/language?hl=de</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.enforceCaptcha" resname="settings.evoweb.recaptcha.enforceCaptcha">
-				<source>enforcing captcha even in development mode</source>
+				<source>Enforcing captcha even in development mode</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.theme" resname="settings.evoweb.recaptcha.theme">
-				<source>theme</source>
+				<source>Theme</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.theme" resname="settings.description.evoweb.recaptcha.theme">
 				<source>Theme of frontend can be light or dark</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.robotMode" resname="settings.evoweb.recaptcha.robotMode">
-				<source>robotMode</source>
+				<source>Robot Mode</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.robotMode" resname="settings.description.evoweb.recaptcha.robotMode">
 				<source>If you use a frontend testing tool, which cannot solve the recaptcha</source>

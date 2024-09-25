@@ -4,19 +4,19 @@ categories:
     label: 'Frontend user registration'
 
 settings:
-  evoweb.recaptcha.apiServer:
-    default: ''
-    type: string
-    category: recaptcha
-  evoweb.recaptcha.verifyServer:
-    default: ''
-    type: string
-    category: recaptcha
   evoweb.recaptcha.publicKey:
     default: ''
     type: string
     category: recaptcha
   evoweb.recaptcha.privateKey:
+    default: ''
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.apiServer:
+    default: ''
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.verifyServer:
     default: ''
     type: string
     category: recaptcha
