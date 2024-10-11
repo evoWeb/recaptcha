@@ -27,7 +27,7 @@
 				<source>Public Key</source>
 			</trans-unit>
 			<trans-unit id="settings.description.evoweb.recaptcha.publicKey" resname="settings.description.evoweb.recaptcha.publicKey">
-				<source>Public key of your reCAPTCHA-account</source>
+				<source>Public key of your reCAPTCHA-account. Get your keys at https://www.google.com/recaptcha/admin</source>
 			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.privateKey" resname="settings.evoweb.recaptcha.privateKey">
 				<source>Private Key</source>
