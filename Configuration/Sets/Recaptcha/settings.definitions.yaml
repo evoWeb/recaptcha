@@ -12,6 +12,14 @@ settings:
     default: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
     type: string
     category: recaptcha
+  evoweb.recaptcha.invisiblePublicKey:
+    default: ''
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.invisiblePrivateKey:
+    default: ''
+    type: string
+    category: recaptcha
   evoweb.recaptcha.apiServer:
     default: 'https://www.google.com/recaptcha/api.js'
     type: string

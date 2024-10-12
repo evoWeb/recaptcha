@@ -10,6 +10,9 @@ plugin.tx_recaptcha {
   # look at https://www.google.com/recaptcha/admin to register a key for your server
   private_key = {$plugin.tx_recaptcha.private_key ?? $evoweb.recaptcha.privateKey}
 
+  invisible_public_key = {$plugin.tx_recaptcha.invisible_public_key ?? $evoweb.recaptcha.invisiblePublicKey}
+  invisible_private_key = {$plugin.tx_recaptcha.invisible_private_key ?? $evoweb.recaptcha.invisiblePrivateKey}
+
   api_server = {$plugin.tx_recaptcha.api_server ?? $evoweb.recaptcha.apiServer}
   verify_server = {$plugin.tx_recaptcha.verify_server ?? $evoweb.recaptcha.verifyServer}
 
@@ -23,10 +26,6 @@ plugin.tx_recaptcha {
 
 # register recaptcha as captcha for sf_register
 plugin.tx_sfregister.settings {
-  recaptcha.public_key = {$plugin.tx_recaptcha.public_key ?? $evoweb.recaptcha.publicKey}
-
-  recaptcha.lang = ?hl={$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
-
   # register recaptcha as captcha possibility
   captcha.recaptcha = Evoweb\Recaptcha\Adapter\SfRegisterAdapter
 
@@ -52,11 +51,3 @@ plugin.tx_sfregister.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Privat
 # add settings for EXT:form
 plugin.tx_form.settings.yamlConfigurations.1974 = EXT:recaptcha/Configuration/Yaml/FormSetup.yaml
 plugin.tx_form.view.partialRootPaths.1974 = EXT:recaptcha/Resources/Private/Partials/
-
-
-page.includeJSFooterlibs.recaptcha = {$plugin.tx_recaptcha.api_server ?? $evoweb.recaptcha.apiServer}{$plugin.tx_recaptcha.lang ?? $evoweb.recaptcha.lang}
-page.includeJSFooterlibs.recaptcha {
-  external = 1
-  disableCompression = 1
-  excludeFromConcatenation = 1
-}

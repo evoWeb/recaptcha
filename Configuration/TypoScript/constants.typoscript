@@ -13,10 +13,16 @@ plugin.tx_recaptcha {
   # cat=plugin.recaptcha//04; type=string; label= reCAPTCHA private key: Private key of your reCAPTCHA-account
   private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
-  # cat=plugin.recaptcha//06; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
+  # cat=plugin.recaptcha//05; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
+  invisible_public_key =
+
+  # cat=plugin.recaptcha//06; type=string; label= reCAPTCHA public key: Public key of your reCAPTCHA-account
+  invisible_private_key =
+
+  # cat=plugin.recaptcha//07; type=string; label= reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)
   lang =
 
-  # cat=plugin.recaptcha//07; type=boolean; label= enforcing captcha even in development mode
+  # cat=plugin.recaptcha//08; type=boolean; label= enforcing captcha even in development mode
   enforceCaptcha = 0
 
   # cat=plugin.recaptcha//10; type=string; label= reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)
