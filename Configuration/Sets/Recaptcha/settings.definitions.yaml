@@ -1,45 +1,53 @@
+categories:
+  recaptcha: ~
+  sf-register:
+    label: 'Frontend user registration'
+
 settings:
-  evoweb.recaptcha.apiServer:
-    default: 'https://www.google.com/recaptcha/api.js'
-    label: 'reCAPTCHA API-server address'
-    type: string
-    description: 'api url'
-  evoweb.recaptcha.verifyServer:
-    default: 'https://www.google.com/recaptcha/api/siteverify'
-    label: 'reCAPTCHA VERIFY-server address'
-    type: string
-    description: 'verify url'
   evoweb.recaptcha.publicKey:
     default: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-    label:  'reCAPTCHA public key: Public key of your reCAPTCHA-account'
     type: string
+    category: recaptcha
   evoweb.recaptcha.privateKey:
     default: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
-    label: 'reCAPTCHA private key: Private key of your reCAPTCHA-account'
     type: string
-    description: ''
+    category: recaptcha
+  evoweb.recaptcha.invisiblePublicKey:
+    default: ''
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.invisiblePrivateKey:
+    default: ''
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.apiServer:
+    default: 'https://www.google.com/recaptcha/api.js'
+    type: string
+    category: recaptcha
+  evoweb.recaptcha.verifyServer:
+    default: 'https://www.google.com/recaptcha/api/siteverify'
+    type: string
+    category: recaptcha
   evoweb.recaptcha.lang:
-    default: '?hl='
-    label: 'reCAPTCHA language: Language of reCAPTCHA frontend (autodetected if empty)'
+    default: ''
     type: string
-    description: ''
-  evoweb.recaptcha.enforceCaptcha:
-    default: 0
-    label: 'enforcing captcha even in development mode'
-    type: bool
-    description: ''
+    category: recaptcha
   evoweb.recaptcha.theme:
     default: 'light'
-    label: 'reCAPTCHA theme: Theme of reCAPTCHA frontend (light or dark)'
     type: string
-    description: ''
+    enum:
+      light: 'light'
+      dark: 'dark'
+    category: recaptcha
   evoweb.recaptcha.robotMode:
     default: 0
-    label: 'reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha'
     type: bool
-    description: ''
-  evoweb.sf_register.captchaId:
+    category: recaptcha
+  evoweb.recaptcha.enforceCaptcha:
+    default: 0
+    type: bool
+    category: recaptcha
+  evoweb.sf-register.captchaId:
     default: 'recaptcha'
-    label: 'Frontend user registration what captcha to use'
     type: string
-    description: ''
+    category: sf-register

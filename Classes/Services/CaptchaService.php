@@ -156,8 +156,13 @@ class CaptchaService
             ];
         }
 
+        $privateKey = $this->getRequest()->getParsedBody()['recaptcha-invisible'] ?? false
+            ? $this->configuration['invisible_private_key']
+            : $this->configuration['private_key'];
+        $privateKey = $privateKey ?: $this->configuration['private_key'];
+
         $request = [
-            'secret' => $this->configuration['private_key'] ?? '',
+            'secret' => $privateKey,
             'response' => trim(
                 !empty($value) ? $value : (string)($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? '')
             ),

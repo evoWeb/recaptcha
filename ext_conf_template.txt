@@ -10,6 +10,12 @@ public_key = 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA private key
 private_key = 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
 
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA public key for invisible recaptcha
+invisible_public_key =
+
+# cat=plugin.recaptcha; type=string; label=reCAPTCHA private key for invisible recaptcha
+invisible_private_key =
+
 # cat=plugin.recaptcha; type=string; label=reCAPTCHA language
 lang =
 

@@ -29,6 +29,7 @@ class SfRegisterAdapter extends AbstractAdapter
      */
     public function render(): array|string
     {
+        $this->session->initializeUserSessionManager();
         $this->session->remove('captchaWasValid');
         return $this->captchaService->getReCaptcha();
     }

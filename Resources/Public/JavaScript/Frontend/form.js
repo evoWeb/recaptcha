@@ -1,52 +1,61 @@
-class Recaptcha {
+class RecaptchaForm {
   /**
    * @type {string}
    */
-  fieldSelector = '[data-recaptcha-form-field]';
+  #fieldSelector = '[data-recaptcha-form-field]';
+
+  #submitSelector = '[data-recaptcha-form-submit]';
+
+  #invisibleSubmitSelector = '[data-invisible-recaptcha-form-submit]';
+
+  /**
+   * @type {Recaptcha}
+   */
+  #recaptcha = null;
 
   /**
    * @type {HTMLFormElement}
    */
-  form = null;
+  #form = null;
 
   /**
    * @type {HTMLInputElement}
    */
-  field = null;
+  #field = null;
 
   /**
-   * @type {string}
-   */
-  response = '';
-
-  /**
+   * @param {Recaptcha} recaptcha
    * @param {HTMLFormElement} form
    */
-  constructor(form) {
+  constructor(recaptcha, form) {
+    this.#recaptcha = recaptcha;
+    this.#form = form;
+
     this.initializeElements(form);
     this.initializeEvents();
-    this.registerCallback();
   }
 
   /**
    * @param {HTMLFormElement} form
    */
   initializeElements(form) {
-    this.form = form;
-    this.field = this.form.querySelector(this.fieldSelector);
+    this.#field = form.querySelector(this.#fieldSelector);
   }
 
   initializeEvents() {
     // used with visible recaptcha
-    [...this.form.querySelectorAll('[data-recaptcha-form-submit]')]
+    [...this.#form.querySelectorAll(this.#submitSelector)]
       .map(button => button.addEventListener('click', event => this.visibleRecaptchaButtonClicked(event)));
+    // used with invisible recaptcha
+    [...this.#form.querySelectorAll(this.#invisibleSubmitSelector)]
+      .map(button => button.addEventListener('click', () => this.#recaptcha.setLastForm(this)));
   }
 
   /**
    * @param {PointerEvent} event
    */
   visibleRecaptchaButtonClicked(event) {
-    if (!this.form.checkValidity() || !this.recaptchaFieldValid()) {
+    if (!this.#form.reportValidity() || !this.fieldValid()) {
       event.preventDefault();
     }
   }
@@ -54,54 +63,106 @@ class Recaptcha {
   /**
    * @return {boolean}
    */
-  recaptchaFieldValid() {
-    return this.field.value !== '' && this.field.value === this.response;
+  fieldValid() {
+    return this.#field.value !== '' && this.#field.value === this.#recaptcha.getResponse();
+  }
+
+  setFieldValue(value) {
+    this.#field.value = value;
+  }
+
+  /**
+   * @return {boolean}
+   */
+  reportValidity() {
+    return this.#form.reportValidity();
+  }
+
+  submit() {
+    this.#form.submit();
+  }
+}
+
+class Recaptcha {
+  /**
+   * @type {RecaptchaForm[]}
+   */
+  #forms = [];
+
+  /**
+   * @type {RecaptchaForm}
+   */
+  #lastForm = null;
+
+  /**
+   * @type {string}
+   */
+  #response = '';
+
+  constructor() {
+    this.initializeForms();
+    this.registerCallback();
+  }
+
+  initializeForms() {
+    [...document.querySelectorAll('form .g-recaptcha')]
+      .map(element => {
+        const form = element.closest('form');
+        if (form) {
+          this.#forms.push(new RecaptchaForm(this, form));
+        }
+      })
   }
 
   registerCallback() {
     // for box recaptcha
-    window.onRecaptchaCallback = (response) => this.callback(response);
+    window.onRecaptchaCallback = (response) => this.recaptchaCallback(response);
     window.onRecaptchaExpired = () => this.recaptchaExpired();
     window.onRecaptchaError = () => this.recaptchaError();
     // for invisible recaptcha
-    window.onRecaptchaSubmit = (response) => this.submitForm(response);
+    window.onRecaptchaSubmit = (response) => this.recaptchaSubmit(response);
   }
 
   /**
    * @param {string} response
    */
-  submitForm(response) {
-    this.response = response;
-    if (this.form.checkValidity()) {
-      this.field.value = response;
-      this.form.submit();
+  recaptchaCallback(response) {
+    this.#response = response;
+    this.#forms.forEach(form => form.setFieldValue(response));
+  }
+
+  recaptchaExpired() {
+    this.#lastForm = null;
+    this.#response = '';
+    this.#forms.forEach(form => form.setFieldValue(''));
+  }
+
+  recaptchaError() {
+    this.#lastForm = null;
+    this.#response = '';
+    this.#forms.forEach(form => form.setFieldValue(''));
+  }
+
+  /**
+   * @param {string} response
+   */
+  recaptchaSubmit(response) {
+    this.#response = response;
+    if (this.#lastForm && this.#lastForm.reportValidity()) {
+      this.#lastForm.setFieldValue(response);
+      this.#lastForm.submit();
     }
   }
 
   /**
-   * @param {string} response
+   * @returns {string}
    */
-  callback(response) {
-    this.response = response;
-    this.field.value = response;
+  getResponse() {
+    return this.#response;
   }
 
-  recaptchaExpired() {
-    this.response = '';
-    this.field.value = '';
-  }
-
-  recaptchaError() {
-    this.response = '';
-    this.field.value = '';
-  }
-
-  static initializeForms() {
-    [...document.querySelectorAll('form .g-recaptcha')]
-      .map(element => {
-        const form = element.closest('form');
-        new Recaptcha(form);
-      })
+  setLastForm(lastForm) {
+    this.#lastForm = lastForm;
   }
 }
-Recaptcha.initializeForms();
+new Recaptcha();
