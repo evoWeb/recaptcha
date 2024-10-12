@@ -24,8 +24,8 @@
                 <f:render partial="Field/Field" arguments="{element: element, doNotShowLabel: element.renderingOptions.doNotShowLabel}" contentAs="elementContent">
                     <f:if condition="{showCaptcha}">
                         <f:then>
-                            <f:asset.script identifier="recaptcha" defer="true" src="{configuration.api_server}{f:if(condition: configuration.lang, then: '?hl={configuration.lang}')}"/>
                             <f:asset.script identifier="recaptcha_form" src="EXT:recaptcha/Resources/Public/JavaScript/Frontend/form.js"/>
+                            <f:asset.script identifier="recaptcha" async="true" src="{configuration.api_server}{f:if(condition: configuration.lang, then: '?hl={configuration.lang}')}"/>
                             <f:form.hidden
                                 property="{element.identifier}"
                                 id="{element.uniqueIdentifier}"
