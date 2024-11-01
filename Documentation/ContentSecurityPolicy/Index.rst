@@ -1,11 +1,10 @@
-.. include:: /Includes.rst.txt
-
-.. _csp:
+..  include:: /Includes.rst.txt
+..  index:: Content Security Policy
+..  _csp:
 
 =======================
 Content Security Policy
 =======================
-
 
 Reason
 ======
@@ -13,7 +12,6 @@ Reason
 Since TYPO3 12 handling of content security policies are introduced. If this
 feature is active, the recaptcha javascript can not be loaded without additional
 configuration.
-
 
 CSP Configuration
 =================
@@ -37,7 +35,6 @@ extending mutation to the site configuration in a csp.yaml named file.
         sources:
           - 'https://www.google.com/recaptcha/'
           - 'https://www.gstatic.com/recaptcha/'
-
 
 Template modifications
 ======================

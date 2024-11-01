@@ -1,5 +1,7 @@
 .. include:: /Includes.rst.txt
 
+..  _start:
+
 =======================================
 reCAPTCHA: Easy on Humans, Hard on Bots
 =======================================
@@ -16,12 +18,6 @@ reCAPTCHA: Easy on Humans, Hard on Bots
 :Language:
     en
 
-:Description:
-    Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
-
-:Copyright:
-    2015-2024
-
 :Author:
     Sebastian Fischer
 
@@ -33,7 +29,12 @@ reCAPTCHA: Easy on Humans, Hard on Bots
 :Rendered:
     |today|
 
+:Copyright:
+    2015-2024
+
 ----
+
+Extension to provide reCAPTCHA and invisible reCAPTCHA to form related actions.
 
 The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from http://typo3.org

@@ -1,6 +1,6 @@
-.. include:: /Includes.rst.txt
-
-.. _breaking-changes:
+..  include:: /Includes.rst.txt
+..  index:: Breaking changes
+..  _breaking-changes:
 
 ================
 Breaking Changes
