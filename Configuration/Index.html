@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>Configuration documentation</title>
+    <title>Configuration — recaptcha 14.0.0 documentation</title>
 
     
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="phpdocumentor/guides" name="generator">
-<meta content="" name="docsearch:name">
+<meta content="recaptcha" name="docsearch:name">
 <meta content="" name="docsearch:package_type">
-<meta content="" name="docsearch:release">
-<meta content="" name="docsearch:version">
-<meta content="2024-10-22T13:33:12+00:00" name="docsearch:modified">
-<meta content="2024-10-22T13:33:12+00:00" name="dc.modified">
-<meta content="2024-10-22T13:33:12+00:00" property="article:modified_time">
+<meta content="14.0.0" name="docsearch:release">
+<meta content="14.0.0" name="docsearch:version">
+<meta content="2024-11-01T20:47:06+00:00" name="docsearch:modified">
+<meta content="2024-11-01T20:47:06+00:00" name="dc.modified">
+<meta content="2024-11-01T20:47:06+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -71,8 +71,22 @@
                     
 <div class="toc-header">
     <div class="toc-title">
-        <a class="toc-title-project" href="../Index.html"></a>
-            </div>
+        <a class="toc-title-project" href="../Index.html">recaptcha</a>
+            <div class="toc-version-wrapper" id="toc-version-wrapper">
+                <!--
+                    LOCAL RENDERING NOTICE:
+                    https://docs.typo3.org/other/t3docs/render-guides/main/en-us/Developer/AjaxVersions.html
+                -->
+
+                <div id="toc-version" class="toc-version" data-override-url-proxy="https://render-guides.ddev.site/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html">
+                
+                    <span class="toc-version-prefix">Release:</span>
+                    <span class="toc-version-number">14.0.0</span>
+                </div>
+                <div id="toc-version-options" class="toc-version-options">
+                    <p><span class="fa fa-spinner fa-spin"></span> Loading data.</p>
+                </div>
+            </div></div>
     <div class="toc-actions">
         <label class="toc-toggle" for="toggleToc">
             Menu
@@ -81,8 +95,7 @@
 </div>                    <div class="toc-collapse">
                                                 <div aria-label="main navigation" class="toc" role="navigation">
                                 <div aria-label="Main navigation" class="main_menu" role="navigation">
-        
-    <ul class="menu-level-1">
+            <ul class="menu-level-1">
     <li class="">
     <a href="../Introduction/Index.html">
         Introduction
@@ -110,8 +123,7 @@
     </a></li>    <li class="">
     <a href="../Tutorial/Index.html">
         Tutorial
-    </a></li>    </ul>
-    <ul class="menu-level-1">
+    </a></li>    </ul>    <ul class="menu-level-1">
     <li class="">
     <a href="../Sitemap.html">
         Sitemap
@@ -126,6 +138,9 @@
                     <li><a href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" rel="nofollow noopener" target="_blank">
                     How to edit
             </a></li>
+                    <li><a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" rel="nofollow noopener" target="_blank">
+                    Edit current document on GitHub
+            </a></li>
         </ul>
 </div>
                         </div>
@@ -139,13 +154,21 @@
     <li class="breadcrumb-item"><a href="../Index.html">reCAPTCHA: Easy on Humans, Hard on Bots</a></li>
                     <li aria-current="page"  class="breadcrumb-item  active">Configuration</li>
         </ol>
-        <div class="breadcrumb-additions">    <a class="btn btn-sm btn-light" href="../_sources/Configuration/Index.rst.txt" rel="nofollow noopener" target="_blank">
+        <div class="breadcrumb-additions">        <a class="btn btn-sm btn-light" href="https://github.com/evoWeb/recaptcha/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2FevoWeb%2Frecaptcha%2FConfiguration%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+            <span class="btn-icon"><i class="fas fa-bug"></i></span>
+            <span class="btn-text">Report issue</span>
+        </a>
+        <a class="btn btn-sm btn-light" href="../_sources/Configuration/Index.rst.txt" rel="nofollow noopener" target="_blank">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
         <a class="btn btn-sm btn-light" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
         <span class="btn-icon"><span class="fas fa-info-circle"></span></span>
         <span class="btn-text">How to edit</span>
+    </a>
+        <a class="btn btn-sm btn-secondary" href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
     </a>
     </div>    </nav>
                     
@@ -181,132 +204,364 @@ name also as setup parameter.</p>
             
     <p>plugin.tx_recaptcha:</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>api_server</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd><a href="https://www.google.com/recaptcha/api.js">https://www.google.com/recaptcha/api.js</a></dd>
-                                <dt>Description</dt>
-        
-        <dd>This url is used to include the basic frontend functionality.
-In general it&#039;s not necessary to modify this url. In case
-that the api changes and the extension is not updated quick
-enough changing this parameter keeps the frontend working.</dd>
-            </dl>
-</div>
+            
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>verify_server</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd><a href="https://www.google.com/recaptcha/api/siteverify">https://www.google.com/recaptcha/api/siteverify</a></dd>
-                                <dt>Description</dt>
-        
-        <dd>Every verification uses this url to check if the captcha was
-solved.
-In general it&#039;s not necessary to modify this url. In case
-that the api changes and the extension is not updated quick
-enough changing this parameter keeps the validation working.</dd>
-            </dl>
-</div>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>public_key</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd>6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI</dd>
-                                <dt>Description</dt>
-        
+
+
+<div class="table-responsive confval-table" id="confval-menu-constants-reference">
+    <table class="table table-hover caption-top">        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            
+                                    <th scope="col">Type</th>
+                            
+                                    <th scope="col">Default</th>
+                                    </tr>
+        </thead>
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-api-server">api_<wbr>server</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    <a href="https://www.google.com/recaptcha/api.js">https://www.google.com/recaptcha/api.js</a>
+                                </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-verify-server">verify_<wbr>server</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    <a href="https://www.google.com/recaptcha/api/siteverify">https://www.google.com/recaptcha/api/siteverify</a>
+                                </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-public-key">public_<wbr>key</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+                                </td>
+            </tr>
+                            
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-private-key">private_<wbr>key</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+                                </td>
+            </tr>
+                            
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-lang">lang</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                        </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-enforcecaptcha">enforce<wbr>Captcha</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-boolean">string</a>
+                        </td>
+                    <td>
+                                    0
+                                </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-invisiblecallback">invisible<wbr>Callback</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    onRecaptchaSubmit
+                                </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-theme">theme</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </td>
+                    <td>
+                                    light
+                                </td>
+            </tr>
+                
+                        <tr>
+        <td><div class="confval-label ps-0"><a href="#confval-robotmode">robot<wbr>Mode</a></div></td>
+                    <td>
+                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-boolean">string</a>
+                        </td>
+                    <td>
+                                    0
+                                </td>
+            </tr>
+                
+            </table>
+</div>
+            <a id="api_server"></a>
+                <section data-search-title="api_server"
+         data-search-id="confval-api-server"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">api_server</h3>
+    <dl class="confval">
+        <dt id="confval-api-server"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">api_<wbr>server</span></code>
+                                    <a class="headerlink" href="#confval-api-server"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-api-server"
+                       data-rstCode=":confval:`api_server &lt;evoweb/recaptcha:api-server&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
         <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even"><a href="https://www.google.com/recaptcha/api.js">https://www.google.com/recaptcha/api.js</a>
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>This url is used to include the basic frontend functionality.
+In general it&#039;s not necessary to modify this url. In case
+that the api changes and the extension is not updated quick
+enough changing this parameter keeps the frontend working.</p>
+
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="verify_server"></a>
+                <section data-search-title="verify_server"
+         data-search-id="confval-verify-server"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">verify_server</h3>
+    <dl class="confval">
+        <dt id="confval-verify-server"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">verify_<wbr>server</span></code>
+                                    <a class="headerlink" href="#confval-verify-server"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-verify-server"
+                       data-rstCode=":confval:`verify_server &lt;evoweb/recaptcha:verify-server&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even"><a href="https://www.google.com/recaptcha/api/siteverify">https://www.google.com/recaptcha/api/siteverify</a>
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>Every verification uses this url to check if the captcha was solved.
+In general it&#039;s not necessary to modify this url. In case that the
+api changes and the extension is not updated quick enough changing
+this parameter keeps the validation working.</p>
+
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="public_key"></a>
+                <section data-search-title="public_key"
+         data-search-id="confval-public-key"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">public_key</h3>
+    <dl class="confval">
+        <dt id="confval-public-key"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">public_<wbr>key</span></code>
+                                    <a class="headerlink" href="#confval-public-key"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-public-key"
+                       data-rstCode=":confval:`public_key &lt;evoweb/recaptcha:public-key&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
     <p>The public key is needed for the frontend rendering.</p>
 
-    <p>Google provides a key for automatic testing purpose and this
-is used as default.
-To remove the warning that is caused by using the default key
-please go to the recaptcha <a href="https://www.google.com/recaptcha/admin">admin</a> and register an own key for
-use in your site.</p>
-</dd>
-            </dl>
-</div>
+    <p>Google provides a key for automatic testing purpose and this is used
+as default. To remove the warning that is caused by using the default
+key please go to the recaptcha <a href="https://www.google.com/recaptcha/admin">admin</a> and register an own key for use
+in your site.</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>private_key</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd>6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe</dd>
-                                <dt>Description</dt>
-        
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="private_key"></a>
+                <section data-search-title="private_key"
+         data-search-id="confval-private-key"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">private_key</h3>
+    <dl class="confval">
+        <dt id="confval-private-key"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">private_<wbr>key</span></code>
+                                    <a class="headerlink" href="#confval-private-key"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-private-key"
+                       data-rstCode=":confval:`private_key &lt;evoweb/recaptcha:private-key&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
         <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
     <p>The private key is needed for the validation of submits.</p>
 
-    <p>Google provides a key for automatic testing purpose and this
-is used as default.
-To remove the warning that is caused by using the default key
-please go to the recaptcha <a href="https://www.google.com/recaptcha/admin">admin</a> and register an own key for
-use in your site.</p>
-</dd>
-            </dl>
-</div>
+    <p>Google provides a key for automatic testing purpose and this is used
+as default. To remove the warning that is caused by using the default
+key please go to the recaptcha <a href="https://www.google.com/recaptcha/admin">admin</a> and register an own key for use
+in your site.</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>lang</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd>empty</dd>
-                                <dt>Description</dt>
-        
-        <dd>Recaptcha is very good in automatic detecting which language
-to use based on the users browser settings and with which IP
-the page get&#039;s visited.
-Only in case if it is really necessary set this parameter to
-take influence on the rendered language.</dd>
-            </dl>
-</div>
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="lang"></a>
+                <section data-search-title="lang"
+         data-search-id="confval-lang"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">lang</h3>
+    <dl class="confval">
+        <dt id="confval-lang"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">lang</span></code>
+                                    <a class="headerlink" href="#confval-lang"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-lang"
+                       data-rstCode=":confval:`lang &lt;evoweb/recaptcha:lang&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                    </dl>
+                        <div class="confval-description">
+                
+    <p>Recaptcha is very good in automatic detecting which language to use
+based on the users browser settings and with which IP the page gets
+visited.
+Only in case if it is really necessary set this parameter to take
+influence on the rendered language.</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>enforceCaptcha</dd>
-                                <dt>Data type</dt>
-        
-        <dd>bool</dd>
-                                <dt>Default</dt>
-        
-        <dd>0</dd>
-                                <dt>Description</dt>
-        
-        <dd>This configuration parameter will enforce the captcha to test
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="enforceCaptcha"></a>
+                <section data-search-title="enforceCaptcha"
+         data-search-id="confval-enforcecaptcha"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">enforceCaptcha</h3>
+    <dl class="confval">
+        <dt id="confval-enforcecaptcha"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">enforce<wbr>Captcha</span></code>
+                                    <a class="headerlink" href="#confval-enforcecaptcha"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-enforcecaptcha"
+                       data-rstCode=":confval:`enforceCaptcha &lt;evoweb/recaptcha:enforcecaptcha&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-boolean">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">0
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>This configuration parameter will enforce the captcha to test
 the functionality on development systems.
 EXT:recaptcha uses the application context to detect if an
 installation is running in Development mode. If so the captcha
@@ -314,69 +569,144 @@ is not rendered or validated.
 This is a to reduce external calls and b to not bother the
 integrator every time he has to test forms. Because after a
 limited amount of tests the captcha testing games must always
-be solved instead only clicking a checkbox.</dd>
-            </dl>
-</div>
+be solved instead only clicking a checkbox.</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>invisibleCallback</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd>onRecaptchaSubmit</dd>
-                                <dt>Description</dt>
-        
-        <dd>[Only TypoScript]
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="invisibleCallback"></a>
+                <section data-search-title="invisibleCallback"
+         data-search-id="confval-invisiblecallback"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">invisibleCallback</h3>
+    <dl class="confval">
+        <dt id="confval-invisiblecallback"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">invisible<wbr>Callback</span></code>
+                                    <a class="headerlink" href="#confval-invisiblecallback"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-invisiblecallback"
+                       data-rstCode=":confval:`invisibleCallback &lt;evoweb/recaptcha:invisiblecallback&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">onRecaptchaSubmit
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>[Only TypoScript]
 For invisible reCAPTCHA its necessary to have a callback
 function in JavaScript. It is possible to have own code
 that derives from the included. If in this case the name
 of the callback is changed please adjust this parameter
-to match the new name.</dd>
-            </dl>
-</div>
+to match the new name.</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>theme</dd>
-                                <dt>Data type</dt>
-        
-        <dd>string</dd>
-                                <dt>Default</dt>
-        
-        <dd>light</dd>
-                                <dt>Description</dt>
-        
-        <dd>[Only TypoScript]
-For change the theme for recaptcha (light or dark).</dd>
-            </dl>
-</div>
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="theme"></a>
+                <section data-search-title="theme"
+         data-search-id="confval-theme"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">theme</h3>
+    <dl class="confval">
+        <dt id="confval-theme"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">theme</span></code>
+                                    <a class="headerlink" href="#confval-theme"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-theme"
+                       data-rstCode=":confval:`theme &lt;evoweb/recaptcha:theme&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-string">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">light
+                            </dd>
+                                                    <dt class="field-even">Possible values</dt>
+                            <dd class="field-even">light, dark
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>[Only TypoScript]
+For change the theme for recaptcha (light or dark).</p>
 
-            <div class="table-row">
-    <dl>
-                        <dt>Property</dt>
-        
-        <dd>robotMode</dd>
-                                <dt>Data type</dt>
-        
-        <dd>bool</dd>
-                                <dt>Default</dt>
-        
-        <dd>0</dd>
-                                <dt>Description</dt>
-        
-        <dd>[Only TypoScript]
+            </div>
+        </dd>
+    </dl>
+</section>
+                <a id="robotMode"></a>
+                <section data-search-title="robotMode"
+         data-search-id="confval-robotmode"
+         data-search-facet="Option"
+         class="confval-section"
+>
+    <h3 class="sr-only">robotMode</h3>
+    <dl class="confval">
+        <dt id="confval-robotmode"            class="d-flex justify-content-between">
+            <div class="confval-header">
+                <code class="sig-name descname"><span
+                        class="pre">robot<wbr>Mode</span></code>
+                                    <a class="headerlink" href="#confval-robotmode"
+                       data-bs-toggle="modal"
+                       data-bs-target="#linkReferenceModal"
+                       data-id="confval-robotmode"
+                       data-rstCode=":confval:`robotMode &lt;evoweb/recaptcha:robotmode&gt;`"
+                       title="Reference this configuration value"><i
+                            class="fa-solid fa-paragraph"></i></a>
+                </div>
+            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
+                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
+        </dt>
+        <dd>
+                            <dl class="field-list simple">
+                                            <dt class="field-even">Type</dt>
+                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/DataTypes/Index.html#data-type-boolean">string</a>
+                        </dd>
+                                                <dt class="field-even">Default</dt>
+                            <dd class="field-even">0
+                            </dd>
+                        </dl>
+                        <div class="confval-description">
+                
+    <p>[Only TypoScript]
 Add the possibility to set the recaptcha into robot mode in production environment.
-The recaptcha will not be displayed like in development mode.</dd>
-            </dl>
-</div>
+The recaptcha will not be displayed like in development mode.</p>
 
+            </div>
+        </dd>
+    </dl>
+</section>
+    
     </section>
     </section>
         <!-- content end -->
@@ -404,7 +734,7 @@ The recaptcha will not be displayed like in development mode.</dd>
     </main>
 
     <div class="modal fade" id="linkReferenceModal" tabindex="-1" aria-labelledby="linkReferenceModalLabel"
-    aria-hidden="true" data-current-filename="Configuration/Index">
+    aria-hidden="true" data-current-filename="Configuration/Index" data-interlink-shortcode="evoweb/recaptcha">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -422,7 +752,8 @@ The recaptcha will not be displayed like in development mode.</dd>
                     <p>Copy and freely share the link</p>
                 </div>
                 <div class="mb-3">
-                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.The link below can be used, but is prone to change if the page gets moved.
+                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.                        You can make a <a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst">pull request on GitHub</a> to suggest an anchor.
+                        The link below can be used, but is prone to change if the page gets moved.
                     </div>
                     <label for="permalink-rst" class="col-form-label">reStructuredText (reST):</label>
                     <div class="input-group">
@@ -471,10 +802,18 @@ The recaptcha will not be displayed like in development mode.</dd>
     <div class="frame frame-ruler-before frame-background-dark">
         <div class="frame-container">
             <div class="frame-inner">
-                                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Oct 22, 2024 13:33</p>
+                <ul class="footer-simplemenu">
+                        <li><a href="https://github.com/evoWeb/recaptcha" title="Home" rel="nofollow noopener"><span>Home</span></a></li>
+                                                <li><a href="recaptcha@evoweb.de" title="Contact" rel="nofollow noopener"><span>Contact</span></a></li>
+                                                <li><a href="https://github.com/evoWeb/recaptcha/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
+                                                <li><a href="https://github.com/evoWeb/recaptcha" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
+                                            </ul>                <div class="footer-additional">
+                    <p class="text-center">Last rendered: Nov 01, 2024 20:47</p>
                 </div>
                 <div class="footer-meta">
+                                        <div class="footer-meta-copyright">
+                        &copy; since 2015 by evoWeb
+                    </div>
                     <ul class="footer-meta-navigation">
                         <li><a href="https://typo3.org/legal-notice" rel="nofollow" target="_blank" title="Legal Notice">Legal Notice</a></li>
                         <li><a href="https://typo3.org/privacy-policy" rel="nofollow" target="_blank" title="Privacy Policy">Privacy Policy</a></li>

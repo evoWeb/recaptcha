@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>Integration documentation</title>
+    <title>Integration — recaptcha 14.0.0 documentation</title>
 
     
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="phpdocumentor/guides" name="generator">
-<meta content="" name="docsearch:name">
+<meta content="recaptcha" name="docsearch:name">
 <meta content="" name="docsearch:package_type">
-<meta content="" name="docsearch:release">
-<meta content="" name="docsearch:version">
-<meta content="2024-10-22T13:33:12+00:00" name="docsearch:modified">
-<meta content="2024-10-22T13:33:12+00:00" name="dc.modified">
-<meta content="2024-10-22T13:33:12+00:00" property="article:modified_time">
+<meta content="14.0.0" name="docsearch:release">
+<meta content="14.0.0" name="docsearch:version">
+<meta content="2024-11-01T20:47:06+00:00" name="docsearch:modified">
+<meta content="2024-11-01T20:47:06+00:00" name="dc.modified">
+<meta content="2024-11-01T20:47:06+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -71,8 +71,22 @@
                     
 <div class="toc-header">
     <div class="toc-title">
-        <a class="toc-title-project" href="../Index.html"></a>
-            </div>
+        <a class="toc-title-project" href="../Index.html">recaptcha</a>
+            <div class="toc-version-wrapper" id="toc-version-wrapper">
+                <!--
+                    LOCAL RENDERING NOTICE:
+                    https://docs.typo3.org/other/t3docs/render-guides/main/en-us/Developer/AjaxVersions.html
+                -->
+
+                <div id="toc-version" class="toc-version" data-override-url-proxy="https://render-guides.ddev.site/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html">
+                
+                    <span class="toc-version-prefix">Release:</span>
+                    <span class="toc-version-number">14.0.0</span>
+                </div>
+                <div id="toc-version-options" class="toc-version-options">
+                    <p><span class="fa fa-spinner fa-spin"></span> Loading data.</p>
+                </div>
+            </div></div>
     <div class="toc-actions">
         <label class="toc-toggle" for="toggleToc">
             Menu
@@ -81,8 +95,7 @@
 </div>                    <div class="toc-collapse">
                                                 <div aria-label="main navigation" class="toc" role="navigation">
                                 <div aria-label="Main navigation" class="main_menu" role="navigation">
-        
-    <ul class="menu-level-1">
+            <ul class="menu-level-1">
     <li class="">
     <a href="../Introduction/Index.html">
         Introduction
@@ -110,8 +123,7 @@
     </a></li>    <li class="">
     <a href="../Tutorial/Index.html">
         Tutorial
-    </a></li>    </ul>
-    <ul class="menu-level-1">
+    </a></li>    </ul>    <ul class="menu-level-1">
     <li class="">
     <a href="../Sitemap.html">
         Sitemap
@@ -126,6 +138,9 @@
                     <li><a href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" rel="nofollow noopener" target="_blank">
                     How to edit
             </a></li>
+                    <li><a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Integration/Index.rst" rel="nofollow noopener" target="_blank">
+                    Edit current document on GitHub
+            </a></li>
         </ul>
 </div>
                         </div>
@@ -139,13 +154,21 @@
     <li class="breadcrumb-item"><a href="../Index.html">reCAPTCHA: Easy on Humans, Hard on Bots</a></li>
                     <li aria-current="page"  class="breadcrumb-item  active">Integration</li>
         </ol>
-        <div class="breadcrumb-additions">    <a class="btn btn-sm btn-light" href="../_sources/Integration/Index.rst.txt" rel="nofollow noopener" target="_blank">
+        <div class="breadcrumb-additions">        <a class="btn btn-sm btn-light" href="https://github.com/evoWeb/recaptcha/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2FevoWeb%2Frecaptcha%2FIntegration%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+            <span class="btn-icon"><i class="fas fa-bug"></i></span>
+            <span class="btn-text">Report issue</span>
+        </a>
+        <a class="btn btn-sm btn-light" href="../_sources/Integration/Index.rst.txt" rel="nofollow noopener" target="_blank">
         <span class="btn-icon"><span class="fas fa-code"></span></span>
         <span class="btn-text">View source</span>
     </a>
         <a class="btn btn-sm btn-light" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
         <span class="btn-icon"><span class="fas fa-info-circle"></span></span>
         <span class="btn-text">How to edit</span>
+    </a>
+        <a class="btn btn-sm btn-secondary" href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Integration/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+        <span class="btn-icon"><span class="fab fa-github"></span></span>
+        <span class="btn-text">Edit on GitHub</span>
     </a>
     </div>    </nav>
                     
@@ -233,9 +256,9 @@ result of the validation to check against.</p>
 $captchaService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Evoweb\Recaptcha\Services\CaptchaService::class);
 $captchaServiceValidation = $captchaService-&gt;validateReCaptcha();
 <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>($captchaServiceValidation[<span class="hljs-string">'verified'</span>])) {
-	<span class="hljs-keyword">if</span> ($captchaServiceValidation[<span class="hljs-string">'verified'</span>] === <span class="hljs-keyword">true</span>) {
-		$validCaptcha = <span class="hljs-keyword">true</span>;
-	}
+    <span class="hljs-keyword">if</span> ($captchaServiceValidation[<span class="hljs-string">'verified'</span>] === <span class="hljs-keyword">true</span>) {
+        $validCaptcha = <span class="hljs-keyword">true</span>;
+    }
 }</code></pre>
     <div class="code-block-actions">        <button class="code-block-copy" title="Copy to clipboard">
             <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
@@ -259,17 +282,17 @@ that prepares the configuration and then renders the captcha.</p>
     </div><div class="code-block-wrapper" translate="no">
             
     <pre class="code-block"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">r:form.recaptcha</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-recaptcha"</span> <span class="hljs-attr">data-sitekey</span>=<span class="hljs-string">"{configuration.public_key}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">f:then</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">f:else</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"recaptcha-development-mode"</span>&gt;</span>
-            Development mode active. Do not expect the captcha to appear.
-         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
-   <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">f:if</span> <span class="hljs-attr">condition</span>=<span class="hljs-string">"{showCaptcha}"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f:then</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">f:form.hidden</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"{name}"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-recaptcha"</span> <span class="hljs-attr">data-sitekey</span>=<span class="hljs-string">"{configuration.public_key}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f:then</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">f:else</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"recaptcha-development-mode"</span>&gt;</span>
+        Development mode active. Do not expect the captcha to appear.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">f:else</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">f:if</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">r:form.recaptcha</span>&gt;</span></code></pre>
     <div class="code-block-actions">        <button class="code-block-copy" title="Copy to clipboard">
             <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
@@ -331,7 +354,7 @@ easy. Just annotate as usual.</p>
     </main>
 
     <div class="modal fade" id="linkReferenceModal" tabindex="-1" aria-labelledby="linkReferenceModalLabel"
-    aria-hidden="true" data-current-filename="Integration/Index">
+    aria-hidden="true" data-current-filename="Integration/Index" data-interlink-shortcode="evoweb/recaptcha">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -349,7 +372,8 @@ easy. Just annotate as usual.</p>
                     <p>Copy and freely share the link</p>
                 </div>
                 <div class="mb-3">
-                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.The link below can be used, but is prone to change if the page gets moved.
+                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.                        You can make a <a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Integration/Index.rst">pull request on GitHub</a> to suggest an anchor.
+                        The link below can be used, but is prone to change if the page gets moved.
                     </div>
                     <label for="permalink-rst" class="col-form-label">reStructuredText (reST):</label>
                     <div class="input-group">
@@ -398,10 +422,18 @@ easy. Just annotate as usual.</p>
     <div class="frame frame-ruler-before frame-background-dark">
         <div class="frame-container">
             <div class="frame-inner">
-                                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Oct 22, 2024 13:33</p>
+                <ul class="footer-simplemenu">
+                        <li><a href="https://github.com/evoWeb/recaptcha" title="Home" rel="nofollow noopener"><span>Home</span></a></li>
+                                                <li><a href="recaptcha@evoweb.de" title="Contact" rel="nofollow noopener"><span>Contact</span></a></li>
+                                                <li><a href="https://github.com/evoWeb/recaptcha/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
+                                                <li><a href="https://github.com/evoWeb/recaptcha" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
+                                            </ul>                <div class="footer-additional">
+                    <p class="text-center">Last rendered: Nov 01, 2024 20:47</p>
                 </div>
                 <div class="footer-meta">
+                                        <div class="footer-meta-copyright">
+                        &copy; since 2015 by evoWeb
+                    </div>
                     <ul class="footer-meta-navigation">
                         <li><a href="https://typo3.org/legal-notice" rel="nofollow" target="_blank" title="Legal Notice">Legal Notice</a></li>
                         <li><a href="https://typo3.org/privacy-policy" rel="nofollow" target="_blank" title="Privacy Policy">Privacy Policy</a></li>
