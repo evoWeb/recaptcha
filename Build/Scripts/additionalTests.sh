@@ -163,6 +163,9 @@ cleanRenderedDocumentationFiles() {
 
 getPhpImageVersion() {
     case ${1} in
+        8.1)
+            echo -n "2.12"
+            ;;
         8.2)
             echo -n "1.12"
             ;;
@@ -294,8 +297,9 @@ Options:
         Hack functional or acceptance tests into #numberOfChunks pieces and run tests of #chunk.
         Example -c 3/13
 
-    -p <8.2|8.3|8.4>
+    -p <8.1|8.2|8.3|8.4>
         Specifies the PHP minor version to be used
+            - 8.1: use PHP 8.1
             - 8.2 (default): use PHP 8.2
             - 8.3: use PHP 8.3
             - 8.4: use PHP 8.4
@@ -515,7 +519,7 @@ while getopts ":s:p:q:r:xy:hv" OPT; do
             ;;
         p)
             PHP_VERSION=${OPTARG}
-            if ! [[ ${PHP_VERSION} =~ ^(8.1|8.2|8.3)$ ]]; then
+            if ! [[ ${PHP_VERSION} =~ ^(8.1|8.2|8.3|8.4)$ ]]; then
                 INVALID_OPTIONS+=("${OPTARG}")
             fi
             ;;

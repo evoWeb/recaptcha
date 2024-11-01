@@ -78,10 +78,10 @@ runFunctionalTests () {
         -s lintPhp || exit 1 ; \
         EXIT_CODE_LINT=$?
 
-    ./runTests.sh \
-        -p ${PHP_VERSION} \
-        -s composerInstall || exit 1 ; \
-        EXIT_CODE_CORE=$?
+#    ./runTests.sh \
+#        -p ${PHP_VERSION} \
+#        -s composerInstall || exit 1 ; \
+#        EXIT_CODE_CORE=$?
 
     ./additionalTests.sh \
         -p ${PHP_VERSION} \
@@ -157,7 +157,7 @@ if [[ $DEBUG_TESTS != true ]]; then
     runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} || exit 1
     runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} ${LOWEST} || exit 1
 
-    TCORE="^12.4"
+    TCORE="^13.0"
 
     runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} || exit 1
     runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} ${LOWEST} || exit 1
