@@ -150,13 +150,6 @@ DEBUG_TESTS=false
 if [[ $DEBUG_TESTS != true ]]; then
     checkResources
 
-    TCORE="^12.4"
-
-    runFunctionalTests "8.1" ${TCORE} ${TFRAMEWORK} ${TPATH} || exit 1
-    runFunctionalTests "8.1" ${TCORE} ${TFRAMEWORK} ${TPATH} ${LOWEST} || exit 1
-    runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} || exit 1
-    runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} ${LOWEST} || exit 1
-
     TCORE="^13.0"
 
     runFunctionalTests "8.2" ${TCORE} ${TFRAMEWORK} ${TPATH} || exit 1
