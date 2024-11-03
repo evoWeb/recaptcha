@@ -17,21 +17,18 @@
 		"docs": "https://docs.typo3.org/p/evoweb/recaptcha/main/en-us/"
 	},
 	"config": {
+		"vendor-dir": "Build/vendor",
 		"bin-dir": "bin",
-		"platform": {
-			"php": "8.2.1"
-		},
-		"sort-packages": true,
 		"allow-plugins": {
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		}
 	},
 	"require": {
-		"typo3/cms-core": "^12.4 || 12.4.x-dev || ^13.0 || 13.3.x-dev || dev-main",
-		"typo3/cms-extbase": "^12.4 || 12.4.x-dev || ^13.0 || 13.3.x-dev ||  dev-main",
-		"typo3/cms-fluid": "^12.4 || 12.4.x-dev || ^13.0 || 13.3.x-dev ||  dev-main",
-		"typo3/cms-frontend": "^12.4 || 12.4.x-dev || ^13.0 || 13.3.x-dev ||  dev-main",
+		"typo3/cms-core": "^13.0 || 13.4.x-dev || dev-main",
+		"typo3/cms-extbase": "^13.0 || 13.4.x-dev || dev-main",
+		"typo3/cms-fluid": "^13.0 || 13.4.x-dev || dev-main",
+		"typo3/cms-frontend": "^13.0 || 13.4.x-dev || dev-main",
 		"psr/http-message": "^1.1 || ^2.0"
 	},
 	"require-dev": {
@@ -40,9 +37,13 @@
 	"suggest": {
 		"typo3/cms-form": "*"
 	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "recaptcha"
+			"extension-key": "recaptcha",
+			"app-dir": "Build",
+			"web-dir": "Build/Web"
 		}
 	},
 	"scripts": {
@@ -52,6 +53,15 @@
 			"rm .gitattributes",
 			"rm .gitignore",
 			"sed -i \"s/version' => '.*'/version' => '$(echo ${GITHUB_REF} | cut -d / -f 3)'/\" ext_emconf.php\n"
+		],
+		"post-install-cmd": [
+			"ln -sf vendor/typo3/testing-framework/Resources/Core/Build/ Build/phpunit;"
+		],
+		"post-update-cmd": [
+			"@post-install-cmd"
+		],
+		"post-autoload-dump": [
+			"TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
 		]
 	},
 	"autoload": {
