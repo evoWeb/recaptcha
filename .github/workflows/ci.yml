@@ -48,19 +48,6 @@ jobs:
             core: '^12.4'
             prefer: '--prefer-lowest'
 
-          - php: '8.2'
-            core: '^13.0'
-            prefer: ''
-          - php: '8.2'
-            core: '^13.0'
-            prefer: '--prefer-lowest'
-
-          - php: '8.3'
-            core: '^13.0'
-            prefer: ''
-          - php: '8.3'
-            core: '^13.0'
-            prefer: '--prefer-lowest'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

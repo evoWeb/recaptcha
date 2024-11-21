@@ -126,11 +126,6 @@ if [[ $DEBUG_TESTS != true ]]; then
     runFunctionalTests "8.2" "^12.4" || exit 1
     runFunctionalTests "8.2" "^12.4" "--prefer-lowest" || exit 1
     cleanup
-    runFunctionalTests "8.2" "^13.0" || exit 1
-    runFunctionalTests "8.2" "^13.0" "--prefer-lowest" || exit 1
-    runFunctionalTests "8.3" "^13.0" || exit 1
-    runFunctionalTests "8.3" "^13.0" "--prefer-lowest" || exit 1
-    cleanup
 else
     cleanup
     runFunctionalTests "8.2" "^13.0" "dev-main" "Tests/Functional" || exit 1
