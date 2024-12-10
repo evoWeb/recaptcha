@@ -9,32 +9,7 @@ Content Security Policy
 Reason
 ======
 
-Since TYPO3 12 handling of content security policies are introduced. If this
-feature is active, the recaptcha javascript can not be loaded without additional
-configuration.
-
-CSP Configuration
-=================
-
-To get the recaptcha working with csp feature active, it's necessary to add an
-extending mutation to the site configuration in a csp.yaml named file.
-
-..  code-block:: yaml
-    :caption: project_root/config/sites/main/csp.yaml
-
-    inheritDefault: true
-    mutations:
-      - mode: extend
-        directive: 'frame-src'
-        sources:
-          - 'https://www.google.com/recaptcha/'
-          - 'https://recaptcha.google.com/recaptcha/'
-
-      - mode: extend
-        directive: 'script-src'
-        sources:
-          - 'https://www.google.com/recaptcha/'
-          - 'https://www.gstatic.com/recaptcha/'
+Since TYPO3 12 handling of content security policies are introduced. Extension adds required policies automatically.
 
 Template modifications
 ======================
