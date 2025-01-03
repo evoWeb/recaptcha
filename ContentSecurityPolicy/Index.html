@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>Content Security Policy — recaptcha 14.0.2
+    <title>Content Security Policy — recaptcha 14.0.3
         documentation</title>
 
     
@@ -10,11 +10,11 @@
 <meta content="phpdocumentor/guides" name="generator">
 <meta content="recaptcha" name="docsearch:name">
 <meta content="" name="docsearch:package_type">
-<meta content="14.0.2" name="docsearch:release">
-<meta content="14.0.2" name="docsearch:version">
-<meta content="2024-11-17T12:19:54+00:00" name="docsearch:modified">
-<meta content="2024-11-17T12:19:54+00:00" name="dc.modified">
-<meta content="2024-11-17T12:19:54+00:00" property="article:modified_time">
+<meta content="14.0.3" name="docsearch:release">
+<meta content="14.0.3" name="docsearch:version">
+<meta content="2025-01-03T19:13:02+00:00" name="docsearch:modified">
+<meta content="2025-01-03T19:13:02+00:00" name="dc.modified">
+<meta content="2025-01-03T19:13:02+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -26,8 +26,7 @@
     </head>
 <body>
 <div class="page">
-    
-<header>
+    <header>
     <div class="page-topbar">
         <div class="page-topbar-inner">
             <typo3-universe active="documentation">
@@ -57,6 +56,7 @@
                                     <button class="btn btn-light search__submit" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
                                 </div>
                             </form>
+                            <div id="global-search-root"></div>
                         </search>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <div id="toc-version" class="toc-version" data-override-url-proxy="https://render-guides.ddev.site/_resources/js/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html">
                 
                     <span class="toc-version-prefix">Release:</span>
-                    <span class="toc-version-number" tabindex="0">14.0.2</span>
+                    <span class="toc-version-number" tabindex="0">14.0.3</span>
                 </div>
                 <div id="toc-version-options" class="toc-version-options">
                     <p><span class="fa fa-spinner fa-spin"></span> Loading data.</p>
@@ -195,30 +195,10 @@ configuration.</p>
     <p>To get the recaptcha working with csp feature active, it&#039;s necessary to add an
 extending mutation to the site configuration in a csp.yaml named file.</p>
 
-                <div class="code-block-caption">
-        <span class="caption-text">project_root/config/sites/main/csp.yaml</span>
-    </div><div class="code-block-wrapper" translate="no">
             
-    <pre class="code-block"><code class="hljs yaml"><span class="hljs-attr">inheritDefault:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">mutations:</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-attr">mode:</span> <span class="hljs-string">extend</span>
-    <span class="hljs-attr">directive:</span> <span class="hljs-string">'frame-src'</span>
-    <span class="hljs-attr">sources:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">'https://www.google.com/recaptcha/'</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">'https://recaptcha.google.com/recaptcha/'</span>
+    <p>To include this more easy a CSP.yaml file is prepared and can be imported in the
+config/sites/site/csp.yaml with this lines.</p>
 
-  <span class="hljs-bullet">-</span> <span class="hljs-attr">mode:</span> <span class="hljs-string">extend</span>
-    <span class="hljs-attr">directive:</span> <span class="hljs-string">'script-src'</span>
-    <span class="hljs-attr">sources:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">'https://www.google.com/recaptcha/'</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">'https://www.gstatic.com/recaptcha/'</span></code></pre>
-    <div class="code-block-actions">        <button class="code-block-copy" title="Copy to clipboard">
-            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
-            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-        </button>
-        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-    </div>
-</div>
     </section>
             <section class="section" id="template-modifications">
             <h2>Template modifications<a class="headerlink" href="#template-modifications" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline"><i class="fa-solid fa-paragraph"></i></a></h2>
@@ -273,12 +253,14 @@ in line with the provided file.</p>
                         <input class="form-control code" id="permalink-uri" readonly>
                         <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-uri"><i class="far fa-clone"></i></button>
                     </div>
-                    <label for="permalink-short" class="col-form-label">Permalink (Shortlink)</label>
-                    <div class="input-group">
-                        <input class="form-control code" id="permalink-short" readonly>
-                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-short"><i class="far fa-clone"></i></button>
+                    <div class="permalink-short-wrapper">
+                        <label for="permalink-short" class="col-form-label">Permalink (Shortlink)</label>
+                        <div class="input-group">
+                            <input class="form-control code" id="permalink-short" readonly>
+                            <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-short"><i class="far fa-clone"></i></button>
+                        </div>
+                        <p><em>Copy and freely share the link</em></p>
                     </div>
-                    <p><em>Copy and freely share the link</em></p>
                 </div>
                 <div class="mb-3">
                     <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.                        You can make a <a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/ContentSecurityPolicy/Index.rst">pull request on GitHub</a> to suggest an anchor.
@@ -290,6 +272,13 @@ in line with the provided file.</p>
                         <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-rst"><i class="far fa-clone"></i></button>
                     </div>
                     <p><em>Copy this link into your TYPO3 manual.</em></p>
+                </div>
+                <div class="mb-3">
+                    <label for="permalink-md" class="col-form-label">Link in Markdown</label>
+                    <div class="input-group">
+                        <textarea class="form-control code" id="permalink-md" readonly></textarea>
+                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-md"><i class="far fa-clone"></i></button>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="permalink-html" class="col-form-label">Link in HTML</label>
@@ -337,7 +326,7 @@ in line with the provided file.</p>
                                                 <li><a href="https://github.com/evoWeb/recaptcha/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
                                                 <li><a href="https://github.com/evoWeb/recaptcha" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
                                             </ul>                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Nov 17, 2024 12:19</p>
+                    <p class="text-center">Last rendered: Jan 03, 2025 19:13</p>
                 </div>
                 <div class="footer-meta">
                                         <div class="footer-meta-copyright">
