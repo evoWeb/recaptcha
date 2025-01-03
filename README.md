@@ -1,6 +1,6 @@
 # TYPO3 Extension ``recaptcha``
 
-![build](https://github.com/evoWeb/recaptcha/workflows/build/badge.svg?branch=develop)
+![build](https://github.com/evoWeb/recaptcha/actions/workflows/ci.yml/badge.svg?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/evoweb/recaptcha/v/stable)](https://packagist.org/packages/evoweb/recaptcha)
 [![Monthly Downloads](https://poser.pugx.org/evoweb/recaptcha/d/monthly)](https://packagist.org/packages/evoweb/recaptcha)
 [![Total Downloads](https://poser.pugx.org/evoweb/recaptcha/downloads)](https://packagist.org/packages/evoweb/recaptcha)

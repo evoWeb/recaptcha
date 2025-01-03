@@ -31,6 +31,9 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class CaptchaService
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $configuration = [];
 
     public function __construct(
@@ -80,6 +83,9 @@ class CaptchaService
         $this->configuration = $configuration;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getConfiguration(): array
     {
         return $this->configuration;
@@ -145,7 +151,7 @@ class CaptchaService
     /**
      * Validate reCAPTCHA challenge/response
      *
-     * @return array Array with verified- (boolean) and error-code (string)
+     * @return array<string, string|bool> Array with verified- (boolean) and error-code (string)
      */
     public function validateReCaptcha(string $value = ''): array
     {
@@ -198,7 +204,8 @@ class CaptchaService
     /**
      * Query reCAPTCHA server for captcha-verification
      *
-     * @return array Array with verified- (boolean) and error-code (string)
+     * @param array<string, string> $data
+     * @return array<string, string|bool|array<string>> Array with verified- (boolean) and error-code (string)
      */
     protected function queryVerificationServer(array $data): array
     {
