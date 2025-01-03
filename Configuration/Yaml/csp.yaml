@@ -1,0 +1,13 @@
+inheritDefault: true
+mutations:
+  - mode: extend
+    directive: 'frame-src'
+    sources:
+      - 'https://www.google.com/recaptcha/'
+      - 'https://recaptcha.google.com/recaptcha/'
+
+  - mode: extend
+    directive: 'script-src'
+    sources:
+      - 'https://www.google.com/recaptcha/'
+      - 'https://www.gstatic.com/recaptcha/'

@@ -19,22 +19,13 @@ CSP Configuration
 To get the recaptcha working with csp feature active, it's necessary to add an
 extending mutation to the site configuration in a csp.yaml named file.
 
+To include this more easy a CSP.yaml file is prepared and can be imported in the
+config/sites/site/csp.yaml with this lines.
+
 ..  code-block:: yaml
-    :caption: project_root/config/sites/main/csp.yaml
-
-    inheritDefault: true
-    mutations:
-      - mode: extend
-        directive: 'frame-src'
-        sources:
-          - 'https://www.google.com/recaptcha/'
-          - 'https://recaptcha.google.com/recaptcha/'
-
-      - mode: extend
-        directive: 'script-src'
-        sources:
-          - 'https://www.google.com/recaptcha/'
-          - 'https://www.gstatic.com/recaptcha/'
+    :caption: project_root/config/sites/site/csp.yaml
+    imports:
+        - resource: "EXT:recaptcha/Configuration/Yaml/csp.yaml"
 
 Template modifications
 ======================
