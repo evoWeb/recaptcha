@@ -289,7 +289,7 @@
         "administration-1": [
             "recaptcha",
             "14.0.3",
-            "Administration\/Index.html#administration-1",
+            "Administration\/Index.html#administration",
             "Administration"
         ],
         "manual-installations": [
@@ -319,7 +319,7 @@
         "breaking-changes-1": [
             "recaptcha",
             "14.0.3",
-            "BreakingChanges\/Index.html#breaking-changes-1",
+            "BreakingChanges\/Index.html#breaking-changes",
             "Breaking Changes"
         ],
         "12-october-2024": [
@@ -349,7 +349,7 @@
         "configuration-1": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#configuration-1",
+            "Configuration\/Index.html#configuration",
             "Configuration"
         ],
         "backend-related": [
@@ -373,7 +373,7 @@
         "content-security-policy": [
             "recaptcha",
             "14.0.3",
-            "ContentSecurityPolicy\/Index.html#content-security-policy",
+            "ContentSecurityPolicy\/Index.html#csp",
             "Content Security Policy"
         ],
         "reason": [
@@ -397,13 +397,13 @@
         "recaptcha-easy-on-humans-hard-on-bots": [
             "recaptcha",
             "14.0.3",
-            "Index.html#recaptcha-easy-on-humans-hard-on-bots",
+            "Index.html#start",
             "reCAPTCHA: Easy on Humans, Hard on Bots"
         ],
         "integration-1": [
             "recaptcha",
             "14.0.3",
-            "Integration\/Index.html#integration-1",
+            "Integration\/Index.html#integration",
             "Integration"
         ],
         "use-in-your-extension": [
@@ -457,7 +457,7 @@
         "introduction-1": [
             "recaptcha",
             "14.0.3",
-            "Introduction\/Index.html#introduction-1",
+            "Introduction\/Index.html#introduction",
             "Introduction"
         ],
         "functionality": [
@@ -481,7 +481,7 @@
         "templating-1": [
             "recaptcha",
             "14.0.3",
-            "Templating\/Index.html#templating-1",
+            "Templating\/Index.html#templating",
             "Templating"
         ],
         "viewhelper-integration": [
@@ -505,7 +505,7 @@
         "tutorial-1": [
             "recaptcha",
             "14.0.3",
-            "Tutorial\/Index.html#tutorial-1",
+            "Tutorial\/Index.html#tutorial",
             "Tutorial"
         ],
         "use-invisible-recaptcha-in-ext-form-forms": [
@@ -517,7 +517,7 @@
         "users-manual": [
             "recaptcha",
             "14.0.3",
-            "UsersManual\/Index.html#users-manual",
+            "UsersManual\/Index.html#user-manual",
             "Users manual"
         ],
         "usage-in-ext-form-manager": [
@@ -549,13 +549,13 @@
         "constants-reference": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#constants-reference",
+            "Configuration\/Index.html#confval-menu-constants-reference",
             ""
         ],
         "viewhelper-attributes": [
             "recaptcha",
             "14.0.3",
-            "Templating\/Index.html#viewhelper-attributes",
+            "Templating\/Index.html#confval-menu-viewhelper-attributes",
             ""
         ]
     },
@@ -563,73 +563,73 @@
         "api-server": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#api-server",
+            "Configuration\/Index.html#confval-api-server",
             "api_server"
         ],
         "verify-server": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#verify-server",
+            "Configuration\/Index.html#confval-verify-server",
             "verify_server"
         ],
         "public-key": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#public-key",
+            "Configuration\/Index.html#confval-public-key",
             "public_key"
         ],
         "private-key": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#private-key",
+            "Configuration\/Index.html#confval-private-key",
             "private_key"
         ],
         "lang": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#lang",
+            "Configuration\/Index.html#confval-lang",
             "lang"
         ],
         "enforcecaptcha": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#enforcecaptcha",
+            "Configuration\/Index.html#confval-enforcecaptcha",
             "enforceCaptcha"
         ],
         "invisiblecallback": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#invisiblecallback",
+            "Configuration\/Index.html#confval-invisiblecallback",
             "invisibleCallback"
         ],
         "theme": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#theme",
+            "Configuration\/Index.html#confval-theme",
             "theme"
         ],
         "robotmode": [
             "recaptcha",
             "14.0.3",
-            "Configuration\/Index.html#robotmode",
+            "Configuration\/Index.html#confval-robotmode",
             "robotMode"
         ],
         "name": [
             "recaptcha",
             "14.0.3",
-            "Templating\/Index.html#name",
+            "Templating\/Index.html#confval-name",
             "name"
         ],
         "showcaptcha": [
             "recaptcha",
             "14.0.3",
-            "Templating\/Index.html#showcaptcha",
+            "Templating\/Index.html#confval-showcaptcha",
             "showCaptcha"
         ],
         "configuration": [
             "recaptcha",
             "14.0.3",
-            "Templating\/Index.html#configuration",
+            "Templating\/Index.html#confval-configuration",
             "configuration"
         ]
     }
