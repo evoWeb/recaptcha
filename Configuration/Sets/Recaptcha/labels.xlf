@@ -50,6 +50,9 @@
 			<trans-unit id="settings.evoweb.recaptcha.enforceCaptcha" resname="settings.evoweb.recaptcha.enforceCaptcha">
 				<source>Enforcing captcha even in development mode</source>
 			</trans-unit>
+			<trans-unit id="settings.evoweb.recaptcha.threshold" resname="settings.evoweb.recaptcha.threshold">
+				<source>Threshold for score (0.0 - 1.0)</source>
+			</trans-unit>
 			<trans-unit id="settings.evoweb.recaptcha.theme" resname="settings.evoweb.recaptcha.theme">
 				<source>Theme</source>
 			</trans-unit>

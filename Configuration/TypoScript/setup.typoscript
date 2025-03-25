@@ -21,6 +21,7 @@ plugin.tx_recaptcha {
   enforceCaptcha = {$plugin.tx_recaptcha.enforceCaptcha ?? $evoweb.recaptcha.enforceCaptcha}
 
   robotMode = {$plugin.tx_recaptcha.robotMode ?? $evoweb.recaptcha.robotMode}
+  threshold = {$plugin.tx_recaptcha.threshold ?? $evoweb.recaptcha.threshold}
 }
 
 

@@ -189,6 +189,16 @@ class CaptchaService
 
             if ($response['success']) {
                 $result['verified'] = true;
+                //$logger = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class)->getLogger(__CLASS__);
+                //$logger->warning('reCAPTCHA score: ' . ($response['score'] ?? '[undefined]') . ' (threshold: ' . ($this->configuration['threshold'] ?? '[undefined]') . ')');
+                // is threshold is defined
+                if (($this->configuration['threshold'] ?? 0) > 0.0) {
+                    // Reject if score is below threshold
+                    if (isset($response['score']) && $response['score'] < $this->configuration['threshold']) {
+                        $result['verified'] = false;
+                        $result['error'] = 'score-threshold-not-met';
+                    }
+                }
             } else {
                 $result['error'] = (string)(
                     is_array($response['error-codes']) ?
