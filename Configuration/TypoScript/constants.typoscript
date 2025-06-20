@@ -30,6 +30,9 @@ plugin.tx_recaptcha {
 
   # cat=plugin.recaptcha//11; type=boolean; label= reCAPTCHA robotMode: If you use a frontend testing tool, which cannot solve the recaptcha
   robotMode = 0
+
+  # cat=plugin.recaptcha//20; type=string; label= reCAPTCHA threshold: needed score (0.0 - 1.0)
+  threshold = 0
 }
 
 plugin.tx_sfregister.settings.captchaId = recaptcha

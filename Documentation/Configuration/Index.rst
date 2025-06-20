@@ -142,4 +142,13 @@ plugin.tx\_recaptcha:
         Add the possibility to set the recaptcha into robot mode in production environment.
         The recaptcha will not be displayed like in development mode.
 
+    ..  _threshold:
+
+    ..  confval:: threshold
+        :type: :ref:`string <t3tsref:data-type-boolean>`
+        :Default: 0
+
+        [Only TypoScript]
+        Add the threshold for recaptcha v3 from which to show an error.
+
 ..  _admin: https://www.google.com/recaptcha/admin

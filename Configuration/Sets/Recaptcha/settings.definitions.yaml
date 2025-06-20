@@ -47,6 +47,10 @@ settings:
     default: 0
     type: bool
     category: recaptcha
+  evoweb.recaptcha.threshold:
+    default: 0.0
+    type: number
+    category: recaptcha
   evoweb.sf-register.captchaId:
     default: 'recaptcha'
     type: string
