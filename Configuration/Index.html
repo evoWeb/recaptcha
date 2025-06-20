@@ -12,9 +12,9 @@
 <meta content="" name="docsearch:package_type">
 <meta content="14.0.3" name="docsearch:release">
 <meta content="14.0.3" name="docsearch:version">
-<meta content="2025-01-25T12:09:33+00:00" name="docsearch:modified">
-<meta content="2025-01-25T12:09:33+00:00" name="dc.modified">
-<meta content="2025-01-25T12:09:33+00:00" property="article:modified_time">
+<meta content="2025-06-20T11:00:26+00:00" name="docsearch:modified">
+<meta content="2025-06-20T11:00:26+00:00" name="dc.modified">
+<meta content="2025-06-20T11:00:26+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -36,14 +36,36 @@
     </div>
     <div class="page-header">
         <div class="page-header-inner">
-            <div class="row">
-                <div class="col-md-2 col-lg-4">
+            <div class="d-flex flex-wrap">
+                <div class="logo-wrapper">
                     <a class="logo" href="https://docs.typo3.org/" title="TYPO3 Documentation">
                         <img alt="TYPO3 Logo" class="logo-image" src="../_resources/img/typo3-logo.svg" width="484" height="130">
                     </a>
                 </div>
-                <div class="col-md-10 col-lg-8">
+                <div class="align-self-center order-lg-2 order-last">
+                    
+<div class="toc-header">
+    <div class="toc-title pe-3">
+                            <a class="toc-title-project" href="../Index.html">reCAPTCHA: Easy on Humans, Hard on Bots</a>
+            </div>
+    <label for="languageSelect" class="visually-hidden">Select language</label>
+        <select id="languageSelect" class="form-select d-none">
+        </select>
+
+                                    
+        <label for="versionSelect" class="visually-hidden">Select version</label>
+        <select id="versionSelect" class="form-select"
+                data-current-version="14.0.3"
+            data-override-url-proxy="https://render-guides.ddev.site/_resources/js/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html"
+        >
+            <option disabled selected>Loading versions...</option>
+        </select>
+    </div>                </div>
+                <div class="ms-auto order-lg-3 d-flex">
                     <div class="menu-search-wrapper">
+                        <button id="toc-toggle" class="btn btn-light d-block d-lg-none" tabindex="0" aria-controls="toc-collapse" aria-expanded="false">
+                            <i class="fas fa-bars"></i> <span class="visually-hidden">Mobile Menu</span>
+                        </button>
                         <all-documentations-menu data-override-url="https://render-guides.ddev.site/_resources/js/menu-proxy.php"></all-documentations-menu>
                                                 <search role="search">
                             <form action="https://docs.typo3.org/search/search" id="global-search-form" method="get">
@@ -53,11 +75,44 @@
                                         <option value="">Search all</option>
                                     </select>
                                     <input autocomplete="off" class="form-control shadow-none" id="globalsearchinput" name="q" placeholder="TYPO3 documentation..." type="text" value="">
-                                    <button class="btn btn-light search__submit" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
+                                    <button class="btn btn-light" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
                                 </div>
                             </form>
                             <div id="global-search-root"></div>
                         </search>
+                        <div class="position-relative d-inline-block">
+                            <button id="options-toggle" class="btn btn-light d-block" type="button" aria-expanded="false">
+                                <i class="fas fa-cog"></i> <span class="visually-hidden">Options</span>
+                            </button>
+
+                            <div id="options-panel"
+                                 class="shadow p-3"
+                                 role="menu"
+                                 aria-hidden="true">
+                                <h6 class="dropdown-header text-muted text-uppercase small mb-2">Options</h6>
+
+                                                                                                            <a class="dropdown-item d-flex align-items-center gap-2" href="https://github.com/evoWeb/recaptcha/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2FevoWeb%2Frecaptcha%2FConfiguration%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-comment-dots"></i>
+        Give feedback
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="../_sources/Configuration/Index.rst.txt" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-code"></i>
+        View source
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-info-circle"></i>
+        How to edit
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+        <i class="fab fa-github"></i>
+        Edit on GitHub
+    </a>
+                                                                                                                <a class="dropdown-item d-flex align-items-center gap-2" href="../singlehtml/Index.html" target="_blank" rel="noopener">
+                                            <i class="fas fa-print"></i>
+                                            Full documentation (single file)
+                                        </a>
+                                                                                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,34 +122,14 @@
         <div class="page-main-inner">
             <div class="page-main-navigation">
                 <nav>
-                    
-<div class="toc-header">
-    <div class="toc-title">
-        <a class="toc-title-project" href="../Index.html">recaptcha</a>
-            <div class="toc-version-wrapper" id="toc-version-wrapper">
-                <!--
-                    LOCAL RENDERING NOTICE:
-                    https://docs.typo3.org/other/t3docs/render-guides/main/en-us/Developer/AjaxVersions.html
-                -->
 
-                <div id="toc-version" class="toc-version" data-override-url-proxy="https://render-guides.ddev.site/_resources/js/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html">
-                
-                    <span class="toc-version-prefix">Release:</span>
-                    <span class="toc-version-number" tabindex="0">14.0.3</span>
-                </div>
-                <div id="toc-version-options" class="toc-version-options">
-                    <p><span class="fa fa-spinner fa-spin"></span> Loading data.</p>
-                </div>
-            </div></div>
-    <div class="toc-actions">
-        <button id="toc-toggle" class="btn btn-light d-block d-lg-none" tabindex="0" aria-controls="toc-collapse" aria-expanded="false">
-            Menu
-        </button>
-    </div>
-</div>                    <div id="toc-collapse">
+                    <div id="toc-collapse">
                                                 <div aria-label="main navigation" class="toc"
                              role="navigation">
-                                <div aria-label="Main navigation" class="main_menu" role="navigation">
+                                <all-documentations-menu-mobile
+        data-override-url="https://render-guides.ddev.site/_resources/js/menu-proxy.php"></all-documentations-menu-mobile>
+    <div aria-label="Main navigation" class="main_menu" role="navigation">
+                <p class="caption">reCAPTCHA: Easy on Humans, Hard on Bots</p>
             <ul class="menu-level-1" role="menubar">
     <li class="" role="menuitem">
     <a href="../Introduction/Index.html">
@@ -129,22 +164,6 @@
         Sitemap
     </a></li>    </ul>
     </div>
-    <div aria-label="Meta navigation" class="main_menu  d-block d-lg-none" role="navigation">
-    <hr/>
-    <p class="caption">Contributors Corner</p>
-    <ul class="menu-level-1">            <li><a href="../_sources/Configuration/Index.rst.txt" rel="nofollow noopener" target="_blank">
-                    View source of current document
-            </a></li>
-                    <li><a href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" rel="nofollow noopener" target="_blank">
-                    How to edit
-            </a></li>
-                    <li><a href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" rel="nofollow noopener" target="_blank">
-                    Edit current document on GitHub
-            </a></li>
-        </ul>
-</div>
-    <all-documentations-menu-mobile
-        data-override-url="https://render-guides.ddev.site/_resources/js/menu-proxy.php"></all-documentations-menu-mobile>
                         </div>
                     </div>
                 </nav>
@@ -156,23 +175,16 @@
     <li class="breadcrumb-item"><a href="../Index.html">reCAPTCHA: Easy on Humans, Hard on Bots</a></li>
                     <li aria-current="page"  class="breadcrumb-item  active">Configuration</li>
         </ol>
-        <div class="breadcrumb-additions">        <a class="btn btn-sm btn-light" href="https://github.com/evoWeb/recaptcha/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2FevoWeb%2Frecaptcha%2FConfiguration%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
-            <span class="btn-icon"><i class="fas fa-bug"></i></span>
-            <span class="btn-text">Report issue</span>
-        </a>
-        <a class="btn btn-sm btn-light" href="../_sources/Configuration/Index.rst.txt" rel="nofollow noopener" target="_blank">
-        <span class="btn-icon"><span class="fas fa-code"></span></span>
-        <span class="btn-text">View source</span>
-    </a>
-        <a class="btn btn-sm btn-light" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
-        <span class="btn-icon"><span class="fas fa-info-circle"></span></span>
-        <span class="btn-text">How to edit</span>
-    </a>
-        <a class="btn btn-sm btn-secondary" href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
-        <span class="btn-icon"><span class="fab fa-github"></span></span>
-        <span class="btn-text">Edit on GitHub</span>
-    </a>
-    </div>    </nav>
+        <div class="breadcrumb-additions">                <a class="btn btn-sm btn-light" href="https://github.com/evoWeb/recaptcha/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2FevoWeb%2Frecaptcha%2FConfiguration%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+                    <span class="btn-icon"><i class="fas fa-comment-dots"></i></span>
+                    <span class="btn-text">Give feedback</span>
+                </a>
+                            <a class="btn btn-sm btn-secondary" href="https://github.com/evoWeb/recaptcha/edit/develop/Documentation/Configuration/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+                    <span class="btn-icon"><span class="fab fa-github"></span></span>
+                    <span class="btn-text">Edit on GitHub</span>
+                </a>
+            </div>
+    </nav>
                     
 <article class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
     <div itemprop="articleBody">
@@ -210,8 +222,8 @@ name also as setup parameter.</p>
 
 
 
-
-<div class="table-responsive confval-table" id="confval-menu-constants-reference">
+<a id="confval-menu-constants-reference"></a>
+<div class="table-responsive confval-table">
     <table class="table table-hover caption-top">        <thead>
         <tr>
             <th scope="col">Name</th>
@@ -312,29 +324,30 @@ name also as setup parameter.</p>
                 
             </table>
 </div>
-            <a id="api_server"></a>
-                <section data-search-title="api_server"
+                <a id="api_server"></a>
+                        <section data-search-title="api_server"
          data-search-id="confval-api-server"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-api-server"
 >
     <h3 class="sr-only">api_server</h3>
     <dl class="confval">
-        <dt id="confval-api-server"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">api_<wbr>server</span></code>
                                     <a class="headerlink" href="#confval-api-server"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-api-server"
-                       data-rstCode=":ref:`api_server &lt;evoweb/recaptcha:confval-api-server&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -355,29 +368,30 @@ enough changing this parameter keeps the frontend working.</p>
         </dd>
     </dl>
 </section>
-                <a id="verify_server"></a>
-                <section data-search-title="verify_server"
+                        <a id="verify_server"></a>
+                        <section data-search-title="verify_server"
          data-search-id="confval-verify-server"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-verify-server"
 >
     <h3 class="sr-only">verify_server</h3>
     <dl class="confval">
-        <dt id="confval-verify-server"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">verify_<wbr>server</span></code>
                                     <a class="headerlink" href="#confval-verify-server"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-verify-server"
-                       data-rstCode=":ref:`verify_server &lt;evoweb/recaptcha:confval-verify-server&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -398,29 +412,30 @@ this parameter keeps the validation working.</p>
         </dd>
     </dl>
 </section>
-                <a id="public_key"></a>
-                <section data-search-title="public_key"
+                        <a id="public_key"></a>
+                        <section data-search-title="public_key"
          data-search-id="confval-public-key"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-public-key"
 >
     <h3 class="sr-only">public_key</h3>
     <dl class="confval">
-        <dt id="confval-public-key"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">public_<wbr>key</span></code>
                                     <a class="headerlink" href="#confval-public-key"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-public-key"
-                       data-rstCode=":ref:`public_key &lt;evoweb/recaptcha:confval-public-key&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -443,29 +458,30 @@ in your site.</p>
         </dd>
     </dl>
 </section>
-                <a id="private_key"></a>
-                <section data-search-title="private_key"
+                        <a id="private_key"></a>
+                        <section data-search-title="private_key"
          data-search-id="confval-private-key"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-private-key"
 >
     <h3 class="sr-only">private_key</h3>
     <dl class="confval">
-        <dt id="confval-private-key"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">private_<wbr>key</span></code>
                                     <a class="headerlink" href="#confval-private-key"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-private-key"
-                       data-rstCode=":ref:`private_key &lt;evoweb/recaptcha:confval-private-key&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -488,29 +504,30 @@ in your site.</p>
         </dd>
     </dl>
 </section>
-                <a id="lang"></a>
-                <section data-search-title="lang"
+                        <a id="lang"></a>
+                        <section data-search-title="lang"
          data-search-id="confval-lang"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-lang"
 >
     <h3 class="sr-only">lang</h3>
     <dl class="confval">
-        <dt id="confval-lang"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">lang</span></code>
                                     <a class="headerlink" href="#confval-lang"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-lang"
-                       data-rstCode=":ref:`lang &lt;evoweb/recaptcha:confval-lang&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -529,29 +546,30 @@ influence on the rendered language.</p>
         </dd>
     </dl>
 </section>
-                <a id="enforceCaptcha"></a>
-                <section data-search-title="enforceCaptcha"
+                        <a id="enforceCaptcha"></a>
+                        <section data-search-title="enforceCaptcha"
          data-search-id="confval-enforcecaptcha"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-enforcecaptcha"
 >
     <h3 class="sr-only">enforceCaptcha</h3>
     <dl class="confval">
-        <dt id="confval-enforcecaptcha"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">enforce<wbr>Captcha</span></code>
                                     <a class="headerlink" href="#confval-enforcecaptcha"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-enforcecaptcha"
-                       data-rstCode=":ref:`enforceCaptcha &lt;evoweb/recaptcha:confval-enforcecaptcha&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -577,29 +595,30 @@ be solved instead only clicking a checkbox.</p>
         </dd>
     </dl>
 </section>
-                <a id="invisibleCallback"></a>
-                <section data-search-title="invisibleCallback"
+                        <a id="invisibleCallback"></a>
+                        <section data-search-title="invisibleCallback"
          data-search-id="confval-invisiblecallback"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-invisiblecallback"
 >
     <h3 class="sr-only">invisibleCallback</h3>
     <dl class="confval">
-        <dt id="confval-invisiblecallback"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">invisible<wbr>Callback</span></code>
                                     <a class="headerlink" href="#confval-invisiblecallback"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-invisiblecallback"
-                       data-rstCode=":ref:`invisibleCallback &lt;evoweb/recaptcha:confval-invisiblecallback&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -622,29 +641,30 @@ to match the new name.</p>
         </dd>
     </dl>
 </section>
-                <a id="theme"></a>
-                <section data-search-title="theme"
+                        <a id="theme"></a>
+                        <section data-search-title="theme"
          data-search-id="confval-theme"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-theme"
 >
     <h3 class="sr-only">theme</h3>
     <dl class="confval">
-        <dt id="confval-theme"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">theme</span></code>
                                     <a class="headerlink" href="#confval-theme"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-theme"
-                       data-rstCode=":ref:`theme &lt;evoweb/recaptcha:confval-theme&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -666,29 +686,30 @@ For change the theme for recaptcha (light or dark).</p>
         </dd>
     </dl>
 </section>
-                <a id="robotMode"></a>
-                <section data-search-title="robotMode"
+                        <a id="robotMode"></a>
+                        <section data-search-title="robotMode"
          data-search-id="confval-robotmode"
          data-search-facet="Option"
          class="confval-section"
+         id="confval-robotmode"
 >
     <h3 class="sr-only">robotMode</h3>
     <dl class="confval">
-        <dt id="confval-robotmode"            class="d-flex justify-content-between">
-            <div class="confval-header">
+        <dt             class="d-flex justify-content-between">
+            <div class="confval-header flex-grow-1">
                 <code class="sig-name descname"><span
                         class="pre">robot<wbr>Mode</span></code>
                                     <a class="headerlink" href="#confval-robotmode"
                        data-bs-toggle="modal"
                        data-bs-target="#linkReferenceModal"
                        data-id="confval-robotmode"
-                       data-rstCode=":ref:`robotMode &lt;evoweb/recaptcha:confval-robotmode&gt;`"
                        title="Reference this configuration value"><i
                             class="fa-solid fa-paragraph"></i></a>
                 </div>
-            <div class="confval-back-to-top">                    <a href="#" class="backToTop" title="Back to top"><i
-                            class="fa-solid fa-arrow-up fa-xs"></i></a>            </div>
-        </dt>
+            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
+                       title="Back to list"><i
+                            class="fa-solid fa-angles-up fa-xs"></i></a>
+                            </div>        </dt>
         <dd>
                             <dl class="field-list simple">
                                             <dt class="field-even">Type</dt>
@@ -708,7 +729,7 @@ The recaptcha will not be displayed like in development mode.</p>
         </dd>
     </dl>
 </section>
-    
+        
     </section>
     </section>
         <!-- content end -->
@@ -719,13 +740,13 @@ The recaptcha will not be displayed like in development mode.</p>
             <ul class="pagination justify-content-center"><li class="page-item">
                             <a class="page-link" href="../BreakingChanges/Index.html"
                                title="Accesskey Alt(+Shift)+p">
-                                Previous
+                                <i class="fa-solid fa-chevron-left"></i> Previous
                             </a>
                         </li>
                     <li class="page-item">
                             <a class="page-link" href="../ContentSecurityPolicy/Index.html"
                                title="Accesskey Alt(+Shift)+n">
-                                Next
+                                Next <i class="fa-solid fa-chevron-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -824,7 +845,7 @@ The recaptcha will not be displayed like in development mode.</p>
                                                 <li><a href="https://github.com/evoWeb/recaptcha/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
                                                 <li><a href="https://github.com/evoWeb/recaptcha" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
                                             </ul>                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Jan 25, 2025 12:09</p>
+                    <p class="text-center">Last rendered: Jun 20, 2025 11:00</p>
                 </div>
                 <div class="footer-meta">
                                         <div class="footer-meta-copyright">
