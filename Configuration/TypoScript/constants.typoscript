@@ -32,7 +32,7 @@ plugin.tx_recaptcha {
   robotMode = 0
 
   # cat=plugin.recaptcha//20; type=string; label= reCAPTCHA threshold: needed score (0.0 - 1.0)
-  threshold = 0.5
+  threshold = 0
 }
 
 plugin.tx_sfregister.settings.captchaId = recaptcha
