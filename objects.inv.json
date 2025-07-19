@@ -122,12 +122,6 @@
             "Configuration\/Index.html#enforceCaptcha",
             "-"
         ],
-        "invisiblecallback": [
-            "recaptcha",
-            "14.0.4",
-            "Configuration\/Index.html#invisibleCallback",
-            "-"
-        ],
         "theme": [
             "recaptcha",
             "14.0.4",
@@ -247,12 +241,6 @@
             "14.0.4",
             "Configuration\/Index.html#confval-enforcecaptcha",
             "enforceCaptcha"
-        ],
-        "confval-invisiblecallback": [
-            "recaptcha",
-            "14.0.4",
-            "Configuration\/Index.html#confval-invisiblecallback",
-            "invisibleCallback"
         ],
         "confval-theme": [
             "recaptcha",
@@ -607,12 +595,6 @@
             "14.0.4",
             "Configuration\/Index.html#confval-enforcecaptcha",
             "enforceCaptcha"
-        ],
-        "invisiblecallback": [
-            "recaptcha",
-            "14.0.4",
-            "Configuration\/Index.html#confval-invisiblecallback",
-            "invisibleCallback"
         ],
         "theme": [
             "recaptcha",

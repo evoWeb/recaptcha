@@ -109,19 +109,6 @@ plugin.tx\_recaptcha:
         limited amount of tests the captcha testing games must always
         be solved instead only clicking a checkbox.
 
-    ..  _invisibleCallback:
-
-    ..  confval:: invisibleCallback
-        :type: :ref:`string <t3tsref:data-type-string>`
-        :Default: onRecaptchaSubmit
-
-        [Only TypoScript]
-        For invisible reCAPTCHA its necessary to have a callback
-        function in JavaScript. It is possible to have own code
-        that derives from the included. If in this case the name
-        of the callback is changed please adjust this parameter
-        to match the new name.
-
     ..  _theme:
 
     ..  confval:: theme

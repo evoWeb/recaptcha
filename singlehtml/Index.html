@@ -12,9 +12,9 @@
 <meta content="" name="docsearch:package_type">
 <meta content="14.0.4" name="docsearch:release">
 <meta content="14.0.4" name="docsearch:version">
-<meta content="2025-06-20T11:11:56+00:00" name="docsearch:modified">
-<meta content="2025-06-20T11:11:56+00:00" name="dc.modified">
-<meta content="2025-06-20T11:11:56+00:00" property="article:modified_time">
+<meta content="2025-07-19T18:20:26+00:00" name="docsearch:modified">
+<meta content="2025-07-19T18:20:26+00:00" name="dc.modified">
+<meta content="2025-07-19T18:20:26+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="../_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
@@ -161,7 +161,7 @@ license.</p>
 
         <dd class="field-odd">
             
-    <p>Fri, 20 Jun 2025 11:11:56 +0000</p>
+    <p>Sat, 19 Jul 2025 18:20:26 +0000</p>
         </dd>
             <dt class="field-odd">Copyright</dt>
 
@@ -409,8 +409,7 @@ to activate it via console:</p>
             
     <p>If, the captcha should be usable in backend context or you like to have
 a default configuration without touching TypoScript, the extensions
-need to be configured in the admin tools extensions. Via the cog as shown
-on the screenshot.</p>
+need to be configured in the &quot;Admin Tools&quot; &gt; &quot;Settings&quot; &gt; &quot;Extension Configuration&quot; &gt; &quot;recaptcha&quot;</p>
 
             <figure>
     <img
@@ -588,16 +587,6 @@ name also as setup parameter.</p>
                         </td>
                     <td>
                                     0
-                                </td>
-            </tr>
-                
-                        <tr>
-        <td><div class="confval-label ps-0"><a href="#confval-invisiblecallback">invisible<wbr>Callback</a></div></td>
-                    <td>
-                            <a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/Syntax/StringFormats/Index.html#data-type-string">string</a>
-                        </td>
-                    <td>
-                                    onRecaptchaSubmit
                                 </td>
             </tr>
                 
@@ -899,52 +888,6 @@ This is a to reduce external calls and b to not bother the
 integrator every time he has to test forms. Because after a
 limited amount of tests the captcha testing games must always
 be solved instead only clicking a checkbox.</p>
-
-            </div>
-        </dd>
-    </dl>
-</section>
-                        <a id="invisibleCallback"></a>
-                        <section data-search-title="invisibleCallback"
-         data-search-id="confval-invisiblecallback"
-         data-search-facet="Option"
-         class="confval-section"
-         id="confval-invisiblecallback"
->
-    <h3 class="sr-only">invisibleCallback</h3>
-    <dl class="confval">
-        <dt             class="d-flex justify-content-between">
-            <div class="confval-header flex-grow-1">
-                <code class="sig-name descname"><span
-                        class="pre">invisible<wbr>Callback</span></code>
-                                    <a class="headerlink" href="#confval-invisiblecallback"
-                       data-bs-toggle="modal"
-                       data-bs-target="#linkReferenceModal"
-                       data-id="confval-invisiblecallback"
-                       title="Reference this configuration value"><i
-                            class="fa-solid fa-paragraph"></i></a>
-                </div>
-            <div class="confval-back-to-top">                    <a href="#confval-menu-constants-reference" class="backToList"
-                       title="Back to list"><i
-                            class="fa-solid fa-angles-up fa-xs"></i></a>
-                            </div>        </dt>
-        <dd>
-                            <dl class="field-list simple">
-                                            <dt class="field-even">Type</dt>
-                        <dd class="field-even"><a href="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/Syntax/StringFormats/Index.html#data-type-string">string</a>
-                        </dd>
-                                                <dt class="field-even">Default</dt>
-                            <dd class="field-even">onRecaptchaSubmit
-                            </dd>
-                        </dl>
-                        <div class="confval-description">
-                
-    <p>[Only TypoScript]
-For invisible reCAPTCHA its necessary to have a callback
-function in JavaScript. It is possible to have own code
-that derives from the included. If in this case the name
-of the callback is changed please adjust this parameter
-to match the new name.</p>
 
             </div>
         </dd>
@@ -1523,26 +1466,6 @@ element &quot;reCAPTCHA&quot;. This field has the validation automatically added
 Next step is to open the &quot;Settings&quot; of the form and need to check the
 &quot;Use invisible recaptcha&quot;.</p>
 
-            
-    <p>At last you need to add the TypoScript constants. One is to enable to
-the inclusion of the invisible recaptcha callback and the other is to
-tell the callback which id the form to handle has.</p>
-
-                <div class="code-block-caption">
-        <span class="caption-text">EXT:site_package/Configuration/TypoScript/setup.typoscript</span>
-    </div><div class="code-block-wrapper" translate="no">
-            
-    <pre class="code-block"><code class="hljs typoscript">plugin.tx_recaptcha {
-    include_invisible_recaptcha_callback = 1
-    invisible_recaptcha_formname = captchaForm-4
-}</code></pre>
-    <div class="code-block-actions">        <button class="code-block-copy" title="Copy to clipboard">
-            <i class="icon fa-regular fa-copy code-block-copy-icon"></i>
-            <i class="fa-solid fa-check code-block-check-icon code-block-hide"></i>
-        </button>
-        <span class="code-block-check-tooltip code-block-hide" aria-live="polite">Copied!</span>
-    </div>
-</div>
     </section>
     </section>
 
@@ -1648,7 +1571,7 @@ tell the callback which id the form to handle has.</p>
                                                 <li><a href="https://github.com/evoWeb/recaptcha/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
                                                 <li><a href="https://github.com/evoWeb/recaptcha" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
                                             </ul>                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Jun 20, 2025 11:11</p>
+                    <p class="text-center">Last rendered: Jul 19, 2025 18:20</p>
                 </div>
                 <div class="footer-meta">
                                         <div class="footer-meta-copyright">

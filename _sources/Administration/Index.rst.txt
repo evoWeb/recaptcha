@@ -44,8 +44,7 @@ Configuration
 
 If, the captcha should be usable in backend context or you like to have
 a default configuration without touching TypoScript, the extensions
-need to be configured in the admin tools extensions. Via the cog as shown
-on the screenshot.
+need to be configured in the "Admin Tools" > "Settings" > "Extension Configuration" > "recaptcha"
 
 .. figure:: Images/configure.png
    :alt: Configure extension settings
