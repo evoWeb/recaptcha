@@ -5,7 +5,7 @@
 [![Monthly Downloads](https://poser.pugx.org/evoweb/recaptcha/d/monthly)](https://packagist.org/packages/evoweb/recaptcha)
 [![Total Downloads](https://poser.pugx.org/evoweb/recaptcha/downloads)](https://packagist.org/packages/evoweb/recaptcha)
 
-TYPO3 Extension to make use of googles nocaptcha.\
+TYPO3 Extension to make use of Googles nocaptcha.\
 Now supports googles invisible reCAPTCHA.
 
 ## Installation
@@ -22,11 +22,11 @@ Download and install the extension with the extension manager module or directly
 [TER](https://extensions.typo3.org/extension/recaptcha/).
 
 
-## Integrate invisible reCAPTCHA in tx_form typoscript forms
+## Integrate invisible reCAPTCHA in tx_form TypoScript forms
 
-To be able to use the captcha add the static include of this extension to your template.
+To be able to use the captcha, add the static include of this extension to your template.
 
-After that, add in the typoscript of the form.
+After that, add in the TypoScript of the form.
 
 ```
 lib.contactForm = FORM
@@ -41,9 +41,9 @@ lib.contactForm {
 
 ## Integrate invisible reCAPTCHA in own forms
 
-To be able to use the captcha add the static include of this extension to your template.
+To be able to use the captcha, add the static include of this extension to your template.
 
-After modify your form output by replacing the submit button with something like this:
+After modify your form output by replacing the submit-button with something like this:
 
 ```
 <button
