@@ -3,9 +3,6 @@ prototypes:
   standard:
     formElementsDefinition:
       Form:
-        renderingOptions:
-          partialRootPaths:
-            1974: EXT:recaptcha/Resources/Private/Partials/
         formEditor:
           editors:
             400:
@@ -13,3 +10,6 @@ prototypes:
               templateName: Inspector-CheckboxEditor
               label: formEditor.elements.Form.editor.useInvisibleRecaptcha.label
               propertyPath: renderingOptions.useInvisibleRecaptcha
+        renderingOptions:
+          partialRootPaths:
+            1974: EXT:recaptcha/Resources/Private/Partials/

@@ -66,7 +66,7 @@ plugin.tx\_recaptcha:
 
         Google provides a key for automatic testing purpose and this is used
         as default. To remove the warning that is caused by using the default
-        key please go to the recaptcha admin_ and register an own key for use
+        key please go to the recaptcha console_ and register an own key for use
         in your site.
 
     ..  _private_key:
@@ -79,7 +79,20 @@ plugin.tx\_recaptcha:
 
         Google provides a key for automatic testing purpose and this is used
         as default. To remove the warning that is caused by using the default
-        key please go to the recaptcha admin_ and register an own key for use
+        key please go to the recaptcha console_ and register an own key for use
+        in your site.
+
+    ..  _invisible_private_key:
+
+    ..  confval:: invisible_private_key
+        :type: :ref:`string <t3tsref:data-type-string>`
+        :Default: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+
+        The private key is needed for the validation of invisible captcha submits.
+
+        Google provides a key for automatic testing purpose and this is used
+        as default. To remove the warning that is caused by using the default
+        key please go to the recaptcha console_ and register an own key for use
         in your site.
 
     ..  _lang:
@@ -108,19 +121,6 @@ plugin.tx\_recaptcha:
         integrator every time he has to test forms. Because after a
         limited amount of tests the captcha testing games must always
         be solved instead only clicking a checkbox.
-
-    ..  _invisibleCallback:
-
-    ..  confval:: invisibleCallback
-        :type: :ref:`string <t3tsref:data-type-string>`
-        :Default: onRecaptchaSubmit
-
-        [Only TypoScript]
-        For invisible reCAPTCHA its necessary to have a callback
-        function in JavaScript. It is possible to have own code
-        that derives from the included. If in this case the name
-        of the callback is changed please adjust this parameter
-        to match the new name.
 
     ..  _theme:
 
@@ -151,4 +151,4 @@ plugin.tx\_recaptcha:
         [Only TypoScript]
         Add the threshold for recaptcha v3 from which to show an error.
 
-..  _admin: https://www.google.com/recaptcha/admin
+..  _console: https://console.cloud.google.com/security/recaptcha
