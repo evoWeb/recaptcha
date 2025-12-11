@@ -48,10 +48,7 @@ class SfRegisterAdapter extends AbstractAdapter
             if ($status['error'] !== '') {
                 $validCaptcha = false;
                 $this->addError(
-                    LocalizationUtility::translate(
-                        'error_recaptcha_' . $status['error'],
-                        'Recaptcha'
-                    ),
+                    LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha'),
                     1307421960
                 );
             }
