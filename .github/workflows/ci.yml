@@ -35,6 +35,48 @@ jobs:
       matrix:
         packages:
           - php: '8.2'
+            core: '^13.0'
+            framework: 'dev-main'
+            prefer: ''
+            testpath: 'Tests/Functional'
+
+          - php: '8.2'
+            core: '^13.4'
+            framework: 'dev-main'
+            prefer: '--prefer-lowest'
+            testpath: 'Tests/Functional'
+
+          - php: '8.3'
+            core: '^13.0'
+            framework: 'dev-main'
+            prefer: ''
+            testpath: 'Tests/Functional'
+
+          - php: '8.3'
+            core: '^13.4'
+            framework: 'dev-main'
+            prefer: '--prefer-lowest'
+            testpath: 'Tests/Functional'
+
+          - php: '8.4'
+            core: '^13.0'
+            framework: 'dev-main'
+            prefer: ''
+            testpath: 'Tests/Functional'
+
+          - php: '8.4'
+            core: '^13.4'
+            framework: 'dev-main'
+            prefer: '--prefer-lowest'
+            testpath: 'Tests/Functional'
+
+          - php: '8.5'
+            core: '^13.4'
+            framework: 'dev-main'
+            prefer: ''
+            testpath: 'Tests/Functional'
+
+          - php: '8.2'
             core: '^14.0'
             framework: 'dev-main'
             prefer: ''
@@ -64,11 +106,23 @@ jobs:
             prefer: ''
             testpath: 'Tests/Functional'
 
-    #          - php: '8.4'
-    #            core: '^14.0'
-    #            framework: 'dev-main'
-    #            prefer: '--prefer-lowest'
-    #            testpath: 'Tests/Functional'
+#          - php: '8.4'
+#            core: '^14.0'
+#            framework: 'dev-main'
+#            prefer: '--prefer-lowest'
+#            testpath: 'Tests/Functional'
+
+          - php: '8.5'
+            core: '^14.0'
+            framework: 'dev-main'
+            prefer: ''
+            testpath: 'Tests/Functional'
+
+#          - php: '8.4'
+#            core: '^14.0'
+#            framework: 'dev-main'
+#            prefer: '--prefer-lowest'
+#            testpath: 'Tests/Functional'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
