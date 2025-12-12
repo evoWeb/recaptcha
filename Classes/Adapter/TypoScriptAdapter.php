@@ -16,8 +16,10 @@ declare(strict_types=1);
 namespace Evoweb\Recaptcha\Adapter;
 
 use Evoweb\Recaptcha\Services\CaptchaService;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
+#[Autoconfigure(public: true)]
 class TypoScriptAdapter
 {
     public function __construct(protected CaptchaService $captchaService)
