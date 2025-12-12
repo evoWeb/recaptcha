@@ -18,8 +18,10 @@ namespace Evoweb\Recaptcha\Adapter;
 use Evoweb\Recaptcha\Services\CaptchaService;
 use Evoweb\SfRegister\Services\Captcha\AbstractAdapter;
 use Evoweb\SfRegister\Services\Session;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
+#[Autoconfigure(public: true)]
 class SfRegisterAdapter extends AbstractAdapter
 {
     public function __construct(protected CaptchaService $captchaService, protected Session $session)
