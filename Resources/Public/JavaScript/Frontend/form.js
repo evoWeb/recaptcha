@@ -46,7 +46,7 @@ class Recaptcha {
    * @param {PointerEvent} event
    */
   visibleRecaptchaButtonClicked(event) {
-    if (!this.form.reportValidity() || !this.recaptchaFieldValid()) {
+    if (!this.form.reportValidity()) {
       event.preventDefault();
     }
   }
@@ -72,8 +72,8 @@ class Recaptcha {
    */
   submitForm(response) {
     this.response = response;
-    if (this.form.reportValidity()) {
-      this.field.value = response;
+    this.field.value = response;
+    if (this.form.reportValidity() && this.recaptchaFieldValid()) {
       this.form.submit();
     }
   }
