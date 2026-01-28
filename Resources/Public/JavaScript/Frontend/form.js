@@ -38,7 +38,7 @@ class Recaptcha {
 
   initializeEvents() {
     // used with visible recaptcha
-    [...this.form.querySelectorAll('[data-recaptcha-form-submit]')]
+    [...this.form.querySelectorAll('[data-recaptcha-form-submit], .g-recaptcha')]
       .map(button => button.addEventListener('click', event => this.visibleRecaptchaButtonClicked(event)));
   }
 
