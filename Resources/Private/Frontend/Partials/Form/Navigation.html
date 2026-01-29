@@ -36,7 +36,8 @@
                                                 class="btn btn-primary g-recaptcha"
                                                 data="{
                                                     callback: 'onRecaptchaSubmit',
-                                                    sitekey: configuration.public_key
+                                                    sitekey: configuration.public_key,
+                                                    recaptcha-form-submit: ''
                                                 }"
                                             ><formvh:translateElementProperty element="{form}" renderingOptionProperty="submitButtonLabel"/></f:form.button>
                                         </f:then>
