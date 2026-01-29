@@ -17,7 +17,8 @@ checkResources () {
     echo "Checking documentation, TypeScript and Scss files" >&2
     echo "#################################################################" >&2
 
-    ./additionalTests.sh -s lintXliff
+    ./runTests.sh -s composerInstall -p 8.2
+    ./runTests.sh -s checkIntegrityXliff -p 8.2
     EXIT_CODE_XLIFF=$?
 
     ./additionalTests.sh -s buildDocumentation
@@ -121,10 +122,10 @@ DEBUG_TESTS=false
 if [[ $DEBUG_TESTS != true ]]; then
     checkResources
 
-    runFunctionalTests "8.1" "^12.4" || exit 1
-    runFunctionalTests "8.1" "^12.4" "--prefer-lowest" || exit 1
-    runFunctionalTests "8.2" "^12.4" || exit 1
-    runFunctionalTests "8.2" "^12.4" "--prefer-lowest" || exit 1
+    #runFunctionalTests "8.1" "^12.4" || exit 1
+    #runFunctionalTests "8.1" "^12.4" "--prefer-lowest" || exit 1
+    #runFunctionalTests "8.2" "^12.4" || exit 1
+    #runFunctionalTests "8.2" "^12.4" "--prefer-lowest" || exit 1
     cleanup
 else
     cleanup

@@ -863,6 +863,10 @@ case ${TEST_SUITE} in
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name check-utf8bom-${SUFFIX} ${IMAGE_PHP} Build/Scripts/checkUtf8Bom.sh
         SUITE_EXIT_CODE=$?
         ;;
+    checkIntegrityXliff)
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name check-integrity-set-labels-${SUFFIX} ${IMAGE_PHP} php -dxdebug.mode=off Build/Scripts/checkIntegrityXliff.php
+        SUITE_EXIT_CODE=$?
+        ;;
     checkComposer)
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name check-composer-${SUFFIX} ${IMAGE_PHP} php -dxdebug.mode=off Build/Scripts/checkIntegrityComposer.php
         SUITE_EXIT_CODE=$?

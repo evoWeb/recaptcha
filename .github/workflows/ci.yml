@@ -2,10 +2,10 @@ name: build
 
 on:
   push:
-    branches: [ develop, main ]
+    branches: [ 12.x ]
     tags: [ '*' ]
   pull_request:
-    branches: [ develop ]
+    branches: [ 12.x ]
 
 jobs:
 
@@ -17,7 +17,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run the xliff lint
-        run: Build/Scripts/additionalTests.sh -s lintXliff
+        run: |
+          Build/Scripts/runTests.sh -s composerInstall -p 8.2
+          Build/Scripts/runTests.sh -s checkIntegrityXliff -p 8.2
 
       - name: Test documentation build
         run: Build/Scripts/additionalTests.sh -s buildDocumentation

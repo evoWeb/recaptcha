@@ -329,8 +329,7 @@ IMAGE_MEMCACHED="${IMAGE_PREFIX}memcached:1.5-alpine"
 IMAGE_MARIADB="${IMAGE_PREFIX}mariadb:${DBMS_VERSION}"
 IMAGE_MYSQL="${IMAGE_PREFIX}mysql:${DBMS_VERSION}"
 IMAGE_POSTGRES="${IMAGE_PREFIX}postgres:${DBMS_VERSION}-alpine"
-IMAGE_DOCUMENTATION="ghcr.io/t3docs/render-documentation:v3.0.dev30"
-IMAGE_XLIFF="container.registry.gitlab.typo3.org/qa/example-extension:typo3-ci-xliff-lint"
+IMAGE_DOCUMENTATION="ghcr.io/typo3-documentation/render-guides:latest"
 
 # Detect arm64 to use seleniarm image.
 ARCH=$(uname -m)
@@ -366,7 +365,7 @@ fi
 # Suite execution
 case ${TEST_SUITE} in
     buildDocumentation)
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} -v ${CORE_ROOT}:/project ghcr.io/typo3-documentation/render-guides:latest render Documentation
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} -v ${CORE_ROOT}:/project ${IMAGE_DOCUMENTATION} --config=Documentation
         SUITE_EXIT_CODE=$?
         ;;
     clean)
@@ -376,11 +375,6 @@ case ${TEST_SUITE} in
     composerInstallPackage)
         COMMAND="[ ${SCRIPT_VERBOSE} -eq 1 ] && set -x; composer require -W -n ${COMPOSER_PARAMETER} ${COMPOSER_PACKAGE};"
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-require-package-${SUFFIX} -w ${CORE_ROOT} -e COMPOSER_CACHE_DIR=${CORE_ROOT}/Build/.cache/composer ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    lintXliff)
-        COMMAND="[ ${SCRIPT_VERBOSE} -eq 1 ] && set -x; xmllint --schema /xliff-core-1.2-strict.xsd --noout *.xlf;"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name lint-xliff-${SUFFIX} -w ${CORE_ROOT}/Resources/Private/Language ${IMAGE_XLIFF} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
 esac
