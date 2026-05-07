@@ -20,6 +20,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ApplicationType;
+use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\TypoScript\TypoScriptService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -157,12 +158,14 @@ class CaptchaService
             : $this->extensionConfiguration['private_key'];
         $privateKey = $privateKey ?: $this->extensionConfiguration['private_key'];
 
+        /** @var NormalizedParams $normalizedParams */
+        $normalizedParams = $this->getRequest()->getAttribute('normalizedParams');
         $request = [
             'secret' => $privateKey,
             'response' => trim(
                 !empty($value) ? $value : (string)($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? '')
             ),
-            'remoteip' => GeneralUtility::getIndpEnv('REMOTE_ADDR'),
+            'remoteip' => $normalizedParams->getRemoteAddress(),
         ];
 
         $result = [
