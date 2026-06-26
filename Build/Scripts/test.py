@@ -48,17 +48,17 @@ def check_resources() -> None:
     print(f'{GREEN}Resources valid{NC}')
 
 
-def run_functional_tests(php: str, core: str, framework: str, prefer: str = '') -> None:
+def run_functional_tests(php: str, core: str, register: str, prefer: str = '') -> None:
     prefer_arg = f' {prefer}' if prefer else ' '
     print('###########################################################################')
-    print(f' Run functional tests with PHP {php}, TYPO3 {core}, framework {framework}')
+    print(f' Run functional tests with PHP {php}, TYPO3 {core}, register {register}')
     if prefer:
         print(f' Additional: {prefer}')
     print('###########################################################################')
     run(f'./runTests.sh -p {php} -s cleanTests')
     run(f'./runTests.sh -p {php} -s lintPhp')
     run(f'./runTests.sh -p {php} -s composer -- require {prefer_arg} "typo3/cms-core:{core}"')
-    run(f'./runTests.sh -p {php} -s composer -- require --dev {prefer_arg} "evoweb/sf-register:{core}"')
+    run(f'./runTests.sh -p {php} -s composer -- require --dev {prefer_arg} "evoweb/sf-register:{register}"')
     run(f'./runTests.sh -p {php} -s composerValidate')
     print(f'{GREEN}SUCCESS{NC}')
 
@@ -71,7 +71,7 @@ def main() -> None:
         run_functional_tests('8.2', '^14.3', '^14.0.2', '--prefer-lowest')
     else:
         for php, prefer, pkg in matrix:
-            run_functional_tests(php, pkg['core'], pkg['framework'], prefer)
+            run_functional_tests(php, pkg['core'], pkg['register'], prefer)
     cleanup()
 
 if __name__ == '__main__':
