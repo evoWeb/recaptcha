@@ -22,9 +22,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 #[Autoconfigure(public: true)]
 class TypoScriptAdapter
 {
-    public function __construct(protected CaptchaService $captchaService)
-    {
-    }
+    public function __construct(protected CaptchaService $captchaService) {}
 
     public function render(): string
     {

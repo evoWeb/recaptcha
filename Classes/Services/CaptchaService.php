@@ -201,9 +201,9 @@ class CaptchaService
                 }
             } else {
                 $result['error'] = (string)(
-                    is_array($response['error-codes']) ?
-                    reset($response['error-codes']) :
-                    $response['error-codes']
+                    is_array($response['error-codes'])
+                    ? reset($response['error-codes'])
+                    : $response['error-codes']
                 );
             }
         }

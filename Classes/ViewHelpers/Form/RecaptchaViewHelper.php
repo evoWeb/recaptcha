@@ -31,6 +31,9 @@ class RecaptchaViewHelper extends AbstractFormFieldViewHelper
         $this->registerFieldNameForFormTokenGeneration($name);
 
         $container = $this->templateVariableContainer;
+        if ($container === null) {
+            return '';
+        }
         $container->add('configuration', $this->captchaService->getConfiguration());
         $container->add('showCaptcha', $this->captchaService->getShowCaptcha());
         $container->add('name', $name);
@@ -41,6 +44,6 @@ class RecaptchaViewHelper extends AbstractFormFieldViewHelper
         $container->remove('showCaptcha');
         $container->remove('configuration');
 
-        return (string)$content;
+        return is_string($content) ? $content : '';
     }
 }

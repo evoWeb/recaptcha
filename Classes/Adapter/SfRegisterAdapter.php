@@ -24,9 +24,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 #[Autoconfigure(public: true)]
 class SfRegisterAdapter extends AbstractAdapter
 {
-    public function __construct(protected CaptchaService $captchaService, protected Session $session)
-    {
-    }
+    public function __construct(protected CaptchaService $captchaService, protected Session $session) {}
 
     /**
      * Rendering the output of the captcha
@@ -47,10 +45,11 @@ class SfRegisterAdapter extends AbstractAdapter
         if ($this->session->get('captchaWasValid') !== true) {
             $status = $this->captchaService->validateReCaptcha($value);
 
-            if ($status['error'] !== '') {
+            $error = $status['error'] ?? null;
+            if (is_string($error) && $error !== '') {
                 $validCaptcha = false;
                 $this->addError(
-                    LocalizationUtility::translate('error_recaptcha_' . $status['error'], 'Recaptcha'),
+                    LocalizationUtility::translate('error_recaptcha_' . $error, 'Recaptcha') ?? $error,
                     1307421960
                 );
             }

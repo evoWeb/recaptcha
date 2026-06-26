@@ -17,6 +17,4 @@ namespace Evoweb\Recaptcha\Exception;
 
 use TYPO3\CMS\Core\Exception;
 
-class MissingException extends Exception
-{
-}
+class MissingException extends Exception {}
