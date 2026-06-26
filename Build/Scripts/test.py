@@ -68,7 +68,7 @@ def main() -> None:
 
     debug = '--debug' in sys.argv
     if debug:
-        run_functional_tests('8.2', '^14.3', '^9.5.0', '--prefer-lowest')
+        run_functional_tests('8.2', '^14.3', '^14.0.2', '--prefer-lowest')
     else:
         for php, prefer, pkg in matrix:
             run_functional_tests(php, pkg['core'], pkg['framework'], prefer)
