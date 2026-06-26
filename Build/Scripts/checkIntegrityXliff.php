@@ -1,4 +1,3 @@
-namespace Scripts;
 #!/usr/bin/env php
 <?php
 
@@ -31,7 +30,7 @@ if (PHP_SAPI !== 'cli') {
     die('Script must be called from command line.' . chr(10));
 }
 
-final readonly class checkIntegrityXliff
+final readonly class CheckIntegrityXliff
 {
     private const expectedXliffDeprecations = [
         'mlang_labels_tablabel',
@@ -45,7 +44,6 @@ final readonly class checkIntegrityXliff
         'short_description',
     ];
     private const XliffDeprecationKey = 'x-unused-since';
-
     public function execute(array $argv = []): int
     {
         $isVerbose = in_array('-v', $argv, true) || in_array('--verbose', $argv, true);
@@ -131,7 +129,7 @@ final readonly class checkIntegrityXliff
     {
         $extensionKey = 'N/A';
         $shortLabelFile = basename($labelFile);
-        if (preg_match('@evoweb/(.+)/Resources/Private/Language/(.+)$@imsU', $labelFile, $matches)) {
+        if (preg_match('@sysext/(.+)/Resources/Private/Language/(.+)$@imsU', $labelFile, $matches)) {
             $extensionKey = $matches[1];
             $shortLabelFile = $matches[2];
         }
