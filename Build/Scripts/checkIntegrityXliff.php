@@ -31,7 +31,7 @@ if (PHP_SAPI !== 'cli') {
     die('Script must be called from command line.' . chr(10));
 }
 
-final readonly class CheckIntegrityXliff
+final readonly class checkIntegrityXliff
 {
     private const expectedXliffDeprecations = [
         'mlang_labels_tablabel',
@@ -131,7 +131,7 @@ final readonly class CheckIntegrityXliff
     {
         $extensionKey = 'N/A';
         $shortLabelFile = basename($labelFile);
-        if (preg_match('@sysext/(.+)/Resources/Private/Language/(.+)$@imsU', $labelFile, $matches)) {
+        if (preg_match('@evoweb/(.+)/Resources/Private/Language/(.+)$@imsU', $labelFile, $matches)) {
             $extensionKey = $matches[1];
             $shortLabelFile = $matches[2];
         }
