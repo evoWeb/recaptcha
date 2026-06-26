@@ -31,9 +31,14 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class CaptchaService
 {
+    /**
+     * @param ?array<string, string|string[]> $extensionConfiguration
+     * @throws MissingException
+     * @throws NoServerRequestGivenException
+     */
     public function __construct(
         #[Autowire(expression: 'service("extension-configuration").get("recaptcha")')]
-        private array $extensionConfiguration,
+        private ?array $extensionConfiguration,
         protected ConfigurationManagerInterface $configurationManager,
         protected TypoScriptService $typoScriptService,
         protected ContentObjectRenderer $contentRenderer,
@@ -79,7 +84,7 @@ class CaptchaService
      */
     public function getConfiguration(): array
     {
-        return $this->extensionConfiguration;
+        return is_array($this->extensionConfiguration) ? $this->extensionConfiguration : [];
     }
 
     /**
@@ -112,7 +117,7 @@ class CaptchaService
     {
         return !$this->isInRobotMode()
             && (
-                ApplicationType::fromRequest($this->getRequest())->isBackend()
+                ($this->getRequest() && ApplicationType::fromRequest($this->getRequest())->isBackend())
                 || !$this->isDevelopmentMode()
                 || $this->isEnforceCaptcha()
             );
@@ -127,8 +132,10 @@ class CaptchaService
     {
         if ($this->getShowCaptcha()) {
             $captcha = $this->contentRenderer->stdWrap(
-                $this->extensionConfiguration['public_key'] ?? '',
-                $this->extensionConfiguration['public_key.'] ?? ''
+                is_string($this->extensionConfiguration['public_key'] ?? null)
+                    ? $this->extensionConfiguration['public_key'] : '',
+                is_array($this->extensionConfiguration['public_key.'] ?? null)
+                    ? $this->extensionConfiguration['public_key.'] : []
             );
         } else {
             $captcha = '<div class="recaptcha-development-mode">
@@ -153,17 +160,20 @@ class CaptchaService
             ];
         }
 
-        $privateKey = $this->getRequest()->getParsedBody()['recaptcha-invisible'] ?? false
-            ? $this->extensionConfiguration['invisible_private_key']
-            : $this->extensionConfiguration['private_key'];
-        $privateKey = $privateKey ?: $this->extensionConfiguration['private_key'];
+        $parsedBody = $this->getRequest()?->getParsedBody();
+        $parsedBody = is_array($parsedBody) ? $parsedBody : [];
+        $privateKey = $parsedBody['recaptcha-invisible'] ?? false
+            ? ($this->extensionConfiguration['invisible_private_key'] ?? '')
+            : ($this->extensionConfiguration['private_key'] ?? '');
+        $privateKey = $privateKey ?: ($this->extensionConfiguration['private_key'] ?? '');
+        $privateKey = is_string($privateKey) ? $privateKey : '';
 
         /** @var NormalizedParams $normalizedParams */
-        $normalizedParams = $this->getRequest()->getAttribute('normalizedParams');
+        $normalizedParams = $this->getRequest()?->getAttribute('normalizedParams');
         $request = [
             'secret' => $privateKey,
             'response' => trim(
-                !empty($value) ? $value : (string)($this->getRequest()->getParsedBody()['g-recaptcha-response'] ?? '')
+                !empty($value) ? $value : (string)($parsedBody['g-recaptcha-response'] ?? '')
             ),
             'remoteip' => $normalizedParams->getRemoteAddress(),
         ];
@@ -209,7 +219,9 @@ class CaptchaService
      */
     protected function queryVerificationServer(array $data): array
     {
-        $verifyServerInfo = @parse_url($this->extensionConfiguration['verify_server'] ?? '');
+        $verifyServer = is_string($this->extensionConfiguration['verify_server'] ?? null)
+            ? $this->extensionConfiguration['verify_server'] : '';
+        $verifyServerInfo = @parse_url($verifyServer);
 
         if (empty($verifyServerInfo)) {
             return [
@@ -220,16 +232,18 @@ class CaptchaService
 
         $params = GeneralUtility::implodeArrayForUrl('', $data);
         $response = $this->requestFactory->request(
-            $this->extensionConfiguration['verify_server'] . '?' . $params,
+            rtrim($verifyServer, '?') . '?' . $params,
             'POST'
         );
 
-        $body = (string)$response->getBody();
-        return $body ? json_decode($body, true) : [];
+        $rawBody = (string)$response->getBody();
+        /** @var array<string, array<string>|bool|string> $body */
+        $body = $rawBody ? json_decode($rawBody, true) : [];
+        return is_array($body) ? $body : [];
     }
 
-    protected function getRequest(): ServerRequestInterface
+    protected function getRequest(): ?ServerRequestInterface
     {
-        return $GLOBALS['TYPO3_REQUEST'];
+        return $GLOBALS['TYPO3_REQUEST'] instanceof ServerRequestInterface ? $GLOBALS['TYPO3_REQUEST'] : null;
     }
 }
