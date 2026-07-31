@@ -24,6 +24,7 @@ config/sites/site/csp.yaml with this lines.
 
 ..  code-block:: yaml
     :caption: project_root/config/sites/site/csp.yaml
+
     imports:
         - resource: "EXT:recaptcha/Configuration/Yaml/csp.yaml"
 
